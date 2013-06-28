@@ -1,0 +1,91 @@
+\documentclass[10pt,a4paper,twoside]{article}
+\usepackage{a4wide}
+\linespread{1.359140914229522617680} 
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+%    bookmarks=true,
+    pdftoolbar=true,
+    pdfmenubar=true,
+    pdffitwindow=false,
+    pdfstartview={FitH},
+    pdftitle={Das Nizza Modell},
+    pdfauthor={Michael F. Sch\"onitzer},
+    pdfsubject={Das Nizza Modell},
+    pdfkeywords={Nizza-Modell},
+    pdfnewwindow=true,
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    filecolor=black,
+    urlcolor=blue
+}
+
+\author{Michael F. Schönitzer}
+\title{Das Nizza Modell}
+
+
+\begin{document}
+\maketitle
+
+\section{Einleitung}
+2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis (in alphabetischer Reihenfolge) drei Nature-Artikel\cite{Gomes2005}\cite{Tsiganis2005}\cite{Morbidelli2005} %Reihenfolge
+in denen sie eine neues Modell für die Migration der Riesenplaneten unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wurde Nizza-Modell genannt, da die Autoren zu besagter Zeit am Observatoire de la Côte d’Azur in Nizza arbeiteten. Diese Arbeit soll das Modell vorstellen.
+
+\section{Das Nizza-Modell}
+%Gemäß aktueller Planetenentstehungsmodelle sollten sich die Gasplaneten auf kreisförmigen coplanaren Orbits gebildet haben, jedoch 
+%warum ein Migrationsmodell überhaupt von nöten ist.
+Mann betrachtet das Sonnensystem nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen %wirklich?
+davon aus, das die Planeten damals auf nahezu kreisförmige, kompakte Orbits hatten. % Inklination, Werte, Kompakt erklären
+Darüberhinausgehend nimmt das Modell an, dass bei der Planetenentstehung eine Scheibe von Planetesimalen entstand, die von außerhalb der Planetenorbits bis hinaus zu einer Entfernung von 30-35 AU\cite{Tsiganis2005} reichte und eine Gesamtmasse von etwa 35 Erdmassen hatte. %Überprüfen, Quellen, Doppelung entfernen
+Die Orbitalverteilung der transneptunischen Objekte lässt darauf schließen, dass Neptuns Migration innerhalb von 20 AU begonnen hat.\cite{Tsiganis2005}
+
+Aus dieser Scheibe werden von den Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus \& Neptun. Die terrestrischen Planten sind vernachlässigbar.} immer wieder einzelne Planetesimale gestreut oder akkretirt. Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits.\cite{Tsiganis2005} %Kinderkacke
+Numerische Simulationen haben gezeigt, dass Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert.\cite{Tsiganis2005}\cite{Hahn1999} % Hahn nicht gelesen
+
+Während der Migration werden die Exzentrizitäten durch durch den gravitativen Einfluss der Planetesimale, bekannt als dynamische Reibung, gedämpft.\cite{Tsiganis2005}
+Mit der Zeit kommen die Planeten sich durch die Migration näher, so dass Ressonanzen (englisch mean motion resonance, MMR) auftreten.
+Man betrachtet im Nizza-Modell die 2:1-Resonanz zwischen Jupiter und Staturn, welche nach ein paar hundert Millionen Jahren auftritt.
+Bei einer MMR handelt es sich um den Fall, wenn die Umlaufdauern zweier Planeten im Verhältnis zweier kleiner natürlichen Zahlen steht. In der hier relevanten 2:1-MMR zwischen Jupiter und Saturn, läuft also Jupiter genau zweimal um die Sonne, während Saturn in der selben Zeit genau einmal seinen Orbit durchlauft, die Planeten "begegnen"\ sich also immer am selben Ort. %Nochmal Prüfen
+Die 2:1-Resonanz zwischen Jupiter und Saturn ist die stärkste Resonanz. % einbauen
+Die Resonanz für zu einer schlagartigen Erhöhung der Exzentrizitäten der Umlaufbahnen von Jupiter und Saturn, auf Werte die mit den heutigen vergleichbar sind. %genauer erklären?
+Dadurch stören Jupiter und Saturn die Eisplanenten, so dass auch deren Exzentrizitäten abhängig von den genauen Anfangsparametern (Massen und großen Halbachsen der Planeten) mehr oder weniger stark anwachsen\cite{Tsiganis2005}.
+Da die Planetenorbits sehr dich zu einander liegen, interagieren  sie nun miteinander\cite{Tsiganis2005}, das System wird chaotisch. 
+%...
+%Die Planeten Saturn Uranus und Neptun kommen sich gegenseitig und der Scheibe aus Planetesimalen nahe. Dadurch werden die Planetesimale praktisch schlagartig zerstreut, ein Teil der Planetesimale fliegt in das innere Planetensystem und löst dort das Late Heavy Bombardment aus.
+
+Nach etwa hundert Millionen Jahren erreichen die Planeten schließlich ihrer heutigen Entfernungen, ihre Exzentizitäten werden gedämpft und das System stabilisiert sich wieder.
+
+\section{Die Simulationen} % umbenennen, o. neu gliedern
+Als Anfangsparameter wählten Tsiganis et. al in dem Simulationen für die große Halbachse des Jupiterorbits $a_J = 5,45 AU$. Saturn wurde wenige Zehntel AU von der bei $a_{1:2} = 8,65 AU$ gelegenen 1:2-MMR gesetzt\cite{Tsiganis2005}. Die beiden Eisplaneten wurden mit großen Halbachsen von 11-13 AU respektive 13,5-17 AU, mit einem Mindestabstand von 2 AU gestartet.
+Die Planetenorbits waren nahezu kreisförmig und coplanar ($e, i \approx 10^{-3}$), die Planetisimalenscheibe bestand aus 1000-5000 gleich schweren Brocken, mit einer Gesamtmasse von 30 bis 50 Erdmassen. %Ausdehnung steht oben, runter?
+Die Flächendichte der Scheibe wurde linear mit dem Sonnenabstand abfallend gewählt. In einigen Simulationen wurde eine dynamisch "heiße"\ Scheibe in anderem eine "dynamisch kalte"\ Scheibe gewählt, wobei mit dynamisch heiß gemeint ist, dass Exzentrizität und Inklination relativ groß waren: $e \approx \sin i \approx 0.05 $, im Vergleich zu $e \approx \sin i \approx 10^{-3} $ im kalten Fall.\cite{Tsiganis2005}
+Die Eigengravitation der Scheibe wurde in den Simulationen ignoriert\cite{Tsiganis2005}.
+Die Simulationen wurden mit zwei verschiedenen symplektischen N-Körper Codecs durchgeführt: MERCURY von John Chambers und SyMBA, einer Erweiterung des von Hal Levison und Martin Duncan entwickeltem SWIFT.
+% http://www.boulder.swri.edu/~hal/swift.html
+% http://www.arm.ac.uk/~jec/
+Der Zeitschritt betrug zwischen einem viertel und einem halben Jahr.\cite{Tsiganis2005} % REALY?
+
+
+\section{Planetenorbits}
+\section{Late Heavy Bombardment}
+\section{Trojaner}
+\section{irreguläre Monde}
+\section{Kuipergürtel}
+\section{Uranusachse}
+\section{4/5/6 Planeten}
+\section{Zusammenfassung}
+
+\newpage
+\renewcommand{\thesection}{\Alph{section}}
+\setcounter{section}{0} 
+\section{Eigene Berechnungen}
+\section{Literaturverzeichnis}
+
+\bibliography{literatur}{}
+\bibliographystyle{hplain}
+
+\end{document}
