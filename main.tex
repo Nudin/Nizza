@@ -26,26 +26,49 @@
 
 \author{Michael F. Schönitzer}
 \title{Das Nizza Modell}
-
+\newcommand{\refsec}[1]{siehe Kapitel \ref{#1}}
 
 \begin{document}
 \maketitle
 
 \section{Einleitung}
-2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis (in alphabetischer Reihenfolge) drei Nature-Artikel\cite{Gomes2005}\cite{Tsiganis2005}\cite{Morbidelli2005} %Reihenfolge
+Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis (in alphabetischer Reihenfolge) drei Nature-Artikel\cite{Gomes2005}\cite{Tsiganis2005}\cite{Morbidelli2005} %Reihenfolge
 in denen sie eine neues Modell für die Migration der Riesenplaneten unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wurde Nizza-Modell genannt, da die Autoren zu besagter Zeit am Observatoire de la Côte d’Azur in Nizza arbeiteten.
 
+Mann betrachtet dabei das Sonnensystem nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen %wirklich?
+davon aus, das die Planeten damals nahezu kreisförmige, kompakte Orbits hatten.
 
+Aus dieser Scheibe werden von den Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus \& Neptun. Die terrestrischen Planten sind vernachlässigbar.} immer wieder einzelne Planetesimale gestreut oder akkretirt. Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits\cite{Tsiganis2005},
+wodurch Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert.\cite{Tsiganis2005}\cite{Hahn1999} % Hahn nicht gelesen
+Mit der Zeit kommen die Planeten sich durch die Migration näher und es kommt zu einer Resonanz,
+welche zu einer schlagartigen Erhöhung der Exzentrizitäten der Umlaufbahnen von Jupiter und Saturn, auf Werte die mit den heutigen vergleichbar sind, führt.
+Die Planeten Saturn Uranus und Neptun kommen sich gegenseitig und der Scheibe aus Planetesimalen nahe. Dadurch werden die Planetesimale praktisch schlagartig zerstreut, das System wird instabil und ein Teil der Planetesimale fliegt in das innere Planetensystem und löst dort das Late Heavy Bombardment aus.
 
-\section{Das Nizza-Modell}
-%Gemäß aktueller Planetenentstehungsmodelle sollten sich die Gasplaneten auf kreisförmigen coplanaren Orbits gebildet haben, jedoch 
-%warum ein Migrationsmodell überhaupt von nöten ist.
-Mann betrachtet das Sonnensystem nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen %wirklich?
-davon aus, das die Planeten damals auf nahezu kreisförmige, kompakte Orbits hatten. % Inklination, Werte, Kompakt erklären
-Darüberhinausgehend nimmt das Modell an, dass bei der Planetenentstehung eine Scheibe von Planetesimalen entstand, die von außerhalb der Planetenorbits bis hinaus zu einer Entfernung von 30-35 AU\cite{Tsiganis2005} reichte und eine Gesamtmasse von etwa 35 Erdmassen hatte. %Überprüfen, Quellen, Doppelung entfernen
-Die Orbitalverteilung der transneptunischen Objekte lässt darauf schließen, dass Neptuns Migration innerhalb von 20 AU begonnen hat.\cite{Tsiganis2005}
+Nach etwa hundert Millionen Jahren erreichen die Planeten schließlich ihrer heutigen Entfernungen, ihre Exzentizitäten werden gedämpft und das System stabilisiert sich wieder. Die übriggebliebenen Planetesimale bilden die heutigen Transneptunischen Objekte.
 
-Aus dieser Scheibe werden von den Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus \& Neptun. Die terrestrischen Planten sind vernachlässigbar.} immer wieder einzelne Planetesimale gestreut oder akkretirt. Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits.\cite{Tsiganis2005} %Kinderkacke
+Neben den Plantenorbits (\refsec{Orbits}), dem Late Heavy Bombardment (\refsec{LHB}) und dem Kuipergürtel (\refsec{Kuiper}), kann das Modell wie wir sehen werden auch die Trojaner (\refsec{Trojaner}), die irregulären Monde (\refsec{Monde}) und die Achse des Uranus (\refsec{Uranusachse}) zumindest prinzipiell erklären.
+Abschließend werden wir uns mit einer möglichen Erweiterung des Nizzamodells um zusätzliche Anfangsplaneten beschäftigend (\refsec{mehrPlaneten}).
+
+\section{Das Nizza-Modell}\label{Orbits}
+In diesem Kapitel werden wir das Nizzamodell wie in der ursprünglichen Arbeit\cite{Tsiganis2005} beschrieben erläutern.
+
+In der Simulation berücksichtigten die Forscher, dabei die vier Riesenplaneten, sowie eine Scheibe aus Planetesimalen im Gravitationsfeld der Sonne. % Bäh: Forscher?
+Dies ist ein plausibler Ausgangszustand, für die Situation nachdem der Sonnenwind die Gaswolke %Sonnenwind, Gaswolke?
+zerstreut hat. % bäh: formulierung
+Als Anfangsparameter wählten Tsiganis et. al in den Simulationen für die große Halbachse des Jupiterorbits $a_J = 5,45 AU$. Saturn wurde wenige Zehntel AU von der bei $a_{1:2} = 8,65 AU$ gelegenen 1:2-MMR gesetzt\cite{Tsiganis2005}. Die Orbitalverteilung der transneptunischen Objekte lässt darauf schließen, dass Neptuns Migration innerhalb von 20 AU begonnen hat.\cite{Tsiganis2005}
+Die beiden Eisplaneten wurden in den Simulationen von der Gruppe von Tsigani mit großen Halbachsen von 11-13 AU respektive 13,5-17 AU, mit einem Mindestabstand von 2 AU gestartet.
+Die Planetenorbits waren wie von den Planetenentstehungsmodellen gefordert % formulierung, Quelle
+nahezu kreisförmig und coplanar ($e, i \approx 10^{-3}$).
+
+Die Planetisimalenscheibe – ein Überbleibsel der Planetenentstehung – begann direkt hinter dem Orbit des zweitern Eisplaneten und reichte bis zu einer Entfernung von 30-35 AU\cite{Tsiganis2005} hinaus. Sie bestand aus 1000-5000 gleich schweren Brocken, mit einer Gesamtmasse von 30 bis 50 Erdmassen. %Ausdehnung steht oben, runter?
+Die Flächendichte der Scheibe wurde linear mit dem Sonnenabstand abfallend gewählt. In einigen Simulationen wurde eine dynamisch "heiße"\ Scheibe in anderem eine "dynamisch kalte"\ Scheibe gewählt, wobei mit dynamisch heiß gemeint ist, dass Exzentrizität und Inklination relativ groß waren: $e \approx \sin i \approx 0.05 $, im Vergleich zu $e \approx \sin i \approx 10^{-3} $ im kalten Fall.\cite{Tsiganis2005}
+Die Eigengravitation der Scheibe wurde in den Simulationen ignoriert\cite{Tsiganis2005}.
+Die Simulationen wurden mit zwei verschiedenen symplektischen N-Körper Codecs durchgeführt: MERCURY von John Chambers und SyMBA, einer Erweiterung des von Hal Levison und Martin Duncan entwickeltem SWIFT.
+% http://www.boulder.swri.edu/~hal/swift.html
+% http://www.arm.ac.uk/~jec/
+Der Zeitschritt betrug zwischen einem viertel und einem halben Jahr.\cite{Tsiganis2005} % REALY?
+
+Aus dieser Scheibe werden von den Planeten immer wieder einzelne Planetesimale gestreut oder akkretirt. Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits.\cite{Tsiganis2005} %Kinderkacke
 Numerische Simulationen haben gezeigt, dass Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert.\cite{Tsiganis2005}\cite{Hahn1999} % Hahn nicht gelesen
 
 Während der Migration werden die Exzentrizitäten durch durch den gravitativen Einfluss der Planetesimale, bekannt als dynamische Reibung, gedämpft.\cite{Tsiganis2005}
@@ -62,28 +85,23 @@ Die große Anzahl an kleinen Objekten im Bereich der Planetenbahnen, führt jedo
 Wenn die Planetesimalscheibe fast vollständig zerstreut ist, stoppt die Migration der Planeten und sie erreichen ihre endgültigen Bahnen\cite{Tsiganis2005}.
 
 
-%Die Planeten Saturn Uranus und Neptun kommen sich gegenseitig und der Scheibe aus Planetesimalen nahe. Dadurch werden die Planetesimale praktisch schlagartig zerstreut, ein Teil der Planetesimale fliegt in das innere Planetensystem und löst dort das Late Heavy Bombardment aus.
-
-%Nach etwa hundert Millionen Jahren erreichen die Planeten schließlich ihrer heutigen Entfernungen, ihre Exzentizitäten werden gedämpft und das System stabilisiert sich wieder.
-
-\section{Die Simulationen} % umbenennen, o. neu gliedern
-Als Anfangsparameter wählten Tsiganis et. al in dem Simulationen für die große Halbachse des Jupiterorbits $a_J = 5,45 AU$. Saturn wurde wenige Zehntel AU von der bei $a_{1:2} = 8,65 AU$ gelegenen 1:2-MMR gesetzt\cite{Tsiganis2005}. Die beiden Eisplaneten wurden mit großen Halbachsen von 11-13 AU respektive 13,5-17 AU, mit einem Mindestabstand von 2 AU gestartet.
-Die Planetenorbits waren nahezu kreisförmig und coplanar ($e, i \approx 10^{-3}$), die Planetisimalenscheibe bestand aus 1000-5000 gleich schweren Brocken, mit einer Gesamtmasse von 30 bis 50 Erdmassen. %Ausdehnung steht oben, runter?
-Die Flächendichte der Scheibe wurde linear mit dem Sonnenabstand abfallend gewählt. In einigen Simulationen wurde eine dynamisch "heiße"\ Scheibe in anderem eine "dynamisch kalte"\ Scheibe gewählt, wobei mit dynamisch heiß gemeint ist, dass Exzentrizität und Inklination relativ groß waren: $e \approx \sin i \approx 0.05 $, im Vergleich zu $e \approx \sin i \approx 10^{-3} $ im kalten Fall.\cite{Tsiganis2005}
-Die Eigengravitation der Scheibe wurde in den Simulationen ignoriert\cite{Tsiganis2005}.
-Die Simulationen wurden mit zwei verschiedenen symplektischen N-Körper Codecs durchgeführt: MERCURY von John Chambers und SyMBA, einer Erweiterung des von Hal Levison und Martin Duncan entwickeltem SWIFT.
-% http://www.boulder.swri.edu/~hal/swift.html
-% http://www.arm.ac.uk/~jec/
-Der Zeitschritt betrug zwischen einem viertel und einem halben Jahr.\cite{Tsiganis2005} % REALY?
+%Gemäß aktueller Planetenentstehungsmodelle sollten sich die Gasplaneten auf kreisförmigen coplanaren Orbits gebildet haben, jedoch 
+%warum ein Migrationsmodell überhaupt von nöten ist.
+%Darüberhinausgehend nimmt das Modell an, dass bei der Planetenentstehung eine Scheibe von Planetesimalen entstand, die von außerhalb der Planetenorbits bis hinaus zu einer Entfernung von 30-35 AU\cite{Tsiganis2005} reichte und eine Gesamtmasse von etwa 35 Erdmassen hatte. %Überprüfen, Quellen, Doppelung entfernen
 
 
-\section{Planetenorbits}
-\section{Late Heavy Bombardment}
-\section{Trojaner}
-\section{irreguläre Monde}
-\section{Kuipergürtel}
-\section{Uranusachse}
-\section{4/5/6 Planeten}
+\section{Late Heavy Bombardment}\label{LHB}
+
+\section{Trojaner}\label{Trojaner}
+
+\section{irreguläre Monde}\label{Monde}
+
+\section{Kuipergürtel}\label{Kuiper}
+
+\section{Uranusachse}\label{Uranusachse}
+
+\section{4/5/6 Planeten}\label{mehrPlaneten}
+
 \section{Zusammenfassung}
 
 \newpage
