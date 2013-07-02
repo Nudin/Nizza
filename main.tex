@@ -69,7 +69,7 @@ Die Simulationen wurden mit zwei verschiedenen symplektischen N-Körper Codecs d
 Der Zeitschritt betrug zwischen einem viertel und einem halben Jahr.\cite{Tsiganis2005} % REALY?
 
 Aus dieser Scheibe werden von den Planeten immer wieder einzelne Planetesimale gestreut oder akkretirt. Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits.\cite{Tsiganis2005} %Kinderkacke
-Numerische Simulationen haben gezeigt, dass Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert.\cite{Tsiganis2005}\cite{Hahn1999} % Hahn nicht gelesen
+Die Simulationen zeigen, dass Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert.\cite{Tsiganis2005}\cite{Hahn1999} % Hahn nicht gelesen
 
 Während der Migration werden die Exzentrizitäten durch durch den gravitativen Einfluss der Planetesimale, bekannt als dynamische Reibung, gedämpft.\cite{Tsiganis2005}
 Mit der Zeit kommen die Planeten sich durch die Migration näher, so dass Ressonanzen (englisch mean motion resonance, MMR) auftreten.
@@ -80,15 +80,28 @@ Die Resonanz für zu einer schlagartigen Erhöhung der Exzentrizitäten der Umla
 Dadurch stören Jupiter und Saturn die Eisplanenten, so dass auch deren Exzentrizitäten abhängig von den genauen Anfangsparametern (Massen und großen Halbachsen der Planeten) mehr oder weniger stark anwachsen\cite{Tsiganis2005}.
 Da die Planetenorbits sehr dich zu einander liegen führen die hohen Exzentrizitäten zu überschneidenden Bahnen\cite{Tsiganis2005}, es kommt dadurch zu Begegnungen von Planeten. %Bäh: Begegnungen
 Dies hat wiederum zwei Effekte: die Inklinationen der Planeten wächst um $1^\circ-7^\circ$ und die Eisriesen werden hinaus in die Planetesimalscheibe gestreut,
-wodurch nun schlagartig eine große Menge an Planetesimalen ins innere gestreut werden und sich folglich die Migrationsrate drastisch erhöht\cite{Tsiganis2005}.
+wodurch nun schlagartig eine große Menge an Planetesimalen ins Innere gestreut werden und sich folglich die Migrationsrate drastisch erhöht\cite{Tsiganis2005}.
 Die große Anzahl an kleinen Objekten im Bereich der Planetenbahnen, führt jedoch zu dynamischer Reibung, wodurch die Exzentrizitäten und Inklinationen wieder langsam sinken und sich das System somit wieder stabilisiert\cite{Tsiganis2005}.
 Wenn die Planetesimalscheibe fast vollständig zerstreut ist, stoppt die Migration der Planeten und sie erreichen ihre endgültigen Bahnen\cite{Tsiganis2005}.
+
+\newcommand{\AU}{\;\mathrm{AU}}
+\newcommand{\DII}{\Delta a_{I_1,I_2}}
+\newcommand{\DSI}{\Delta a_{S,I_1}} % Formeln, nicht kursiv
+Diese hängen von dem Verhalten des Systems zum Zeitpunkt direkt nach der Resonanz ab. In den 43 Simulationen in \cite{Tsiganis2005} zweigte sich, dass von den zahlreichen Anfangsparametern der Abstand der Eisriesen $\DII$ und vor allem der Abstand zwischen Saturn und dem inneren Eisriesen $\DSI$ die größten Auswirkungen haben.\cite{Tsiganis2005} 
+Wie oben schon erwähnt verwendete man für $\DII$ Werte zwischen etwa zwei und sechs AU, während die Werte von $\DSI$ zwischen ~2.5 und ~5 AU betrugen.\cite{Tsiganis2005}
+Wählt man den Abstand zwischen Saturn und dem ersten Eisplaneten klein, so steigt die Wahrscheinlichkeit dass einer der Eisplaneten von Saturn auf eine die Jupiter kreuzende Bahn gestreut wird und dann von Jupiter aus dem System geschleudert wird. Für $\DSI \le 3 \AU $ wurden passierte dies in 14 der 43 Simulationen (33\%).
+Wählt man den Abstand hingegen sehr groß ($\DSI \approx 5 \AU$), so ist das System möglicherweise nicht mehr kompakt genug, so dass überhaupt keine Begegnungen von Planeten stattfinden. %bäh: Begegnungen
+
+Für die Restliche Fälle, welche allesamt nach einer wie oben beschriebenen Migrationsphase wieder zur Ruhe kommen %bäh: zu Ruhe kommen
+gilt dass es für Abstände $\DII \ge 3.5 \AU$ zwar zu Interaktionen der beiden Eisplaneten unter einander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es im Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B.
+
 
 
 %Gemäß aktueller Planetenentstehungsmodelle sollten sich die Gasplaneten auf kreisförmigen coplanaren Orbits gebildet haben, jedoch 
 %warum ein Migrationsmodell überhaupt von nöten ist.
 %Darüberhinausgehend nimmt das Modell an, dass bei der Planetenentstehung eine Scheibe von Planetesimalen entstand, die von außerhalb der Planetenorbits bis hinaus zu einer Entfernung von 30-35 AU\cite{Tsiganis2005} reichte und eine Gesamtmasse von etwa 35 Erdmassen hatte. %Überprüfen, Quellen, Doppelung entfernen
 
+\newpage % ENTFERNEN, bzw. VERSCHIEBEN sobald untere Kapitel vorhanden sind.
 
 \section{Late Heavy Bombardment}\label{LHB}
 
