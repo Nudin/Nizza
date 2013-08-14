@@ -232,6 +232,28 @@ Bei $\PJS \approx 2.05$ tritt eine sekundäre 3:1 Resonanz zwischen $1/P_J-2/P_S
 Ein zweites Minimum ergibt sich durch die 2:1 Resonanz selbiger Größen und führt zum Verlust von etwa 70 \% der Trojaner.
 Gemäß dem Zeitreversibilitätsprinzip sind dies auch die Zeiten, bei welchen ein Einfang von Planetesimalen wahrscheinlich ist.
 
+Um nun die Theorie zu testen, führten sie zwei Simulationen durch,
+wobei der als ''langsame Simulation`` bezeichnete Durchlauf die Geschwindigkeit von oben verwendet, während die ''schnelle Simulation`` eine drei mal schnellere Migration vorwies – somit stellen dies die langsamsten und schnellsten Migrationsfälle des Nizza-Modells dar, da dies hierfür der einzige wichtige Parameter ist, ist der Parameterraum abgedeckt. %hmm
+Für den Zeitraum zwischen dem Beginn der ersten sekundär-Resonanz und dem Ende der zweiten, wurde ein konstanter Strom von Planetesimalen durch das System geschickt,
+während die Planeten durch Hinzufügen von geeigneten Krafttermen in die Bewegungsgleichungen zur Migration gezwungen wurden.
+Diese Testteilchen wurden dafür auf die Saturnbahn kreuzende Orbits, mit Exzentrizitäten und Inklinationen wie in den ursprünglichen Simulationen beobachtet, gesetzt und immer wenn ein Teilchen auf dem System verloren ging wurde es wieder auf seinem ursprünglichem Orbit gesetzt, so das die Teilchenanzahl immer konstant 1.163.000 betrug.
+Insgesamt wurden in der langsamen Simulation 5.466.000 Teilchen entfernt und wieder eingefügt, 98 Teilchen endeten nach $1,2 \cdot 10^6$ Jahren – als sich die Co-Orbitalregionen stabilisiert haben – auf Trojaner bahnen.
+Die wurden 19 mal kopiert und dann über weitere 10 Myr simuliert um ihre langzeitliche Stabilität zu testen.
+Dabei wurden die Exzentrizitäten der Planeten durch Zusatzterme in den Bewegungsgleichungen wie im Nizza-Modell beobachtet gedämpf. Am Ende überlebten 266 Teilchen. Die gesamte Eingangseffizienz berechnet sich als $266/20/5466000 \approx 2,4 \cdot 10^{-6}$.
+Bei der schnellen Migration wurde die Migrationsgeschwindigkeit verdreifacht und die Simulationszeit entsprechend gedrittelt, ansonsten blieb sie unverändert.
+Bei dieser wurden insgesamt 2.773.000 Teilchen entfernt und wieder eingefügt und 174 Teilchen endeten auf Trojanerorbits. Sie wurden 9-mal geklont, 486 Teilchen überlebten am Ende.
+Die Effizienz beträgt $486/10/2773000 \approx 1,8 \cdot 10^{-5}$.
+In beiden Simulationen hatten etwa die Hälfte der der Trojaner Librationsamplituden $D$ von weniger als 30\degree – wie etwa 87\% der bekannten Trojaner.
+Da viele der Trojaner mit größeren Librationsamplituden auf sehr großen Zeitskalen instabil sind passt dies mit der Beobachtung überein und für die weiteren Analysen wurden nur die Trojaner mit $D<30^\circ$ betrachtet.
+Um zu überprüfen, ob die Vernachlässigung von Uranus und Neptun gerecht fertig % gerechtfertig
+war, wurden einige der Simulationen unter Berücksichtigung der Effekte dieser wiederholt. % ausführlicher?!
+Morbidelli et al. stellten fest, dass die Eisgiganten keinen Einfluss auf die Trojaner von Jupiter haben.
+Aus den ursprünglichen Simulationen des Nizza-Modells, % ursprüngliche Simulationen
+wurde die Masse der Planetesimale die während der Instabilitätsphase durch das Sonnensystem streifen, auf $\sim 3,4 M_\oplus$ bestimmt.
+Die Masse der Trojaner mit Librationsamplitude von unter 30\degree berechnet sich als Produkt dieser Masse mit der Einfangseffizienz und einem Faktor $1/2$, da nur die Hälfte eine Librationsamplitude von $<30^\circ$ haben. Sie beträgt für die langsame Simulation $\sim4\cdot 10^{-6} M_E$ und für die schnelle Simulation $\sim 3\cdot 10^{-5}M_E$.
+Beim Vergleich mit einem Literaturwert stellen Morbidelli et al. eine deutlich Differenz fest: der berechnete Wert ist um einen Faktor $\sim3-25$ kleiner als der Literaturwert.
+
+
 \FloatBarrier
 \section{reguläre und irreguläre Monde}\label{Monde}
 \subsection{Hill-Sphäre}
@@ -247,7 +269,7 @@ Lorem ipsum
 
 \begin{figure}[tbn]
 \includegraphics[scale=1]{img/Nesvorny2007-1.jpg}
-\caption{•}
+\caption{ }
 \end{figure}
 \begin{figure}[tbn]
 \includegraphics[scale=0.2]{img/Nesvorny2007-2.png}
@@ -472,6 +494,7 @@ Dies kann bis zu weiteren $0.5 M_\oplus$ beitragen, die wahrscheinlichste Masse 
 
 %%%% Nizza-Modell einheitlich scheiben
 %%%% Myr/Gyr einheitlich scheiben
+%%%% M_E <-> M_\oplus einheitlich schreiben
 %%%% Eisriesen, Eisgiganten, Gasriesen, etc. vereinheitlichen oder nicht?
 %%%% Orbits oder Orbitale?
 %%%% Anführungszeichen fixen
