@@ -208,6 +208,7 @@ Abschließend möchte ich noch darauf hinweisen, dass es neuere geologische Fors
 
 \FloatBarrier
 \section{Trojaner}\label{Trojaner}
+%%% NEPTUN-TROJANER!!
 Als Trojaner bezeichnet man Objekte, die auf dem selben Orbit wie ein Planet kreisen, jedoch um 60\degree vor- oder rückläufig bei den die Lagrangepunkten %L3 und L4? Schreibweiße
 des Planeten.
 Die Jupiter-Trojaner wurden in der Literatur häufig als Argument gegen das Auftreten der 1:2-MMR zwischen Jupiter und Saturn genannt. Das Überschreiten der Resonanz würde die Trojanerbahnen destabilisieren und die Trojanerpopulation vollständig auslöschen\cite{Morbidelli2005}. %O-Quelle
@@ -251,7 +252,21 @@ Morbidelli et al. stellten fest, dass die Eisgiganten keinen Einfluss auf die Tr
 Aus den ursprünglichen Simulationen des Nizza-Modells, % ursprüngliche Simulationen
 wurde die Masse der Planetesimale die während der Instabilitätsphase durch das Sonnensystem streifen, auf $\sim 3,4 M_\oplus$ bestimmt.
 Die Masse der Trojaner mit Librationsamplitude von unter 30\degree berechnet sich als Produkt dieser Masse mit der Einfangseffizienz und einem Faktor $1/2$, da nur die Hälfte eine Librationsamplitude von $<30^\circ$ haben. Sie beträgt für die langsame Simulation $\sim4\cdot 10^{-6} M_E$ und für die schnelle Simulation $\sim 3\cdot 10^{-5}M_E$.
-Beim Vergleich mit einem Literaturwert stellen Morbidelli et al. eine deutlich Differenz fest: der berechnete Wert ist um einen Faktor $\sim3-25$ kleiner als der Literaturwert.
+Als Theoretische Begründung für das starke Anwachsen der Masse mit steigender Migrationsgeschwindigkeit nennen die Autoren eine Kombination von zwei Gründen:
+zum einen ist durch die schnellere und somit kürzere Migration bei gleicher Gesamt\/teilchenzahl die Teilchenstromdichte während der Instabilitätsphase um den selben Faktor 3 höher, wodurch auch dreimal so viele Objekte eingefangen werden. Zum anderen führt eine schnellere Migration auch zu einem schnellerem Übergang vom instabilen zum stabilen Zustand, wodurch die Einfangquote steigt\cite{Morbidelli2005}.
+Beim Vergleich mit dem Literaturwert von Jewitt et al. aus dem Jahr 2000 stellen Morbidelli et al. eine deutlich Differenz fest: der berechnete Wert ist um einen Faktor $\sim3-25$ kleiner als der Literaturwert. % O-cite! ###
+Allerdings – so argumentieren die Autoren – beruhte die Berechnung von Jewitt und Kollegen auf inzwischen veralteten Messwerten zu den Trojanerpopulationen. % Auflisten?
+Nach Korrektur dieser erhielte die Gruppe um Morbidelli eine Masse von $1,3 \cdot 10^{-5} M_\oplus$ für die Trojaner. Nachdem 87\% der Trojaner eine Librationsamplitude von unter 30\degree haben, ergibt sich für diese eine Masse von etwa $1,1 \cdot 10^{-5} M_\oplus$, was mit den Werten der Simulationen gut übereinstimmt\cite{Morbidelli2005}.
+
+Als nächstes analysierte die Gruppe um Morbidelli die Orbits der eingefangenen Objekte. Dazu simulierten sie die Entwicklung der Trojaner bei abgeschlossener Migration unter Einfluss von nur der Sonne und Jupiter für weitere $10^5$ Jahre und filterten die kurzzeitigen Oszillationen der Orbits heraus.
+Die Verteilung der Orbitaleigenschaften der Trojaner wiesen zwischen den beiden Simulationen keine signifikanten Unterscheide auf, weshalb sie zur Verbesserung der Statistik gemeinsam betrachtet wurden.
+Grafik \ref{pic:fehlt} zeigt die Bahneigenschaften der Simulationsergebnisse im Vergleich zu den gemessenen, wie man sieht gibt es eine gute Übereinstimmung, alle beobachteten Trojaner könnten also durch dieses Modell erklärt werden.
+Das gilt auch für Objekte mit $D<5^\circ$, welche in früheren Modellen am schwersten erklärt werden konnten\cite{Morbidelli2005}, %O-cite
+und für den gesamten Bereich der Inklinationen der wie oben schon erwähnt bisher nicht erklärt werden konnte.
+
+Ein weiterer positiver Aspekt an diesem Model ist, dass er erklärt warum die Trojaner nur sehr wenig Wasser und Organische Stoffe enthalten: %O-Quelle?
+Bevor sie als Trojaner eingefangen wurden, durchgingen sie eine Phase mit sehr hohen Exzentrizitäten, in welche sie der Sonne immer wieder sehr nahe kamen und dabei Entgasten.
+Alle Trojaner der Simulation waren für mindestens 100 Jahre auf Orbits mit einem Perihel $q\lesssim 3 \AU$, 72\% der Teilchen waren mit 10.000 Jahren lange genug auf derartigen Bahnen um vollständig zu entgasen\cite{Morbidelli2005}.
 
 
 \FloatBarrier
@@ -423,8 +438,6 @@ Allerdings ließe sich damit die oben angesprochenen Ähnlichkeiten der Populati
 %% Rollen von Triton fehlt noch
 %% besseres Wort für Planetenbegegnung?
 
-\newpage % ENTFERNEN, bzw. VERSCHIEBEN sobald untere Kapitel vorhanden sind.
-
 \FloatBarrier
 \section{Kuipergürtel}\label{Kuiper}
 Als Transneptunische Objekte (TNO) bezeichnet man alle Himmelskörper, die außerhalb der Neptunbahn um die Sonne kreisen. Die meisten dieser Objekte sind Teil des bekannten Kuipergürtels, zuweilen werden auch alle Transneptunischen Objekte zusammen als Kuiperbelt Objekte (KBOs) bezeichnet.
@@ -477,10 +490,14 @@ Viele von ihnen sind nur sehr lose aneinander gebunden und würden deshalb die I
 
 Trotz dieser Probleme, ist der Grad an Übereinstimmung der beobachten Kuipergürteleigenschaften mit den Ergebnissen des Nizza-Modells beeindruckend und bisher von keinen anderem Modell erreicht. % genauer, aufführlicher
 
+%Wohin damit?
+Ein weiterer positiver Aspekt ist, dass das Nizza-Model auch erklärt warum die Jupiter-Trojaner den Objekten des Kuipergürtels im optischem sehr ähnlich sehen, schließlich haben hier beide den selben Ursprung\cite{Morbidelli2005}.
+
 Während die durch Sedna repräsentierte innerste Oortsche Wolke bereits in den Anfangszeiten des Sonnensystems entstanden sein kann, ist die Erklärung der restlichen Oortschen Wolke mit bisherigen Modellen schwerer – die bisherigen Modelle versuchten diese durch die Wechselwirkung von am Sonnensystem vorbei fliegenden Sternen zu erklären, ergaben jedoch zu geringe Massen – daher untersuchte Brasser ob die zerstreute Planetesimalscheibe im Nizza-Modell nicht auch Ursprung der Oortschen Wolke sein kann\cite{Brasser2008}.
 Er schlägt daher ein zweistufiges Verfahren vor, in welchem die innerste Oortsche Wolke mit einem der bereits vorgeschlagenen Modelle (Brasser et al. 2006/2007 oder Kaib \& Quinn 2008) entstand, während die innere und äußere Oortsche Wolke ein Gyr später – zeitgleich zum LHB – durch einen von Dones et al. bereits 2004 vorgeschlagenen Mechanismus aus den selbe Planetesimalen die auch das LHB auslösen entstehen\cite{Brasser2008}. % richtige Cites!
 Er bestimmte die Masse der dadurch gebildeten äußeren Oortschen Wolke auf etwa $0.5 M_\oplus$, was etwas weniger als die $0.6-1.4 M_\oplus$ sind auf die die Messwerte schließen lassen\cite{Brasser2008}. Diese Differenz erklärt er damit, dass zusätzlich aus der innersten Oortschen Wolke durch die Wechselwirkung von vorbeifliegenden Sternen Material in die äußere Oortsche Wolke gelangte\cite{Brasser2008}.
 Dies kann bis zu weiteren $0.5 M_\oplus$ beitragen, die wahrscheinlichste Masse ergibt sich zu $0.9 M_\oplus$, was mit den Messwerten übereinstimmt\cite{Brasser2008}.
+
 
 \section{Uranusachse}\label{Uranusachse}
 
