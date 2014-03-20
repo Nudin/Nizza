@@ -1,13 +1,17 @@
-\documentclass[10pt,a4paper,twoside]{article}
+\documentclass[12pt,a4paper,twoside]{article}
 \usepackage{a4wide}
 \linespread{1.359140914229522617680} 
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{bibgerm}
 \usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{placeins}
+\usepackage{microtype} % use?
+%\usepackage{breakcites} %use?
+\usepackage{cite}
 \hypersetup{
 %    bookmarks=true,
     pdftoolbar=true,
@@ -26,10 +30,10 @@
     urlcolor=blue
 }
 % Experminentel, bis ich mich für was entscheiden habe.
-\usepackage[super,nospace]{cite}
-\makeatletter
-\def\@citess#1{\textsuperscript{[#1]}}
-\makeatother
+%\usepackage[super,nospace]{cite}
+%\makeatletter
+%\def\@citess#1{\textsuperscript{[#1]}}
+%\makeatother
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 % Bilder & Tabellen ausblenden
@@ -42,21 +46,25 @@
 \author{Michael F. Schönitzer}
 \title{Das Nizza Modell}
 
-\newcommand{\refsec}[1]{siehe Kapitel \ref{#1}}
+\newcommand{\refsec}[1]{siehe Kapitel~\ref{#1}}
 \newcommand{\degree}{$^\circ$}
+\newcommand{\AU}{\,\mathrm{AU}}
+\newcommand{\ME}{\,\mathrm{M_\oplus}}
+\renewcommand{\vec}{\mathbf}
+\renewcommand{\H}{\mathcal H}
 
 \begin{document}
 \maketitle
 
 \section{Einleitung}
-Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Gomes2005}\cite{Tsiganis2005}\cite{Morbidelli2005} %Reihenfolge
+Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Gomes2005}\cite{Tsiganis2005}\cite{Morbidelli2005}, %Reihenfolge
 in denen sie ein neues Modell für die Migration der Riesenplaneten unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wird Nizza-Modell genannt, da die Autoren zu besagter Zeit am Observatoire de la Côte d’Azur in Nizza arbeiteten.
 
-Das Nizza-Modell betrachtet das Sonnensystem nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen %wirklich?
+Das Nizza-Modell betrachtet das Sonnensystem, nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen %wirklich?
 davon aus, dass die Planeten damals nahezu kreisförmige, kompakte Orbits hatten.
 
-Aus dieser Scheibe werden von den Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus \& Neptun. Die terrestrischen Planten sind aufgrund der geringen Masse vernachlässigbar.} immer wieder einzelne Planetesimale gestreut oder akkretirt. % Akkretiert? 
-Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits\cite{Tsiganis2005},
+Aus dieser Scheibe werden von den Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus \& Neptun. Die terrestrischen Planten sind aufgrund der geringen Masse vernachlässigbar.} immer wieder einzelne Planetesimale gestreut oder akkretiert. % Akkretiert? 
+Dabei kommt es durch die Impulsübertragung zu einer Änderung der Planeten\-orbits\cite{Tsiganis2005},
 wodurch Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert\cite{Tsiganis2005}\cite{Hahn1999}. % Hahn nicht gelesen
 Mit der Zeit kommen sich die Planeten durch die Migration näher und es kommt zu einer Resonanz,
 welche zu einer schlagartigen Erhöhung der Exzentrizitäten der Umlaufbahnen von Jupiter und Saturn, auf Werte die mit den heutigen vergleichbar sind, führt.
@@ -68,28 +76,156 @@ Neben den Plantenorbits (\refsec{Orbits}), dem Late Heavy Bombardment (\refsec{L
 Abschließend werden wir uns mit einer möglichen Erweiterung des Nizzamodells um zusätzliche Anfangsplaneten beschäftigen (\refsec{mehrPlaneten}).
 
 \FloatBarrier
+\section{Theoretische Grundlagen}
+Beim Nizza-Modell betrachten wir die Entwicklung der Planetenbahnen unter Berücksichtigung der gegenseitigen gravitativen Einflüsse der Planeten, es handelt sich hier also um klassische Himmelsmechanik. %Bäh!
+Wir betrachten ein n-Körperproblem mit $n>2$ Teilchen, welche lediglich gravitativ wechselwirken.\footnote{Später wird auch die Kollision von Objekten berücksichtigt werden, dies wollen wir jedoch zunächst ignorieren.}
+Der Hamilton des n-Körperproblems lautet bekannterweise
+\begin{equation}\label{nbodyhamilton}
+H = \sum\limits_{i=0}^{n-1} \frac{p_i^2}{2m_i} - \sum\limits_{i<j} \frac{Gm_im_j}{r_{ij}}
+\end{equation}
+wobei $r_{ij}=q_i-q_j$ der Abstand der Teilchen i und j ist. % Mehr Symbole erklären?
+Bei gegebenen Anfangswerten bestimmt der Hamiltonian durch die hamiltonschen Bewegungsgleichungen
+\begin{equation}
+\dot{q_i} = \frac{\partial\mathcal H}{\partial p_i} \quad ; \quad \dot{p_i} = - \frac{\partial\mathcal H}{\partial q_i}
+\end{equation}
+die Zukünftige Entwicklung des Systems.
+
+%% Hamilton/Hamiltionian einheitlich schreiben
+
+\subsection{Numerische Integratoren}
+Während die Lösung des Zweikörperproblems durch die Keplerschen Gesetze analytisch gelöst sind, ist das n-Körper Problem bereits ab drei Teilchen nicht mehr allgemein analytisch lösbar.
+Zwar sind analytische Näherungslösungen unter gewissen Voraussetzungen möglich, jedoch verlieren diese ihre Gültigkeit, wenn man versucht die Dynamik des Systems über sehr lange Zeiträume zu betrachten. Hierfür braucht man Verfahren die Entwicklung in Computersimulation durchzuspielen. %alles bäh
+Doch auch hier sind den Zeiträumen und der Anzahl an Teilchen durch die endliche Rechnerleistung Grenzen gesetzt. %bäh
+In den letzten Jahrzehnten sind die Möglichkeiten derartiger Computersimulationen jedoch rasant gewachsen. Ein Grund dafür ist natürlich die rasant steigende Rechenleistung der Computersysteme, einen ähnlich große Effekt kam jedoch durch die Verbesserung der Simulationsalgorithmen. Im Folgenden möchte ich diese für das Nizza-Model entscheidende Entwicklung etwas erläutern. % ausbauen, mehr Geschwafel
+
+Herzstück eines jeden Algorithmus zur numerischen Integration ist ein sogenanntes Mapping. Ein Mapping ist ein mathematische Objekt der Art
+\begin{equation}
+a_{n+1} = F(n,a_0,...,a_n) \,,
+\end{equation}
+also eine Vorschrift wie man aus Vergangenen Werten einer Folge den nächsten Folgenwert berechnet. % Auf Flohs Buch verweisen?
+Was wir nun suchen ist ein Mapping, dass bei gegebenen Punkt im Phasenraum $\vec{w}\equiv(\vec{q},\vec{p})$ zum Zeitpunkt t den Punkt im Phasenraum $\tilde{w}$ bestimmt, welcher den wahren Zustand des Systems zum Zeitpunkt $t'=t+h$ möglichst genau approximiert und dabei trotzdem möglichst einfach berechnet werden kann.
+
+Ein Trick der dafür hilfreich ist ist das \textit{averaging principle}: dieses besagt, dass periodische Oszillationen, deren Dauer klein im Vergleich zur Schrittweite $h$ des Algorithmus ist, sich heraus mitteln und daher das Langzeiverhalten nur unwesentlich verfälschen.
+Beschränken wir uns zunächst der Einfachheit halber auf Hamiltionians der Form $\mathcal H(\vec q,\vec p)= \frac{1}{2}\vec p^2+\Phi(\vec q)$. % Ist eigenlich gleich dem oberen für m=1
+Durch das averaging principle können wir den Hamiltonian nun um periodisch oszillierende Terme
+\begin{equation}
+\delta_h(t) = \sum\limits_{n=-\infty}^{\infty} \cos(nt\cdot \frac{2\pi}{h}) = h \cdot \sum\limits_{n=-\infty}^{\infty} \delta(t-h n)
+\end{equation} % nochmal überprüfen ob die Verallgemeinerung stimmt
+ergänzen und erhalten damit den neuen Hamiltonian
+\begin{equation}
+\mathcal H_h(\vec q,\vec p)= \frac{1}{2}\vec p^2+\Phi(\vec q)\delta_h(t)
+\end{equation}
+der die selben Orbitale liefern sollte, solange $h$ klein genug ist. $\delta_h(t)$ ist dabei eine periodische Serie von Dirac-Funktionen. Die Hamiltongleichungen lauten damit
+\begin{equation}
+\vec{\dot q} = \frac{\partial \H_h}{\partial\vec{p}} = \vec{p} \quad ; \quad 
+\vec{\dot p} = \frac{\partial \H_h}{\partial\vec{q}} = - \vec{\nabla}\Phi(\vec q)\delta_h(t) \, .
+\end{equation}
+Dies lässt dich jetzt von $t=\epsilon$ bis $t=h+\epsilon$ mit $0 < \epsilon \ll h$ integrieren. Dazu integrieren wir zunächst von $t=\epsilon$ bis $t=h-\epsilon$, in diesem Zeitraum ist die Deltafunktion Null, somit bleibt der Impuls konstant. Der Ort verändert sich somit linear, was dem Schritt den Namen \textit{drift step} verleiht:
+\begin{equation}
+\bar{\vec{q}} = \vec{q}+h\vec{p} \quad ; \quad \bar{\vec{p}} = \vec{p}
+\end{equation}
+Danach folgt das Zeitintervall von $t=h-\epsilon$ bis $t=h+\epsilon$. Hier ändert sich der Ort für $\epsilon\to\infty$ nur infinitesimal, der Impuls erhält jedoch einen Stoß
+\begin{equation}
+\vec{q'}=\vec{\bar{q}} \quad ; \quad \vec{p'}=\vec{\bar{p}}-h\vec{\nabla}\Phi(\vec{q'})
+\end{equation}
+dies nennt man den \textit{kick step}. Zusammen bilden diese Schritte den \textit{drift-kick modified Euler Integrator}. %Übersetzen?
+Das Mapping für diesen lautet also
+\begin{equation}
+\vec{q'}=\vec{q}+h\vec{p} \quad ; \quad \vec{p'}=\vec{p}-h\vec{\nabla}\Phi(\vec{q'})\,.
+\end{equation}
+% Erklären was symplektik ist
+% alternativen Ansatz (Taylor) erklären
+% Leapfrog
+% Bedeutung & Geschichte der symplektischen Intergratoren
+% schreibweise von symplektisch
+
+1991 beschrieben Wisdom und Holman einen Symplektischen Integrator, welcher zu einer revolutionären Verbesserung der Möglichkeiten zur Simulation des Sonnensystems führte. Auf dem Prinzip dieses Integrators basieren auch die auch die für das Nizza-Modell relevanten Codecs, weshalb ich ihn hier erläutern werde.
+%Umsetzung: swift
+%Schritweitenverbesserung
+Die grundlegende Eigenschaft des Sonnensystems die hier genutzt wird, ist dass die Masse der Sonne die der Planeten deutlich überwiegt und die Planeten sich deshalb annähernd auf Keplerschen Planetenbahen bewegen. Man spaltet nun den Hamiltonian in zwei Teile auf:
+\begin{equation}
+\H = \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}
+\end{equation}
+Wobei $\H_{\mathrm{Kepler}}$ die Bewegung der Planeten um den Zentralkörper und $\H_{\mathrm{Interaktion}}$ die Beeinflussung der Körper untereinander beschreibt. Während solch eine Zerlegung in Analytischen Theorien im Rahmen von Störungsrechnungen nichts ungewöhnliches ist, war dieser Ansatz vor Wisdom und Holman in nummerischen Verfahren nicht gebräuchlich. Hat man den Hamiltonian so aufgeteilt, kann man wie schon oben durch das hinzufügen von periodischen Funktionen einen Mapping-Hamiltionian finden konstruieren:
+\begin{equation}
+\H_{\mathrm{Map}} = \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{2\pi}(\Omega t)
+\end{equation} % Was ist Omega?
+Das Integrieren zu den Zeiten zwischen den Peaks ist einfach möglich, die Lösungen sind natürlich die Keplerschen Bahnen. Das Integrieren über die Peaks ist ebenfalls möglich, da hier analog zu oben $\H_{\mathrm{Kepler}}$ nichts beiträgt\cite{Wisdom1991} und die Deltafunktion das auswerten des Integrals bekanntermaßen erheblich vereinfacht. %are you kidding?
+Nun gilt es also den Hamiltonian des n-Körper Problems \ref{nbodyhamilton} in $\H_{\mathrm{Kepler}}$ -- bestehend aus voneinander unabhängigen Keplerschen Hamiltonians -- sowie einen Interaktions Hamiltonian auf zu teilen. Ein Keplerscher Hamiltonian ist dabei ein Hamiltonian der Form
+\begin{equation}
+\H = \frac{p^2}{2m} - \frac{\mu}{r} \,.
+\end{equation}
+Für ein Zweiteilchensystem ist offensichtlich, dass die man die gewünschte Form erreicht, indem man das System in den Koordinaten relativ zum Schwerpunkt schreibt. Für n-Dimensionen erhält man den Effekt durch Verwendung der Jacobi-Koordinaten, diese erhält man wie folgt.
+Wir betrachten die Massenpunkte $m_j$ und $m_k$, diese ersetzen wir durch einen virtuellen Massenpunkt $m_{jk}$ am Ort des Schwerpunktes der Massen $R_{jk} = (m_j q_j + m_k q_k)/(m_j + m_k)$ und erhalten den Relativabstand $r_{jk} = x_j - x_k $.
+Wir iterieren diese Verfahren nun mit den restlichen N-2 Massenpunkten, sowie dem neuen virtuellen Massenpunkt. Am Ende haben wir n-1 relative Koordinaten $r_{ik}$ sowie den zuletzt berechneten $R_{1n}$ welcher die Koordinate des Schwerpunkts des Systems angibt.
+Grafik \ref{fehltnoch} verdeutlicht das vorgehen.
+In Formeln ausgedrückt lauten die, im folgenden gestrichen geschriebenen, Jacobi-Koordinaten:
+\begin{align}
+x'_0 &= \frac{1}{M} \sum\limits_{j=0}^{n-1} m_j\vec{x}_j \\
+x'_{i\neq0} &= x_i - X_{i-1}
+\end{align}
+mit
+\begin{equation}
+X_i = \frac{1}{\eta_i} \sum\limits_{j=0}^{i} m_j\vec{x}_j
+\end{equation}
+und
+\begin{equation}
+\eta_i = \sum\limits_{j=0}^{i} m_j \quad ; \quad M = \eta_{n-1}\,.
+\end{equation}
+Die dazugehörigen transformierten Massen und Impulse sind:
+\begin{equation}
+m_0 = M \quad ; \quad m'_{i\neq 0} = m_i \frac{\eta_{i-1}}{\eta_{i}} \quad ; \quad p'_i = m'_i v'_i
+\end{equation}
+Setzt man dies in \ref{nbodyhamilton} ein, so erhält man nach einigen Umformungen: %durchrechnen, vorrechnen?
+\begin{equation}
+\H = \frac{p'^2_0}{2M} + \sum\limits_{i=1}^{n-1} \frac{p'^2_i}{2m'_i} - \sum\limits_{i=1}^{n-1} \frac{Gm_im_0}{r_{i0}} - \sum\limits_{0<i<j} \frac{Gm_im_j}{r_{ij}}
+\end{equation}
+wobei $r_{ij}=\|\vec{x}_i-\vec{x}_j\|$ der Abstand zweier Körper ist. Der erste Term beschreibt die Bewegung des Schwerpunktes, welche – wie zu erwarten war – die eines freien Teilchens ist. Da wir uns für die Planetenbahnen, nicht aber für die Eigenbewegung des gesamten Sonnensystems interessieren können wir diesen Term ignorieren.
+Wir formen den Hamiltionian weiter um, indem wir den Term
+\begin{equation}
+\sum\limits_{i=1}^{n-1} \frac{Gm_im_0}{r'_i}
+\end{equation}
+einmal mit positiven und einmal mit negativen Vorzeichen einfügen:
+\begin{equation}
+\H = \sum\limits_{i=1}^{n-1} \left( \frac{p'^2_i}{2m'_i} - \frac{Gm_im_0}{r'_i} \right)
+  +  \sum\limits_{i=1}^{n-1} \left( \frac{Gm_im_0}{r'_i} - \frac{Gm_im_0}{r_{i0}} \right)
+  -  \sum\limits_{0<i<j} \frac{Gm_im_j}{r_{ij}}
+\end{equation}
+Wie man sieht ist der erste Term nun wie gewünscht eine Summe von n-1 voneinander unabhängigen Keplerschen Hamiltonians. Die beiden anderen Summen bilden $\H_{\mathrm{Interaktion}}$ und ist deutlich kleiner als $\H_{\mathrm{Kepler}}$. Unser Mapping Hamiltionian lautet also zusammenfassend:
+\begin{align}
+\H_{\mathrm{Map}} &= \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{2\pi}(\Omega t) \\
+\H_{\mathrm{Kepler}} &= \sum\limits_{i=1}^{n-1} \left( \frac{p'^2_i}{2m'_i} - \frac{Gm_im_0}{r'_i} \right) \\
+\H_{\mathrm{Interaktion}} &= \sum\limits_{i=1}^{n-1} \left( \frac{Gm_im_0}{r'_i} - \frac{Gm_im_0}{r_{i0}} \right)
+  -  \sum\limits_{0<i<j} \frac{Gm_im_j}{r_{ij}}
+\end{align} % besser Formatieren
+Wie bereits besprochen ist dieser Mapping Hamiltionian über den Zeitschritt $t \to t+h$ analytisch lösbar und liefert somit ein Mappig das zur Simulation des Systems verwendet werden kann.
+% bedeutung von Verhältniss (Epsilon)
+% Schwrittweite
+% verbesserungen
+
+\FloatBarrier
 \section{Das Nizza-Modell}\label{Orbits}
-In diesem Kapitel werden wir das Nizzamodell wie in der ursprünglichen Arbeit\cite{Tsiganis2005} beschrieben erläutern. %superbäh
+In diesem Kapitel werden wir das Nizzamodell, wie in der ursprünglichen Arbeit\cite{Tsiganis2005} beschrieben, erläutern. %superbäh
 
 In der Simulation berücksichtigten die Forscher dabei die vier Riesenplaneten auf sehr kompakten Orbits, sowie eine Scheibe aus Planetesimalen im Gravitationsfeld der Sonne. % Bäh: Forscher?
 Dies ist ein plausibler Ausgangszustand für die Situation nachdem der Sonnenwind die Gaswolke %Sonnenwind, Gaswolke?
 zerstreut hat. % bäh: formulierung
-Als Anfangsparameter wählten Tsiganis et. al in den Simulationen für die große Halbachse des Jupiterorbits $a_J = 5,45 AU$. Saturn wurde wenige Zehntel AU vor der bei $a_{1:2} = 8,65 AU$ gelegenen 1:2-MMR gesetzt\cite{Tsiganis2005}.% F***: die erklärung von MMRs ist erst weiter unten
-Das Saturn weiter innen als auf der zu Jupiter resonanten Bahn war ist auch eine notwendige Bedingung, da es anderenfalls schon zu Zeiten der Gasscheibe eine starke Migration durch die Wechselwirkung mit dieser gegeben hätte\cite{Levison2008}. %O-Zitat, klarer
+Als Anfangsparameter wählten Tsiganis et al. in den Simulationen für die große Halbachse des Jupiterorbits $a_J = 5,45 \AU$. Saturn wurde wenige Zehntel AU vor der bei $a_{1:2} = 8,65 \AU$ gelegenen 1:2-MMR gesetzt\cite{Tsiganis2005}.% F***: die erklärung von MMRs ist erst weiter unten
+Dass Saturn weiter innen als auf der zu Jupiter resonanten Bahn war, ist auch eine notwendige Bedingung, da es anderenfalls schon zu Zeiten der Gasscheibe eine starke Migration durch die Wechselwirkung mit dieser gegeben hätte\cite{Levison2008}. %O-Zitat, klarer
 Die Orbitalverteilung der transneptunischen Objekte lässt darauf schließen, dass Neptuns Migration innerhalb von 20 AU begonnen hat\cite{Tsiganis2005}.
 Die beiden Eisplaneten wurden in den Simulationen von der Gruppe von Tsiganis mit großen Halbachsen von 11-13 AU respektive 13,5-17 AU, mit einem Mindestabstand von 2 AU gestartet.
 Die Planetenorbits waren, wie von den Planetenentstehungsmodellen gefordert, % formulierung, Quelle
 nahezu kreisförmig und coplanar ($e, i \approx 10^{-3}$).
 
 Die Planetisimalenscheibe – ein Überbleibsel der Planetenentstehung – begann 1.5 AU hinter dem Orbit des zweiten Eisplaneten und reichte bis zu einer Entfernung von 30-35 AU hinaus\cite{Tsiganis2005}\cite{Levison2008}. Sie bestand aus 1000-5000 gleich schweren Brocken, mit einer Gesamtmasse von 30 bis 50 Erdmassen. %Ausdehnung steht oben, runter?
-Die Flächendichte der Scheibe wurde in den Simulationen linear mit dem Sonnenabstand abfallend gewählt. In einigen Simulationen wurde eine dynamisch "heiße"\ Scheibe in anderem eine "dynamisch kalte"\ Scheibe gewählt, wobei mit dynamisch heiß gemeint ist, dass Exzentrizität und Inklination relativ groß waren: $e \approx \sin i \approx 0.05 $, im Vergleich zu $e \approx \sin i \approx 10^{-3} $ im kalten Fall.\cite{Tsiganis2005}
+Die Flächendichte der Scheibe wurde in den Simulationen linear mit dem Sonnenabstand abfallend gewählt. In einigen Simulationen wurde eine dynamisch "heiße"\ Scheibe in anderen eine "dynamisch kalte"\ Scheibe gewählt, wobei mit dynamisch heiß gemeint ist, dass Exzentrizität und Inklination relativ groß waren: $e \approx \sin i \approx 0.05 $, im Vergleich zu $e \approx \sin i \approx 10^{-3} $ im kalten Fall.\cite{Tsiganis2005}
 Die Eigengravitation der Scheibe wurde in den Simulationen ignoriert\cite{Tsiganis2005}.
 Die Simulationen wurden mit zwei verschiedenen symplektischen N-Körper Codecs durchgeführt: MERCURY von John Chambers und SyMBA, einer Erweiterung des von Hal Levison und Martin Duncan entwickeltem SWIFT.
 % http://www.boulder.swri.edu/~hal/swift.html
 % http://www.arm.ac.uk/~jec/
 Der Zeitschritt betrug zwischen einem viertel und einem halben Jahr.\cite{Tsiganis2005} % REALY?
 
-Aus dieser Scheibe werden von den Planeten immer wieder einzelne Planetesimale gestreut oder akkretirt. Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits\cite{Tsiganis2005}. %Kinderkacke
+Aus dieser Scheibe werden von den Planeten immer wieder einzelne Planetesimale gestreut oder akkretiert. Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits\cite{Tsiganis2005}. %Kinderkacke
 Die Simulationen zeigen, dass Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert\cite{Tsiganis2005}\cite{Hahn1999}. % Hahn nicht gelesen
 
 \begin{figure}[tbn]
@@ -102,7 +238,7 @@ Man betrachtet im Nizza-Modell die 2:1-Resonanz zwischen Jupiter und Staturn, we
 Bei einer MMR handelt es sich um den Fall, dass die Umlaufdauern zweier Planeten im Verhältnis zweier kleiner natürlicher Zahlen steht. In der hier relevanten 2:1-MMR zwischen Jupiter und Saturn, läuft also Jupiter genau zweimal um die Sonne, während Saturn in der selben Zeit genau einmal seinen Orbit durchlauft, die Planeten "begegnen"\ sich also immer am selben Ort. %Nochmal Prüfen
 Die 2:1-Resonanz zwischen Jupiter und Saturn ist die stärkste Resonanz. % einbauen
 Die Autoren testeten auch Anfangsbedingungen, welche zum Auftreten von anderen MMRs führten. Doch weder die 2:3 MMR zwischen Saturn und dem inneren Eisriesen, noch die 1:2 MMR zwischen den beiden Eisriesen waren stark genug um die Bahn von Jupiter zu beeinflussen\cite{Tsiganis2005}. % Tsiganis2005 hats noch genauer
-Die Resonanz für zu einer schlagartigen Erhöhung der Exzentrizitäten der Umlaufbahnen von Jupiter und Saturn, auf Werte die mit den heutigen vergleichbar sind. %genauer erklären?
+Die Resonanz führt zu einer schlagartigen Erhöhung der Exzentrizitäten der Umlaufbahnen von Jupiter und Saturn, auf Werte die mit den heutigen vergleichbar sind. %genauer erklären?
 Dadurch stören Jupiter und Saturn die Eisplanenten, so dass auch deren Exzentrizitäten abhängig von den genauen Anfangsparametern (Massen und großen Halbachsen der Planeten) mehr oder weniger stark anwachsen\cite{Tsiganis2005}.
 Da die Planetenorbits sehr dicht aneinander liegen, führen die hohen Exzentrizitäten zu überschneidenden Bahnen\cite{Tsiganis2005}, es kommt dadurch zu Begegnungen von Planeten. %Bäh: Begegnungen
 Dies hat wiederum zwei Effekte: die Inklinationen der Planeten wächst um $1^\circ-7^\circ$ und die Eisriesen werden hinaus in die Planetesimalscheibe gestreut,
@@ -110,10 +246,9 @@ wodurch nun schlagartig eine große Menge an Planetesimalen ins Innere gestreut 
 Die große Anzahl an kleinen Objekten im Bereich der Planetenbahnen, führt jedoch zu dynamischer Reibung, wodurch die Exzentrizitäten und Inklinationen wieder langsam sinken und sich das System somit wieder stabilisiert\cite{Tsiganis2005}.
 Wenn die Planetesimalscheibe fast vollständig zerstreut ist, stoppt die Migration der Planeten und sie erreichen ihre endgültigen Bahnen\cite{Tsiganis2005}.
 
-\newcommand{\AU}{\;\mathrm{AU}}
-\newcommand{\DII}{\Delta a_{I_1,I_2}}
-\newcommand{\DSI}{\Delta a_{S,I_1}} % Formeln, nicht kursiv
-Diese hängen von dem Verhalten des Systems zum Zeitpunkt direkt nach der Resonanz ab. In den 43 Simulationen in \cite{Tsiganis2005} zeigte sich, dass von den zahlreichen Anfangsparametern der Abstand der Eisriesen $\DII$ und vor allem der Abstand zwischen Saturn und dem inneren Eisriesen $\DSI$ die größten Auswirkungen haben\cite{Tsiganis2005}. %Diese spezifizieren?
+\newcommand{\DII}{\Delta a_{\mathrm{I}_1,\mathrm{I}_2}}
+\newcommand{\DSI}{\Delta a_{\mathrm{S},\mathrm{I}_1}} % Formeln, nicht kursiv
+Die endgültigen Bahnen hängen von dem Verhalten des Systems zum Zeitpunkt direkt nach der Resonanz ab. In den 43 Simulationen in \cite{Tsiganis2005} zeigte sich, dass von den zahlreichen Anfangsparametern der Abstand der Eisriesen $\DII$ und vor allem der Abstand zwischen Saturn und dem inneren Eisriesen $\DSI$ die größten Auswirkungen haben\cite{Tsiganis2005}.
 Wie oben schon erwähnt, wurden für $\DII$ Werte zwischen etwa zwei und sechs AU verwendet, während die Werte von $\DSI$ zwischen ~2.5 und ~5 AU betrugen\cite{Tsiganis2005}.
 Wählt man den Abstand zwischen Saturn und dem ersten Eisplaneten klein, so steigt die Wahrscheinlichkeit, dass einer der Eisplaneten von Saturn auf ein die Jupiterbahn kreuzendes Orbit gestreut wird und dann von Jupiter aus dem System geschleudert wird. Für $\DSI \le 3 \AU $ geschah dies in 14 der 43 Simulationen (33\%).
 Wählt man den Abstand hingegen sehr groß ($\DSI \approx 5 \AU$), so ist das System möglicherweise nicht mehr kompakt genug, so dass überhaupt keine Begegnungen von Planeten stattfinden. %bäh: Begegnungen
@@ -122,23 +257,23 @@ Wählt man den Abstand hingegen sehr groß ($\DSI \approx 5 \AU$), so ist das Sy
 \includegraphics[scale=1]{img/Tsiganis2005-2.pdf}
 \caption{•}
 \end{figure}
-Für die restlichen Fälle, welche allesamt nach einer wie oben beschriebenen Migrationsphase wieder zur Ruhe kommen %bäh: zu Ruhe kommen
+Für die restlichen Fälle, welche allesamt nach einer wie oben beschriebenen Migrationsphase wieder zur Ruhe kommen, %bäh: zu Ruhe kommen
 gilt, dass es für Abstände $\DII \ge 3.5 \AU$ zwar zu Interaktionen der beiden Eisplaneten unter einander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es in Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B\footnote{Die beiden Fälle in der es zu keiner Begegnung kam, wurden aus mir nicht ganz nachvollziehbaren Gründen nicht ausgeschlossen sondern zur Klasse A gerechnet.}, Nesvorný et al. bezeichneten Klasse A als Malhotra Klasse (MA) und Klasse B als 'direct emplacement`-Klasse (DE)\cite{Nesvorny2007}. %Malhotra zitieren?
 
-Bei Klasse B wird Neptun durch Uranus direkt fast auf seine Endgültige Entfernung geschleudert und anschließend wird die Exzentrizität durch dynamische Reibung in der Planetesimalscheibe verringert\cite{Nesvorny2007}. Somit ist die Zeitdauer der Phase der Schnellen Migration bei dieser Klasse kürzer\cite{Tsiganis2005}. Auch führt diese Art der Dynamik dazu, dass die Exzentrizität weniger stark abnimmt\cite{Tsiganis2005}.
-Bei den Simulationen der Klasse A wird Neptun auf eine etwa $22-25 \AU$ von der Sonne entfernte Umlaufbahn geschleudert und Migriert dann langsamer innerhalb der Planetesimalscheibe auf seine endgültige Position\cite{Tsiganis2005}.
+Bei Klasse B wird Neptun durch Uranus direkt fast auf seine endgültige Entfernung geschleudert und anschließend wird die Exzentrizität durch dynamische Reibung in der Planetesimalscheibe verringert\cite{Nesvorny2007}. Somit ist die Zeitdauer der Phase der Schnellen Migration bei dieser Klasse kürzer\cite{Tsiganis2005}. Auch führt diese Art der Dynamik dazu, dass die Exzentrizität weniger stark abnimmt\cite{Tsiganis2005}.
+Bei den Simulationen der Klasse A wird Neptun auf eine etwa $22-25 \AU$ von der Sonne entfernte Umlaufbahn geschleudert und migriert dann langsamer innerhalb der Planetesimalscheibe auf seine endgültige Position\cite{Tsiganis2005}.
 14 der Simulationen waren vom Typ B, 15 vom Typ A. % Satz häßlich
-Die Durchschnittswerte und Standardabweichungen für die großen Halbachsen, Exzentrizitäten und Inklinationen der Planeten von beiden Gruppen sind in Grafik \ref{AvsB} aufgetragen. Wie man sieht stimmen die Resultate beider Klassen fast mit den tatsächlich beobachten Werten überein, im Fall der Klasse B ist die Übereinstimmung jedoch deutlich größer – hier liegen sogar alle Messewerte innerhalb nur einer Standardabweichung um den Mittelpunkt\cite{Tsiganis2005} – Klasse A hat ist etwas schlechter, insbesondere sind die Exzentrizitäten von Saturn und Uranus deutlich zu klein\cite{Nesvorny2007}\cite{Tsiganis2005}. 
-Dies stellt einen bedeutenden Erfolg des Modells dar und hebt sich von vorhergehenden Modellen ab.
+Die Durchschnittswerte und Standardabweichungen für die großen Halbachsen, Exzentrizitäten und Inklinationen der Planeten von beiden Gruppen sind in Grafik \ref{AvsB} aufgetragen. Wie man sieht, stimmen die Resultate beider Klassen fast mit den tatsächlich beobachten Werten überein, im Fall der Klasse B ist die Übereinstimmung jedoch deutlich größer – hier liegen sogar alle Messewerte innerhalb nur einer Standardabweichung um den Mittelpunkt\cite{Tsiganis2005} – Klasse A hat ist etwas schlechter, insbesondere sind die Exzentrizitäten von Saturn und Uranus deutlich zu klein\cite{Nesvorny2007}\cite{Tsiganis2005}. 
+Dies stellt einen bedeutenden Erfolg des Modells dar und es hebt sich von vorhergehenden Modellen ab.
 So hatte zum Beispiel das Vorgängermodell von Gomes, Morbidelli und Levinson \cite{Gomes2004} %Namen prüfen
-das Problem zwar vorsagen zu können, dass Neptun eine große Halbachse von etwa 30 AU hat, jedoch wart die Uranusbahn dabei zu dicht an der Sonne.
+das Problem zwar vorsagen zu können, dass Neptun eine große Halbachse von etwa 30 AU hat, jedoch war die Uranusbahn dabei zu dicht an der Sonne.
 Die großen Halbachsen der Eisriesen für die Klasse B betragen im Nizza-Modell hingegen $a_U = 19,3 \pm 1,3 \AU$ und $a_N = 29,9 \pm 2,4 \AU$, was mit den tatsächlichen Werten von $a_U = 19,2 \AU$ und $a_N = 30,1 \AU$ sehr gut übereinstimmt\cite{Tsiganis2005}.
 
-Der finale Abstand zwischen Jupiter und Saturn hängt vor allem von der Masse der Materie %bäh: finale
-die sie während der instabilen Phase streuen ab, welche wiederum von der Masse der Planetenscheibe abhängt\cite{Tsiganis2005}. % richtig?
-Höhere Massen der Scheibe führen zwar zu stabileren Endsystemen, wird die Masse jedoch größer als $\approx (35-40) M_E$ wird der Abstand zwischen Jupiter und Saturn im fertigsimuliertem System zu groß\cite{Tsiganis2005} und wählt man eine Masse von $\approx 50 \AU$, so tritt zwischen Jupiter und Saturn zusätzlich auch eine 2:5 Resonanz auf und die dynamische Reibung wird so groß, dass Exzentrizitäten kleiner als in Realität ausfallen\cite{Tsiganis2005}.
+Der finale Abstand zwischen Jupiter und Saturn hängt vor allem von der Masse der Materie, %bäh: finale
+die sie während der instabilen Phase streuen, ab, welche wiederum von der Masse der Planetenscheibe abhängt\cite{Tsiganis2005}. % richtig?
+Höhere Massen der Scheibe führen zwar zu stabileren Endsystemen, wird die Masse jedoch größer als $\approx (35-40) \ME$ wird der Abstand zwischen Jupiter und Saturn im fertigsimuliertem System zu groß\cite{Tsiganis2005} und wählt man eine Masse von $\approx 50 \AU$, so tritt zwischen Jupiter und Saturn zusätzlich auch eine 2:5 Resonanz auf und die dynamische Reibung wird so groß, dass Exzentrizitäten kleiner als in Realität ausfallen\cite{Tsiganis2005}.
 
-Die dynamische Temperatur der Scheibe wirkt sich auf die Exzentrizitäten aus: Heißere Scheibe führen zu höheren Exzentrizitäten von Jupiter und Saturn. Die beobachtete Existenz von zahlreichen plutogroßen Transneptunischen Objekten spricht laut den Autoren für eine Scheibe mit der Dynamik der heißeren der beiden getesteten Scheiben\cite{Tsiganis2005}. % Tsiganis2005 zitiert hier Stern 1991
+Die dynamische Temperatur der Scheibe wirkt sich auf die Exzentrizitäten aus: Heißere Scheiben führen zu höheren Exzentrizitäten von Jupiter und Saturn. Die beobachtete Existenz von zahlreichen plutogroßen transneptunischen Objekten spricht laut den Autoren für eine Scheibe mit der Dynamik der heißeren der beiden getesteten Scheiben\cite{Tsiganis2005}. % Tsiganis2005 zitiert hier Stern 1991
 
 %Gemäß aktueller Planetenentstehungsmodelle sollten sich die Gasplaneten auf kreisförmigen coplanaren Orbits gebildet haben, jedoch 
 %warum ein Migrationsmodell überhaupt von nöten ist.
@@ -153,13 +288,13 @@ Die dynamische Temperatur der Scheibe wirkt sich auf die Exzentrizitäten aus: H
 \FloatBarrier
 \section{Late Heavy Bombardment}\label{LHB}
 Geologische Untersuchungen von Mondgestein zeigen, dass es 700 Millionen Jahre nach der Plantenentstehung
-eine enorme Häufung von Einschlägen gab, man nenn dieses Ereignis das Late Heavy Bombardment (LHB) oder auf deutsch auch das Große Bombardement.
-%% Genauere Erklärung, bessere Quelle!
+eine enorme Häufung von Einschlägen gab, man nenn dieses Ereignis das Late Heavy Bombardment (LHB) oder auf deutsch auch das Große Bombardement.\cite{Tera1974}
+%% Genauere Erklärung, bessere Quelle! Alter in Jahren vor heute
 Die Planetenentstehungsmodelle können eine solche Häufung zu einem so spätem Zeitpunkt nicht erklären.
 Es gibt einige Modelle zur Erklärung des LHBs jedoch sind diese relativ gekünstelt und kein Notwendiger Bestandteil der ansonsten abgeschlossenen Beschreibung der Entwicklung des Sonnensystems.\cite{Gomes2005} %Andre Quelle, genauer?
 Im Rahmen des Nizza-Modells liegt es natürlich nahe anzunehmen das LHB sei durch die während der Instabilitätsphase zerstreuten Teilchen der Planetesimalenscheibe entstanden. % bäh: Teilchen
 
-Das die Planetesimalenscheibe aufgrund ihrer Sonnenentstehung vermutlich eisig war und sie wie wir in Kapitel \ref{Kuiper} sehen werden, der Ursprung der heutigen Transneptunisch Objekte war, kann man sie als Kometen bezeichnen\cite{Gomes2005}. % wohin damit??
+Da die Planetesimalenscheibe aufgrund ihrer Sonnenentstehung vermutlich eisig war und sie wie wir in Kapitel \ref{Kuiper} sehen werden, der Ursprung der heutigen transneptunischen Objekte war, kann man sie als Kometen bezeichnen\cite{Gomes2005}. % wohin damit??
 
 \begin{figure}[tbn]
 \includegraphics[scale=1]{img/Gomes2005-1.pdf}
@@ -172,45 +307,45 @@ denn es ist davon auszugehen, das die Migration durch Interaktion mit den Planet
 Deshalb sollte die Anfangsbedingung des Nizzamodells gerade der Zustand sein, in welchem sich das Sonnensystem direkt nach dem Auflösen der Gasscheibe befand. Betrachten wir also nur die Migration nach dem Auflösen der Gasscheibe, so sollten alle zum Startzeitpunkt existierenden Planetesimale sich auf Orbits befinden, die stabil genug sind um bis zu diesem Zeitpunkt überhaupt überlebt zu haben. %Doppelung, am Anfang des Satzes zum Ende des letzten
 Die Planetesimalscheibe sollte also nur Teilchen auf Bahnen haben deren dynamische Lebenszeit größer als die Lebensdauer der Gasscheibe ist.\cite{Gomes2005} Berücksichtigt man diese Bedingung, erhält man die schon in Kapitel \ref{Orbits} vorgegriffene Anfangsbedingung, das die Planetesimalscheibe hinter dem letzten Planeten beginnt, und zwar hinter etwa 15,3 AU.\cite{Gomes2005}
 
-Die anfängliche Migrationsrate hängt nun von der Rate ab, mit welcher Planetesimale auf Planetenorbits schneidende Orbits gestreut werden. Der Zeitdauer bis zum auftreten der MMR hängt schließlich von den folgenden Parametern ab:
+Die anfängliche Migrationsrate hängt nun von der Rate ab, mit welcher Planetesimale auf Planetenorbits schneidende Orbits gestreut werden. Die Zeitdauer bis zum auftreten der MMR hängt schließlich von den folgenden Parametern ab:
 1. Dem Anfangsabstand zur Ressonanz, 2. der Dichte der Scheibe am inneren Rand und 3. der Abstand zwischen dem inneren Rand der Scheibe und dem äußeren Eisplaneten.\cite{Gomes2005}
 
-In acht Simulationen untersuchten sie die Abhängigkeit des Ressonanzzeitpunktes in Abhängigkeit von der Position des inneren Rands der Planetesimalscheibe, bei ansonsten gleichen Parametern – inklusive gleicher Scheibenmasse und Dichte. Wie in Bild \ref{Bildfehlt} zu sehen ist, steigt die Zeit stark mit der Entfernung des inneren Rands an. Für große Werte $\gtrsim 15,3 \AU$ wie wir sie oben erhalten haben, tritt die Resonanz 192 bis 880 Millionen Jahre nach beginn der Simulation auf, was zum Zeitpunkt des LHB passen würde.\cite{Gomes2005} % Achtung: nach beginn der Simulation, nicht nach Planetenentstehung wie oben.
-Durch zusätzliche Variation anderer Parameter konnte das Eintreten der Resonanz auf bis zu 1,1 Milliarden Jahre\cite{Gomes2005} verzögert werden – somit ist klar, dass das später Auftreten des großen Bombardements bei geeigneter Parameterwahl kein Problem bei Erklärung durch das Nizzamodell ist.
+In acht Simulationen untersuchten sie die Abhängigkeit des Ressonanzzeitpunktes in Abhängigkeit von der Position des inneren Rands der Planetesimalscheibe, bei ansonsten gleichen Parametern – inklusive gleicher Scheibenmasse und Dichte. Wie in Bild \ref{Bildfehlt} zu sehen ist, steigt die Zeit stark mit der Entfernung des inneren Rands an. Für große Werte $\gtrsim 15,3 \AU$ wie wir sie oben erhalten haben, tritt die Resonanz 192 bis 880 Millionen Jahre nach Beginn der Simulation auf, was zum Zeitpunkt des LHB passen würde.\cite{Gomes2005} % Achtung: nach beginn der Simulation, nicht nach Planetenentstehung wie oben.
+Durch zusätzliche Variation anderer Parameter konnte das Eintreten der Resonanz auf bis zu 1,1 Milliarden Jahre\cite{Gomes2005} verzögert werden – somit ist klar, dass das späte Auftreten des großen Bombardements bei geeigneter Parameterwahl durchaus leicht erklärt werden kann.
 
-Als zweite wichtige Überprüfung, schauten sich die Wissenschaftler die Masse des auf den Mond treffenden Materials an. Bei den Simulationen waren dies etwa $9 \cdot 10^{21} \mathrm{g}$, davon trafen 50\% den Mond in den ersten 3,7 Millionen Jahren, 90\% in den ersten 29 Millionen Jahren. Das Bombardement fand demnach während einer relativ kurzen Zeitspanne statt. Die dabei durchschnittlich auf dem Mond treffende Gesamtmasse wurde auf $\left(8,4 \pm 0,3\right) \cdot 10^{21} \mathrm{g}$ bestimmt\cite{Gomes2005}.
+Als zweite wichtige Überprüfung, untersuchten die Wissenschaftler die Masse des auf den Mond treffenden Materials an. Bei den Simulationen waren dies etwa $9 \cdot 10^{21} \, \mathrm{g}$, davon trafen 50\% den Mond in den ersten 3,7 Millionen Jahren, 90\% in den ersten 29 Millionen Jahren. Das Bombardement fand demnach während einer relativ kurzen Zeitspanne statt. Die dabei durchschnittlich auf dem Mond treffende Gesamtmasse wurde auf $\left(8,4 \pm 0,3\right) \cdot 10^{21} \, \mathrm{g}$ bestimmt\cite{Gomes2005}.
 
-Hinzukommt, dass es bei der Migration von Jupiter und Saturn von ihrer Position in der 2:1-MMR zu ihren heutigen Orbits zu einer weiteren Art von Resonanzen – die sogenannten Secular resonances treten auf wenn die orbitale Präzession zweiter Körper synchronisiert sind.\footnote{Ein deutscher Name ist mir nicht bekannt.} – % besser erklären was das ist!
+Hinzu kommt, dass es bei der Migration von Jupiter und Saturn von ihrer Position in der 2:1-MMR zu ihren heutigen Orbits zu einer weiteren Art von Resonanzen – die sogenannten Secular resonances treten auf wenn die orbitale Präzession zweiter Körper synchronisiert sind.\footnote{Ein deutscher Name ist mir nicht bekannt.} – % besser erklären was das ist!
 kommt, welche über den Asteroidengürtel streifen. % bäh: streifen
 Durch diese können Asteroiden Orbits mit so großen Exzentrizitäten und Inklinationen erhalten, so das diese bis ins innere Sonnensystem reichen. Wir müssen also die Masse der Asteroiden bestimmen, welche zusätzlich zu den Planetesimalen % die man als Kometen betrachten kann… <– hier oder wo anders?
 mit dem Mond kollidieren.
 Dafür führten die Autoren weitere numerische Simulationen durch in welchen sie die Auswirkungen von Sonne, Venus, Erde, Mars, Jupiter und Saturn auf den durch 1.000 masselose Teilchen gebildeten Asteroidengürtel untersuchten.
 Die Migration der Gasriesen wurde dabei, durch das Hinzufügen von geeigneten Termen, künstlich hinzugefügt. % formulierung
-Die große Halbachsen der Asteroiden betrugen dabei zwischen $2$ und $3,5 \AU$ und hatten Exzentrizitäten zwischen 0 und 0,3, sowie Inklinationen zwischen 0\degree und 30\degree – wobei das Perihel immer größer als $1,8 \AU$ und das Aphel immer kleiner als $4 \AU$ gewählt wurde. % Grund erläutern
+Die große Halbachsen der Asteroiden betrugen dabei zwischen $2 \AU$ und $3,5 \AU$ und hatten Exzentrizitäten zwischen 0 und 0,3, sowie Inklinationen zwischen 0\degree und 30\degree – wobei das Perihel immer größer als $1,8 \AU$ und das Aphel immer kleiner als $4 \AU$ gewählt wurde. % Grund erläutern
 Als Migrationsratten wurden in den Simulationen unterschiedliche Resultate der ursprünglichen Simulationen \refsec{Orbits} gewählt. %formulierung?
 
 Gomes et al.\cite{Gomes2005} unterscheiden zwei Wege, auf welchen ein Asteroid auf ein die Erdbahn kreuzendes Orbit kommen kann. (1) Entweder es kommt zu einer Secular resonance zwischen der Periheldrehung des Körpers und der Periheldrehung Saturns, wodurch die Exzentrizitäten des Asteroiden steigen und er auf eine Erdbahnkreuzende Bahn gelangt, oder (2) sie werden im Asteroidengürtel dynamisch angeregt und wandern dann langsam aus dem Asteroidengürtel heraus\cite{Gomes2005}.
 Weg (1) ist schneller, so das 50\% der Einschläge dieser Art bereits in den ersten 10 Myr (90\% in 30 Myr) stattfindet, während die Einschläge durch, auf letztere Art auf Kollisionskurs gebrachte, Asteroiden innerhalb von 50 Myr zu 50\% stattfanden (90\% in 150 Myr)\cite{Gomes2005}.
 In den Simulationen von Gomes et al. war der zweite Typ häufiger, wobei dies wenig aussagt, da
 die Häufigkeitsverteilung der beiden Wege vermutlich stark von den genauen Bedingungen abhängt\cite{Gomes2005} %genauer?
-Die Masse an Asteroiden die den Mond gemäß diesen Simulationen trifft wurde auf $\left( 3-8 \right) \cdot 10^{21} \mathrm{g}$, % anderer strich statt minus? space
+Die Masse an Asteroiden die den Mond gemäß diesen Simulationen trifft wurde auf $\left( 3-8 \right) \cdot 10^{21} \, \mathrm{g}$, % anderer strich statt minus? space
 also einen ähnlich hohen Wert wie für die Planetesimale bestimmt – wobei die Unsicherheiten bei der Bestimmung der Masse der Asteroiden zu groß ist um ein Verhältnis zwischen den beiden Komponenten anzugeben. Auch ist noch nicht genau untersucht worden, inwieweit dieses Verhältnis eine Funktion von der Zeit und der Teilchengröße ist – so waren in diesen Simulationen die Planetesimale in den ersten 30 Millionen Jahren dominierend, die Asteroiden länger auf den Mond niederprasselten\cite{Gomes2005}.
 
 Die Dauer des LHB beträgt in diesem Modell also zwischen 10 und 150 Millionen Jahren – eine genauere Bestimmung ist nicht möglich, da die Verhältnisse der beiden durch Asteroiden beigetragenen und des durch Planetesmiale beigetragenen Anteile sensibel von den genauen Anfangsparameter – insbesondere der genauen anfänglichen Struktur des Asteroidengültels – abhängen und daher nicht genauer bestimmt werden können\cite{Gomes2005}.
 
-Vergleichen wir nun die Vorhersagen des Modells mit bekannten Messgrößen. Das Nizzamodell kann den für andere Modelle problematischen späten Zeitpunkt des Bombardements erklären. Auch die Menge des dabei auf den Mond eingebrachten Materials passt größenordnungsmäßig gut: So wurde aus der Anzahl und Größe der Mondkrater eine ungefähre Masse von $6 \cdot 10^{21} \mathrm{g}$ bestimmt, während die Simulationen $\left(8,4 \pm 0,3\right) \cdot 10^{21} \mathrm{g}$ an Planetesimalen und weitere $\left( 3-8 \right) \cdot 10^{21} \mathrm{g}$ an Asteroiden ergab.% [4] aus Gommes2005 zitieren!?
+Vergleichen wir nun die Vorhersagen des Modells mit bekannten Messgrößen. Das Nizzamodell kann den für andere Modelle problematischen späten Zeitpunkt des Bombardements erklären. Auch die Menge des dabei auf den Mond eingebrachten Materials passt größenordnungsmäßig gut: So wurde aus der Anzahl und Größe der Mondkrater eine ungefähre Masse von $6 \cdot 10^{21} \mathrm{g}$ bestimmt, während die Simulationen $\left(8,4 \pm 0,3\right) \cdot 10^{21} \, \mathrm{g}$ an Planetesimalen und weitere $\left( 3-8 \right) \cdot 10^{21} \, \mathrm{g}$ an Asteroiden ergab.% [4] aus Gommes2005 zitieren!?
 Das Modell sagt wie schön in Bild \ref{Bild_fehlt} zu sehen einen sehr plötzlichen Beginn des Bombardements voraus leider sind die bisher gemessenen Daten noch zu schlecht um dies zu überprüfen.
 Das Nizza-Modell sagt voraus, dass sowohl Asteroiden, also auch Planetesimale auf dem Mond eingeschlagen sind, dies stimmt damit überein, dass kosmochemischen Analysen davon ausgehen, dass einige der Mondkrater durch Einschläge von Asteroiden geformt wurden.
 Die Streuung von Asteroiden führt auch dazu, dass der Asteroidengürtel um einen Faktor von ungefähr 10 ausgedünnt wird, was zu bestehenden Modellen passt.  %Streuung Genauer!, Modelle citen!
-Die Menge an Kometen, die während des LHB auf die Erde trafen ergibt sich im Nizzamodell zu $\approx 1,8 \cdot 10^{23} \mathrm{g}$ was etwa 6\% der heutigen Ozeanmasse beträgt und somit kompatibel zu der durch Isotopenhäufigkeit (D-zu-H-Verhältnis) bestimmten Obergrenze der durch Kometen eingebrachten Wassermenge\cite{Gomes2005}. % cite [13] in Gomes2005?!
+Die Menge an Kometen, die während des LHB auf die Erde trafen ergibt sich im Nizzamodell zu $\approx 1,8 \cdot 10^{23} \, \mathrm{g}$ was etwa 6\% der heutigen Ozeanmasse beträgt und somit kompatibel zu der durch Isotopenhäufigkeit (D-zu-H-Verhältnis) bestimmten Obergrenze der durch Kometen eingebrachten Wassermenge\cite{Gomes2005}. % cite [13] in Gomes2005?!
 
 Abschließend möchte ich noch darauf hinweisen, dass es neuere geologische Forschungen gibt, welche die Notwendigkeit der Existenz des Late Heavy Bombardments in Frage stellen\cite{Spudis2011}. % ausführlicher
 
 \FloatBarrier
 \section{Trojaner}\label{Trojaner}
-%%% NEPTUN-TROJANER!!
-Als Trojaner bezeichnet man Objekte, die auf dem selben Orbit wie ein Planet kreisen, jedoch um 60\degree vor- oder rückläufig bei den die Lagrangepunkten %L3 und L4? Schreibweiße
-des Planeten.
+Als Trojaner bezeichnet man Objekte, die auf dem selben Orbit wie ein Planet kreisen, jedoch um 60\degree vor- oder rückläufig um die Lagrange-Punkte L4 und L5 des Planeten. 
+Man kennt bereits fast 5000 Trojaner in den Lagrange-Punkten Jupiters, daneben kennt man auch sieben Trojaner von Neptun und 4 Mars- und einen Erdtrojaner. Da die Terrestrischen Planeten beim Nizza-Modell weitgehend ignoriert werden, sind auch die Trojaner von Mars und Erde für diese Arbeit nicht von belang. % Quelle
+
 Die Jupiter-Trojaner wurden in der Literatur häufig als Argument gegen das Auftreten der 1:2-MMR zwischen Jupiter und Saturn genannt. Das Überschreiten der Resonanz würde die Trojanerbahnen destabilisieren und die Trojanerpopulation vollständig auslöschen\cite{Morbidelli2005}. %O-Quelle
 Morbidelli et al. zeigten dies ebenfalls mit einer Simulation, in welcher von 1,3 Millionen simulierten Trojanern kein einziger das Überschreiten der Resonanz überlebten\cite{Morbidelli2005}.
 
@@ -227,7 +362,7 @@ Sobald sich die Jupiter- und Saturnbahnen weit genug von der Resonanz entfernt h
 Um dieses Konzept zu untersuchen, untersuchten sie zunächst wann genau es zum Verlust der Trojaner kommt, also wann die Co-Orbitalregionen offen sind. % untersuchen doppelt
 Dazu führten Sie eine zweistufige Simulation durch. Im ersten Stritt wählten sie eine der ursprünglichen Simulationen, wobei sie – aus Gründen die später ersichtlich werden – eine Simulation mit relativ langsamer Migration wählten. %wird es von alleine offensichtlich?
 In dieser Simulation maßen sie zu 40 Zeitpunkten das Verhältnis $\PJS$.
-Nun simulierten sie für jeden dieser Werte das System um zu messen wie viele der Trojaner verloren gehen. Diese Simulationen umfassten jeweils die Sonne, Jupiter, Saturn (bei festem Verhältnis von $P_J/P_S$) sowie eine große Anzahl an maselosen Testteilchen und liefen über $2 \cdot 10^5 yr$.
+Nun simulierten sie für jeden dieser Werte das System um zu messen wie viele der Trojaner verloren gehen. Diese Simulationen umfassten jeweils die Sonne, Jupiter, Saturn (bei festem Verhältnis von $P_J/P_S$) sowie eine große Anzahl an maselosen Testteilchen und liefen über $2 \cdot 10^5 \, \mathrm{yr}$.
 Abbildung \ref{pic:fehlt} zeigt die Messwerte von $\PJS$ und den Anteil an Körpern welche den Simulationszeitraum überlebten. Man sieht zwei deutlich Minima, welche auch theoretisch erklärt werden können.
 Bei $\PJS \approx 2.05$ tritt eine sekundäre 3:1 Resonanz zwischen $1/P_J-2/P_S$ und der Oszilationsfrequenz mit der die Trojaner um den Lagrangepunkt kreisen auf, diese führt zu einer vollständigen Destabilisierung der Gebietes und somit zum Verlust aller Trojaner.
 Ein zweites Minimum ergibt sich durch die 2:1 Resonanz selbiger Größen und führt zum Verlust von etwa 70 \% der Trojaner.
@@ -250,13 +385,13 @@ Um zu überprüfen, ob die Vernachlässigung von Uranus und Neptun gerecht ferti
 war, wurden einige der Simulationen unter Berücksichtigung der Effekte dieser wiederholt. % ausführlicher?!
 Morbidelli et al. stellten fest, dass die Eisgiganten keinen Einfluss auf die Trojaner von Jupiter haben.
 Aus den ursprünglichen Simulationen des Nizza-Modells, % ursprüngliche Simulationen
-wurde die Masse der Planetesimale die während der Instabilitätsphase durch das Sonnensystem streifen, auf $\sim 3,4 M_\oplus$ bestimmt.
-Die Masse der Trojaner mit Librationsamplitude von unter 30\degree berechnet sich als Produkt dieser Masse mit der Einfangseffizienz und einem Faktor $1/2$, da nur die Hälfte eine Librationsamplitude von $<30^\circ$ haben. Sie beträgt für die langsame Simulation $\sim4\cdot 10^{-6} M_E$ und für die schnelle Simulation $\sim 3\cdot 10^{-5}M_E$.
+wurde die Masse der Planetesimale die während der Instabilitätsphase durch das Sonnensystem streifen, auf $\sim 3,4 \ME$ bestimmt.
+Die Masse der Trojaner mit Librationsamplitude von unter 30\degree berechnet sich als Produkt dieser Masse mit der Einfangseffizienz und einem Faktor $1/2$, da nur die Hälfte eine Librationsamplitude von $<30^\circ$ haben. Sie beträgt für die langsame Simulation $\sim4\cdot 10^{-6} \ME$ und für die schnelle Simulation $\sim 3\cdot 10^{-5} M_E$.
 Als Theoretische Begründung für das starke Anwachsen der Masse mit steigender Migrationsgeschwindigkeit nennen die Autoren eine Kombination von zwei Gründen:
 zum einen ist durch die schnellere und somit kürzere Migration bei gleicher Gesamt\/teilchenzahl die Teilchenstromdichte während der Instabilitätsphase um den selben Faktor 3 höher, wodurch auch dreimal so viele Objekte eingefangen werden. Zum anderen führt eine schnellere Migration auch zu einem schnellerem Übergang vom instabilen zum stabilen Zustand, wodurch die Einfangquote steigt\cite{Morbidelli2005}.
-Beim Vergleich mit dem Literaturwert von Jewitt et al. aus dem Jahr 2000 stellen Morbidelli et al. eine deutlich Differenz fest: der berechnete Wert ist um einen Faktor $\sim3-25$ kleiner als der Literaturwert. % O-cite! ###
+Beim Vergleich mit dem Literaturwert von Jewitt et al. aus dem Jahr 2000 stellen Morbidelli et al. eine deutlich Differenz fest: der berechnete Wert ist um einen Faktor $\sim 3-25$ kleiner als der Literaturwert. % O-cite! ###
 Allerdings – so argumentieren die Autoren – beruhte die Berechnung von Jewitt und Kollegen auf inzwischen veralteten Messwerten zu den Trojanerpopulationen. % Auflisten?
-Nach Korrektur dieser erhielte die Gruppe um Morbidelli eine Masse von $1,3 \cdot 10^{-5} M_\oplus$ für die Trojaner. Nachdem 87\% der Trojaner eine Librationsamplitude von unter 30\degree haben, ergibt sich für diese eine Masse von etwa $1,1 \cdot 10^{-5} M_\oplus$, was mit den Werten der Simulationen gut übereinstimmt\cite{Morbidelli2005}.
+Nach Korrektur dieser erhielte die Gruppe um Morbidelli eine Masse von $1,3 \cdot 10^{-5} \ME$ für die Trojaner. Nachdem 87\% der Trojaner eine Librationsamplitude von unter 30\degree haben, ergibt sich für diese eine Masse von etwa $1,1 \cdot 10^{-5} \ME$, was mit den Werten der Simulationen gut übereinstimmt\cite{Morbidelli2005}.
 
 Als nächstes analysierte die Gruppe um Morbidelli die Orbits der eingefangenen Objekte. Dazu simulierten sie die Entwicklung der Trojaner bei abgeschlossener Migration unter Einfluss von nur der Sonne und Jupiter für weitere $10^5$ Jahre und filterten die kurzzeitigen Oszillationen der Orbits heraus.
 Die Verteilung der Orbitaleigenschaften der Trojaner wiesen zwischen den beiden Simulationen keine signifikanten Unterscheide auf, weshalb sie zur Verbesserung der Statistik gemeinsam betrachtet wurden.
@@ -264,21 +399,38 @@ Grafik \ref{pic:fehlt} zeigt die Bahneigenschaften der Simulationsergebnisse im 
 Das gilt auch für Objekte mit $D<5^\circ$, welche in früheren Modellen am schwersten erklärt werden konnten\cite{Morbidelli2005}, %O-cite
 und für den gesamten Bereich der Inklinationen der wie oben schon erwähnt bisher nicht erklärt werden konnte.
 
-Ein weiterer positiver Aspekt an diesem Model ist, dass er erklärt warum die Trojaner nur sehr wenig Wasser und Organische Stoffe enthalten: %O-Quelle?
+Ein weiterer positiver Aspekt an diesem Model ist, dass er erklärt warum die Jupiter-Trojaner nur sehr wenig Wasser und Organische Stoffe enthalten: %O-Quelle?
 Bevor sie als Trojaner eingefangen wurden, durchgingen sie eine Phase mit sehr hohen Exzentrizitäten, in welche sie der Sonne immer wieder sehr nahe kamen und dabei Entgasten.
 Alle Trojaner der Simulation waren für mindestens 100 Jahre auf Orbits mit einem Perihel $q\lesssim 3 \AU$, 72\% der Teilchen waren mit 10.000 Jahren lange genug auf derartigen Bahnen um vollständig zu entgasen\cite{Morbidelli2005}.
 
+In den ursprünglichen Simulationen von Tsiganis et al. wurde auch der Einfang einiger Neptun-Trojaner beobachtet\cite{Tsiganis2005}. Durchschnittlich wurden pro Simulation zwei semistabiele (Lebenszeit $>80 \, \mathrm{Myr}$) Trojaner eingefangen, was einer hohen Einfangeffizienz entsprechen würde\cite{Tsiganis2005}.
+Die Neptun-Trojaner wurden nach einige Zeit wieder aus ihren Orbits geworfen, was jedoch möglicherweise nur ein Artefakt der Simulation war\cite{Tsiganis2005}. % graininess of Neptuns migration
+Eine genauere Analyse steht aus. % Oder ich hab sie nur noch nicht gelesen!
 
 \FloatBarrier
-\section{reguläre und irreguläre Monde}\label{Monde}
-\subsection{Hill-Sphäre}
+\section{Die Monde der Riesenplaneten}\label{Monde}
+Eine weitere wichtige Frage bei der Beschäftigung mit dem Nizza-Modell ist ob dieses Modell mit der Existenz der Monde der Gasriesen konsistent ist.
+Wie wir sehen werden, ist dies in weiten Bereichen der Fall, auf Grundlage des Nizza-Modells wurde insbesondere ein neuer Entstehungsmechnismus für viele der Monde vorgeschlagen, welcher einige Vorteile gegenüber bisherigen Theorien hat. Zunächst will ich jedoch den Begriff der Hill-Sphäre einführen.
+
 Als Hill-Sphäre bezeichnet man das in erster Näherung kugelförmige Gebiet um einen Körper (in der Regel Planet) der einen zweiten (hier die Sonne) umkreist, in welchem die Gravitationskräfte des Planeten überwiegen. Dabei entspricht der Radius der Hill-Sphäre der Entfernung bis zum ersten beziehungsweise zweiten Lagrange-Punkt und berechnet sich zu\cite{Sheppard2005}:
 \begin{equation}
 r \approx a \sqrt[3]{\frac{m}{3 M}}
 \end{equation}
+Monde können nur in einer Stabilitätszone innerhalb der Hillsphäre existieren, deren Größe von der Umlaufrichtung des Trabanten abhängt. Für Monde auf prograden Bahnen, also solche, die dieselbe Umlaufrichtung haben, in der auch der Planet um die Sonne kreist, reicht die Stabilitätszone bis zu eine Entfernung von 53\% des Hill-Radius.
+Für retrogarde Trabanten reicht die Stabilitätszone hingegen bis 69\% des Hill-Radius hinaus.\cite{Hamilton1997}
+
+Im folgenden wird zwischen zwei grundsätzlich verschiedenen Gruppen von Monden unterschieden.
+Reguläre Monde findet man sehr nahe um den Planeten (bis zu $0.05 \, r_\mathrm{H}$) auf Orbits mit sehr niedrigen Exzentrizitäten und Inklinationen und ausnahmslos immer auf prograden Bahnen\cite{Sheppard2005}.
+Als irregulären Mond bezeichnet man hingegen einen natürlichen Satelliten auf Orbits die weit vom Planeten entfernt sind und eine starke Inklination haben\cite{Nesvorny2007}. %bessere Quelle
+Häufig haben Sie auch retrograde Umlaufbahnen und große Exzentrizitäten\cite{Nesvorny2007}.
 
 \subsection{reguläre Monde}
-Lorem ipsum
+Während der Instabiliätsphase kommen sich die Planeten Saturn, Uranus und Neptun immer wieder sehr nahe, derartige Planetenbegegnungen könnten die Bahnen von Monden destabilisieren und sie aus ihrer Umlaufbahn um den Planeten werfen oder aber zumindest ihre Exzentrizitäten und Inklinationen soweit erhöhen das sie im Widerspruch zu den Beobachtungen liegen.
+Um dies für reguläre Monde zu testen, zeichneten Tsiganis et al. bei acht ihrer Simulationen alle Begegnungen von Planeten, bei welche sich die Planeten näher als ein Hill-Radius kamen, auf\cite{Tsiganis2005}.
+Anschließend simulierten sie die Mondsysteme der Planeten unter dem Einfluss der Begegnungen.
+Als Mondsystem verwendeten Sie für Saturn dessen heute bekannten Monde und für die beiden Eisgiganten die heute bekannten Monde von Uranus\cite{Tsiganis2005}.
+In der Hälfte der Simulationen überlebten nach allen Begegnungen alle Monde auf Bahnen mit $\sin i, e < 0.05$, weshalb die Gruppe um Tsiganis schloss, dass die Existenz der regulären Monde nicht im Widerspruch zum Nizza-Modell steht\cite{Tsiganis2005}.
+Dies gilt jedoch nur für die regulären Monde, die irregulären Monde sind hingegen wesentlich schwächer gebunden und würde die Begegnungen deshalb nicht überleben.
 
 \subsection{irreguläre Monde}
 
@@ -306,9 +458,8 @@ Lorem ipsum
 \includegraphics[scale=1]{img/Nesvorny2007-9.jpg}
 \caption{•}
 \end{figure}
-Als irregulären Mond bezeichnet man einen natürlichen Satelliten auf Orbits die weit vom Planeten entfernt sind und eine starke Inklination haben\cite{Nesvorny2007}. %bessere Quelle
-Häufig haben Sie auch retrograde Umlaufbahnen und große Exzentrizitäten\cite{Nesvorny2007}.
 Inzwischen sind über 90 irreguläre Monde bei den Gasplaneten bekannt\cite{Nesvorny2007}\footnote{Andere Quelle sprechen von 113}. %bessere Zahl & Quelle
+Die irregulären Monde bieten wichtige Hinweise zur Entstehungsgeschichte des Sonnensystems und die Entstehung ihrer selbst stellte ebenfalls eine Herausforderung dar.
 Während sich reguläre Satelliten unseres Wissens nach durch Akkretion aus der planetaren Gasscheibe gebildet haben, ist die Herkunft von irregulären Monden noch ungeklärt.
 Sie müssen auf irgendeine Art von dem Planeten aus einem heliozentischem Orbit eingefangen sein worden, da eine Entstehung aus der planetaren Gasscheibe durch Akkretion wie bei den regulären Monden ist aus mehreren Gründen nicht möglich:
 Sie sind von den regulären Trabanten räumlich zu stark getrennt um aus der selben Gasscheibe entstanden zu sein, per Akkretion können keine derartig großen Exzentrizitäten entstehen und vor allem können aus einer Gasscheibe keine retrogard umlaufende Planeten entstehen\cite{Nesvorny2007}. % besser formulieren!
@@ -348,10 +499,10 @@ ohne die Gesamtmasse oder dynamischen Eigenschaften dieser zu ändern. 50 dieser
 Von den sehr unterschiedlich ausfallenden Simulationen wurden im weiteren nur die 14 berücksichtigt, welche ein System lieferten, dass dem unsrigem halbwegs ähnlich war\cite{Nesvorny2007}. %genauer oder so ok?
 Für diese Simulationen wurde alle Begegnungen von Planeten herausgesucht, bei welchen der Minimalabstand der Planeten kleiner als die Summe der Hillradien der Planten war. %bäh: herausgesucht
 
-Im nächsten Schritt wurden dann die Positionen aller Körper von den Zeitpunkten der Begegnung $t_{enc}$ aus soweit in der Zeit zurückgerechnet, dass sie 5 AU weit von einander entfernt waren  $t_{enc} - \Delta t$\cite{Nesvorny2007}.
+Im nächsten Schritt wurden dann die Positionen aller Körper von den Zeitpunkten der Begegnung $t_{\mathrm{enc}}$ aus soweit in der Zeit zurückgerechnet, dass sie 5 AU weit von einander entfernt waren  $t_{\mathrm{enc}} - \Delta t$\cite{Nesvorny2007}.
 Dafür verwendeten sie nicht SyMBA sondern den flexiblere Bulirsch-Stoer Integrationsalgorithmus. % genauer? Quelle
 
-Im dritten Teil der Simulationen wurden nun die berechneten Werte der Große Halbachsen, Exzentrizitäten und Inklinationen der Planetesimalen zum Zeitpunkt $t_{enc}-\Delta t$ verwendet um die Anzahl der Planetesimalen erneut stark zu erhöhen. Man generierte dafür $3 \cdot 10^6$ Teilchen auf zufallsverteilen Orbits, die der Orbitalverteilung der ursprünglichen Planetesimalen folgten und so gewählt waren, dass sie sich zum Zeitpunkt der Begegnung $t_{enc}$ in der nähe der sich begegnenden Planten sind. % Orbitalverteilung?, generieren oder hinzufügen?, formulierung
+Im dritten Teil der Simulationen wurden nun die berechneten Werte der Große Halbachsen, Exzentrizitäten und Inklinationen der Planetesimalen zum Zeitpunkt $t_{\mathrm{enc}}-\Delta t$ verwendet um die Anzahl der Planetesimalen erneut stark zu erhöhen. Man generierte dafür $3 \cdot 10^6$ Teilchen auf zufallsverteilen Orbits, die der Orbitalverteilung der ursprünglichen Planetesimalen folgten und so gewählt waren, dass sie sich zum Zeitpunkt der Begegnung $t_{\mathrm{enc}}$ in der nähe der sich begegnenden Planten sind. % Orbitalverteilung?, generieren oder hinzufügen?, formulierung
 %Die Wahl dieser zufälligen Orbits ist möglich, da es zu diesem Zeitpunkt noch keine resonanten Strukturen in den Planetesimalen gibt.
 Nun wurde das erweiterte System über einen Zeitraum von $2 \Delta t$ integriert und die Bahnen anschließend darauf untersucht welche der Planetesimale von einem Planeten eingefangen wurden. %formulierung
 Eine weitere Integration erlaubte es zu testen, ob die eingefangene Körper stabile Orbits haben oder den Planeten wieder verlassen, bevor es zu einer erneuten Begegnung mit einem Planeten kommt.
@@ -362,7 +513,7 @@ Man erkennt, dass vor allem bei Uranus zahlreiche Generationen zur endgültigen 
 Die Berücksichtigung dieser Effekte ist nicht nur für die korrekte Bestimmung der Einfangrate von Bedeutung, auch die Orbits der Monde unterschiedlicher Generationen unterscheiden sich, da die Planetesimalscheibe mit der Zeit immer stärker angeregt wird und die späteren Generationen somit aus einer stärker angeregten Scheibe stammen\cite{Nesvorny2007}.
 
 Abschließend wurden alle nach der letzten Begegnung vorhandene, gebundene Teilchen mit einem weiteren Integrator % nennen?
-auf ihre lang-zeitliche ($\geq 1 Myr$) Stabilität getestet %Formel fixen
+auf ihre lang-zeitliche ($\geq 1 \,\mathrm{Myr}$) Stabilität getestet %Formel fixen
 und dabei die Durchschnittswerte von Großer Halbachse, Exzentrizität und Inklination der einzelnen Satelliten über die Zeit berechnet.
 Für die anschließende Analyse wurden nur die bestehenden Monde betrachtet\cite{Nesvorny2007}. % einbauen, besseres Wort für: bestehenden
 Bei der Analyse wird auch hier wider zwischen den beiden Klassen der Migrationsmodelle unterschieden \refsec{Orbits}.
@@ -396,21 +547,21 @@ soll nun mit realistischeren Werten überprüft werden, inwieweit die Anzahl der
 Dafür bestimmten Nesvorný et al. die Einfangwahrscheinlichkeit für einen Planetesimal durch einen Planeten.
 Die Einfangquote eines Satelliten in einer Simulationen berechnet sich durch:
 \begin{equation}
-P_{\mathrm{capture}} = \sum\limits^{N_{enc}}_{j=1} \frac{N_{sat; j}}{N_{test}}\frac{N_{activ; j}}{N_{total}}
+P_{\mathrm{capture}} = \sum\limits^{N_{\mathrm{enc}}}_{j=1} \frac{N_{\mathrm{sat}; j}}{N_{\mathrm{test}}}\frac{N_{\mathrm{activ}; j}}{N_{\mathrm{total}}}
 \end{equation} % eindeutschen!? besser setzen!
-dabei ist $N_{enc}$ die Anzahl der Begegnungen mit anderen Planeten, $N_{sat;j}$ die zahl der bei der j-ten Begegnung erzeugten Satelliten, $N_{test} = 3 \cdot 10^6$ die zahl der jeweils injizierten Testteilchen, % injektieren oder injizierten?
-$N_{active; j}$ ist die Anzahl an Teilchen die bei der Begegnung bei der ersten Simulation beteiligt waren und $N_{total} = 6868$ ist die Anzahl der in der ersten Simulation Anfangs verwendeten Planetesimale\cite{Nesvorny2007}. % bäh!
+dabei ist $N_{\mathrm{enc}}$ die Anzahl der Begegnungen mit anderen Planeten, $N_{\mathrm{sat};j}$ die zahl der bei der j-ten Begegnung erzeugten Satelliten, $N_{\mathrm{test}} = 3 \cdot 10^6$ die zahl der jeweils injizierten Testteilchen, % injektieren oder injizierten?
+$N_{\mathrm{active}; j}$ ist die Anzahl an Teilchen die bei der Begegnung bei der ersten Simulation beteiligt waren und $N_{\mathrm{total}} = 6868$ ist die Anzahl der in der ersten Simulation Anfangs verwendeten Planetesimale\cite{Nesvorny2007}. % bäh!
 Die Durchschnittswerte der so berechneten Einfangswahrscheinlichkeit für Uranus und Neptun betragen $2,6 \cdot 10^{-7}$ beziehungsweise $5,4 \cdot 10^{-7}$, für Saturn und vor allem natürlich für Jupiter macht das betrachten des Durchschnittswertes aufgrund der großen Schwankungen wenig Sinn, hier verwendenden die Autoren die bei Simulation 9 auftretenden Maximalwerte von $8,5 \cdot 10^{-9}$ und $2,4 \cdot 10^{-8}$\cite{Nesvorny2007}.
 Die Werte für $P_{\mathrm{capture;Saturn}}$ sind für Simulationen der Klasse B meist höher\cite{Nesvorny2007}. % steht das schon weiter oben?
-Nachdem wir aus den Simulationen von Tsiganis et al. wissen, dass die Gesamtmasse der Planetesimalscheibe $\approx35M_\oplus$ betragen muss \refsec{Orbits}, % \oplus?
+Nachdem wir aus den Simulationen von Tsiganis et al. wissen, dass die Gesamtmasse der Planetesimalscheibe $\approx35 \ME$ betragen muss \refsec{Orbits}, % \oplus?
 brauchen wir zur Bestimmung der Anzahl und Größe der irregulären Monde noch die size-frequency distribution (SFD) der Planetesimalscheibe. % size-frequency distribution übersetzen?
 Da das Nizzamodell – wie wir in Kapitel \ref{Kuiper} besprechen werden – davon ausgeht, dass die Überreste der Planetesimalscheibe den heutigen Kuipergürtel darstellt und es nach dem LHB nur relativ wenige Veränderungen der SFD durch Kollisionen im Kuipergürtel gab, gehen die Autoren davon aus, dass die SFD des Kuipergürtels der der Planetesimalscheibe entspricht\cite{Nesvorny2007}.
 Die SFD des Kuipergürtels entspricht in erster Näherung zwei Potenzfunktionen, für kleine Durchmesser folgt der SFD einer Potenzfunktion mit Exponenten $q_2 \approx 2-3$ während bei großen Durchmessern die SFD mit $q_1 \approx 4-4,5$ abfällt, wobei der Übergang bei etwa $D \approx 100$ Kilometern oder etwas darunter liegt\cite{Nesvorny2007}. %O-Quellen!?
-Wählt man $q_2 = 2,75$, $q_1 = 4,25$ und $D = 100$ bei einer Planetesimalscheibenmasse von $35M_\oplus$ erhält man mit den  Einfangswahrscheinlichkeiten die in Abbildung \ref{pic:fehlt} rot gezeigten kumulierten SFDs für die eingefangenen Monde der vier Planeten. % ist das rot?
+Wählt man $q_2 = 2,75$, $q_1 = 4,25$ und $D = 100$ bei einer Planetesimalscheibenmasse von $35 \ME$ erhält man mit den  Einfangswahrscheinlichkeiten die in Abbildung \ref{pic:fehlt} rot gezeigten kumulierten SFDs für die eingefangenen Monde der vier Planeten. % ist das rot?
 Beim Vergleich mit den schwarz eingezeichneten SFD der gemessenen irregulären Monde, % wirklich schwarz?
 stellt man einige Abweichungen fest:
 Uranus und Neptun haben es in Realität deutlich weniger irreguläre Monde als hier vorhergesagt, % Die Autoren verkaufen das sogar als Pro-Punkt, statt als Kontra-Punkt
-Jupiter und Saturn haben deutlich zu viele kleine Monde und die SFD des Modells (gleich der des Kuipergürtels) ist allgemein für Mondradien von $D\gtrsim 10 \mathrm{km}$ deutlich steiler als in Realität (Exponent von $\approx2$\cite{Nesvorny2007}.
+Jupiter und Saturn haben deutlich zu viele kleine Monde und die SFD des Modells (gleich der des Kuipergürtels) ist allgemein für Mondradien von $D\gtrsim 10 \, \mathrm{km}$ deutlich steiler als in Realität (Exponent von $\approx2$\cite{Nesvorny2007}.
 Dies sind einerseits große Diskrepanz zwischen Modell und Realität, jedoch wäre es ein deutlich größeres Problem, wenn das Modell zu wenige Monde erzeugen würde. So gibt es einige Effekte die diese Diskrepanzen erklären könnten:
 \begin{itemize}
 \item Die SFD der Planetesimalscheibe zum Zeitpunkt des Einfangs könnte doch anderes sein und sich erst später zu der des Kuipergürtels entwickeln.
@@ -466,8 +617,8 @@ Darüber hinaus zeigten mehre verschiedene Arbeiten, dass die heiße Population 
 Auch Objekte mit sehr großer Apoheldistanz sind einheitlich rot, unabhängig von ihrer großen Halbachse.
 Allgemein scheint es eine Beziehung zwischen der Farbe und der Periheldistanz zu geben: graue Objekte werde für kleinere q häufiger.
 \item Die Objekte detached disk können nicht durch die Planeten auf ihren heutigen Bahnen auf ihre Orbits gelangt haben, da sie außerhalb des des Einflussbereichs dieser sind.
-\item Ein besonders großes Problem ist das Massendefizit des Kuipergrütels. Die Masse des Kuipergürtels wird auf $0.01 M_\oplus$ bis $0.1 M_\oplus$ geschätzt. % O-Quellen
-Damit sich aus dem Material jedoch innerhalb einer vernünftigen Zeitspanne von $10^7-10^8$ Millionen Jahren die Objekte mit der heutigen Größe zusammenklumpen konnten, musste es 10 bis $30 M_\oplus$ festes Material in der dynamisch Kalten Scheibe geben. %O-Quelle
+\item Ein besonders großes Problem ist das Massendefizit des Kuipergrütels. Die Masse des Kuipergürtels wird auf $0.01 \ME$ bis $0.1 \ME$ geschätzt. % O-Quellen
+Damit sich aus dem Material jedoch innerhalb einer vernünftigen Zeitspanne von $10^7-10^8$ Millionen Jahren die Objekte mit der heutigen Größe zusammenklumpen konnten, musste es 10 bis $30 \ME$ festes Material in der dynamisch Kalten Scheibe geben. %O-Quelle
 \end{enumerate} % Levison nur einmal, zentral zitieren?
 
 Im Rahmen des Nizza-Modells werden die TNO als die Überbleibsel der Planetesimalenscheibe betrachtet.
@@ -478,7 +629,7 @@ Wenn Neptun migriert, steifen die Positionen seiner MMRs durch die Planetesimale
 Zur Zeit als Neptuns Exzentrizität größer als $\sim 0,15$ war, überlappten sich laut numerischen Berechnungen die MMRs, so dass der Bereich zwischen Neptuns Orbit und seiner 1:2 MMR ein Gebiet ergeben, in welche sich Teilchen frei Bewegen können, sie können jedoch nicht über die 1:2 MMR hinaus wandern\cite{Levison2008}. Dies erklärt warum der Kuipergürtel durch diese Resonanz begrenzt ist.
 Die kalte und die heiße Population des Kuipergürtels wurden dabei durch unterschiedliche Mechanismen auf ihre heutigen Orbits gebracht und stammen deshalb aus unterschiedlichen Bereichen der Planetesimalenscheibe. Die kalte Population stammt aus Objekten mir einer größeren Sonnendistanz, was zumindest erklären würde warum es weniger graue Objekte gibt. Um zu erklären, dass es praktisch gar keine graue Objekte in der kalten Population gibt, vermuten die Autoren, dass nicht nur der Entstehungsort die Farbe prägt\cite{Levison2008}. % sondern auch… ; Quelle checken
 Einige der Objekte werden durch Interaktionen mit verschiedenen Resonanzen Neptuns weiter hinaus gestreut und bilden so die Scatered Disk. % Quelle
-Der Massendefizit erklärt sich qualitativ trivial dadurch, dass nur ein kleiner Anteil der Planetesimale auf stabilen Bahnen im Kuipergürtel enden. Quantitativ ergaben sich in den Simulationen von Levison et al. eine Masse des klassischen Kuipergürtels von zwischen $\sim0.05$ und $\sim0.14 M_\oplus$, was gut mit den Messwerten übereinstimmt\cite{Levison2008}.
+Der Massendefizit erklärt sich qualitativ trivial dadurch, dass nur ein kleiner Anteil der Planetesimale auf stabilen Bahnen im Kuipergürtel enden. Quantitativ ergaben sich in den Simulationen von Levison et al. eine Masse des klassischen Kuipergürtels von zwischen $\sim0.05$ und $\sim0.14 \ME$, was gut mit den Messwerten übereinstimmt\cite{Levison2008}.
 
 Insgesamt konnten Levison et al. mit ihren Simulationen zeigen, dass das Nizza-Modell alle obengenannten Punkte bis auf einen erklärt: Die Durchschnittsexzentrizität des klassischen Kuipergürtels in den Simulationen betrug 0.10-0.13, während sie in Realität 0.07 beträgt\cite{Levison2008}.
 Die Autoren weisen darauf hin, dass dies aufgrund der geringen Zahl der Simulationen nur eine statistische Schwankung sein könnte, oder auf den nicht ganz abgedeckten Parameterraum zurückzuführen sein kann\cite{Levison2008}. Auch wäre es möglich, dass in der Simulation nicht berücksichtigte Physikalische Effekte wie die durch Kollisionen verursachte Dämpfung der Exzentrizität diese Diskrepanz verursachen\cite{Levison2008}.
@@ -495,8 +646,8 @@ Ein weiterer positiver Aspekt ist, dass das Nizza-Model auch erklärt warum die 
 
 Während die durch Sedna repräsentierte innerste Oortsche Wolke bereits in den Anfangszeiten des Sonnensystems entstanden sein kann, ist die Erklärung der restlichen Oortschen Wolke mit bisherigen Modellen schwerer – die bisherigen Modelle versuchten diese durch die Wechselwirkung von am Sonnensystem vorbei fliegenden Sternen zu erklären, ergaben jedoch zu geringe Massen – daher untersuchte Brasser ob die zerstreute Planetesimalscheibe im Nizza-Modell nicht auch Ursprung der Oortschen Wolke sein kann\cite{Brasser2008}.
 Er schlägt daher ein zweistufiges Verfahren vor, in welchem die innerste Oortsche Wolke mit einem der bereits vorgeschlagenen Modelle (Brasser et al. 2006/2007 oder Kaib \& Quinn 2008) entstand, während die innere und äußere Oortsche Wolke ein Gyr später – zeitgleich zum LHB – durch einen von Dones et al. bereits 2004 vorgeschlagenen Mechanismus aus den selbe Planetesimalen die auch das LHB auslösen entstehen\cite{Brasser2008}. % richtige Cites!
-Er bestimmte die Masse der dadurch gebildeten äußeren Oortschen Wolke auf etwa $0.5 M_\oplus$, was etwas weniger als die $0.6-1.4 M_\oplus$ sind auf die die Messwerte schließen lassen\cite{Brasser2008}. Diese Differenz erklärt er damit, dass zusätzlich aus der innersten Oortschen Wolke durch die Wechselwirkung von vorbeifliegenden Sternen Material in die äußere Oortsche Wolke gelangte\cite{Brasser2008}.
-Dies kann bis zu weiteren $0.5 M_\oplus$ beitragen, die wahrscheinlichste Masse ergibt sich zu $0.9 M_\oplus$, was mit den Messwerten übereinstimmt\cite{Brasser2008}.
+Er bestimmte die Masse der dadurch gebildeten äußeren Oortschen Wolke auf etwa $0.5 \ME$, was etwas weniger als die $0.6-1.4 \ME$ sind auf die die Messwerte schließen lassen\cite{Brasser2008}. Diese Differenz erklärt er damit, dass zusätzlich aus der innersten Oortschen Wolke durch die Wechselwirkung von vorbeifliegenden Sternen Material in die äußere Oortsche Wolke gelangte\cite{Brasser2008}.
+Dies kann bis zu weiteren $0.5 \ME$ beitragen, die wahrscheinlichste Masse ergibt sich zu $0.9 \ME$, was mit den Messwerten übereinstimmt\cite{Brasser2008}.
 
 
 \section{Uranusachse}\label{Uranusachse}
@@ -517,6 +668,7 @@ Dies kann bis zu weiteren $0.5 M_\oplus$ beitragen, die wahrscheinlichste Masse 
 %%%% Anführungszeichen fixen
 %%%% Asteroidengürtel
 %%%% width/heigth statt scale für die Bilder
+%%%% \cite{}\cite{}.
 
 \newpage
 \renewcommand{\thesection}{\Alph{section}}
@@ -524,7 +676,7 @@ Dies kann bis zu weiteren $0.5 M_\oplus$ beitragen, die wahrscheinlichste Masse 
 \section{Eigene Berechnungen}
 \section{Literaturverzeichnis}
 
-\bibliography{literatur}{}
-\bibliographystyle{gerplain}
+\bibliography{library}{}
+\bibliographystyle{gerapali}
 
 \end{document}
