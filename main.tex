@@ -92,7 +92,7 @@ die Zukünftige Entwicklung des Systems.
 
 %% Hamilton/Hamiltionian einheitlich schreiben
 
-\subsection{Numerische Integratoren}
+\subsection{Numerische Integratoren} % hier fehlen noch alle Zitate!!
 Während die Lösung des Zweikörperproblems durch die Keplerschen Gesetze analytisch gelöst sind, ist das n-Körper Problem bereits ab drei Teilchen nicht mehr allgemein analytisch lösbar.
 Zwar sind analytische Näherungslösungen unter gewissen Voraussetzungen möglich, jedoch verlieren diese ihre Gültigkeit, wenn man versucht die Dynamik des Systems über sehr lange Zeiträume zu betrachten. Hierfür braucht man Verfahren die Entwicklung in Computersimulation durchzuspielen. %alles bäh
 Doch auch hier sind den Zeiträumen und der Anzahl an Teilchen durch die endliche Rechnerleistung Grenzen gesetzt. %bäh
@@ -133,9 +133,48 @@ Das Mapping für diesen lautet also
 \begin{equation}
 \vec{q'}=\vec{q}+h\vec{p} \quad ; \quad \vec{p'}=\vec{p}-h\vec{\nabla}\Phi(\vec{q'})\,.
 \end{equation}
+Für das Verständnis halte ich es für sehr wichtig, noch eine zweite, zum Ansatz über das averaging principle alternative, Betrachtungsweise für dieses Mapping zu erläutern.
+Für eine beliebige Observable $f(\vec q(t),\vec p(t))$ gilt bekanntermaßen:
+\begin{align}
+\frac{df}{dt} &= 
+\sum_{k=1}^n \left(
+	\frac{\partial f}{\partial q_k}\frac{\partial q_k}{\partial t} +
+	\frac{\partial f}{\partial p_k}\frac{\partial p_k}{\partial t}
+\right) \\ &=
+\sum_{k=1}^n \left(
+	\frac{\partial f}{\partial q_k}\frac{\partial \H}{\partial p_i} +
+	\frac{\partial f}{\partial p_k}\frac{\partial \H}{\partial q_i}
+\right) \\ &=
+\lbrace f,\H \rbrace \\ &=:
+O_\H f \label{Of}
+\end{align}
+wobei $O_\H$ ein Operator ist. Die allgemeine Lösung für \ref{Of} kann mit der Exponentialfunktion geschrieben werden als:
+\begin{equation}
+f(t+h) = e^{hO_\H}f(t)
+\end{equation}
+Wird nun der Hamiltonian in zwei Teile gespalten $\H=\H_A+\H_B$, so ergibt sich $f$ aus
+\begin{equation}
+f(t+h)=e^{h\left(O_A+O_B\right)}f(t)
+\end{equation}
+wobei $O_A=\lbrace f, H_A \rbrace$ und $O_B=\lbrace f, H_B \rbrace$ nicht kommutierende Operatoren sind. Betrachten wir die die Exponentialfunktion bis zum quadratischen Term
+\begin{equation}
+e^{h\left(O_A+O_B\right)} = 1 + h\left(O_A+O_B\right) + \frac{h^2\left(O_A^2+O_AO_B+O_BO_A+O_B^2\right)}{2} + ... \label{gl:OAB}
+\end{equation} % das O ist scheißhäßlich, doch Notation von Chambers übernehmen
+vergleicht man das nun mit dem hintereinander ausführen der beiden Operatoren
+\begin{equation}
+e^{hO_A}e^{hO_B} = 1 + h\left(O_A+O_B\right) + \frac{h^2\left(O_A^2+2O_AO_B+O_B^2\right)}{2} + ... \label{gl:OA+B}
+\end{equation}
+Die beiden stimmen also in erster Ordnung miteinander überein, erst in zweiter Ordnung gibt es Abweichungen aufgrund der nicht kommutierenden Operatoren. Das anwenden eines der Exponentialoperatoren auf die Größe $f$ entspricht dem Bestimmen der Bewegungsgleichungen unter Beachtung von nur der entsprechenden Hälfte des Hamiltonians.
+Ein symplektischer Integrator erster Ordnung löst die Bewegungsgleichungen also dadurch annähernd, das er zuerst $\H_B$ und anschließend $\H_A$ anwendet.
+Der Fehler des Integrators ist also von der Ordnung $\mathcal{O}(h^2)$.
+Genau dies geschieht auch bei dem oben beschriebenen drift-kick modified Euler Integrator, %übersetzen?
+wo wir zunächst über den Zeitrum $h$ die Auswirkung der kinetischen Energie $\H_p=\frac{1}{2}\vec{p}$ und anschließend über den selben Zeitraum $h$ die Auswirkung der potentiellen Energie $\H=\Phi(\vec{q})$ anwendeten.
+Eine deutliche Verbesserung der Genauigkeit lässt sich erreichen, indem man noch die zweite Ordnung von \ref{gl:OAB} \ref{gl:OA+B} berücksichtigt. Ein solcher Integrator zweiter Ordnung wendet zunächst für eine Dauer von $h/2$ den ersten Teil des Hamiltonians an, dann für die Zeitdauer $h$ den zweiten und schließlich wieder für die Zeit von $h/2$ den ersten Teil an:
+\begin{equation}
+q(t+h)=e^{hO_B/2}e^{hO_A}e^{hO_A/2}
+\end{equation}
+Wendet man dies auf die obige Aufteilung des Hamiltionians in kinetische und potentielle Energie an, so erhält man den bekannten Leapfrog-Integrator\cite{Duncan1998}. Der Fehler dieser Integratoren ist $\mathcal{O}(h^3)$ fällt also für kleine Schrittweiten deutlich schneller ab.
 % Erklären was symplektik ist
-% alternativen Ansatz (Taylor) erklären
-% Leapfrog
 % Bedeutung & Geschichte der symplektischen Intergratoren
 % schreibweise von symplektisch
 
@@ -199,9 +238,16 @@ Wie man sieht ist der erste Term nun wie gewünscht eine Summe von n-1 voneinand
   -  \sum\limits_{0<i<j} \frac{Gm_im_j}{r_{ij}}
 \end{align} % besser Formatieren
 Wie bereits besprochen ist dieser Mapping Hamiltionian über den Zeitschritt $t \to t+h$ analytisch lösbar und liefert somit ein Mappig das zur Simulation des Systems verwendet werden kann.
-% bedeutung von Verhältniss (Epsilon)
+Das soeben beschriebene Verfahren entspricht wieder einem Integrator erster Ordnung, der Fehler ist also von der Ordnung $\mathcal{O}(h^2)$.
+Erinnern wir uns nun an die Gleichungen \ref{gl:OA+B} und \ref{gl:OAB} zurück, so finden wir, dass sich der Fehler zu
+\begin{equation}
+e^{hO_A}e^{hO_B}-e^{h\left(O_A+O_B\right)} = \frac{h^2}{2} \left( O_AO_B-O_BO_A \right) + ...
+\end{equation}
+ergibt. Dabei sind auch alle höheren Terme von A und B abhängig\cite{Chambers1999}. Für ein System für das gilt $O_B\sim\epsilon O_A$ mit kleinem Epsilon, so ist der Fehler auch proportional zu $\epsilon$. Da die Sonne fast 99,9 Prozent der Masse des Sonnensystems besitzt, gehorchen die Planetenbahnen in sehr guter Annäherungen den Keplerschen Gesetzen und $\H_{\mathrm{Kepler}}$ dominiert deutlich über $\H_{\mathrm{Interaktion}}$. Die Genauigkeit des Integrators ist somit $\mathcal{O}(h^2\epsilon)$, sie ist also bei gleicher Schrittweite um mehrere Größenordnungen höher als bei dem einfacheren modifizierten Eulerschen Integrator – oder anderes herum: bei gleicher Genauigkeit kann die Schrittweite deutlich größer gewählt werden, was die Integration entscheidend beschleunigt. % eine Zahl wäre schön
+
 % Schwrittweite
 % verbesserungen
+% $\H_{\mathrm{Kepler}}$ und $\H_{\mathrm{Interaktion}}$ immer mit mathrm tex'en
 
 \FloatBarrier
 \section{Das Nizza-Modell}\label{Orbits}
