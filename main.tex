@@ -75,10 +75,10 @@ Die Planeten Saturn Uranus und Neptun kommen sich gegenseitig und der Scheibe au
 Nach etwa hundert Millionen Jahren erreichen die Planeten schließlich ihre heutigen Entfernungen, ihre Exzentizitäten werden gedämpft und das System stabilisiert sich wieder. Die übriggebliebenen Planetesimale bilden die heutigen transneptunischen Objekte.
 
 Neben den Plantenorbits (\refsec{Orbits}), dem Late Heavy Bombardment (\refsec{LHB}) und dem Kuipergürtel (\refsec{Kuiper}), kann das Modell, wie wir sehen werden, auch die Trojaner (\refsec{Trojaner}), die irregulären Monde (\refsec{Monde}) zumindest prinzipiell erklären.
-Abschließend werden wir uns mit einer möglichen Erweiterung des Nizzamodells um zusätzliche Anfangsplaneten beschäftigen (\refsec{mehrPlaneten}).
+Abschließend werden wir uns mit möglichen Erweiterung des Nizzamodells beschäftigen (\refsec{erweiterungen}).
 
 \FloatBarrier
-\section{Theoretische Grundlagen}
+\section{Grundlagen}
 Beim Nizza-Modell betrachten wir die Entwicklung der Planetenbahnen unter Be\-rück\-sich\-ti\-gung der gegenseitigen gravitativen Einflüsse der Planeten, es handelt sich hier also um klassische Himmelsmechanik. %Bäh!
 Wir betrachten ein n-Körperproblem mit $n>2$ Teilchen, welche lediglich gravitativ wechselwirken.\footnote{Später wird auch die Kollision von Objekten berücksichtigt werden, dies wollen wir jedoch zunächst ignorieren.}
 Der Hamilton des n-Körperproblems lautet bekannterweise
@@ -187,7 +187,7 @@ Da wir das Mapping von obigen modifizierten Euler Integrator direkt aus dem Hami
 1991 beschrieben Wisdom und Holman einen symplektischen Integrator, welcher zu einer revolutionären Verbesserung der Möglichkeiten zur Simulation des Sonnensystems führte.
 Man nennt diesen und verwandte Algorithmen \textit{mixed variables Symplectic} (MVS) Integratoren. 
 Weite Verbreitung fand der Algorithmus von Wisdom und Holman vor allem durch die Implementation namens Swift durch \cite{Levison1994}.
-Auf dem Prinzip dieses Integrators basieren auch die auch die für das Nizza-Modell relevanten Codecs, weshalb ich ihn hier erläutern werde.
+Auf dem Prinzip dieses Integrators basieren auch die auch die für das Nizza-Modell relevanten Codes, weshalb ich ihn hier erläutern werde.
 
 Die grundlegende Eigenschaft des Sonnensystems die hier genutzt wird, ist dass die Masse der Sonne die der Planeten deutlich überwiegt und die Planeten sich deshalb annähernd auf Keplerschen Planetenbahen bewegen. Man spaltet nun den Hamiltonian in zwei Teile auf:
 \begin{equation}
@@ -275,19 +275,38 @@ Das größte Problem jedoch bestand darin, dass sich zwei Planeten nicht zu nahe
 Bei einzelnen wenigen Planetenbegegnungen ist der Fehler noch klein genug, als das man die Ergebnisse zumindest als statistische Aussagen verwenden kann %\cite{Chambers1999},
  spätestens jedoch wenn wir – wie wir es beim Nizzamodell haben werden – ein sich chaotisch verhaltenes System haben in welchen Plantenbegegnungen sehr häufig vorkommen, ist dieser Ansatz nutzlos.
 
-In den Jahren 1998/1999 erschienen zwei Algorithmen, welche diese Probleme lösten und trotzdem die hohe Geschwindigkeit der MVS Integratoren behielten. Diese sind SyMBA von \cite{Duncan1998} und Mercury von\cite{Chambers1999}. Die beiden Integratoren, welche ähnliche Ansätze haben, sich jedoch in Details unterscheiden, haben das Verständnis von unserem Sonnensystem fundamental weiter gebracht. Sie waren nicht nur Voraussetzung des Nizza-Modells, sondern spielen insbesondere auch für das Verständnis der Planetenakkretion eine wichtige Rolle\cite{Morbidelli2002}
+In den Jahren 1998/1999 erschienen zwei Codes, welche diese Probleme lösten und trotzdem die hohe Geschwindigkeit der MVS Integratoren behielten. Diese sind SyMBA von \cite{Duncan1998} und Mercury von\cite{Chambers1999}. Die beiden Integratoren, welche ähnliche Ansätze haben, sich jedoch in Details unterscheiden, haben das Verständnis von unserem Sonnensystem fundamental weiter gebracht. Sie waren nicht nur Voraussetzung des Nizza-Modells, sondern spielen insbesondere auch für das Verständnis der Planetenakkretion eine wichtige Rolle\cite{Morbidelli2002}
 Anstatt der Jacobi Koordinaten verwenden diese beiden Integratoren kanonische heliozentrische Koordinaten. Bei diesen kreisen die Planeten im Keplerschen Hamiltonian nicht um unterschiedliche Massenzentren, sondern allesamt um die Sonne. Dies hat einerseits zwar den Nachteil, dass die Durchläufe der Planeten durch das Perihel, wenn dieses sehr nahe an der Sonne ist, wie eine Planetenbegegnung betrachtet werden muss, es ist für den Algorithmus jedoch sehr wichtig, dass die Planetenbahnen des Keplerschen Hamiltonians um den selben Punkt rotieren.
 Wann immer sich nun zwei Planeten (oder ein Planet und die Sonne) sich nahe kommen, wir ihre gegenseitige Wechselwirkung nach und nach immer stärker dem Keplerschen Hamiltionian hinzugefügt. Dadurch wird der \glqq Keplersche Hamiltionian\grqq\  natürlich analytisch unlösbar und ist auch kein Hamiltionian in Keplerscher Form mehr, er seine Auswirkung muss also anderweitig numerisch berechnet werden.
 Hier unterscheiden sich die beiden Integratoren nun. Mercury verwendet einen konventionellen Integrator um den \glqq Keplerschen Teil\grqq\  des Hamiltonians zu lösen: den Bulirsch Stoer Integrator mit maximal möglicher Genauigkeit – damit ist gemeint nur beschränkt durch die Rundungsfehler des Rechners. SyMBA hingegen, verwendet auch hierfür wieder einen symplektischen Integrator, mit einer durch eine ganze Zahl geteilten Schrittweite. Wenn die Planeten sich sehr nahe kommen, muss SyMBA das Verfahren iterieren um die Schrittweite noch weiter zu unterteilen.
 
 \FloatBarrier
+
+\subsection{Planetenentstehung}
+ToDo
+
+\subsection{Bahnresonanzen}
+Wie in den meisten Gebieten der Physik spielen auch in der Himmelsmechanik Resonanzen eine große Rolle. Sie können ein System entweder stabilisieren oder wie im Fall des Nizza-Modells zu einer rasanten Destabilisierung führen.
+Bahnresonanzen treten immer dann auf, wenn zwei Frequenzen eines Systems ein bestimmtes Verhältnis haben.
+Die einfachst zu Verstehende und für diese Arbeit wichtigste Bahnresonanz ist die Mean-Motion-Resonanz (MMR), auf deutsch auch Resonanzen der mittleren Bewegung, bei welche die Umlaufdauer zweier Körper (in unserem Fall Planeten) im Verhältnis zweier kleinen ganzen Zahlen sind.
+Eine 1:2-MMR liegt beispielsweise vor, wenn der eine Planet genau doppelt so lange braucht um den Stern zu umkreisen, als der andere. Betrachtet man nun zwei kreisrunde Planetenorbits in einer gemeinsamen Ebene ($e=i=0$) so kann man leicht verstehen, dass die Planeten sich nach einer Umlaufzeit von $n\cdot 2T$ wobei $T$ die Umlaufdauer des inneren Planeten ist, immer auf der selben Seite begegnen und de gegenseitige gravitative Wechselwirkung immer in die selbe Richtung wirkt, was dazu führt, dass die Exzentrizität der Planetenorbits steigt.
+Die analytische Betrachtung von Mean-Motion-Resonanzen ist möglich, würde aber den Rahmen dieser Arbeit sprengen, der interessierte Leser sei auf \cite{Dvorak2005} verwiesen. % und auf Murray?
+Während die MMRs für kreisrunde Orbits nur für exakte Positionen der Planeten eintreten, haben die MMRs eine gewisse endliche Breite sobald die Exzentrizität des Orbits von Null verschieden ist.
+%stickyness?
+% Beispiele
+
+Ein weiterer wichtiger Typ von Bahnresonanz sind die säkularen Resonanzen – engl. Secular resonances (SR). Sie treten auf wenn die orbitale Präzession zweiter Körper synchronisiert sind. Auch diese führen über lange Zeiträume hinweg zu einer Änderung der Exzentrizität und Inklination der Körper.
+
+\subsection{dynamical Friction}
+ToDo
+
 \section{Das Nizza-Modell}\label{Orbits}
 In diesem Kapitel werden wir das Nizzamodell, wie in der ursprünglichen Arbeit\cite{Tsiganis2005} beschrieben, erläutern. %superbäh
 
 In der Simulation berücksichtigten die Forscher dabei die vier Riesenplaneten auf sehr kompakten Orbits, sowie eine Scheibe aus Planetesimalen im Gravitationsfeld der Sonne. % Bäh: Forscher?
 Dies ist ein plausibler Ausgangszustand für die Situation nachdem der Sonnenwind die Gaswolke %Sonnenwind, Gaswolke?
 zerstreut hat. % bäh: formulierung
-Als Anfangsparameter wählten Tsiganis et al. in den Simulationen für die große Halbachse des Jupiterorbits $a_J = 5,45 \AU$. Saturn wurde wenige Zehntel AU vor der bei $a_{1:2} = 8,65 \AU$ gelegenen 1:2-MMR gesetzt\cite{Tsiganis2005}.% F***: die erklärung von MMRs ist erst weiter unten
+Als Anfangsparameter wählten Tsiganis et al. in den Simulationen für die große Halbachse des Jupiterorbits $a_J = 5,45 \AU$. Saturn wurde wenige Zehntel AU vor der bei $a_{1:2} = 8,65 \AU$ gelegenen 1:2-MMR gesetzt\cite{Tsiganis2005}.
 Dass Saturn weiter innen als auf der zu Jupiter resonanten Bahn war, ist eine notwendige Bedingung, da es anderenfalls schon zu Zeiten der Gasscheibe eine starke Migration durch die Wechselwirkung mit dieser gegeben hätte\cite{Levison2008}. %O-Zitat, klarer
 Die Orbitalverteilung der transneptunischen Objekte lässt darauf schließen, dass Neptuns Migration innerhalb von 20 AU begonnen hat\cite{Tsiganis2005}.
 Die beiden Eisplaneten wurden in den Simulationen von der Gruppe von Tsiganis mit großen Halbachsen von 11-13 AU respektive 13,5-17 AU, mit einem Mindestabstand von 2 AU gestartet.
@@ -297,10 +316,8 @@ nahezu kreisförmig und coplanar ($e, i \approx 10^{-3}$).
 Die Planetisimalenscheibe – ein Überbleibsel der Planetenentstehung – begann 1.5 AU hinter dem Orbit des zweiten Eisplaneten und reichte bis zu einer Entfernung von 30-35 AU hinaus\cite{Tsiganis2005}\cite{Levison2008}. Sie bestand aus 1000-5000 gleich schweren Brocken, mit einer Gesamtmasse von 30 bis 50 Erdmassen. %Ausdehnung steht oben, runter?
 Die Flächendichte der Scheibe wurde in den Simulationen linear mit dem Sonnenabstand abfallend gewählt. In einigen Simulationen wurde eine dynamisch "heiße"\ Scheibe in anderen eine "dynamisch kalte"\ Scheibe gewählt, wobei mit dynamisch heiß gemeint ist, dass Exzentrizität und Inklination relativ groß waren: $e \approx \sin i \approx 0.05 $, im Vergleich zu $e \approx \sin i \approx 10^{-3} $ im kalten Fall.\cite{Tsiganis2005}
 Die Eigengravitation der Scheibe wurde in den Simulationen ignoriert\cite{Tsiganis2005}.
-Die Simulationen wurden mit zwei verschiedenen symplektischen N-Körper Codecs durchgeführt: MERCURY von John Chambers und SyMBA, einer Erweiterung des von Hal Levison und Martin Duncan entwickeltem SWIFT.
-% http://www.boulder.swri.edu/~hal/swift.html
-% http://www.arm.ac.uk/~jec/
-Der Zeitschritt betrug zwischen einem viertel und einem halben Jahr.\cite{Tsiganis2005} % REALY?
+Die Simulationen wurden mit den oben besprochenen Codes Mercury und SyMBA durchgeführt,
+der Zeitschritt betrug zwischen einem viertel und einem halben Jahr.\cite{Tsiganis2005}
 
 Aus dieser Scheibe werden von den Planeten immer wieder einzelne Planetesimale gestreut oder akkretiert. Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits\cite{Tsiganis2005}. %Kinderkacke
 Die Simulationen zeigen, dass Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert\cite{Tsiganis2005}\cite{Hahn1999}. % Hahn nicht gelesen
@@ -312,10 +329,8 @@ Die Simulationen zeigen, dass Saturn, Uranus und Neptun langsam nach außen wand
 \label{fig:Orbitalevolution}
 \end{figure}
 Während der Migration werden die Exzentrizitäten durch den gravitativen Einfluss der Planetesimale, bekannt als dynamische Reibung, gedämpft.\cite{Tsiganis2005}
-Mit der Zeit kommen die Planeten sich durch die Migration näher, so dass Ressonanzen (englisch mean motion resonance, MMR) auftreten.
-Man betrachtet im Nizza-Modell die 2:1-Resonanz zwischen Jupiter und Staturn, welche nach ein paar hundert Millionen Jahren auftritt.
-Bei einer MMR handelt es sich um den Fall, dass die Umlaufdauern zweier Planeten im Verhältnis zweier kleiner natürlicher Zahlen steht. In der hier relevanten 2:1-MMR zwischen Jupiter und Saturn, läuft also Jupiter genau zweimal um die Sonne, während Saturn in der selben Zeit genau einmal seinen Orbit durchlauft, die Planeten "begegnen"\ sich also immer am selben Ort. %Nochmal Prüfen
-Die 2:1-Resonanz zwischen Jupiter und Saturn ist die stärkste Resonanz. % einbauen
+Mit der Zeit kommen die Planeten sich durch die Migration näher, so dass Mean-Motion-Resonanzen auftreten.
+Man betrachtet im Nizza-Modell die 2:1-Resonanz zwischen Jupiter und Staturn, welche nach ein paar hundert Millionen Jahren auftritt und die stärkste Resonanz ist. % zweiten halbsatz besser einbauen
 Die Autoren testeten auch Anfangsbedingungen, welche zum Auftreten von anderen MMRs führten. Doch weder die 2:3 MMR zwischen Saturn und dem inneren Eisriesen, noch die 1:2 MMR zwischen den beiden Eisriesen waren stark genug um die Bahn von Jupiter zu beeinflussen\cite{Tsiganis2005}. % Tsiganis2005 hats noch genauer
 Die Resonanz führt zu einer schlagartigen Erhöhung der Exzentrizitäten der Umlaufbahnen von Jupiter und Saturn, auf Werte die mit den heutigen vergleichbar sind. %genauer erklären?
 Dadurch stören Jupiter und Saturn die Eisplanenten, so dass auch deren Exzentrizitäten abhängig von den genauen Anfangsparametern (Massen und großen Halbachsen der Planeten) mehr oder weniger stark anwachsen\cite{Tsiganis2005}.
@@ -389,6 +404,7 @@ Da die Planetesimalenscheibe aufgrund ihrer sonnenfernen Entstehung vermutlich e
 \label{fig:LHBtiming}
 \end{figure} % Aufteilen in zwei Grafiken? oder umwandeln in Queerformat
 \begin{figure}
+\centering 
 \includegraphics[scale=1]{img/Gomes2005-3}
 \caption{Durch Kometen und Asteroideneinschläge auf dem Mond eingebrachte Gesamtmasse in Abhängigkeit von der Zeit. Die Y-Achse wurde so Verschoben, dass sie zum Zeitpunkt der Resonanz (gestrichelt) den Wert Null hat, so ist ersichtlich das unmittelbar nach dem Überschreiten der MMR innerhalb kurzer Zeit etwa $9\cdot10^21 \mathrm{g}$ Masse durch Kometen eingetragen wird.}
 \label{fig:LHBMasse}
@@ -410,8 +426,7 @@ Durch zusätzliche Variation anderer Parameter konnte das Eintreten der Resonanz
 
 Als zweite wichtige Überprüfung, untersuchten die Wissenschaftler die Masse des auf den Mond treffenden Materials an. Bei den Simulationen waren dies etwa $9 \cdot 10^{21} \, \mathrm{g}$, davon trafen 50\% den Mond in den ersten 3,7 Millionen Jahren, 90\% in den ersten 29 Millionen Jahren. Das Bombardement fand demnach während einer relativ kurzen Zeitspanne statt. Die dabei durchschnittlich auf dem Mond treffende Gesamtmasse wurde auf $\left(8,4 \pm 0,3\right) \cdot 10^{21} \, \mathrm{g}$ bestimmt\cite{Gomes2005}.
 
-Hinzu kommt, dass es bei der Migration von Jupiter und Saturn von ihrer Position in der 2:1-MMR zu ihren heutigen Orbits zu einer weiteren Art von Resonanzen – die sogenannten Secular resonances\footnote{Ein deutscher Name ist mir nicht bekannt.} treten auf wenn die orbitale Präzession zweiter Körper synchronisiert sind. – % besser erklären was das ist!
-kommt, welche über den Asteroidengürtel streifen. % bäh: streifen
+Hinzu kommt, dass es bei der Migration von Jupiter und Saturn von ihrer Position in der 2:1-MMR zu ihren heutigen Orbits zu einer säkularen Resonanz kommt, welche über den Asteroidengürtel streifen. % bäh: streifen
 Durch diese können Asteroiden Orbits mit so großen Exzentrizitäten und Inklinationen erhalten, so das diese bis ins innere Sonnensystem reichen. Wir müssen also die Masse der Asteroiden bestimmen, welche zusätzlich zu den Planetesimalen % die man als Kometen betrachten kann… <– hier oder wo anders?
 mit dem Mond kollidieren.
 Dafür führten die Autoren weitere numerische Simulationen durch in welchen sie die Auswirkungen von Sonne, Venus, Erde, Mars, Jupiter und Saturn auf den durch 1.000 masselose Teilchen gebildeten Asteroidengürtel untersuchten.
@@ -419,7 +434,7 @@ Die Migration der Gasriesen wurde dabei, durch das Hinzufügen von geeigneten Te
 Die große Halbachsen der Asteroiden betrugen dabei zwischen $2 \AU$ und $3,5 \AU$ und hatten Exzentrizitäten zwischen 0 und 0,3, sowie Inklinationen zwischen 0\degree und 30\degree – wobei das Perihel immer größer als $1,8 \AU$ und das Aphel immer kleiner als $4 \AU$ gewählt wurde. % Grund erläutern
 Als Migrationsratten wurden in den Simulationen unterschiedliche Resultate der ursprünglichen Simulationen (\refsec{Orbits}) gewählt. %formulierung?
 
-Gomes et al.\cite{Gomes2005} unterscheiden zwei Wege, auf welchen ein Asteroid auf ein die Erdbahn kreuzendes Orbit kommen kann. (1) Entweder es kommt zu einer Secular resonance zwischen der Periheldrehung des Körpers und der Periheldrehung Saturns, wodurch die Exzentrizitäten des Asteroiden steigen und er auf eine Erdbahnkreuzende Bahn gelangt, oder (2) sie werden im Asteroidengürtel dynamisch angeregt und wandern dann langsam aus dem Asteroidengürtel heraus\cite{Gomes2005}.
+Gomes et al.\cite{Gomes2005} unterscheiden zwei Wege, auf welchen ein Asteroid auf ein die Erdbahn kreuzendes Orbit kommen kann. (1) Entweder es kommt zu einer säkularen Resonanzen zwischen der Periheldrehung des Körpers und der Periheldrehung Saturns, wodurch die Exzentrizitäten des Asteroiden steigen und er auf eine Erdbahnkreuzende Bahn gelangt, oder (2) sie werden im Asteroidengürtel dynamisch angeregt und wandern dann langsam aus dem Asteroidengürtel heraus\cite{Gomes2005}.
 Weg (1) ist schneller, so das 50\% der Einschläge dieser Art bereits in den ersten 10 Myr (90\% in 30 Myr) stattfindet, während die Einschläge durch, auf letztere Art auf Kollisionskurs gebrachte, Asteroiden innerhalb von 50 Myr zu 50\% stattfanden (90\% in 150 Myr)\cite{Gomes2005}.
 In den Simulationen von Gomes et al. war der zweite Typ häufiger, wobei dies wenig aussagt, da
 die Häufigkeitsverteilung der beiden Wege vermutlich stark von den genauen Bedingungen abhängt\cite{Gomes2005} %genauer?
@@ -441,11 +456,13 @@ Abschließend möchte ich noch darauf hinweisen, dass es neuere geologische Fors
 \newcommand{\PJS}{P_J/P_S}
 
 \begin{figure}
+\centering 
 \includegraphics[scale=1]{img/Morbidelli2005-1}
 \caption{Stabilität der Trojaner während der Migrationsphase. \textbf{a)} zeigt das aus den Simulationen entnommene Verhältnis der Umlaufdauer von $\PJS$, der Sprung entspricht der Überquerung der 2:1 MMR. in \textbf{b)} wurden für diese Messwerte dann ermittelt wie viele Trojaner über $2\cdot10^5$ Jahre überleben.}
 \label{fig:Trojanerstabilitaet}
 \end{figure}
 \begin{figure}
+\centering 
 \includegraphics[scale=1]{img/Morbidelli2005-2}
 \caption{Vergleich der Orbitale der Trojaner in der Simulation (dicke schwarze Punkte) mit den Messwerten (graue Punkte).}
 \label{fig:Trojanerorbitale}
@@ -711,6 +728,7 @@ Allerdings ließe sich damit die oben angesprochenen Ähnlichkeiten der Populati
 \FloatBarrier
 \section{Kuipergürtel}\label{Kuiper}
 \begin{figure}
+\centering 
 \includegraphics[scale=0.7]{img/TheResonantTNO_73AU} % Bild durch bessere Version auswechseln?
 \caption{Darstellung der Transneptunischen Objekte. Man erkennt neben dem Klassischen Kuipergürtel die Resonanten KBOs -- insbesondere die Plutinos -- und die Gestreuten KBOs. Nicht mehr im Bild sind die Detached Objects und die Oortsche Wolke. Bild: Eurocommuter, CC-BY-SA}
 \label{fig:KBOs}
@@ -774,7 +792,7 @@ Er bestimmte die Masse der dadurch gebildeten äußeren Oortschen Wolke auf etwa
 Dies kann bis zu weiteren $0.5 \ME$ beitragen, die wahrscheinlichste Masse ergibt sich in guter Übereinstimmung zu den Messwerten zu $0.9 \ME$\cite{Brasser2008}.
 
 
-\section{4/5/6 Planeten}\label{mehrPlaneten}
+\section{Erweiterungen des Nizza-Modells}\label{erweiterungen}
 \begin{figure}[tbn]
 \centering
 \includegraphics[scale=0.5]{img/Nesvorny2011-1.pdf}
@@ -792,6 +810,7 @@ Dies kann bis zu weiteren $0.5 \ME$ beitragen, die wahrscheinlichste Masse ergib
 %%%% Asteroidengürtel
 %%%% width/heigth statt scale für die Bilder
 %%%% \cite{}\cite{}.
+%%%% https://www.youtube.com/watch?v=VXeOh3xmrQM verlinken
 
 \newpage
 \renewcommand{\thesection}{\Alph{section}}
