@@ -299,6 +299,12 @@ Auch säkulare Resonanzen führen über lange Zeiträume hinweg zu einer Änderu
 Neben diesen beiden Typen existieren noch eine Reihe weiterer Resonanzen, welche für diese Arbeit jedoch keine größere Rolle spielen.
 
 \subsection{Dynamische Reibung}
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{img/dynamischeReibung}
+\caption{Fliegt ein Teilchen durch ein Feld von leichteren Teilchen, so werden diese von ihm angezogen. Da sich das Teilchen unterdessen weiterbewegt, kommt es hinter dem Teilchen zu einer erhöhten Dichte, welche das Teilchen durch die gravitative Anziehung abbremst.}
+\label{fig:df}
+\end{figure}
 Ein weiteres Konzept das wir zum Verständnis des Folgenden benötigen werden ist das der Dynamischen Reibung (engl. dynamical Friction). Als Dynamische Reibung bezeichnet man die reibungsartige Beeinflussung der Bewegung eines Körpers durch die gravitative Wirkung ihn umgebener Materie ohne das es zu eine Berührung mit dieser kommt.
 Betrachten wir dazu wie in Grafik \ref{fig:df} dargestellt eine große Masse die sich durch ein Feld vieler zufällig verteilter kleiner Massen bewegt. Der Körper zieht die kleineren Massen nun gravitativ an, so dass diese sich auf ihn zu bewegen und es dort zu einer erhöhten Massedichte kommt. Da sich der Körper inzwischen weiter Bewegt hat, kommt es zu einer \glqq Heckwelle\grqq. Durch die gravitative Anziehung dieser Heckwelle wird das Teilchen nun abgebremst.
 Näherungsweise kann die Kraft durch Dynamische Reibung auf eine Masse $M$ die sich mit der Geschwindigkeit $v$ durch ein gleichmäßig dichtes (Dichte $\rho$) Feld aus deutlich leichteren Teilchen als
@@ -312,23 +318,23 @@ Bekanntermaßen gilt für die Geschwindigkeit eines Planeten dessen Masse deutli
 \begin{equation}\label{eq:Bahngeschwindigkeit}
 v= \sqrt{GM\left(\frac{2}{r}-\frac{1}{a}\right)}
 \end{equation}
-wobei $a$ die große Halbachse ist. Formt man dies nach $a$ um, so erhält man:
+wobei $a$ die große Halbachse ist. Formt man dies nach $r$ um, so erhält man:
 \begin{equation}
-a = \frac{G M r}{2 G M-r v^2}
+r = \frac{2aGM}{av^2GM}
 \end{equation}
 Während einem kleinem Zeitschritt $\Delta t$ beträgt der Betrag der Abbremsung durch die dynamische Reibung gemäß dem Grundgesetz der Mechanik:
 \begin{equation}
-\Delta v = C \rho \frac{\left(GM\right)^2}{Mv^2} \Delta t
+\Delta v = \frac{f_{dyn}}{M} \Delta t = C \rho \frac{\left(GM\right)^2}{Mv^2} \Delta t
 \end{equation}
-Diese Abbremsung führt nun natürlich zu einer Bahnveränderung, die wir näherungsweise durch eine Veränderung der \glqq großen Halbachse\grqq\footnote{Hier in Anführungszeichen, da man genau genommen in diesem Fall keine Ellipse und somit auch keine große Halbachse mehr hat.} $a$ betrachten können:
+Diese Abbremsung führt nun zu einem Drift in Richtung Sonne, dessen Größe wir berechnen können:
 \begin{equation}
-\Delta a = \od{a}{v}\Delta v = \frac{2GMr^2v}{\left(rv^2-2GM\right)^2} \cdot \Delta v
+\Delta r = \od{r}{v}\Delta v = \frac{4GMa^2v}{\left(av^2+GM\right)^2} \cdot \Delta v
 \end{equation}
 durch einsetzen erhalten wir
 \begin{equation}
-\Delta a = \frac{2r^2}{\left( rv^2-2GM\right)^2}\cdot C \rho G^3M^2 \Delta t \propto \frac{1}{v^4}
-\end{equation}
-Die Veränderung von $a$ ist also um so stärker, desto langsamer das Teilchen bewegt. Nachdem sich nun bekanntermaßen (und auch aus Gleichung \ref{eq:Bahngeschwindigkeit} ablesbar) der Planet um so schneller bewegt, je näher er an diesem ist, können wir daraus schließen, dass er an Sonnenfernen Punkten eine deutlich stärkere Bahnveränderung hin zur Sonne erfährt, als an Sonnennahen. Somit sinkt die Exzentrizität.
+\Delta r = \frac{1}{v} \frac{4a^2G^3M^2 C \rho}{\left(av^2+GM\right)^2}  \Delta t \propto \frac{1}{v^5}
+\end{equation} % keine echte Proportionalität
+Die Veränderung von $r$ ist also um so stärker, desto langsamer das Teilchen bewegt. Nachdem sich nun bekanntermaßen (und auch aus Gleichung \ref{eq:Bahngeschwindigkeit} ablesbar) der Planet um so schneller bewegt, je näher er an diesem ist, können wir daraus schließen, dass er an Sonnenfernen Punkten eine deutlich stärkere Bahnveränderung hin zur Sonne erfährt, als an Sonnennahen. Somit sinkt die Exzentrizität.
 
 \subsection{Planetenentstehung} % weiter ausbauen
 Das heutige Standardmodell der Stern- und Planetenentstehung geht vom Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $0,1\mathrm{\mu m}$ große Staubteilchen besteht. Es entsteht ein Protostern in mitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
