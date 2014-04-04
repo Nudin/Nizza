@@ -59,7 +59,7 @@
 \maketitle
 
 \section{Einleitung}
-Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Gomes2005}\cite{Tsiganis2005}\cite{Morbidelli2005}, %Reihenfolge
+Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Gomes2005,Tsiganis2005,Morbidelli2005}, %Reihenfolge
 in denen sie ein neues Modell für die Migration der Riesenplaneten unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wird Nizza-Modell genannt, da die Autoren zu besagter Zeit am Observatoire de la Côte d’Azur in Nizza arbeiteten.
 
 Das Nizza-Modell betrachtet das Sonnensystem, nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen %wirklich?
@@ -67,15 +67,15 @@ davon aus, dass die Planeten damals nahezu kreisförmige, kompakte Orbits hatten
 
 Aus dieser Scheibe werden von den Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus \& Neptun. Die terrestrischen Planten sind aufgrund der geringen Masse vernachlässigbar.} immer wieder einzelne Planetesimale gestreut oder akkretiert. % Akkretiert? 
 Dabei kommt es durch die Impulsübertragung zu einer Änderung der Planeten\-orbits\cite{Tsiganis2005},
-wodurch Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert\cite{Tsiganis2005}\cite{Hahn1999}. % Hahn nicht gelesen
+wodurch Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert\cite{Tsiganis2005,Hahn1999}. % Hahn nicht gelesen
 Mit der Zeit kommen sich die Planeten durch die Migration näher und es kommt zu einer Resonanz,
 welche zu einer schlagartigen Erhöhung der Exzentrizitäten der Umlaufbahnen von Jupiter und Saturn, auf Werte die mit den heutigen vergleichbar sind, führt.
-Die Planeten Saturn Uranus und Neptun kommen sich gegenseitig und der Scheibe aus Planetesimalen nahe. Dadurch werden die Planetesimale praktisch schlagartig zerstreut, das System wird instabil und ein Teil der Planetesimale fliegt in das innere Planetensystem und löst dort das Late Heavy Bombardment aus.
+Die Planeten Saturn, Uranus und Neptun kommen sich gegenseitig und der Scheibe aus Planetesimalen nahe. Dadurch werden die Planetesimale praktisch schlagartig zerstreut, das System wird instabil und ein Teil der Planetesimale fliegt in das innere Planetensystem und löst dort das Late Heavy Bombardment aus.
 
 Nach etwa hundert Millionen Jahren erreichen die Planeten schließlich ihre heutigen Entfernungen, ihre Exzentizitäten werden gedämpft und das System stabilisiert sich wieder. Die übriggebliebenen Planetesimale bilden die heutigen transneptunischen Objekte.
 
 Neben den Plantenorbits (\refsec{Orbits}), dem Late Heavy Bombardment (\refsec{LHB}) und dem Kuipergürtel (\refsec{Kuiper}), kann das Modell, wie wir sehen werden, auch die Trojaner (\refsec{Trojaner}), die irregulären Monde (\refsec{Monde}) zumindest prinzipiell erklären.
-Abschließend werden wir uns mit möglichen Erweiterung des Nizzamodells beschäftigen (\refsec{erweiterungen}).
+Abschließend werden wir uns mit einer möglichen Erweiterung des Nizzamodells beschäftigen (\refsec{erweiterungen}).
 
 \FloatBarrier
 \section{Grundlagen}
@@ -92,25 +92,25 @@ Bei gegebenen Anfangswerten bestimmt der Hamiltonian durch die hamiltonschen Bew
 \end{equation}
 die Zukünftige Entwicklung des Systems.
 
-%% Hamilton/Hamiltionian einheitlich schreiben
+%% Hamilton/Hamiltonian einheitlich schreiben
 
 \subsection{Numerische Integratoren} % hier fehlen noch alle Zitate!!
 Während die Lösung des Zweikörperproblems durch die Keplerschen Gesetze analytisch gelöst sind, ist das n-Körper Problem bereits ab drei Teilchen nicht mehr allgemein analytisch lösbar.
-Zwar sind analytische Näherungslösungen unter gewissen Voraussetzungen möglich, jedoch verlieren diese ihre Gültigkeit, wenn man versucht die Dynamik des Systems über sehr lange Zeiträume zu betrachten. Hierfür braucht man Verfahren die Entwicklung in Computersimulation durchzuspielen. %alles bäh
+Zwar sind analytische Näherungslösungen unter gewissen Voraussetzungen möglich, jedoch verlieren diese ihre Gültigkeit, wenn man versucht die Dynamik des Systems über sehr lange Zeiträume zu betrachten. Hierfür braucht man Verfahren, um die Entwicklung in einer Computersimulation durchzuspielen. %alles bäh
 Doch auch hier sind den Zeiträumen und der Anzahl an Teilchen durch die endliche Rechnerleistung Grenzen gesetzt. %bäh
-In den letzten Jahrzehnten sind die Möglichkeiten derartiger Computersimulationen jedoch rasant gewachsen. Ein Grund dafür ist natürlich die rasant steigende Rechenleistung der Computersysteme, ein ähnlich großer Effekt kam jedoch durch die Verbesserung der Simulationsalgorithmen. Im Folgenden möchte ich die Funktionsweise derartiger Algorithmen grundlegend erklären und die Konzepte erläutern, welche hinter diesen bahnbrechenden Verbesserungen stehen. Dabei werde ich mich auf die für die Himmelsmechanik wesentlichen Punkte als physikalischer Sicht beziehen -- eine detailliertere, allgemeinere Betrachtung aus Sicht der Mathematik und Informatik soll hier nicht beschrieben werden.
+In den letzten Jahrzehnten sind die Möglichkeiten derartiger Computersimulationen jedoch rasant gewachsen. Ein Grund dafür ist natürlich die rasant steigende Rechenleistung der Computersysteme, ein ähnlich großer Effekt kam jedoch durch die Verbesserung der Simulationsalgorithmen. Im Folgenden möchte ich die Funktionsweise derartiger Algorithmen grundlegend erklären und die Konzepte erläutern, welche hinter diesen bahnbrechenden Verbesserungen stehen. Dabei werde ich mich auf die für die Himmelsmechanik wesentlichen Punkte aus physikalischer Sicht beziehen -- eine detailliertere, allgemeinere Betrachtung aus Sicht der Mathematik und Informatik soll hier nicht beschrieben werden.
 Für eine ausführlicherer Betrachtung der historischen Entwicklung und Bedeutung der Integratoren sei auf die lesenswerte Arbeit von \cite{Morbidelli2002} verwiesen.
 % Länge des möglichen Zeitraums nennen.
 
-Herzstück eines jeden Algorithmus zur numerischen Integration ist ein sogenanntes Mapping. Ein Mapping ist ein mathematische Objekt der Art
+Herzstück eines jeden Algorithmus zur numerischen Integration ist ein sogenanntes Mapping. Ein Mapping ist ein mathematisches Objekt der Art
 \begin{equation}
 a_{n+1} = F(n,a_0,...,a_n) \,,
 \end{equation}
-also eine Vorschrift wie man aus Vergangenen Werten einer Folge den nächsten Folgenwert berechnet. Für eine allgemeine Betrachtung von Mappings auf Himmelsmechanischer Sicht sei auf \cite{Dvorak2005} verwiesen.
+also eine Vorschrift wie man aus vergangenen Werten einer Folge den nächsten Folgenwert berechnet. Für eine allgemeine Betrachtung von Mappings auf Himmelsmechanischer Sicht sei auf \cite{Dvorak2005} verwiesen.
 Was wir nun suchen ist ein Mapping, dass bei gegebenen Punkt im Phasenraum $\vec{w}\equiv(\vec{q},\vec{p})$ zum Zeitpunkt t den Punkt im Phasenraum $\tilde{w}$ bestimmt, welcher den wahren Zustand des Systems zum Zeitpunkt $t'=t+h$ möglichst genau approximiert und dabei trotzdem möglichst einfach berechnet werden kann.
 
-Ein Trick der dafür hilfreich ist ist das \textit{averaging principle}: dieses besagt, dass periodische Oszillationen, deren Dauer klein im Vergleich zur Schrittweite $h$ des Algorithmus ist, sich heraus mitteln und daher das Langzeiverhalten nur unwesentlich verfälschen.
-Beschränken wir uns zunächst der Einfachheit halber auf Hamiltionians der Form $\mathcal H(\vec q,\vec p)= \frac{1}{2}\vec p^2+\Phi(\vec q)$. % Ist eigenlich gleich dem oberen für m=1
+Ein Trick, der dafür hilfreich ist, ist das \textit{averaging principle}: dieses besagt, dass periodische Oszillationen, deren Dauer klein im Vergleich zur Schrittweite $h$ des Algorithmus ist, sich heraus mitteln und daher das Langzeitverhalten nur unwesentlich verfälschen.
+Beschränken wir uns zunächst der Einfachheit halber auf Hamiltonians der Form $\mathcal H(\vec q,\vec p)= \frac{1}{2}\vec p^2+\Phi(\vec q)$. % Ist eigenlich gleich dem oberen für m=1
 Durch das averaging principle können wir den Hamiltonian nun um periodisch oszillierende Terme
 \begin{equation}
 \delta_h(t) = \sum\limits_{n=-\infty}^{\infty} \cos(nt\cdot \frac{2\pi}{h}) = h \cdot \sum\limits_{n=-\infty}^{\infty} \delta(t-h n)
@@ -168,36 +168,36 @@ vergleicht man das nun mit dem hintereinander ausführen der beiden Operatoren
 \begin{equation}
 e^{hO_A}e^{hO_B} = 1 + h\left(O_A+O_B\right) + \frac{h^2\left(O_A^2+2O_AO_B+O_B^2\right)}{2} + ... \label{eq:OA+B}
 \end{equation}
-Die beiden stimmen also in erster Ordnung miteinander überein, erst in zweiter Ordnung gibt es Abweichungen aufgrund der nicht kommutierenden Operatoren. Das anwenden eines der Exponentialoperatoren auf die Größe $f$ entspricht dem Bestimmen der Bewegungsgleichungen unter Beachtung von nur der entsprechenden Hälfte des Hamiltonians.
+Die beiden stimmen also in erster Ordnung miteinander überein, erst in zweiter Ordnung gibt es Abweichungen aufgrund der nicht kommutierenden Operatoren. Das Anwenden eines der Exponentialoperatoren auf die Größe $f$ entspricht dem Bestimmen der Bewegungsgleichungen unter Beachtung von nur der entsprechenden Hälfte des Hamiltonians.
 Ein symplektischer Integrator erster Ordnung löst die Bewegungsgleichungen also dadurch annähernd, das er zuerst $\H_B$ und anschließend $\H_A$ anwendet.
 Der Fehler des Integrators ist also von der Ordnung $\mathcal{O}(h^2)$.
 Genau dies geschieht auch bei dem oben beschriebenen drift-kick modified Euler Integrator, %übersetzen?
 wo wir zunächst über den Zeitrum $h$ die Auswirkung der kinetischen Energie $\H_p=\frac{1}{2}\vec{p}$ und anschließend über den selben Zeitraum $h$ die Auswirkung der potentiellen Energie $\H=\Phi(\vec{q})$ anwendeten.
-Eine deutliche Verbesserung der Genauigkeit lässt sich erreichen, indem man noch die zweite Ordnung von \ref{eq:OAB} \ref{eq:OA+B} berücksichtigt. Ein solcher Integrator zweiter Ordnung wendet zunächst für eine Dauer von $h/2$ den ersten Teil des Hamiltonians an, dann für die Zeitdauer $h$ den zweiten und schließlich wieder für die Zeit von $h/2$ den ersten Teil an:
+Eine deutliche Verbesserung der Genauigkeit lässt sich erreichen, indem man noch die zweite Ordnung von Gleichung \ref{eq:OAB} und \ref{eq:OA+B} berücksichtigt. Ein solcher Integrator zweiter Ordnung wendet zunächst für eine Dauer von $h/2$ den ersten Teil des Hamiltonians an, dann für die Zeitdauer $h$ den zweiten und schließlich wieder für die Zeit von $h/2$ den ersten Teil an:
 \begin{equation}
 q(t+h)=e^{hO_B/2}e^{hO_A}e^{hO_A/2} \label{eq:secondorder}
 \end{equation}
-Wendet man dies auf die obige Aufteilung des Hamiltionians in kinetische und potentielle Energie an, so erhält man den bekannten Leapfrog-Integrator\cite{Duncan1998}. Der Fehler dieser Integratoren ist $\mathcal{O}(h^3)$ fällt also für kleine Schrittweiten deutlich schneller ab.
+Wendet man dies auf die obige Aufteilung des Hamiltonians in kinetische und potentielle Energie an, so erhält man den bekannten Leapfrog-Integrator\cite{Duncan1998}. Der Fehler dieser Integratoren ist $\mathcal{O}(h^3)$ fällt also für kleine Schrittweiten deutlich schneller ab.
 Es ist nun möglich noch höhere Ordnungen mit einzubeziehen, damit wird der Integrator bei gleicher Schrittweite immer genauer, beziehungsweise die nötige Schrittweite für eine gewünschte Genauigkeit wird immer größer. Gleichzeitig werden jedoch die Mappings immer komplizierter, weshalb jeder einzelne Schritt immer rechenzeitaufwendiger zu berechnen wird. Integratoren höherer Ordnung sind deshalb meist nicht schneller als Integratoren der zweiten Ordnung.
 % schreibweise von symplektisch
 
-Für die Simulation des Sonnensystems über lange Zeiträume sind symplektische Integratoren von besonderer Bedeutung. Symplektische Integratoren sind Algorithmen die die Zweiform $\dif p \wedge \dif q$ erhält, vereinfacht gesagt bedeutet das, dass der Integrator das Phasenraumvolumen erhält\cite{Duncan1998}. Dies führt dazu, dass es bei symplektischen Integratoren keinen Drift der Energie gibt, sondern die Energie auch über beliebig lange Zeiträume konstant ist\cite{Binney2008}. Darüber hinaus sind sie meist Zeitreversibel, wendet man also einen Zeitschritt $t\to t+h$ und anschließen einen Zeitschritt $t+h\to t$ an, so erhält man bis auf Rundungsfehler den exakt selben Punkt im Phasenraum\cite{Duncan1998}.
-Da wir das Mapping von obigen modifizierten Euler Integrator direkt aus dem Hamiltionian hergeleitet haben, handelt es sich hier um einen einfachen symplektische Integrator.
+Für die Simulation des Sonnensystems über lange Zeiträume sind symplektische Integratoren von besonderer Bedeutung. Symplektische Integratoren sind Algorithmen die die Zweiform $\dif p \wedge \dif q$ erhält, vereinfacht gesagt bedeutet das, dass der Integrator das Phasenraumvolumen erhält\cite{Duncan1998}. Dies führt dazu, dass es bei symplektischen Integratoren keinen Drift der Energie gibt, sondern die Energie auch über beliebig lange Zeiträume konstant ist\cite{Binney2008}. Darüber hinaus sind sie meist zeitreversibel, wendet man also einen Zeitschritt $t\to t+h$ und anschließend einen Zeitschritt $t+h\to t$ an, so erhält man bis auf Rundungsfehler den exakt selben Punkt im Phasenraum\cite{Duncan1998}.
+Da wir das Mapping von obigen modifizierten Euler Integrator direkt aus dem Hamiltonian hergeleitet haben, handelt es sich hier um einen einfachen symplektischen Integrator.
 
 1991 beschrieben Wisdom und Holman einen symplektischen Integrator, welcher zu einer revolutionären Verbesserung der Möglichkeiten zur Simulation des Sonnensystems führte.
 Man nennt diesen und verwandte Algorithmen \textit{mixed variables Symplectic} (MVS) Integratoren. 
 Weite Verbreitung fand der Algorithmus von Wisdom und Holman vor allem durch die Implementation namens Swift durch \cite{Levison1994}.
-Auf dem Prinzip dieses Integrators basieren auch die auch die für das Nizza-Modell relevanten Codes, weshalb ich ihn hier erläutern werde.
+Auf dem Prinzip dieses Integrators basieren auch die auch die für das Nizza-Modell relevanten Codes, weshalb ich diesen hier erläutern werde.
 
-Die grundlegende Eigenschaft des Sonnensystems die hier genutzt wird, ist dass die Masse der Sonne die der Planeten deutlich überwiegt und die Planeten sich deshalb annähernd auf Keplerschen Planetenbahen bewegen. Man spaltet nun den Hamiltonian in zwei Teile auf:
+Die grundlegende Eigenschaft des Sonnensystems, die hier genutzt wird, ist, dass die Masse der Sonne die der Planeten deutlich überwiegt und die Planeten sich deshalb annähernd auf Keplerschen Planetenbahen bewegen. Man spaltet nun den Hamiltonian in zwei Teile auf:
 \begin{equation}
 \H = \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}
 \end{equation}
-Wobei $\H_{\mathrm{Kepler}}$ die Bewegung der Planeten um den Zentralkörper und $\H_{\mathrm{Interaktion}}$ die Beeinflussung der Körper untereinander beschreibt. Während solch eine Zerlegung in Analytischen Theorien im Rahmen von Störungsrechnungen nichts ungewöhnliches ist, war dieser Ansatz vor Wisdom und Holman in nummerischen Verfahren nicht gebräuchlich. Hat man den Hamiltonian so aufgeteilt, kann man wie schon oben durch das hinzufügen von periodischen Funktionen einen Mapping-Hamiltionian finden konstruieren:
+Wobei $\H_{\mathrm{Kepler}}$ die Bewegung der Planeten um den Zentralkörper und $\H_{\mathrm{Interaktion}}$ die Beeinflussung der Körper untereinander beschreibt. Während solch eine Zerlegung in analytischen Theorien im Rahmen von Störungsrechnungen nichts ungewöhnliches ist, war dieser Ansatz vor Wisdom und Holman in nummerischen Verfahren nicht gebräuchlich. Hat man den Hamiltonian so aufgeteilt, kann man wie schon oben durch das Hinzufügen von periodischen Funktionen einen Mapping-Hamiltonian finden:
 \begin{equation}
 \H_{\mathrm{Map}} = \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{2\pi}(\Omega t)
 \end{equation} % Was ist Omega?
-Das Integrieren zu den Zeiten zwischen den Peaks ist einfach möglich, die Lösungen sind natürlich die Keplerschen Bahnen. Das Integrieren über die Peaks ist ebenfalls möglich, da hier analog zu oben $\H_{\mathrm{Kepler}}$ nichts beiträgt\cite{Wisdom1991} und die Deltafunktion das auswerten des Integrals bekanntermaßen erheblich vereinfacht. %are you kidding?
+Das Integrieren zu den Zeiten zwischen den Peaks ist einfach möglich, die Lösungen sind natürlich die Keplerschen Bahnen. Das Integrieren über die Peaks ist ebenfalls möglich, da hier analog zu oben $\H_{\mathrm{Kepler}}$ nichts beiträgt\cite{Wisdom1991} und die Deltafunktion das Auswerten des Integrals bekanntermaßen erheblich vereinfacht. %are you kidding?
 Nun gilt es also den Hamiltonian des n-Körper Problems \ref{eq:nbodyhamilton} in $\H_{\mathrm{Kepler}}$ -- bestehend aus voneinander unabhängigen Keplerschen Hamiltonians -- sowie einen Interaktions Hamiltonian auf zu teilen. Ein Keplerscher Hamiltonian ist dabei ein Hamiltonian der Form
 \begin{equation}
 \H = \frac{p^2}{2m} - \frac{\mu}{r} \,.
@@ -208,9 +208,9 @@ Nun gilt es also den Hamiltonian des n-Körper Problems \ref{eq:nbodyhamilton} i
 \caption{Jacobi Koordinaten veranschaulicht für 4 Körper. Hellblau sind jeweils die virtuellen Massen eingezeichnet. Die Jacobi Koordinaten sind $r_1$, $r_2$, $r_3$ und $R$. Bild: Brews ohare, CC-BY-SA}
 \label{fig:Jacobi}
 \end{figure}
-Für ein Zweiteilchensystem ist offensichtlich, dass die man die gewünschte Form erreicht, indem man das System in den Koordinaten relativ zum Schwerpunkt schreibt. Für n-Dimensionen erhält man den Effekt durch Verwendung der Jacobi-Koordinaten, diese erhält man wie folgt.
+Für ein Zweiteilchensystem ist offensichtlich, dass man die gewünschte Form erreicht, indem man das System in den Koordinaten relativ zum Schwerpunkt schreibt. Für n-Dimensionen erhält man den Effekt durch Verwendung der Jacobi-Koordinaten, diese erhält man wie folgt.
 Wir betrachten die Massenpunkte $m_j$ und $m_k$, diese ersetzen wir durch einen virtuellen Massenpunkt $m_{jk}$ am Ort des Schwerpunktes der Massen $R_{jk} = (m_j q_j + m_k q_k)/(m_j + m_k)$ und erhalten den Relativabstand $r_{jk} = x_j - x_k $.
-Wir iterieren diese Verfahren nun mit den restlichen N-2 Massenpunkten, sowie dem neuen virtuellen Massenpunkt. Am Ende haben wir n-1 relative Koordinaten $r_{ik}$ sowie den zuletzt berechneten $R_{1n}$ welcher die Koordinate des Schwerpunkts des Systems angibt.
+Wir iterieren diese Verfahren nun mit den restlichen $n-2$ Massenpunkten, sowie dem neuen virtuellen Massenpunkt. Am Ende haben wir $n-1$ relative Koordinaten $r_{ik}$ sowie den zuletzt berechneten $R_{1n}$ welcher die Koordinate des Schwerpunkts des Systems angibt.
 Abbildung \ref{fig:Jacobi} verdeutlicht das Vorgehen.
 In Formeln ausgedrückt lauten die, im folgenden gestrichen geschriebenen, Jacobi-Koordinaten:
 \begin{align}
@@ -233,8 +233,8 @@ Setzt man dies in \ref{eq:nbodyhamilton} ein, so erhält man nach einigen Umform
 \begin{equation}
 \H = \frac{p'^2_0}{2M} + \sum\limits_{i=1}^{n-1} \frac{p'^2_i}{2m'_i} - \sum\limits_{i=1}^{n-1} \frac{Gm_im_0}{r_{i0}} - \sum\limits_{0<i<j} \frac{Gm_im_j}{r_{ij}}
 \end{equation}
-wobei $r_{ij}=\norm{\vec{x}_i-\vec{x}_j}$ der Abstand zweier Körper ist. Der erste Term beschreibt die Bewegung des Schwerpunktes, welche – wie zu erwarten war – die eines freien Teilchens ist. Da wir uns für die Planetenbahnen, nicht aber für die Eigenbewegung des gesamten Sonnensystems interessieren können wir diesen Term ignorieren.
-Wir formen den Hamiltionian weiter um, indem wir den Term
+wobei $r_{ij}=\norm{\vec{x}_i-\vec{x}_j}$ der Abstand zweier Körper ist. Der erste Term beschreibt die Bewegung des Schwerpunktes, welche – wie zu erwarten war – die eines freien Teilchens ist. Da wir uns für die Planetenbahnen, nicht aber für die Eigenbewegung des gesamten Sonnensystems interessieren, können wir diesen Term ignorieren.
+Wir formen den Hamiltonian weiter um, indem wir den Term
 \begin{equation}
 \sum\limits_{i=1}^{n-1} \frac{Gm_im_0}{r'_i}
 \end{equation}
@@ -244,14 +244,14 @@ einmal mit positiven und einmal mit negativen Vorzeichen einfügen:
   +  \sum\limits_{i=1}^{n-1} \left( \frac{Gm_im_0}{r'_i} - \frac{Gm_im_0}{r_{i0}} \right)
   -  \sum\limits_{0<i<j} \frac{Gm_im_j}{r_{ij}}
 \end{equation}
-Wie man sieht ist der erste Term nun wie gewünscht eine Summe von n-1 voneinander unabhängigen Keplerschen Hamiltonians. Die beiden anderen Summen bilden $\H_{\mathrm{Interaktion}}$ und ist deutlich kleiner als $\H_{\mathrm{Kepler}}$. Unser Mapping Hamiltionian lautet also zusammenfassend:
+Wie man sieht ist der erste Term nun wie gewünscht eine Summe von n-1 voneinander unabhängigen Keplerschen Hamiltonians. Die beiden anderen Summen bilden $\H_{\mathrm{Interaktion}}$ und ist deutlich kleiner als $\H_{\mathrm{Kepler}}$. Unser Mapping Hamiltonian lautet also zusammenfassend:
 \begin{align}
 \H_{\mathrm{Map}} &= \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{2\pi}(\Omega t) \\
 \H_{\mathrm{Kepler}} &= \sum\limits_{i=1}^{n-1} \left( \frac{p'^2_i}{2m'_i} - \frac{Gm_im_0}{r'_i} \right) \\
 \H_{\mathrm{Interaktion}} &= \sum\limits_{i=1}^{n-1} \left( \frac{Gm_im_0}{r'_i} - \frac{Gm_im_0}{r_{i0}} \right)
   -  \sum\limits_{0<i<j} \frac{Gm_im_j}{r_{ij}}
 \end{align} % besser Formatieren
-Wie bereits besprochen ist dieser Mapping Hamiltionian über den Zeitschritt $t \to t+h$ analytisch lösbar und liefert somit ein Mappig das zur Simulation des Systems verwendet werden kann.
+Wie bereits besprochen ist dieser Mapping Hamiltonian über den Zeitschritt $t \to t+h$ analytisch lösbar und liefert somit ein Mappig das zur Simulation des Systems verwendet werden kann.
 Das soeben beschriebene Verfahren entspricht wieder einem Integrator erster Ordnung, der Fehler ist also von der Ordnung $\mathcal{O}(h^2)$.
 Erinnern wir uns nun an die Gleichungen \ref{eq:OA+B} und \ref{eq:OAB} zurück, so finden wir, dass sich der Fehler zu
 \begin{equation}
@@ -260,8 +260,8 @@ e^{hO_A}e^{hO_B}-e^{h\left(O_A+O_B\right)} = \frac{h^2}{2} \left( O_AO_B-O_BO_A 
 ergibt. Dabei sind auch alle höheren Terme von A und B abhängig\cite{Chambers1999}. Für ein System für das gilt $O_B\sim\epsilon O_A$ mit kleinem Epsilon, so ist der Fehler auch proportional zu $\epsilon$.
 Da die Sonne fast 99,9 Prozent der Masse des Sonnensystems besitzt, %Quelle?
 gehorchen die Planetenbahnen in sehr guter Annäherungen den Keplerschen Gesetzen und $\H_{\mathrm{Kepler}}$ dominiert deutlich über $\H_{\mathrm{Interaktion}}$. Die Genauigkeit des Integrators ist somit $\mathcal{O}(h^2\epsilon)$, sie ist also bei gleicher Schrittweite um mehrere Größenordnungen höher als bei dem einfacheren modifizierten Eulerschen Integrator – oder anderes herum: bei gleicher Genauigkeit kann die Schrittweite deutlich größer gewählt werden, was die Integration entscheidend beschleunigt. % eine Zahl wäre schön
-Es ist nun möglich auch aus dieses Verfahren gemäß Gleichung \ref{eq:secondorder} zu einem Integrator zweiter Ordnung  mit Genauigkeit $\mathcal{O}(h^3\epsilon)$ machen. Es sei noch darauf hingewiesen, dass XXX und YYY Möglichkeiten 
-gefunden zu machen den Fehler des Integrators proportional zu $\epsilon^2$ zu machen. % Namen einfügen
+Es ist nun möglich auch dieses Verfahren gemäß Gleichung \ref{eq:secondorder} zu einem Integrator zweiter Ordnung  mit Genauigkeit $\mathcal{O}(h^3\epsilon)$ machen. Es sei noch darauf hingewiesen, dass XXX und YYY Möglichkeiten 
+gefunden haben um den Fehler des Integrators proportional zu $\epsilon^2$ zu machen. % Namen einfügen
 Während man bei einem Leapfrog Integrator für eine hinreichen gute Genauigkeit noch Schrittweiten von $10^{-3}T_{\mathrm{min}}$ braucht, wobei $T_{\mathrm{min}}$ die Umlaufzeit des kleinsten Orbits bezeichnet, sind es bei MVS Integratoren typischer weiße $1/20T_{\mathrm{min}}$\cite{Duncan1998}. Natürlich wird vieles des Geschwindigkeitsgewinnes wieder dadurch aufgefressen, dass die Berechnung der einzelnen Schritte aufwendiger ist, unterm Strich bleibt jedoch ein signifikanter Geschwindigkeitszuwachs von etwa einer Größenordnung\cite{Chambers1999}.
 Daneben gibt es natürlich noch einige Aspekte des Algorithmus die optimiert werden können, diese spielen jedoch für das Verständnis keine Rolle. %bäh
 
@@ -269,15 +269,15 @@ Daneben gibt es natürlich noch einige Aspekte des Algorithmus die optimiert wer
 % bedeutung Reihenfolge?
 
 Die MVS Integratoren wie der von Wisdom und Holman haben jedoch ein grundlegendes Problem. Die Schrittweite des Integrators wird durch die Wahl der Parameter von $\delta_{2\pi}(\Omega t)$ festgelegt, sie ist also über die ganze Simulation konstant und für alle Planeten gleich.
-Die führt zu mehreren Problemen: Zum einen muss man wenn man wen man Planeten hat die auf einen sehr kleinen Orbit den Zentralkörper umkreisen, während andere Planeten sehr große Entfernungen zum Zentralkörper haben die selbe kleine Schrittweite für alle Planeten anwenden, obwohl bei den äußeren wesentlich größere Schrittweiten möglich und sinnvoll wären. Dieses Problem lösten \cite{Saha1994} mit einer Modifikation des Verfahren, welches es erlaubt für jeden Planeten eigene, jedoch weiterhin konstante, Schrittweiten zu wählen.
-Dies erhöht die Geschwindigkeit weiter, es löst jedoch zwei anderen Probleme noch nicht. Das zweite Problem besteht in einer höheren Ungenauigkeit für Bahnen mit höherer Exzentrizität. Auch diese Problem konnte durch eine Modifikation des Verfahrens durch \cite{Mikkola1997} überwunden werden.
+Dies führt zu mehreren Problemen: Zum einen muss man wenn man, wen man Planeten hat, die auf einen sehr kleinen Orbit den Zentralkörper umkreisen, während andere Planeten sehr große Entfernungen zum Zentralkörper haben die selbe kleine Schrittweite für alle Planeten anwenden, obwohl bei den äußeren wesentlich größere Schrittweiten möglich und sinnvoll wären. Dieses Problem lösten \cite{Saha1994} mit einer Modifikation des Verfahren, welches es erlaubt für jeden Planeten eigene, jedoch weiterhin konstante, Schrittweiten zu wählen.
+Dies erhöht die Geschwindigkeit weiter, es löst jedoch zwei andere Probleme noch nicht. Das zweite Problem besteht in einer höheren Ungenauigkeit für Bahnen mit höherer Exzentrizität. Auch dieses Problem konnte durch eine Modifikation des Verfahrens durch \cite{Mikkola1997} überwunden werden.
 Das größte Problem jedoch bestand darin, dass sich zwei Planeten nicht zu nahe kommen dürfen, da in diesem Fall $\H_{\mathrm{Interaktion}}$ groß wird und somit das $\epsilon$ nicht mehr klein genug ist. Man würde hier gerne die Schrittweite verkleinern um die Integrationsgenauigkeit zu erhalten, Veränderungen der Schrittweite während der Integration führen jedoch zu Fehlern, da das averaging principle nicht mehr greift.
 Bei einzelnen wenigen Planetenbegegnungen ist der Fehler noch klein genug, als das man die Ergebnisse zumindest als statistische Aussagen verwenden kann %\cite{Chambers1999},
  spätestens jedoch wenn wir – wie wir es beim Nizzamodell haben werden – ein sich chaotisch verhaltenes System haben in welchen Plantenbegegnungen sehr häufig vorkommen, ist dieser Ansatz nutzlos.
 
 In den Jahren 1998/1999 erschienen zwei Codes, welche diese Probleme lösten und trotzdem die hohe Geschwindigkeit der MVS Integratoren behielten. Diese sind SyMBA von \cite{Duncan1998} und Mercury von\cite{Chambers1999}. Die beiden Integratoren, welche ähnliche Ansätze haben, sich jedoch in Details unterscheiden, haben das Verständnis von unserem Sonnensystem fundamental weiter gebracht. Sie waren nicht nur Voraussetzung des Nizza-Modells, sondern spielen insbesondere auch für das Verständnis der Planetenakkretion eine wichtige Rolle\cite{Morbidelli2002}
 Anstatt der Jacobi Koordinaten verwenden diese beiden Integratoren kanonische heliozentrische Koordinaten. Bei diesen kreisen die Planeten im Keplerschen Hamiltonian nicht um unterschiedliche Massenzentren, sondern allesamt um die Sonne. Dies hat einerseits zwar den Nachteil, dass die Durchläufe der Planeten durch das Perihel, wenn dieses sehr nahe an der Sonne ist, wie eine Planetenbegegnung betrachtet werden muss, es ist für den Algorithmus jedoch sehr wichtig, dass die Planetenbahnen des Keplerschen Hamiltonians um den selben Punkt rotieren.
-Wann immer sich nun zwei Planeten (oder ein Planet und die Sonne) sich nahe kommen, wir ihre gegenseitige Wechselwirkung nach und nach immer stärker dem Keplerschen Hamiltionian hinzugefügt. Dadurch wird der \glqq Keplersche Hamiltionian\grqq\  natürlich analytisch unlösbar und ist auch kein Hamiltionian in Keplerscher Form mehr, er seine Auswirkung muss also anderweitig numerisch berechnet werden.
+Wann immer sich nun zwei Planeten (oder ein Planet und die Sonne) sich nahe kommen, wir ihre gegenseitige Wechselwirkung nach und nach immer stärker dem Keplerschen Hamiltonian hinzugefügt. Dadurch wird der \glqq Keplersche Hamiltonian\grqq\  natürlich analytisch unlösbar und ist auch kein Hamiltonian in Keplerscher Form mehr, er seine Auswirkung muss also anderweitig numerisch berechnet werden.
 Hier unterscheiden sich die beiden Integratoren nun. Mercury verwendet einen konventionellen Integrator um den \glqq Keplerschen Teil\grqq\  des Hamiltonians zu lösen: den Bulirsch Stoer Integrator mit maximal möglicher Genauigkeit – damit ist gemeint nur beschränkt durch die Rundungsfehler des Rechners. SyMBA hingegen, verwendet auch hierfür wieder einen symplektischen Integrator, mit einer durch eine ganze Zahl geteilten Schrittweite. Wenn die Planeten sich sehr nahe kommen, muss SyMBA das Verfahren iterieren um die Schrittweite noch weiter zu unterteilen.
 
 \FloatBarrier
@@ -337,12 +337,12 @@ durch einsetzen erhalten wir
 Die Veränderung von $r$ ist also um so stärker, desto langsamer das Teilchen bewegt. Nachdem sich nun bekanntermaßen (und auch aus Gleichung \ref{eq:Bahngeschwindigkeit} ablesbar) der Planet um so schneller bewegt, je näher er an diesem ist, können wir daraus schließen, dass er an Sonnenfernen Punkten eine deutlich stärkere Bahnveränderung hin zur Sonne erfährt, als an Sonnennahen. Somit sinkt die Exzentrizität.
 
 \subsection{Planetenentstehung} % weiter ausbauen
-Das heutige Standardmodell der Stern- und Planetenentstehung geht vom Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $0,1\mathrm{\mu m}$ große Staubteilchen besteht. Es entsteht ein Protostern in mitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
+Das heutige Standardmodell der Stern- und Planetenentstehung geht vom Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $0,1\mathrm{\mu m}$ große Staubteilchen besteht\cite{Hanslmeier2002}. Es entsteht ein Protostern in mitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
 Später wird der Drehimpuls nach außen transportiert. % durch was
-Durch die Brown'sche Bewegung kommt es zu zufälligen Zusammenstößen in der Gaswolke, wodurch die Teilchengrößen anwachsen. Diese wachsen durch akkretion von Gas und später durch Kollisionen weiter bis hin zu etwa einem Kilometer großen Klumpen, Planetesimale genannt.
+Durch die Brown'sche Bewegung kommt es zu zufälligen Zusammenstößen in der Gaswolke, wodurch die Teilchengrößen anwachsen. Diese wachsen durch akkretion von Gas und später durch Kollisionen weiter bis hin zu etliche Kilometer großen Klumpen, Planetesimale genannt.
 Diese wachsen durch den gravitativen Einfang von kleineren Planetesimalen immer stärker bis sie ihre Umgebung gravitativ dominieren und man von planetaren Embryonen spricht.
 
-Durch die Wechselwirkung des planetaren Embryos mit der Gasscheibe in die er noch immer eingebettet ist, kommt es zu einer Migration des Planeten nach innen. Als sich dann die Gasscheibe auflöst befinden sich die Planeten auf engen, kompakten, kreisförmigen Orbits, welche sich meist in Mean-Motion-Resonanzen befinden\cite{Nesvorny2011}.
+Durch die Wechselwirkung des planetaren Embryos mit der Gasscheibe in die er noch immer eingebettet ist, kommt es zu einer Migration des Planeten nach innen. Gleichzeitig stabilisiert die Gasscheibe die Planetenbahnen, auch wenn sie sich in Bahnresonanzen befinden, und dämpfen die Exzentrizitäten. Als sich nach einigen Millionen Jahren die Gasscheibe auflöst befinden sich die Planeten auf engen, kompakten, kreisförmigen Orbits, welche sich meist in Mean-Motion-Resonanzen zueinander befinden\cite{Nesvorny2011}.
 Da sich die Planeten im heutigem Sonnensystem auf weiter entfernten Bahnen befinden, braucht es einen Mechanismus, welcher die Planeten wieder auf weiter entfernte Bahnen bringt. Dies geschieht durch die Bahnresonanzen welche nun nicht mehr durch die Gasscheibe stabilisiert werden. Ein auf unser Sonnensystem bezogenes Model hierfür ist das Nizza-Modell.
 
 \section{Das Nizza-Modell}\label{Orbits}
@@ -358,14 +358,14 @@ Die beiden Eisplaneten wurden in den Simulationen von der Gruppe von Tsiganis mi
 Die Planetenorbits waren, wie von den Planetenentstehungsmodellen gefordert, % formulierung, Quelle
 nahezu kreisförmig und coplanar ($e, i \approx 10^{-3}$).
 
-Die Planetisimalenscheibe – ein Überbleibsel der Planetenentstehung – begann 1.5 AU hinter dem Orbit des zweiten Eisplaneten und reichte bis zu einer Entfernung von 30-35 AU hinaus\cite{Tsiganis2005}\cite{Levison2008}. Sie bestand aus 1000-5000 gleich schweren Brocken, mit einer Gesamtmasse von 30 bis 50 Erdmassen. %Ausdehnung steht oben, runter?
+Die Planetisimalenscheibe – ein Überbleibsel der Planetenentstehung – begann 1.5 AU hinter dem Orbit des zweiten Eisplaneten und reichte bis zu einer Entfernung von 30-35 AU hinaus\cite{Tsiganis2005,Levison2008}. Sie bestand aus 1000-5000 gleich schweren Brocken, mit einer Gesamtmasse von 30 bis 50 Erdmassen. %Ausdehnung steht oben, runter?
 Die Flächendichte der Scheibe wurde in den Simulationen linear mit dem Sonnenabstand abfallend gewählt. In einigen Simulationen wurde eine dynamisch "heiße"\ Scheibe in anderen eine "dynamisch kalte"\ Scheibe gewählt, wobei mit dynamisch heiß gemeint ist, dass Exzentrizität und Inklination relativ groß waren: $e \approx \sin i \approx 0.05 $, im Vergleich zu $e \approx \sin i \approx 10^{-3} $ im kalten Fall.\cite{Tsiganis2005}
 Die Eigengravitation der Scheibe wurde in den Simulationen ignoriert\cite{Tsiganis2005}.
 Die Simulationen wurden mit den oben besprochenen Codes Mercury und SyMBA durchgeführt,
 der Zeitschritt betrug zwischen einem viertel und einem halben Jahr.\cite{Tsiganis2005}
 
 Aus dieser Scheibe werden von den Planeten immer wieder einzelne Planetesimale gestreut oder akkretiert. Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits\cite{Tsiganis2005}. %Kinderkacke
-Die Simulationen zeigen, dass Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert\cite{Tsiganis2005}\cite{Hahn1999}. % Hahn nicht gelesen
+Die Simulationen zeigen, dass Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert\cite{Tsiganis2005,Hahn1999}. % Hahn nicht gelesen
 
 \begin{figure}[tbn]
 \centering
@@ -406,7 +406,7 @@ Bei Klasse B wird Neptun durch Uranus direkt fast auf seine endgültige Entfernu
 und anschließend wird die Exzentrizität durch dynamische Reibung in der Planetesimalscheibe verringert\cite{Nesvorny2007}. Somit ist die Zeitdauer der Phase der Schnellen Migration bei dieser Klasse kürzer\cite{Tsiganis2005}. Auch führt diese Art der Dynamik dazu, dass die Exzentrizität weniger stark abnimmt\cite{Tsiganis2005}.
 Bei den Simulationen der Klasse A wird Neptun auf eine etwa $22-25 \AU$ von der Sonne entfernte Umlaufbahn geschleudert und migriert dann langsamer innerhalb der Planetesimalscheibe auf seine endgültige Position\cite{Tsiganis2005}.
 14 der Simulationen waren vom Typ B, 15 vom Typ A. % Satz häßlich
-Die Durchschnittswerte und Standardabweichungen für die großen Halbachsen, Exzentrizitäten und Inklinationen der Planeten von beiden Gruppen sind in Grafik \ref{fig:VergleichmitMesswerten} aufgetragen. Wie man sieht, stimmen die Resultate beider Klassen fast mit den tatsächlich beobachten Werten überein, im Fall der Klasse B ist die Übereinstimmung jedoch deutlich größer – hier liegen sogar alle Messewerte innerhalb nur einer Standardabweichung um den Mittelpunkt\cite{Tsiganis2005} – Klasse A hat ist etwas schlechter, insbesondere sind die Exzentrizitäten von Saturn und Uranus deutlich zu klein\cite{Nesvorny2007}\cite{Tsiganis2005}. 
+Die Durchschnittswerte und Standardabweichungen für die großen Halbachsen, Exzentrizitäten und Inklinationen der Planeten von beiden Gruppen sind in Grafik \ref{fig:VergleichmitMesswerten} aufgetragen. Wie man sieht, stimmen die Resultate beider Klassen fast mit den tatsächlich beobachten Werten überein, im Fall der Klasse B ist die Übereinstimmung jedoch deutlich größer – hier liegen sogar alle Messewerte innerhalb nur einer Standardabweichung um den Mittelpunkt\cite{Tsiganis2005} – Klasse A hat ist etwas schlechter, insbesondere sind die Exzentrizitäten von Saturn und Uranus deutlich zu klein\cite{Nesvorny2007,Tsiganis2005}. 
 Dies stellt insgesamt einen bedeutenden Erfolg des Modells dar und es hebt sich von vorhergehenden Modellen ab.
 So hatte zum Beispiel das Vorgängermodell von Gomes, Morbidelli und Levinson \cite{Gomes2004} %Namen prüfen
 das Problem zwar vorzusagen zu können, dass Neptun eine große Halbachse von etwa 30 AU hat, jedoch war die Uranusbahn dabei zu dicht an der Sonne.
@@ -648,7 +648,7 @@ Sie sind von den regulären Trabanten räumlich zu stark getrennt um aus der sel
 Das System Sonne-Planet-einzufangender Körper reicht jedoch nicht aus, da das System Zeitreversibel ist und somit jeder Weg des Körpers von der heliozentischen Bahn zu der Planetenumlaufbahn auch wieder ein möglicher Weg zurück ist\cite{Nesvorny2007}. % formulierung
 Es braucht also einen Mechanismus auf welche Weise ein Trabant dauerhaft eingefangen werden kann. Dazu wurde unter anderem vorgeschlagen, dass der Körper Energie durch den Reibung an, den Planeten umgebendes, Gas verliert. % die anderen 2 Modelle erwähnen?
 Dieses Modell kann zwar einige der irregulären Moden von Jupiter erklären, nicht jedoch alle, da einige weiter entfernt als die Gasscheibe gereicht hat und auch auf die irregulären Monde von Neptun und Uranus lässt sich dieses Modell vermutlich nicht anwenden\cite{Nesvorny2007}. % genauer?
-Migrationsmodelle, wie das Nizzamodell führen zu einem weiteren großen Problem für derartige "`gas-drag"'-Modelle. Kommt den so entstandenen irregulären Monden ein großer Planetesimal oder ein Planet zu nahe, werden sie äußerst effizient wieder aus dem System des Planeten gefegt\cite{Nesvorny2007}. Da im Nizzamodell sich die Planeten Saturn, Uranus und Neptun entsprechend nahe kommen, können die irregulären Monde die wir heute um diese Planeten sehen somit nicht aus der Zeit vor der Migration stammen\cite{Tsiganis2005}\cite{Nesvorny2007}, was für "`gas-drag"'-Modelle aber nötig wäre, da zum Zeitpunkt der Migration die Gasscheibe ja sich bereits aufgelöst hat\footnote{Es ist natürlich möglich, dass es früher andere "`Generationen"' von irregulären Monden gab, welche durch den Energieverlust in der Gasscheibe entstanden sind. }. % "`gas-drag"'-Modelle eindeutschen, definieren oder ohne Anführungszeichen?; pfuibäh: Fußnote wird derzeit über zwei Seiten verteilt
+Migrationsmodelle, wie das Nizzamodell führen zu einem weiteren großen Problem für derartige "`gas-drag"'-Modelle. Kommt den so entstandenen irregulären Monden ein großer Planetesimal oder ein Planet zu nahe, werden sie äußerst effizient wieder aus dem System des Planeten gefegt\cite{Nesvorny2007}. Da im Nizzamodell sich die Planeten Saturn, Uranus und Neptun entsprechend nahe kommen, können die irregulären Monde die wir heute um diese Planeten sehen somit nicht aus der Zeit vor der Migration stammen\cite{Tsiganis2005,Nesvorny2007}, was für "`gas-drag"'-Modelle aber nötig wäre, da zum Zeitpunkt der Migration die Gasscheibe ja sich bereits aufgelöst hat\footnote{Es ist natürlich möglich, dass es früher andere "`Generationen"' von irregulären Monden gab, welche durch den Energieverlust in der Gasscheibe entstanden sind. }. % "`gas-drag"'-Modelle eindeutschen, definieren oder ohne Anführungszeichen?; pfuibäh: Fußnote wird derzeit über zwei Seiten verteilt
 
 Eine weitere wichtige Eigenschaft der irregulären Monde sind ihre vielfältig variierten und keinem klaren Gradienten folgenden Farben. Würden die Monde aus lokalen Umgebung der Planeten stammen, müssten alle Monde eines Planeten eine ähnliche Farbe haben und die Farben der Monde müsst vom Sonnenabstand des Planeten abhängen\cite{Nesvorny2007}. Das beides nicht der Fall ist, ist ein Zeichen dafür, dass sie ein Mix aus Planetesimalen von ursprünglich unterschiedlichen Orten sind. % formulierung, Quellen
 
@@ -837,7 +837,38 @@ Er bestimmte die Masse der dadurch gebildeten äußeren Oortschen Wolke auf etwa
 Dies kann bis zu weiteren $0.5 \ME$ beitragen, die wahrscheinlichste Masse ergibt sich in guter Übereinstimmung zu den Messwerten zu $0.9 \ME$\cite{Brasser2008}.
 
 
-\section{Erweiterungen des Nizza-Modells}\label{erweiterungen}
+\section{Ausblick}\label{erweiterungen}
+Bereits vor dem Nizza-Modell gab es einige Modelle, die sich daran machten zu erklären, wie die Planeten von ihren ursprünglichen kompakten Orbitalen auf ihre heutigen sonnenfernen Bahnen kamen. Als Vorgängermodelle sind insbesondere \cite{Thommes1999,Thommes2003,Levison2004} zu nennen. % Noch nach weiteren suchen
+%Wie wir gesehen haben sind für die Entwicklung dieser Modelle die Fortschritte in den Möglichkeiten das Sonnensystem über lange Zeiträume zu simulieren essenziell.
+Das Nizza-Modell kann wie wir gesehen haben eine Vielzahl an Eigenschaften unseres Sonnensystems erfolgreich erklären und ist daher äußerst erfolgreich.
+Natürlich ist die Forschung in den bald zehn Jahren seit den Veröffentlichungen von \cite{Tsiganis2005,Morbidelli2005,Gomes2005} nicht stehen geblieben und so wurden zahlreiche Varianten und Erweiterungen des Nizza-Modells vorgeschlagen, welche weitere Probleme lösen.
+So wird das Nizza-Modell, in der Form wie es hier im Detail vorgestellt wurde, in Abgrenzung zu modifizierten Nizza-Modellen, heute auch als das original Nizza-Modell (engl. \glqq original Nice modell\grqq, kurz ONM) bezeichnend.
+Im folgenden will ich noch die wichtigsten der modifizierten Nizza-Modelle kurz vorstellen. %bäh
+
+\subsection{Weitere Resonanzen}
+
+
+\subsection{Jumping Jupiter}
+
+
+\subsection{Verlorengegangene Planeten}
+Ein mögliche Erweiterung des Nizza-Modells wurde von \cite{Nesvorny2011} vorgeschlagen und später noch weiter vorangetrieben \cite{Nesvorny2012}. Die Idee von Planetesimalscheibe war, dass es im Sonnensystem früher womöglich noch mehr Riesenplaneten gegeben hat, diese jedoch während der Instabilitätsphase aus dem Sonnensystem geschleudert wurden.
+
+Während man beim klassischem Nizza-Modell eine 2:1 MMR zwischen Jupiter und Saturn betrachtet, betrachtete \cite{Nesvorny2011} auch den Fall mit einer 3:2 MMR zwischen den Gasriesen. Zusätzlich zu Saturn, Jupiter, Uranus und Neptun fügte man bei einigen der Simulationen einen fünften Planeten zwischen Saturn und den Eisriesen ein. Die Masse dieses Planeten entsprach dabei zwischen $3\cdot10^25$ und $3\cdot10^26$ kg\footnote{Im Ppaper \cite{Nesvorny2011} scheint sich ein Tippfehler eingeschlichen zu haben, dort steht g statt kg.}, also zwischen einem drittel und der dreifachen Masse der Eisriesen.
+Mit hydrodynamischen Simulationen wurde in einem ersten Schritt die wahrscheinlichen Orbitale der Planeten bestimmt.
+Anschließend wurde das System mit dem Integrator SyMBA bei ähnlichen Voraussetzungen wie beim Nizza-Modell simuliert.
+Während die Position des äußeren Rands der Planetesimalscheibe mit 30 AU bei der heutigen Position Neptuns gewählt wurde, wurde der innere Rand der Planetesimalscheibe variabel gewählt.
+Die Gesamtmasse der Planetesimalscheibe wurde in den Simulationen zwischen 10 und $100 M_E$ gewählt.
+Insgesamt wurden 6000 Simulationen des Systems mit unterschiedlichen Parametern durchgeführt, auf Basis der Ergebnisse erstellte Planetesimalscheibe dann Statistiken, darüber wie Erfolgreich die Simulationen für bestimmte Parameter, insbesondere die Anzahl der Planeten sind.
+
+Dafür definierte er 5 Kriterien um den Erfolg zu bewerten. Kriterium A war, dass das System am Ende genau fünf Riesenplaneten haben muss. Kriterium B beschreibt, dass die großen Halbachsen der Planeten bis auf höchstens 20\% mit den gemessenen Werten übereinstimmen und die Exzentrizitäten und Inklinationen kleiner als 0.11 beziehungsweise $2^\circ$ sind, also nicht höchstens doppelt so groß wie die gemessenen Werte von Saturn beziehungsweise Uranus.
+Als drittes Kriterium wurde überprüft, ob es zu Begegnungen zwischen Jupiter und Saturn und einem anderen Planeten kommt, die dazu führen können, dass es zum Einfang von irregulären Satelliten um diese kommt. % nur halb richtig / unvollständig
+Kriterium D bestimmt, ob die terrestischen Planeten auch nicht zu stark gestört wurden. %% superschlecht
+
+Im Fall von ursprünglich vier Planeten, erfüllen im Bestfall, bei einer Masse der Planetesimalenscheibe von $35M_E$ oder $50M_E$, 10\% beziehungsweise 13\% der Fälle das Kriterium A.
+
+% free-floaters
+
 \begin{figure}[tbn]
 \centering
 \includegraphics[scale=0.5]{img/Nesvorny2011-1.pdf}
@@ -854,7 +885,7 @@ Dies kann bis zu weiteren $0.5 \ME$ beitragen, die wahrscheinlichste Masse ergib
 %%%% Anführungszeichen fixen
 %%%% Asteroidengürtel
 %%%% width/heigth statt scale für die Bilder
-%%%% \cite{}\cite{}.
+%%%% Sauber zitieren
 %%%% https://www.youtube.com/watch?v=VXeOh3xmrQM verlinken
 
 \newpage
