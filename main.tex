@@ -2,7 +2,7 @@
 \usepackage{a4wide}
 \linespread{1.359140914229522617680} 
 \usepackage[utf8]{inputenc}
-\usepackage[german]{babel}
+\usepackage[english,ngerman]{babel}
 \usepackage{bibgerm}
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -11,6 +11,7 @@
 \usepackage{hyperref}
 \usepackage{placeins}
 \usepackage{microtype} % use?
+\usepackage{ziffer} % use?
 \usepackage[format=hang,font={it,footnotesize},labelfont=bf]{caption}
 %\usepackage{breakcites} %use?
 \usepackage{cite}
@@ -74,13 +75,13 @@ Die Planeten Saturn, Uranus und Neptun kommen sich gegenseitig und der Scheibe a
 
 Nach etwa hundert Millionen Jahren erreichen die Planeten schließlich ihre heutigen Entfernungen, ihre Exzentizitäten werden gedämpft und das System stabilisiert sich wieder. Die übriggebliebenen Planetesimale bilden die heutigen transneptunischen Objekte.
 
-Neben den Plantenorbits (\refsec{Orbits}), dem Late Heavy Bombardment (\refsec{LHB}) und dem Kuipergürtel (\refsec{Kuiper}), kann das Modell, wie wir sehen werden, auch die Trojaner (\refsec{Trojaner}), die irregulären Monde (\refsec{Monde}) zumindest prinzipiell erklären.
-Abschließend werden wir uns mit einer möglichen Erweiterung des Nizzamodells beschäftigen (\refsec{erweiterungen}).
+Neben den Plantenorbits (\refsec{Orbits}), dem Late Heavy Bombardment (\refsec{LHB}) und dem Kuipergürtel (\refsec{Kuiper}), kann das Modell, wie wir sehen werden, auch die Trojaner (\refsec{Trojaner}) und die irregulären Monde (\refsec{Monde}) zumindest prinzipiell erklären.
+Abschließend werden wir uns mit einer möglichen Erweiterungen des Nizzamodells beschäftigen (\refsec{erweiterungen}).
 
 \FloatBarrier
 \section{Grundlagen}
 Beim Nizza-Modell betrachten wir die Entwicklung der Planetenbahnen unter Be\-rück\-sich\-ti\-gung der gegenseitigen gravitativen Einflüsse der Planeten, es handelt sich hier also um klassische Himmelsmechanik. %Bäh!
-Wir betrachten ein n-Körperproblem mit $n>2$ Teilchen, welche lediglich gravitativ wechselwirken.\footnote{Später wird auch die Kollision von Objekten berücksichtigt werden, dies wollen wir jedoch zunächst ignorieren.}
+Wir betrachten dabei ein n-Körperproblem mit $n>2$ Teilchen, welche lediglich gravitativ wechselwirken.\footnote{Später wird auch die Kollision von Objekten berücksichtigt werden, dies wollen wir jedoch zunächst ignorieren.}
 Der Hamilton des n-Körperproblems lautet bekannterweise
 \begin{equation}\label{eq:nbodyhamilton}
 H = \sum\limits_{i=0}^{n-1} \frac{p_i^2}{2m_i} - \sum\limits_{i<j} \frac{Gm_im_j}{r_{ij}}
@@ -90,12 +91,12 @@ Bei gegebenen Anfangswerten bestimmt der Hamiltonian durch die hamiltonschen Bew
 \begin{equation}
 \dot{q_i} = \pd{\mathcal H}{p_i} \quad ; \quad \dot{p_i} = - \pd{\mathcal H}{q_i}
 \end{equation}
-die Zukünftige Entwicklung des Systems.
+die zukünftige Entwicklung des Systems.
 
 %% Hamilton/Hamiltonian einheitlich schreiben
 
 \subsection{Numerische Integratoren} % hier fehlen noch alle Zitate!!
-Während die Lösung des Zweikörperproblems durch die Keplerschen Gesetze analytisch gelöst sind, ist das n-Körper Problem bereits ab drei Teilchen nicht mehr allgemein analytisch lösbar.
+Während die das Zweikörperproblems durch die Keplerschen Gesetze analytisch gelöst ist, ist das n-Körper Problem bereits ab drei Teilchen nicht mehr allgemein analytisch lösbar.
 Zwar sind analytische Näherungslösungen unter gewissen Voraussetzungen möglich, jedoch verlieren diese ihre Gültigkeit, wenn man versucht die Dynamik des Systems über sehr lange Zeiträume zu betrachten. Hierfür braucht man Verfahren, um die Entwicklung in einer Computersimulation durchzuspielen. %alles bäh
 Doch auch hier sind den Zeiträumen und der Anzahl an Teilchen durch die endliche Rechnerleistung Grenzen gesetzt. %bäh
 In den letzten Jahrzehnten sind die Möglichkeiten derartiger Computersimulationen jedoch rasant gewachsen. Ein Grund dafür ist natürlich die rasant steigende Rechenleistung der Computersysteme, ein ähnlich großer Effekt kam jedoch durch die Verbesserung der Simulationsalgorithmen. Im Folgenden möchte ich die Funktionsweise derartiger Algorithmen grundlegend erklären und die Konzepte erläutern, welche hinter diesen bahnbrechenden Verbesserungen stehen. Dabei werde ich mich auf die für die Himmelsmechanik wesentlichen Punkte aus physikalischer Sicht beziehen -- eine detailliertere, allgemeinere Betrachtung aus Sicht der Mathematik und Informatik soll hier nicht beschrieben werden.
@@ -275,28 +276,30 @@ Das größte Problem jedoch bestand darin, dass sich zwei Planeten nicht zu nahe
 Bei einzelnen wenigen Planetenbegegnungen ist der Fehler noch klein genug, als das man die Ergebnisse zumindest als statistische Aussagen verwenden kann %\cite{Chambers1999},
  spätestens jedoch wenn wir – wie wir es beim Nizzamodell haben werden – ein sich chaotisch verhaltenes System haben in welchen Plantenbegegnungen sehr häufig vorkommen, ist dieser Ansatz nutzlos.
 
-In den Jahren 1998/1999 erschienen zwei Codes, welche diese Probleme lösten und trotzdem die hohe Geschwindigkeit der MVS Integratoren behielten. Diese sind SyMBA von \cite{Duncan1998} und Mercury von\cite{Chambers1999}. Die beiden Integratoren, welche ähnliche Ansätze haben, sich jedoch in Details unterscheiden, haben das Verständnis von unserem Sonnensystem fundamental weiter gebracht. Sie waren nicht nur Voraussetzung des Nizza-Modells, sondern spielen insbesondere auch für das Verständnis der Planetenakkretion eine wichtige Rolle\cite{Morbidelli2002}
-Anstatt der Jacobi Koordinaten verwenden diese beiden Integratoren kanonische heliozentrische Koordinaten. Bei diesen kreisen die Planeten im Keplerschen Hamiltonian nicht um unterschiedliche Massenzentren, sondern allesamt um die Sonne. Dies hat einerseits zwar den Nachteil, dass die Durchläufe der Planeten durch das Perihel, wenn dieses sehr nahe an der Sonne ist, wie eine Planetenbegegnung betrachtet werden muss, es ist für den Algorithmus jedoch sehr wichtig, dass die Planetenbahnen des Keplerschen Hamiltonians um den selben Punkt rotieren.
-Wann immer sich nun zwei Planeten (oder ein Planet und die Sonne) sich nahe kommen, wir ihre gegenseitige Wechselwirkung nach und nach immer stärker dem Keplerschen Hamiltonian hinzugefügt. Dadurch wird der \glqq Keplersche Hamiltonian\grqq\  natürlich analytisch unlösbar und ist auch kein Hamiltonian in Keplerscher Form mehr, er seine Auswirkung muss also anderweitig numerisch berechnet werden.
-Hier unterscheiden sich die beiden Integratoren nun. Mercury verwendet einen konventionellen Integrator um den \glqq Keplerschen Teil\grqq\  des Hamiltonians zu lösen: den Bulirsch Stoer Integrator mit maximal möglicher Genauigkeit – damit ist gemeint nur beschränkt durch die Rundungsfehler des Rechners. SyMBA hingegen, verwendet auch hierfür wieder einen symplektischen Integrator, mit einer durch eine ganze Zahl geteilten Schrittweite. Wenn die Planeten sich sehr nahe kommen, muss SyMBA das Verfahren iterieren um die Schrittweite noch weiter zu unterteilen.
+In den Jahren 1998/1999 erschienen zwei Codes, welche diese Probleme lösten und trotzdem die hohe Geschwindigkeit der MVS Integratoren behielten. Diese sind SyMBA von \cite{Duncan1998} und Mercury von\cite{Chambers1999}. Die beiden Integratoren, welche ähnliche Ansätze haben, sich jedoch in Details unterscheiden, haben das Verständnis von unserem Sonnensystem fundamental weiter gebracht. Sie waren nicht nur Voraussetzung des Nizza-Modells, sondern spielen insbesondere auch für das Verständnis der Planetenakkretion eine wichtige Rolle\cite{Morbidelli2002}.
+Anstatt der Jacobi Koordinaten verwenden diese beiden Integratoren kanonische heliozentrische Koordinaten. Bei diesen kreisen die Planeten im Keplerschen Hamiltonian nicht um unterschiedliche Massenzentren, sondern allesamt um die Sonne. Dies hat einerseits zwar den Nachteil, dass die Durchläufe der Planeten durch das Perihel, wenn dieses sehr nahe an der Sonne ist, wie eine Planetenbegegnung betrachtet werden muss, es ist für den Algorithmus jedoch sehr wichtig, dass die Planetenbahnen des Keplerschen Hamiltonians um den selben Punkt rotieren. % Quelle!
+Wann immer sich nun zwei Planeten (oder ein Planet und die Sonne) sich nahe kommen, wird ihre gegenseitige Wechselwirkung nach und nach immer stärker dem Keplerschen Hamiltonian hinzugefügt. %Quelle
+Dadurch wird der \glqq Keplersche Hamiltonian\grqq\  natürlich analytisch unlösbar und ist auch kein Hamiltonian in Keplerscher Form mehr, seine Auswirkung muss also anderweitig numerisch berechnet werden.
+Hier unterscheiden sich die beiden Integratoren nun. Mercury verwendet einen konventionellen Integrator um den \glqq Keplerschen Teil\grqq\  des Hamiltonians zu lösen: den Bulirsch Stoer Integrator mit maximal möglicher Genauigkeit – damit ist gemeint nur beschränkt durch die Rundungsfehler des Rechners. %Quelle
+SyMBA hingegen, verwendet auch hierfür wieder einen symplektischen Integrator, mit einer durch eine ganze Zahl geteilten Schrittweite. Wenn die Planeten sich sehr nahe kommen, muss SyMBA das Verfahren iterieren um die Schrittweite noch weiter zu unterteilen. %Quelle
 
 \FloatBarrier
 
 \subsection{Bahnresonanzen}
 Wie in den meisten Gebieten der Physik spielen auch in der Himmelsmechanik Resonanzen eine große Rolle. Sie können ein System entweder stabilisieren oder wie im Fall des Nizza-Modells zu einer rasanten Destabilisierung führen.
 Bahnresonanzen treten immer dann auf, wenn zwei Frequenzen eines Systems ein bestimmtes Verhältnis haben.
-Die einfachst zu Verstehende und für diese Arbeit wichtigste Bahnresonanz ist die Mean-Motion-Resonanz (MMR), auf deutsch auch Resonanzen der mittleren Bewegung, bei welche die Umlaufdauer zweier Körper (in unserem Fall Planeten) im Verhältnis zweier kleinen ganzen Zahlen sind.
-Eine 1:2-MMR liegt beispielsweise vor, wenn der eine Planet genau doppelt so lange braucht um den Stern zu umkreisen, als der andere. Betrachtet man nun zwei kreisrunde Planetenorbits in einer gemeinsamen Ebene ($e=i=0$) so kann man leicht verstehen, dass die Planeten sich nach einer Umlaufzeit von $n\cdot 2T$ wobei $T$ die Umlaufdauer des inneren Planeten ist, immer auf der selben Seite begegnen und de gegenseitige gravitative Wechselwirkung immer in die selbe Richtung wirkt, was dazu führt, dass die Exzentrizität der Planetenorbits steigt.
+Die einfachst zu Verstehende und für diese Arbeit wichtigste Bahnresonanz ist die Mean-Motion-Resonanz (MMR), auf deutsch auch Resonanz der mittleren Bewegung, bei welche die Umlaufdauer zweier Körper (in unserem Fall Planeten) im Verhältnis zweier kleiner ganzer Zahlen sind.
+Eine 1:2-MMR liegt beispielsweise vor, wenn der eine Planet genau doppelt so lange braucht um den Stern zu umkreisen, als der andere. Betrachtet man nun zwei kreisrunde Planetenorbits in einer gemeinsamen Ebene ($e=i=0$) so kann man leicht verstehen, dass die Planeten sich nach einer Umlaufzeit von $n\cdot 2T$ wobei $T$ die Umlaufdauer des inneren Planeten ist, immer auf der \glqq selben Seite\grqq begegnen und die gegenseitige gravitative Wechselwirkung immer in die selbe Richtung wirkt, was dazu führt, dass die Exzentrizität der Planetenorbits steigt.
 Die analytische Betrachtung von Mean-Motion-Resonanzen ist möglich, würde aber den Rahmen dieser Arbeit sprengen, der interessierte Leser sei auf \cite{Dvorak2005} verwiesen. % und auf Murray?
 Während die MMRs für kreisrunde Orbits nur für exakte Positionen der Planeten eintreten, haben die MMRs eine gewisse endliche Breite sobald die Exzentrizität des Orbits von Null verschieden ist.
 %stickyness?
 % Beispiele
 
-Ein weiterer wichtiger Typ von Bahnresonanz sind die säkularen Resonanzen – engl. Secular resonances (SR). Sie treten auf wenn die orbitale Präzession zweiter Körper synchronisiert sind.
-Die Lage eines Orbits im dreidimensionalem Raum, wird neben der Inklination durch die Länge des aufsteigenden Knotens ($\Omega$) und das Argument des Perihels ($\omega$) beschrieben. Die Orientierung dieser Bahnebene schwankt im Laufe der Zeit (Präzession) mit den Fundamentalfrequenzen $g$ und $s$. Säkulare Resonanzen können jetzt als ganzzahliges Vielfaches zwischen einer der Fundamentalfrequenzen, oder einer Linearkombination von $g$ und $s$ sowie der entsprechenden Größe den anderen Planeten auftreten. Auch Linearkombinationen der Fundamentalfrequenzen unterschiedlicher Planeten können zu säkularen Resonanzen führen.
-Auch säkulare Resonanzen führen über lange Zeiträume hinweg zu einer Änderung der Exzentrizität und Inklination der Körper.
+Ein weiterer wichtiger Typ von Bahnresonanz sind die säkularen Resonanzen – engl. Secular resonances (SR). Sie treten auf wenn die orbitale Präzession zweier Körper synchronisiert sind.
+Die Lage eines Orbits im dreidimensionalem Raum, wird neben der Inklination durch die Länge des aufsteigenden Knotens ($\Omega$) und das Argument des Perihels ($\omega$) beschrieben. Die Orientierung dieser Bahnebene schwankt im Laufe der Zeit (Präzession) mit den Fundamentalfrequenzen $g$ und $s$. Säkulare Resonanzen können jetzt als ganzzahliges Vielfaches zwischen einer der Fundamentalfrequenzen, oder einer Linearkombination von $g$ und $s$ sowie der entsprechenden Größe des anderen Planeten auftreten. Auch Linearkombinationen der Fundamentalfrequenzen unterschiedlicher Planeten können zu säkularen Resonanzen führen.
+Säkulare Resonanzen führen über ebenfalls lange Zeiträume hinweg zu einer Änderung der Exzentrizität und Inklination der Körper, sind jedoch tendenziell schwächer.
 
-Neben diesen beiden Typen existieren noch eine Reihe weiterer Resonanzen, welche für diese Arbeit jedoch keine größere Rolle spielen.
+Neben diesen beiden Typen existieren noch eine Reihe weiterer Resonanzen, welche für diese Arbeit jedoch keine größere Rolle spielen. %Nennen?
 
 \subsection{Dynamische Reibung}
 \begin{figure}
@@ -305,9 +308,9 @@ Neben diesen beiden Typen existieren noch eine Reihe weiterer Resonanzen, welche
 \caption{Fliegt ein Teilchen durch ein Feld von leichteren Teilchen, so werden diese von ihm angezogen. Da sich das Teilchen unterdessen weiterbewegt, kommt es hinter dem Teilchen zu einer erhöhten Dichte, welche das Teilchen durch die gravitative Anziehung abbremst.}
 \label{fig:df}
 \end{figure}
-Ein weiteres Konzept das wir zum Verständnis des Folgenden benötigen werden ist das der Dynamischen Reibung (engl. dynamical Friction). Als Dynamische Reibung bezeichnet man die reibungsartige Beeinflussung der Bewegung eines Körpers durch die gravitative Wirkung ihn umgebener Materie ohne das es zu eine Berührung mit dieser kommt.
-Betrachten wir dazu wie in Grafik \ref{fig:df} dargestellt eine große Masse die sich durch ein Feld vieler zufällig verteilter kleiner Massen bewegt. Der Körper zieht die kleineren Massen nun gravitativ an, so dass diese sich auf ihn zu bewegen und es dort zu einer erhöhten Massedichte kommt. Da sich der Körper inzwischen weiter Bewegt hat, kommt es zu einer \glqq Heckwelle\grqq. Durch die gravitative Anziehung dieser Heckwelle wird das Teilchen nun abgebremst.
-Näherungsweise kann die Kraft durch Dynamische Reibung auf eine Masse $M$ die sich mit der Geschwindigkeit $v$ durch ein gleichmäßig dichtes (Dichte $\rho$) Feld aus deutlich leichteren Teilchen als
+Ein weiteres Konzept, das wir zum Verständnis des Folgenden benötigen werden, ist das der Dynamischen Reibung (engl. dynamical Friction). Als Dynamische Reibung bezeichnet man die reibungsartige Beeinflussung der Bewegung eines Körpers durch die gravitative Wirkung mit ihn umgebener Materie ohne das es zu eine Berührung mit dieser kommt.
+Betrachten wir dazu wie in Grafik \ref{fig:df} dargestellt eine große Masse die sich durch ein Feld vieler zufällig verteilter kleiner Massen bewegt. Der Körper zieht die kleineren Massen nun gravitativ an, so dass diese sich auf ihn zu bewegen und es dort zu einer erhöhten Massedichte kommt. Da sich der Körper inzwischen weiter bewegt hat, kommt es zu einer \glqq Heckwelle\grqq. Durch die gravitative Anziehung dieser \glqq Heckwelle\grqq wird das Teilchen abgebremst.
+Näherungsweise kann die Kraft durch Dynamische Reibung auf eine Masse $M$ die sich mit der Geschwindigkeit $v$ durch ein gleichmäßig dichtes Feld (Dichte $\rho$) aus deutlich leichteren Teilchen als
 \begin{equation}\label{eq:df}
 \textbf{f}_{dyn} \approx C \frac{G^2 M^2 \rho}{v^2_M}
 \end{equation}
@@ -326,7 +329,7 @@ Während einem kleinem Zeitschritt $\Delta t$ beträgt der Betrag der Abbremsung
 \begin{equation}
 \Delta v = \frac{f_{dyn}}{M} \Delta t = C \rho \frac{\left(GM\right)^2}{Mv^2} \Delta t
 \end{equation}
-Diese Abbremsung führt nun zu einem Drift in Richtung Sonne, dessen Größe wir berechnen können:
+Diese Abbremsung führt nun zu einer Drift in Richtung Sonne, dessen Größe wir berechnen können:
 \begin{equation}
 \Delta r = \od{r}{v}\Delta v = \frac{4GMa^2v}{\left(av^2+GM\right)^2} \cdot \Delta v
 \end{equation}
@@ -334,15 +337,15 @@ durch einsetzen erhalten wir
 \begin{equation}
 \Delta r = \frac{1}{v} \frac{4a^2G^3M^2 C \rho}{\left(av^2+GM\right)^2}  \Delta t \propto \frac{1}{v^5}
 \end{equation} % keine echte Proportionalität
-Die Veränderung von $r$ ist also um so stärker, desto langsamer das Teilchen bewegt. Nachdem sich nun bekanntermaßen (und auch aus Gleichung \ref{eq:Bahngeschwindigkeit} ablesbar) der Planet um so schneller bewegt, je näher er an diesem ist, können wir daraus schließen, dass er an Sonnenfernen Punkten eine deutlich stärkere Bahnveränderung hin zur Sonne erfährt, als an Sonnennahen. Somit sinkt die Exzentrizität.
+Die Veränderung von $r$ ist also um so stärker, desto langsamer sich das Teilchen bewegt. Nachdem sich nun bekanntermaßen (und auch aus Gleichung \ref{eq:Bahngeschwindigkeit} ablesbar) der Planet um so schneller bewegt, je näher er an diesem ist, können wir daraus schließen, dass er an Sonnenfernen Punkten eine deutlich stärkere Bahnveränderung hin zur Sonne erfährt, als an Sonnennahen. Somit sinkt die Exzentrizität.
 
 \subsection{Planetenentstehung} % weiter ausbauen
-Das heutige Standardmodell der Stern- und Planetenentstehung geht vom Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $0,1\mathrm{\mu m}$ große Staubteilchen besteht\cite{Hanslmeier2002}. Es entsteht ein Protostern in mitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
+Das heutige Standardmodell der Stern- und Planetenentstehung geht vom Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $0,1\mathrm{\mu m}$ großen Staubteilchen besteht\cite{Hanslmeier2002}. Es entsteht ein Protostern in mitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
 Später wird der Drehimpuls nach außen transportiert. % durch was
-Durch die Brown'sche Bewegung kommt es zu zufälligen Zusammenstößen in der Gaswolke, wodurch die Teilchengrößen anwachsen. Diese wachsen durch akkretion von Gas und später durch Kollisionen weiter bis hin zu etliche Kilometer großen Klumpen, Planetesimale genannt.
-Diese wachsen durch den gravitativen Einfang von kleineren Planetesimalen immer stärker bis sie ihre Umgebung gravitativ dominieren und man von planetaren Embryonen spricht.
+Durch die Brown'sche Bewegung kommt es zu zufälligen Zusammenstößen in der Gaswolke, wodurch die Teilchengrößen anwächst. Diese wachsen durch Akkretion von Gas und später durch Kollisionen weiter bis hin zu etliche Kilometer großen Klumpen, Planetesimale genannt.
+Diese wachsen durch den gravitativen Einfang von kleineren Planetesimalen immer stärker bis sie ihre Umgebung gravitativ dominieren und man dann von planetaren Embryonen spricht.
 
-Durch die Wechselwirkung des planetaren Embryos mit der Gasscheibe in die er noch immer eingebettet ist, kommt es zu einer Migration des Planeten nach innen. Gleichzeitig stabilisiert die Gasscheibe die Planetenbahnen, auch wenn sie sich in Bahnresonanzen befinden, und dämpfen die Exzentrizitäten. Als sich nach einigen Millionen Jahren die Gasscheibe auflöst befinden sich die Planeten auf engen, kompakten, kreisförmigen Orbits, welche sich meist in Mean-Motion-Resonanzen zueinander befinden\cite{Nesvorny2011}.
+Durch die Wechselwirkung des planetaren Embryos mit der Gasscheibe in die er noch immer eingebettet ist, kommt es zu einer Migration des Planeten nach innen. Gleichzeitig stabilisiert die Gasscheibe die Planetenbahnen, auch wenn sie sich in Bahnresonanzen befinden, und dämpfen die Exzentrizitäten. Zum Zeitpunkt als sich nach einigen Millionen Jahren die Gasscheibe auflöst befinden sich die Planeten auf engen, kompakten, kreisförmigen Orbits, welche sich meist in Mean-Motion-Resonanzen zueinander befinden\cite{Nesvorny2011}.
 Da sich die Planeten im heutigem Sonnensystem auf weiter entfernten Bahnen befinden, braucht es einen Mechanismus, welcher die Planeten wieder auf weiter entfernte Bahnen bringt. Dies geschieht durch die Bahnresonanzen welche nun nicht mehr durch die Gasscheibe stabilisiert werden. Ein auf unser Sonnensystem bezogenes Model hierfür ist das Nizza-Modell.
 
 \section{Das Nizza-Modell}\label{Orbits}
@@ -351,18 +354,18 @@ In diesem Kapitel werden wir das Nizzamodell, wie in der ursprünglichen Arbeit\
 In der Simulation berücksichtigten die Forscher dabei die vier Riesenplaneten auf sehr kompakten Orbits, sowie eine Scheibe aus Planetesimalen im Gravitationsfeld der Sonne. % Bäh: Forscher?
 Dies ist ein plausibler Ausgangszustand für die Situation nachdem der Sonnenwind die Gaswolke %Sonnenwind, Gaswolke?
 zerstreut hat. % bäh: formulierung
-Als Anfangsparameter wählten Tsiganis et al. in den Simulationen für die große Halbachse des Jupiterorbits $a_J = 5,45 \AU$. Saturn wurde wenige Zehntel AU vor der bei $a_{1:2} = 8,65 \AU$ gelegenen 1:2-MMR gesetzt\cite{Tsiganis2005}.
-Dass Saturn weiter innen als auf der zu Jupiter resonanten Bahn war, ist eine notwendige Bedingung, da es anderenfalls schon zu Zeiten der Gasscheibe eine starke Migration durch die Wechselwirkung mit dieser gegeben hätte\cite{Levison2008}. %O-Zitat, klarer
+Als Anfangsparameter wählten \cite{Tsiganis2005} in den Simulationen für die große Halbachse des Jupiterorbits $a_J = 5,45 \AU$ und Saturn wurde wenige Zehntel AU vor der bei $a_{1:2} = 8,65 \AU$ gelegenen 1:2-MMR gesetzt.
+Dass Saturn weiter innen als auf der zu Jupiter resonanten Bahn war, ist laut \cite{Levison2008} eine notwendige Bedingung, da es anderenfalls schon zu Zeiten der Gasscheibe eine starke Migration durch die Wechselwirkung mit dieser gegeben hätte. %O-Zitat, klarer
 Die Orbitalverteilung der transneptunischen Objekte lässt darauf schließen, dass Neptuns Migration innerhalb von 20 AU begonnen hat\cite{Tsiganis2005}.
 Die beiden Eisplaneten wurden in den Simulationen von der Gruppe von Tsiganis mit großen Halbachsen von 11-13 AU respektive 13,5-17 AU, mit einem Mindestabstand von 2 AU gestartet.
 Die Planetenorbits waren, wie von den Planetenentstehungsmodellen gefordert, % formulierung, Quelle
 nahezu kreisförmig und coplanar ($e, i \approx 10^{-3}$).
 
-Die Planetisimalenscheibe – ein Überbleibsel der Planetenentstehung – begann 1.5 AU hinter dem Orbit des zweiten Eisplaneten und reichte bis zu einer Entfernung von 30-35 AU hinaus\cite{Tsiganis2005,Levison2008}. Sie bestand aus 1000-5000 gleich schweren Brocken, mit einer Gesamtmasse von 30 bis 50 Erdmassen. %Ausdehnung steht oben, runter?
-Die Flächendichte der Scheibe wurde in den Simulationen linear mit dem Sonnenabstand abfallend gewählt. In einigen Simulationen wurde eine dynamisch "heiße"\ Scheibe in anderen eine "dynamisch kalte"\ Scheibe gewählt, wobei mit dynamisch heiß gemeint ist, dass Exzentrizität und Inklination relativ groß waren: $e \approx \sin i \approx 0.05 $, im Vergleich zu $e \approx \sin i \approx 10^{-3} $ im kalten Fall.\cite{Tsiganis2005}
-Die Eigengravitation der Scheibe wurde in den Simulationen ignoriert\cite{Tsiganis2005}.
+Die Planetesimalenscheibe – ein Überbleibsel der Planetenentstehung – begann 1,5 AU hinter dem Orbit des zweiten Eisplaneten und reichte bis zu einer Entfernung von 30-35 AU hinaus\cite{Tsiganis2005,Levison2008}. Sie bestand aus 1000-5000 gleich schweren Brocken, mit einer Gesamtmasse von 30 bis 50 Erdmassen. %Ausdehnung steht oben, runter?
+Die Flächendichte der Scheibe wurde in den Simulationen linear mit dem Sonnenabstand abfallend gewählt. In einigen Simulationen wurde eine dynamisch "heiße"\ Scheibe in anderen eine "dynamisch kalte"\ Scheibe gewählt, wobei mit dynamisch heiß gemeint ist, dass Exzentrizität und Inklination relativ groß waren: $e \approx \sin i \approx 0.05 $, im Vergleich zu $e \approx \sin i \approx 10^{-3} $ im kalten Fall\cite{Tsiganis2005}.
+Die Eigengravitation der Scheibe wurde in den Simulationen ignoriert\cite{Tsiganis2005}\footnote{Dies schien aufgrund der geringen Teilchenmassen angebracht und machte die Simulation überhaupt rechenbar. In Kapitel \ref{Nizza2} wir klar werden, dass dies nur bedingt eine sinnvolle Vereinfachung darstellt.}
 Die Simulationen wurden mit den oben besprochenen Codes Mercury und SyMBA durchgeführt,
-der Zeitschritt betrug zwischen einem viertel und einem halben Jahr.\cite{Tsiganis2005}
+der Zeitschritt betrug zwischen einem viertel und einem halben Jahr\cite{Tsiganis2005}.
 
 Aus dieser Scheibe werden von den Planeten immer wieder einzelne Planetesimale gestreut oder akkretiert. Dabei kommt es durch die Impulsübertrag zu einer Änderung der Planetenorbits\cite{Tsiganis2005}. %Kinderkacke
 Die Simulationen zeigen, dass Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert\cite{Tsiganis2005,Hahn1999}. % Hahn nicht gelesen
@@ -373,7 +376,7 @@ Die Simulationen zeigen, dass Saturn, Uranus und Neptun langsam nach außen wand
 \caption{Bahnveränderung der vier Gasplaneten. Über die Zeit sind die Entfernung des Perihel, die große Halbachse und Entfernung des Aphel von Jupiter (rot), Saturn (grün), Neptun (dunkelblau) und Uranus (hellblau) dargestellt. Der Zeitpunkt als es zur 2:1 MMR zwischen Jupiter und Saturn kommt ist gestrichelt eingezeichnet. Rechts sind die finalen Numerischen Exzentrizitäten angegeben. Es handelt sich hier um eine Simulation mit einer dynamisch heißen Scheibe mit $35M_\oplus$ aus 3500 Teilchen. Wie in etwa der Hälfte der Fälle kam es auch hier zu einer Vertauschung der Reihenfolge der Eisplaneten.}
 \label{fig:Orbitalevolution}
 \end{figure}
-Während der Migration werden die Exzentrizitäten durch den gravitativen Einfluss der Planetesimale, bekannt als dynamische Reibung, gedämpft.\cite{Tsiganis2005}
+Während der Migration werden die Exzentrizitäten durch die dynamische Reibung durch die Planetesimale, gedämpft\cite{Tsiganis2005}.
 Mit der Zeit kommen die Planeten sich durch die Migration näher, so dass Mean-Motion-Resonanzen auftreten.
 Man betrachtet im Nizza-Modell die 2:1-Resonanz zwischen Jupiter und Staturn, welche nach ein paar hundert Millionen Jahren auftritt und die stärkste Resonanz ist. % zweiten halbsatz besser einbauen
 Die Autoren testeten auch Anfangsbedingungen, welche zum Auftreten von anderen MMRs führten. Doch weder die 2:3 MMR zwischen Saturn und dem inneren Eisriesen, noch die 1:2 MMR zwischen den beiden Eisriesen waren stark genug um die Bahn von Jupiter zu beeinflussen\cite{Tsiganis2005}. % Tsiganis2005 hats noch genauer
@@ -406,14 +409,15 @@ Bei Klasse B wird Neptun durch Uranus direkt fast auf seine endgültige Entfernu
 und anschließend wird die Exzentrizität durch dynamische Reibung in der Planetesimalscheibe verringert\cite{Nesvorny2007}. Somit ist die Zeitdauer der Phase der Schnellen Migration bei dieser Klasse kürzer\cite{Tsiganis2005}. Auch führt diese Art der Dynamik dazu, dass die Exzentrizität weniger stark abnimmt\cite{Tsiganis2005}.
 Bei den Simulationen der Klasse A wird Neptun auf eine etwa $22-25 \AU$ von der Sonne entfernte Umlaufbahn geschleudert und migriert dann langsamer innerhalb der Planetesimalscheibe auf seine endgültige Position\cite{Tsiganis2005}.
 14 der Simulationen waren vom Typ B, 15 vom Typ A. % Satz häßlich
-Die Durchschnittswerte und Standardabweichungen für die großen Halbachsen, Exzentrizitäten und Inklinationen der Planeten von beiden Gruppen sind in Grafik \ref{fig:VergleichmitMesswerten} aufgetragen. Wie man sieht, stimmen die Resultate beider Klassen fast mit den tatsächlich beobachten Werten überein, im Fall der Klasse B ist die Übereinstimmung jedoch deutlich größer – hier liegen sogar alle Messewerte innerhalb nur einer Standardabweichung um den Mittelpunkt\cite{Tsiganis2005} – Klasse A hat ist etwas schlechter, insbesondere sind die Exzentrizitäten von Saturn und Uranus deutlich zu klein\cite{Nesvorny2007,Tsiganis2005}. 
+
+Die Durchschnittswerte und Standardabweichungen für die großen Halbachsen, Exzentrizitäten und Inklinationen der Planeten von beiden Gruppen sind in Grafik \ref{fig:VergleichmitMesswerten} aufgetragen. Wie man sieht, stimmen die Resultate beider Klassen fast mit den tatsächlich beobachten Werten überein, im Fall der Klasse B ist die Übereinstimmung jedoch deutlich größer – hier liegen sogar alle Messwerte innerhalb nur einer Standardabweichung um den Mittelpunkt\cite{Tsiganis2005} – Klasse A hat ist etwas schlechter, insbesondere sind die Exzentrizitäten von Saturn und Uranus deutlich zu klein\cite{Nesvorny2007,Tsiganis2005}. 
 Dies stellt insgesamt einen bedeutenden Erfolg des Modells dar und es hebt sich von vorhergehenden Modellen ab.
-So hatte zum Beispiel das Vorgängermodell von Gomes, Morbidelli und Levinson \cite{Gomes2004} %Namen prüfen
-das Problem zwar vorzusagen zu können, dass Neptun eine große Halbachse von etwa 30 AU hat, jedoch war die Uranusbahn dabei zu dicht an der Sonne.
+So hatte zum Beispiel das Vorgängermodell von \cite{Gomes2004} %Namen prüfen
+das Problem zwar vorherzusagen können, dass Neptun eine große Halbachse von etwa 30 AU hat, jedoch war die Uranusbahn dabei zu dicht an der Sonne.
 Die großen Halbachsen der Eisriesen für die Klasse B betragen im Nizza-Modell hingegen $a_U = 19,3 \pm 1,3 \AU$ und $a_N = 29,9 \pm 2,4 \AU$, was mit den tatsächlichen Werten von $a_U = 19,2 \AU$ und $a_N = 30,1 \AU$ sehr gut übereinstimmt\cite{Tsiganis2005}.
 
 Der finale Abstand zwischen Jupiter und Saturn hängt vor allem von der Masse der Materie, %bäh: finale
-die sie während der instabilen Phase streuen, ab, welche wiederum von der Masse der Planetenscheibe abhängt\cite{Tsiganis2005}. % richtig?
+die sie während der instabilen Phase streuen, ab, welche ihrerseits wiederum von der Masse der Planetenscheibe abhängt\cite{Tsiganis2005}. % richtig?
 Höhere Massen der Scheibe führen zwar zu stabileren Endsystemen, wird die Masse jedoch größer als $\approx (35-40) \ME$ wird der Abstand zwischen Jupiter und Saturn im fertigsimuliertem System zu groß\cite{Tsiganis2005} und wählt man eine Masse von $\approx 50 \AU$, so tritt zwischen Jupiter und Saturn zusätzlich auch eine 2:5 Resonanz auf und die dynamische Reibung wird so groß, dass Exzentrizitäten kleiner als in Realität ausfallen\cite{Tsiganis2005}.
 
 Die dynamische Temperatur der Scheibe wirkt sich auf die Exzentrizitäten aus: Heißere Scheiben führen zu höheren Exzentrizitäten von Jupiter und Saturn. Die beobachtete Existenz von zahlreichen plutogroßen transneptunischen Objekten spricht laut den Autoren für eine Scheibe mit der Dynamik der heißeren der beiden getesteten Scheiben\cite{Tsiganis2005}. % Tsiganis2005 zitiert hier Stern 1991
@@ -426,7 +430,7 @@ Die dynamische Temperatur der Scheibe wirkt sich auf die Exzentrizitäten aus: H
 \begin{figure}[tbn]
 \centering
 \includegraphics[scale=1]{img/Gomes2005-2.pdf}
-\caption{Die Planeten Orbits und die Positionen der Teilchen während einer Simulation. Abbildung \textbf{a)} zeigt das System nach nur 100 My zum Beginn der Migration. Abbildung \textbf{b)} stellt das System kurz vor dem Auftreten des Resonanzfalls dar (879 My). Abbildung \textbf{c)} zeigt das System nur 3 Millionen Jahre nach \textbf{b)} dar. Abbildung \textbf{d)} zeigt das System weitere 200 Millionen Jahre später, nur noch wenige Planetesimale sind übrig.} %Projektion auf initial mean orbital plane
+\caption{Die Planetenorbits und die Positionen der Teilchen während einer Simulation. Abbildung \textbf{a)} zeigt das System nach nur 100 My zum Beginn der Migration. Abbildung \textbf{b)} stellt das System kurz vor dem Auftreten des Resonanzfalls dar (879 My). Abbildung \textbf{c)} zeigt das System nur 3 Millionen Jahre nach \textbf{b)} dar. Abbildung \textbf{d)} zeigt das System weitere 200 Millionen Jahre später, nur noch wenige Planetesimale sind übrig.} %Projektion auf initial mean orbital plane; Quelle!
 \label{fig:Zeitlicheentwicklung}
 \end{figure}
 
@@ -494,7 +498,7 @@ Das Nizza-Modell sagt voraus, dass sowohl Asteroiden, also auch Planetesimale au
 Die Streuung von Asteroiden führt auch dazu, dass der Asteroidengürtel um einen Faktor von ungefähr 10 ausgedünnt wird, was zu bestehenden Modellen passt.  %Streuung Genauer!, Modelle citen!
 Die Menge an Kometen, die während des LHB auf die Erde trafen ergibt sich im Nizzamodell zu $\approx 1,8 \cdot 10^{23} \, \mathrm{g}$ was etwa 6\% der heutigen Ozeanmasse beträgt und somit kompatibel zu der durch Isotopenhäufigkeit (D-zu-H-Verhältnis) bestimmten Obergrenze der durch Kometen eingebrachten Wassermenge ist\cite{Gomes2005}. % cite [13] in Gomes2005?!
 
-Abschließend möchte ich noch darauf hinweisen, dass es neuere geologische Forschungen gibt, welche die Notwendigkeit der Existenz des Late Heavy Bombardments in Frage stellen\cite{Spudis2011}. % ausführlicher
+Abschließend möchte ich noch darauf hinweisen, dass die Existenz des Late Heavy Bombardments nicht ganz unumstritten ist. Zuletzt hat insbesondere die geologische Untersuchung von \cite{Spudis2011} die Notwendigkeit der Existenz in Frage gestellt. Die Autoren des Nizza-Modells gehen darauf unter anderem auch in \cite{Brasser2009} darauf ein. Sie führen auf, dass es vier verschieden Gründe gibt, die für das LHB sprechen: (i) die Existenz besonders große Mare auf dem Mond ist nicht mit einem monoton abfallenden Einschlagsrate erklärbar (ii) Untersuchungen von Zirkonen, deuten darauf hin, dass das Erdklima vor 4,3-3,9 Milliarden Jahren vergleichsweise kalt und vor 3,8 Milliarden Jahren -- vermutlich durch die Einschläge während des LHBs -- deutlich erwärmt wurde, (iii) die größten Mare des Monds entstanden erst nach dem Zusammenbruch des Marsianischem Magnetfeld und (iv) der Satrunmond Iapetus weist Einschlagskrater auf die jünger sind, als der der vor 200 bis 800 Millionen Jahren entstandene Äquatoriale Bergrücken auf. % Quellen!? Formatierung, nach oben verschieben? Ausführilicher?
 
 \FloatBarrier
 \section{Trojaner}\label{Trojaner}
@@ -845,14 +849,52 @@ Natürlich ist die Forschung in den bald zehn Jahren seit den Veröffentlichunge
 So wird das Nizza-Modell, in der Form wie es hier im Detail vorgestellt wurde, in Abgrenzung zu modifizierten Nizza-Modellen, heute auch als das original Nizza-Modell (engl. \glqq original Nice modell\grqq, kurz ONM) bezeichnend.
 Im folgenden will ich noch die wichtigsten der modifizierten Nizza-Modelle kurz vorstellen. %bäh
 
-\subsection{Weitere Resonanzen}
+\subsection{Weitere Resonanzen \& ein neuer Trigger}\label{Nizza2}
+Auf ein Problem des original Nizza-Modells weisen \cite{Morbidelli2007a} hin: während die kompakten Planeten Orbits und die Existenz der Planetesimalscheibe wie wir gesehen haben sehr plausible Anfangszustände sind, waren die Details der Anfangsbedingungen -- die genauen Orbitale der Planeten und die genau Position der Planetesimalscheibe -- mangels besseren Wissens darüber weitestgehend geraten.
 
+So zeigen hydrodynamische Simulationen unter anderem von \cite{Morbidelli2007a}, das die Riesenplaneten in der Gasscheibe nach innen migrieren, bis es zwischen Jupiter und Saturn zu einer 2:3 Mean-Motion-Resonanz kommt, welche bei Vorhanden sein der Gasscheibe eine äußerst stabile Konfiguration ist und die Migration der Planeten zur Sonne stoppt und somit verhindert, dass die Planeten als \glqq Hot Jupiters\grqq zu nahe an der Sonne enden\cite{Morbidelli2007a}.
+Zu Zeitpunkt als sich die Gasscheibe aufgelöst hat -- also dem Startzeitpunkt des Nizza-Models -- wären die Planten also in oder sehr naher der 3:2-MMR und nicht der im Nizza-Modell betrachteten 2:1-Resonanz.
+Man stellt darüber hinaus in der Tat fest, dass zu dieser Zeit alle Planeten zueinander in Mean-Motion-Resonanzen sein sollten.
+
+Nun gibt es zwei mögliche Variationen des Nizza-Modells: entweder man argumentiert damit das die 2:3-MMR nach Auflösung der Gasscheibe nicht mehr stabil ist und entwickelt ein Modell, wie sich dadurch das System in einen Zustand ähnlich dem Anfangszustand des Nizza-Modells migriert, oder man modifiziert das Modell, so das es mit der  2:3-MMR anstatt der 2:1-MMR auskommt. %formulierung: ausskommt
+
+Während \cite{Morbidelli2007a} noch schnelles Wachstum der Saturnmasse oder ein Erhöhung der Viskosität der Gasscheibe, jeweils kurz vor dem Auflösen der Gasscheibe, vorschlug um einen Übergang zu den Anfangsbedingungen der original Nizza-Modells zu finden, sind diese mittlerweile nicht mehr plausibel. %Pierens & Nelson 2008 und Zhang & Zhou 2010 nach \cite{Levison2011} 
+
+Eine erste Variante des Nizza-Modells das mit diesen Multi-resonanten Anfangsbedingungen startet, schlug \cite{Morbidelli2007b} vor:
+Dabei wurde wie im original Nizza-Modell eine Plantesimalscheibe kurz hinter dem zweiten Eisriesen betrachtet -- durch Interaktion mit dieser Migrieren die Planeten, was zu einer Erhöhung der Verhältnisse der Umlaufzeiten und somit zum Verlassen der Resonanzen führt.
+Da das System sehr kompakt ist, kommt es bald zum auftreten weiterer Resonanzen, welche die Exzentrizitäten erhöhen und somit ganz analog zum ONM zu einer Instabilitätsphase führen. Die Modelle unterscheiden sich also nur in den Anfangsbedingungen fundamental, nicht jedoch im späteren Verlauf.
+Ein ähnliches Model würde auch von Batygin \& Brown 2010 vorgeschlagen. % cite
+
+Bei diesen Modellen gibt es jedoch ein Problem mit dem \glqq Feedback-Mechanismus\grqq der beim ONM eine kritische Rolle spielte. Wie in Kapitel \ref{Orbits} beschrieben werden zunächst nur einige wenige Planetesimale  aus der Scheibe gestreut, durch diese migrieren die Eisriesen nach außen und streuen dadurch noch mehr Planetesimale. Dieser selbstverstärkende Mechanismus kann im modifizierten Fall nicht in dieser Art auftreten: Werden einzelne Teilchen gestreut, so führt dies zwar zu einem Sinken der Exzentrizitäten, die Resonanzen halten jedoch die großen Halbachsen der Planeten fest\cite{Levison2011}.
+Die Auswirkung der wenigen gestreuten Planetesimale ist nicht stark genug um die klebrige Wirkung der Resonanzen zu überwinden, somit kann der multi-resonante Zustand nicht wie oben beschrieben verlassen werden und die Instabilitätsphase würde nicht auftreten.
+Man braucht für diese Modell also einen anderen Trigger-Mechanismus. Diesen fanden \cite{Levison2011} -- sie ignorierten die Streuung der wenigen Planetesimale und zeigten, dass wenn man -- im Gegensatz zu den bisherigen Simulationen -- die gravitative Wechselwirkung der Planetesimale untereinander nicht ignoriert es auch ohne diese zur Energieübertragung zwischen Planet und Scheibe und somit zu Migration der Planeten kommt.
+Dies bring zwei weitere große Vorteile:
+Zum einen war die Nichtbeachtung der Interaktion der Planetesimale eine Ergebnis verfälschende Vernachlässigung, welche ursprünglich notwendig war um die Berechnungen möglich zu machen. % bessere formulierung
+Viel wichtiger ist jedoch, dass damit ein weiteres Problem des ONM gelöst wird. Während der Zeitpunkt des Auftretens der Instabilitästphase von der genauen Position der inneren Grenze der Planetesimalscheibe abhängt, ist in der Version von \cite{Levison2011, Morbidelli2007b} diese davon unabhängig.
+So musste beim Nizza-Modell in der oben beschriebenen Version die Innengrenze der Scheibe zwischen $\approx14,5 \AU$ und $\approx15,5 \AU$ gewählt werden, damit das Auftreten der Instabilitätsphase im Bereich zwischen 200 Millionen und 1 Milliarde nach Auflösung der Gasscheibe liegt\cite{Levison2011, Gomes2005}.
+Bereits für eine so grobe zeitliche Anpassung an das Late Heavey Bombardment ist also ein empfindliches Finetuning notwendig.
+
+Bei dem sich damit ergebenden modifizierten Nizza-Modell, löst also nicht länger das Streuen von einzelnen Planetesimalen die Instabilität aus, vielmehr kommt es dazu, dass die gravitative Fernwirkung der Planeten und der Gravitation der Planetesimale zu einem ähnlichen Effekt, wie bei der Dynamischen Reibung führen.
+Wenn nun -- wie die hydrodynamischen Simulationen von \cite{Morbidelli2007b} ergeben haben -- der innere Eisriese als einziger Planet einen nicht vernachlässigbare Exzentizität hat, so verliert er durch diesen Effekt Energie. Die Resonanzen zwingen den Eisriesen dabei auf eine stärker exzentrische Bahn, wodurch der Energieübertrag wiederum wächst.
+Somit haben wir wieder einen sich selbst verstärkenden Effekt, der nach einiger Zeit das System destabilisiert. Die Verzögerung betrug dabei in den Simulationen von \cite{Levison2011} in einem viertel der Fälle zwischen 300 Millionen und 1 Milliarde Jahren, wobei diese Verzögerung weitestgehend unabhängig von der genauen Wahl der Scheibenmasse und -Position ist.
+Diese modifizierte Version erklärt das Timing des großen Bombardements noch natürlicher und startet dabei von realistischen Anfangsbedingungen.
+% man können noch sagen, dass es acuh besser für Exosysteme ist.
 
 \subsection{Jumping Jupiter}
+Eine weitere neue Version des Nizza-Models wurde durch die Arbeiten \cite{Morbidelli2009,Brasser2009,Morbidelli2010} begründet. Die größte Neuerung hierbei ist das \glqq Jumping Jupiter-Szenario\grqq.
+Dabei handelt es sich, wenn ein Eisriese zunächst bei einer Begegnung mit Saturn von diesem nach innen geschleudert wir und anschließend von Jupiter wieder nach außen geschleudert wird.
+Dies führt zu einem sehr rasanten Anstieg des Abstands zwischen Jupiter und Saturn, da Saturn nach außen und Jupiter nach innen geschleudert wird, was mehrerer Probleme des original Nizza-Modells löst.
 
+Für eine rapide Migration von Jupiter spricht, dass ansonsten seine Migration die Bahnen der terrestrischen Planeten beeinflusst hätte\cite{Brasser2009}. Während der Migration käme es zeitweise mit Jupiter zu säkularen Resonanzen $g_5 = g_k$ (mit k gleich 1 bis 4) wobei $g_k$ die Fundamentalfrequenz der Länge des aufsteigenden Knotens des k-ten Planeten ist. Diese würden die Exzentrizitäten der terrestrischen Planeten deutlich steigern – was bei Merkur und Venus im Widerspruch zu den beobachteten Bahnen steht. Im Fall eines Jumping Jupiters treten diese Resonanzen jedoch nicht oder nur sehr kurz auf, weil die entsprechend Phase mit $P_S/P_J\approx2,1-2,3$, während welcher die Resonanzen auftreten praktisch \glqq übersprungen\grqq wird. %Quelle
+Der Vollständigkeit sei noch darauf hingewiesen, das \cite{Brasser2009} noch eine alternative Lösung für dieses Problem vorschlägt, so könnte durch eine spezielle Ausgangssituation der Orbitale durch die $g_5=g_2$-Resonanz die Exzentrizität gedämpft worden sein. % genauer?
+
+Eine Begegnung einen Eisriesen mit Saturn ist einerseits laut \cite{Morbidelli2009} nötig um eine gewisse Mode der Präzession von Jupiter auf ihren heutigen Wert anzuregen. %ausführlicher?
+Vor allem ist ein Jumping Jupiter-Szenario jedoch notwendig um die Orbitalverteilung des Asteroidengürtels zu erklären\cite{Morbidelli2010}. Die Bahnen der Asteroiden im Asteroidengürtel würde ebenfalls durch säkulare Resonanzen -- diesmal jedoch die Resonanzen mit Saturn $g_\mathrm{Asteroid}=g_6$ und $s_\mathrm{Asteroid}=s_6$ -- verändert. Im Falle eine langsamen Migration nur durch Interaktion mit den Planetesimalen würden diese die Asteroidenbahnen auf eine mit den Beobachtungen widersprüchliche Weise verändern. Im Falles einen Jumping Jupiters stimmen die Simulationsergebnisse von \cite{Morbidelli2010} gut mit den beobachteten überein.
+
+Ein Jumping Jupiter tritt beim modifizierten Nizza-Modell wie im letzten Abschnitt beschreiben in etwa 5\% der Fälle auf\cite{Brasser2009}.
 
 \subsection{Verlorengegangene Planeten}
-Ein mögliche Erweiterung des Nizza-Modells wurde von \cite{Nesvorny2011} vorgeschlagen und später noch weiter vorangetrieben \cite{Nesvorny2012}. Die Idee von Planetesimalscheibe war, dass es im Sonnensystem früher womöglich noch mehr Riesenplaneten gegeben hat, diese jedoch während der Instabilitätsphase aus dem Sonnensystem geschleudert wurden.
+Ein mögliche Erweiterung des Nizza-Modells wurde von \cite{Nesvorny2011} vorgeschlagen und später noch weiter vorangetrieben \cite{Nesvorny2012}. Die Idee von Nesvorný war, dass es im Sonnensystem früher womöglich noch mehr Riesenplaneten gegeben hat, diese jedoch während der Instabilitätsphase aus dem Sonnensystem geschleudert wurden.
 
 Während man beim klassischem Nizza-Modell eine 2:1 MMR zwischen Jupiter und Saturn betrachtet, betrachtete \cite{Nesvorny2011} auch den Fall mit einer 3:2 MMR zwischen den Gasriesen. Zusätzlich zu Saturn, Jupiter, Uranus und Neptun fügte man bei einigen der Simulationen einen fünften Planeten zwischen Saturn und den Eisriesen ein. Die Masse dieses Planeten entsprach dabei zwischen $3\cdot10^25$ und $3\cdot10^26$ kg\footnote{Im Ppaper \cite{Nesvorny2011} scheint sich ein Tippfehler eingeschlichen zu haben, dort steht g statt kg.}, also zwischen einem drittel und der dreifachen Masse der Eisriesen.
 Mit hydrodynamischen Simulationen wurde in einem ersten Schritt die wahrscheinlichen Orbitale der Planeten bestimmt.
@@ -886,6 +928,7 @@ Im Fall von ursprünglich vier Planeten, erfüllen im Bestfall, bei einer Masse 
 %%%% Asteroidengürtel
 %%%% width/heigth statt scale für die Bilder
 %%%% Sauber zitieren
+%%%% Anführungszeichen fixen
 %%%% https://www.youtube.com/watch?v=VXeOh3xmrQM verlinken
 
 \newpage
