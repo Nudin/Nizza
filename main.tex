@@ -14,8 +14,6 @@
 \usepackage{ziffer}
 \usepackage{units}
 \usepackage[format=hang,font={it,footnotesize},labelfont=bf]{caption}
-%\usepackage{breakcites} %use?
-\usepackage{cite}
 \hypersetup{
     bookmarks=true,
     pdftoolbar=true,
@@ -33,6 +31,11 @@
     filecolor=black,
     urlcolor=blue
 }
+
+%\usepackage{breakcites} %use?
+%\usepackage{cite}
+\usepackage[square]{natbib} %nonamebreak
+\renewcommand{\cite}{\citep}
  
 \author{Michael F. Schönitzer}
 \title{Das Nizza-Modell}
@@ -389,7 +392,7 @@ Wählt man den Abstand hingegen sehr groß ($\DSI \approx \unit[5]{AU}$), so ist
 \label{fig:VergleichmitMesswerten}
 \end{figure}
 Für die restlichen Fälle, welche allesamt nach einer wie oben beschriebenen Migrationsphase wieder zur Ruhe kommen, %bäh: zu Ruhe kommen
-gilt, dass es für Abstände $\DII \ge \unit[3.5]{AU}$ zwar zu Interaktionen der beiden Eisplaneten unter einander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es in Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B\footnote{Die beiden Fälle in der es zu keiner Begegnung kam, wurden aus mir nicht ganz nachvollziehbaren Gründen nicht ausgeschlossen sondern zur Klasse A gerechnet.}, Nesvorný et al. bezeichneten Klasse A als Malhotra Klasse (MA) und Klasse B als 'direct emplacement`-Klasse (DE)\cite{Nesvorny2007}. %Malhotra zitieren?
+gilt, dass es für Abstände $\DII \ge \unit[3.5]{AU}$ zwar zu Interaktionen der beiden Eisplaneten unter einander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es in Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B\footnote{Die beiden Fälle in der es zu keiner Begegnung kam, wurden aus mir nicht ganz nachvollziehbaren Gründen nicht ausgeschlossen sondern zur Klasse A gerechnet.}, \cite{Nesvorny2007} bezeichneten Klasse A als Malhotra Klasse (MA) und Klasse B als 'direct emplacement`-Klasse (DE). %Malhotra zitieren?
 
 Bei Klasse B wird Neptun durch Uranus direkt fast auf seine endgültige Entfernung geschleudert %wo, warum wichtig?
 und anschließend wird die Exzentrizität durch dynamische Reibung in der Planetesimalscheibe verringert\cite{Nesvorny2007}. Somit ist die Zeitdauer der Phase der Schnellen Migration bei dieser Klasse kürzer\cite{Tsiganis2005}. Auch führt diese Art der Dynamik dazu, dass die Exzentrizität weniger stark abnimmt\cite{Tsiganis2005}.
@@ -491,7 +494,7 @@ Abschließend möchte ich noch darauf hinweisen, dass die Existenz des Late Heav
 
 \begin{figure}
 \centering 
-\includegraphics[scale=1]{img/Morbidelli2005-1}
+\includegraphics[scale=1]{img/Morbidelli2005-1v}
 \caption{Stabilität der Trojaner während der Migrationsphase. \textbf{a)} zeigt das aus den Simulationen entnommene Verhältnis der Umlaufdauer von $\PJS$, der Sprung entspricht der Überquerung der 2:1 MMR. In \textbf{b)} wurden anschließend für diese Messwerte ermittelt, wie viele Trojaner über $2\cdot10^5$ Jahre überleben. Bild nach \cite{Morbidelli2005}.}
 \label{fig:Trojanerstabilitaet}
 \end{figure}
@@ -562,7 +565,7 @@ Ein weiterer positiver Aspekt an diesem Model ist, dass er erklärt warum die Ju
 Bevor sie als Trojaner eingefangen wurden, durchgingen sie eine Phase mit sehr hohen Exzentrizitäten, in welcher sie der Sonne immer wieder sehr nahe kamen und dabei entgasten.
 Alle Trojaner der Simulation waren für mindestens 100 Jahre auf Orbits mit einem Perihel $q\lesssim \unit[3]{AU}$, 72\% der Teilchen waren mit 10.000 Jahren lange genug auf derartigen Bahnen um vollständig zu entgasen\cite{Morbidelli2005}.
 
-In den ursprünglichen Simulationen von \cite{Tsiganis2005} wurde auch der Einfang einiger Neptun-Trojaner beobachtet. Durchschnittlich wurden pro Simulation zwei semistabiele (Lebenszeit $>80 \, \mathrm{Myr}$) Trojaner eingefangen, was einer hohen Einfangeffizienz entsprechen würde\cite{Tsiganis2005}.
+In den ursprünglichen Simulationen von \cite{Tsiganis2005} wurde auch der Einfang einiger Neptun-Trojaner beobachtet. Durchschnittlich wurden pro Simulation zwei semistabiele (Lebenszeit $>\unit[80]{Myr}$) Trojaner eingefangen, was einer hohen Einfangeffizienz entsprechen würde\cite{Tsiganis2005}.
 Die Neptun-Trojaner wurden nach einiger Zeit wieder aus ihren Orbits geworfen, was jedoch möglicherweise nur ein Artefakt der Simulation war\cite{Tsiganis2005}. % graininess of Neptuns migration
 Eine genauere Analyse steht aus. % Oder ich hab sie nur noch nicht gelesen!
 
@@ -678,7 +681,7 @@ Man erkennt, dass vor allem bei Uranus zahlreiche Generationen zur endgültigen 
 Die Berücksichtigung dieser Effekte ist nicht nur für die korrekte Bestimmung der Einfangrate von Bedeutung, auch die Orbits der Monde unterschiedlicher Generationen unterscheiden sich, da die Planetesimalscheibe mit der Zeit immer stärker angeregt wird und die späteren Generationen somit aus einer stärker angeregten Scheibe stammen\cite{Nesvorny2007}.
 
 Abschließend wurden alle nach der letzten Begegnung vorhandenen, gebundenen Teilchen mit einem weiteren Integrator % nennen? ja!
-auf ihre lang-zeitliche ($\geq 1 \,\mathrm{Myr}$) Stabilität getestet %Formel fixen
+auf ihre lang-zeitliche ($\geq \unit[1]{Myr}$) Stabilität getestet %Formel fixen
 und dabei die Durchschnittswerte von Großer Halbachse, Exzentrizität und Inklination der einzelnen Satelliten über die Zeit berechnet.
 Für die anschließende Analyse wurden nur die die Million Jahre überlebenden Monde betrachtet\cite{Nesvorny2007}. % einbauen
 Bei der Analyse wird auch hier wieder zwischen den beiden Klassen der Migrationsmodelle unterschieden (\refsec{Orbits}).
@@ -806,7 +809,7 @@ Wenn Neptun migriert, steifen die Positionen seiner MMRs durch die Planetesimale
 Zur Zeit als Neptuns Exzentrizität größer als $\sim 0,15$ war, überlappten sich laut numerischen Berechnungen die MMRs, so dass der Bereich zwischen Neptuns Orbit und seiner 1:2 MMR ein Gebiet ergibt, in welchem sich Teilchen frei Bewegen können, sie können jedoch nicht über die 1:2 MMR hinaus wandern\cite{Levison2008}. Dies erklärt warum der Kuipergürtel durch diese Resonanz begrenzt ist.
 Die kalte und die heiße Population des Kuipergürtels wurden dabei durch zwei unterschiedliche Mechanismen auf ihre heutigen Orbits gebracht und stammen deshalb aus unterschiedlichen Bereichen der Planetesimalenscheibe. Die kalte Population stammt aus Objekten mit einer größeren Sonnendistanz, was zumindest erklären würde, warum es weniger graue Objekte gibt. Um zu erklären, dass es praktisch gar keine grauen Objekte in der kalten Population gibt, vermuten die Autoren, dass nicht nur der Entstehungsort die Farbe prägt\cite{Levison2008}. % sondern auch… ; Quelle checken
 Einige der Objekte werden durch Interaktionen mit verschiedenen Resonanzen Neptuns weiter hinaus gestreut und bilden so die Scatered Disk. % Quelle
-Der Massendefizit erklärt sich qualitativ trivial dadurch, dass nur ein kleiner Anteil der Planetesimale auf stabilen Bahnen im Kuipergürtel enden. Quantitativ ergaben sich in den Simulationen von Levison et al. eine Masse des klassischen Kuipergürtels von zwischen $\sim\unit[0.05]{\ME}$ und $\sim\unit[0.14]{\ME}$, was gut mit den Messwerten übereinstimmt\cite{Levison2008}.
+Der Massendefizit erklärt sich qualitativ trivial dadurch, dass nur ein kleiner Anteil der Planetesimale auf stabilen Bahnen im Kuipergürtel enden. Quantitativ ergaben sich in den Simulationen von \cite{Levison2008} eine Masse des klassischen Kuipergürtels von zwischen $\sim\unit[0.05]{\ME}$ und $\sim\unit[0.14]{\ME}$, was gut mit den Messwerten übereinstimmt.
 
 Insgesamt konnten \cite{Levison2008}mit ihren Simulationen zeigen, dass das Nizza-Modell alle obengenannten Punkte bis auf einen erklärt: Die Durchschnittsexzentrizität des klassischen Kuipergürtels in den Simulationen betrug 0.10-0.13, während sie in Realität 0.07 beträgt.
 Die Autoren weisen darauf hin, dass dies aufgrund der geringen Zahl der Simulationen eine statistische Schwankung sein könnte, oder auf den nicht ganz abgedeckten Parameterraum zurückzuführen sein könnte. Auch wäre es möglich, dass in der Simulation nicht berücksichtigte physikalische Effekte wie die durch Kollisionen verursachte Dämpfung der Exzentrizität diese Diskrepanz verursachen\cite{Levison2008}.
@@ -937,6 +940,6 @@ Mann muss jedoch darauf hinweisen, dass \cite{Veras2012} gezeigt hat, dass diese
 \section{Literaturverzeichnis}
 
 \bibliography{library,libraryKBOmass}{}
-\bibliographystyle{gerapali}
+\bibliographystyle{dinatmod} %gerapali 
 
 \end{document}
