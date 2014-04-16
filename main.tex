@@ -62,13 +62,12 @@
 \maketitle
 
 \section{Einleitung}
-Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Gomes2005,Tsiganis2005,Morbidelli2005}, %Reihenfolge
+Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Tsiganis2005,Morbidelli2005,Gomes2005},
 in denen sie ein neues Modell für die Migration der Riesenplaneten unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wird Nizza-Modell genannt, da die Autoren zu besagter Zeit am Observatoire de la Côte d’Azur in Nizza arbeiteten.
 
-Das Nizza-Modell betrachtet das Sonnensystem, nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen %wirklich?
-davon aus, dass die Planeten damals nahezu kreisförmige, kompakte Orbits hatten.
+Das Nizza-Modell betrachtet das Sonnensystem, nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen davon aus, dass die Planeten damals nahezu kreisförmige, kompakte Orbits hatten.
 
-Aus dieser Scheibe werden von den Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus \& Neptun. Die terrestrischen Planten sind aufgrund der geringen Masse vernachlässigbar.} immer wieder einzelne Planetesimale gestreut oder akkretiert. % Akkretiert? 
+Aus dieser Scheibe werden von den Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus \& Neptun. Die terrestrischen Planten sind aufgrund der geringen Masse vernachlässigbar.} immer wieder einzelne Planetesimale gestreut.
 Dabei kommt es durch die Impulsübertragung zu einer Änderung der Planeten\-orbits\cite{Tsiganis2005},
 wodurch Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert\cite{Hahn1999,Tsiganis2005}.
 Mit der Zeit kommen sich die Planeten durch die Migration näher und es kommt zu einer Resonanz,
@@ -84,24 +83,22 @@ Abschließend werden wir uns mit einer möglichen Erweiterungen des Nizza-Modell
 \section{Grundlagen}
 Beim Nizza-Modell betrachten wir die Entwicklung der Planetenbahnen unter Be\-rück\-sich\-ti\-gung der gegenseitigen gravitativen Einflüsse der Planeten, es handelt sich hier also um klassische Himmelsmechanik. %Bäh!
 Wir betrachten dabei ein n-Körperproblem mit $n>2$ Teilchen, welche lediglich gravitativ wechselwirken.\footnote{Später wird auch die Kollision von Objekten berücksichtigt werden, dies wollen wir jedoch zunächst ignorieren.}
-Der Hamilton des n-Körperproblems lautet bekannterweise
+Der Hamiltonian des n-Körperproblems lautet bekannterweise
 \begin{equation}\label{eq:nbodyhamilton}
 H = \sum\limits_{i=0}^{n-1} \frac{p_i^2}{2m_i} - \sum\limits_{i<j} \frac{Gm_im_j}{r_{ij}}
 \end{equation}
-wobei $r_{ij}=q_i-q_j$ der Abstand der Teilchen i und j ist. % Mehr Symbole erklären?
+wobei $r_{ij}=q_i-q_j$ der Abstand der Teilchen $i$ und $j$ ist. % Mehr Symbole erklären?
 Bei gegebenen Anfangswerten bestimmt der Hamiltonian durch die hamiltonschen Bewegungsgleichungen
 \begin{equation}
 \dot{q_i} = \pd{\mathcal H}{p_i} \quad ; \quad \dot{p_i} = - \pd{\mathcal H}{q_i}
 \end{equation}
 die zukünftige Entwicklung des Systems.
 
-%% Hamilton/Hamiltonian einheitlich schreiben
-
-\subsection{Numerische Integratoren} % hier fehlen noch alle Zitate!!
+\subsection{Numerische Integratoren}
 Während die das Zweikörperproblems durch die Keplerschen Gesetze analytisch gelöst ist, ist das n-Körper Problem bereits ab drei Teilchen nicht mehr allgemein analytisch lösbar.
 Zwar sind analytische Näherungslösungen unter gewissen Voraussetzungen möglich, jedoch verlieren diese ihre Gültigkeit, wenn man versucht die Dynamik des Systems über sehr lange Zeiträume zu betrachten. Hierfür braucht man Verfahren, um die Entwicklung in einer Computersimulation durchzuspielen. %alles bäh
 Doch auch hier sind den Zeiträumen und der Anzahl an Teilchen durch die endliche Rechnerleistung Grenzen gesetzt. %bäh
-In den letzten Jahrzehnten sind die Möglichkeiten derartiger Computersimulationen jedoch rasant gewachsen. Ein Grund dafür ist natürlich die rasant steigende Rechenleistung der Computersysteme, ein ähnlich großer Effekt kam jedoch durch die Verbesserung der Simulationsalgorithmen. Im Folgenden möchte ich die Funktionsweise derartiger Algorithmen grundlegend erklären und die Konzepte erläutern, welche hinter diesen bahnbrechenden Verbesserungen stehen. Dabei werde ich mich auf die für die Himmelsmechanik wesentlichen Punkte aus physikalischer Sicht beziehen -- eine detailliertere, allgemeinere Betrachtung aus Sicht der Mathematik und Informatik soll hier nicht beschrieben werden.
+In den letzten Jahrzehnten sind die Möglichkeiten derartiger Computersimulationen jedoch rasant gewachsen. Ein Grund dafür ist natürlich die rasant steigende Rechenleistung der Computersysteme, ein ähnlich großer Effekt kam jedoch durch die Verbesserung der Simulationsalgorithmen\cite{Morbidelli2002}. Im Folgenden möchte ich die Funktionsweise derartiger Algorithmen grundlegend erklären und die Konzepte erläutern, welche hinter diesen bahnbrechenden Verbesserungen stehen. Dabei werde ich mich auf die für die Himmelsmechanik wesentlichen Punkte aus physikalischer Sicht beziehen -- eine detailliertere, allgemeinere Betrachtung aus Sicht der Mathematik und Informatik soll hier nicht beschrieben werden.
 Für eine ausführlicherer Betrachtung der historischen Entwicklung und Bedeutung der Integratoren sei auf die lesenswerte Arbeit von \cite{Morbidelli2002} verwiesen.
 % Länge des möglichen Zeitraums nennen.
 
@@ -110,9 +107,9 @@ Herzstück eines jeden Algorithmus zur numerischen Integration ist ein sogenannt
 a_{n+1} = F(n,a_0,...,a_n) \,,
 \end{equation}
 also eine Vorschrift wie man aus vergangenen Werten einer Folge den nächsten Folgenwert berechnet. Für eine allgemeine Betrachtung von Mappings auf Himmelsmechanischer Sicht sei auf \cite{Dvorak2005} verwiesen.
-Was wir nun suchen ist ein Mapping, dass bei gegebenen Punkt im Phasenraum $\vec{w}\equiv(\vec{q},\vec{p})$ zum Zeitpunkt t den Punkt im Phasenraum $\tilde{w}$ bestimmt, welcher den wahren Zustand des Systems zum Zeitpunkt $t'=t+h$ möglichst genau approximiert und dabei trotzdem möglichst einfach berechnet werden kann.
+Was wir nun suchen ist ein Mapping, dass bei gegebenen Punkt im Phasenraum $\vec{w}\equiv(\vec{q},\vec{p})$ zum Zeitpunkt t den Punkt im Phasenraum $\tilde{w}$ bestimmt, welcher den wahren Zustand des Systems zum Zeitpunkt $t'=t+h$ möglichst genau approximiert und dabei trotzdem möglichst einfach berechnet werden kann\cite{Binney2008}.
 
-Ein Trick, der dafür hilfreich ist, ist das \textit{averaging principle}: dieses besagt, dass periodische Oszillationen, deren Dauer klein im Vergleich zur Schrittweite $h$ des Algorithmus ist, sich heraus mitteln und daher das Langzeitverhalten nur unwesentlich verfälschen.
+Ein Trick, der dafür hilfreich ist, ist das \textit{averaging principle}: dieses besagt, dass periodische Oszillationen, deren Dauer klein im Vergleich zur Schrittweite $h$ des Algorithmus ist, sich heraus mitteln und daher das Langzeitverhalten nur unwesentlich verfälschen\cite{Wisdom1991}.
 Beschränken wir uns zunächst der Einfachheit halber auf Hamiltonians der Form $\mathcal H(\vec q,\vec p)= \frac{1}{2}\vec p^2+\Phi(\vec q)$. % Ist eigenlich gleich dem oberen für m=1
 Durch das averaging principle können wir den Hamiltonian nun um periodisch oszillierende Terme
 \begin{equation}
@@ -135,7 +132,7 @@ Danach folgt das Zeitintervall von $t=h-\epsilon$ bis $t=h+\epsilon$. Hier ände
 \begin{equation}
 \vec{q'}=\vec{\bar{q}} \quad ; \quad \vec{p'}=\vec{\bar{p}}-h\vec{\nabla}\Phi(\vec{q'})
 \end{equation}
-dies nennt man den \textit{kick step}. Zusammen bilden diese Schritte den \textit{drift-kick modified Euler Integrator}. %Übersetzen?
+dies nennt man den \textit{kick step}. Zusammen bilden diese Schritte den \textit{modifizierten drift-kick Euler Integrator}\cite{Binney2008}.
 Das Mapping für diesen lautet also
 \begin{equation}
 \vec{q'}=\vec{q}+h\vec{p} \quad ; \quad \vec{p'}=\vec{p}-h\vec{\nabla}\Phi(\vec{q'})\,.
@@ -155,7 +152,7 @@ Für eine beliebige Observable $f(\vec q(t),\vec p(t))$ gilt bekanntermaßen:
 \lbrace f,\H \rbrace \\ &=:
 O_\H f \label{eq:Of}
 \end{align}
-wobei $O_\H$ ein Operator ist. Die allgemeine Lösung für \ref{eq:Of} kann mit der Exponentialfunktion geschrieben werden als:
+wobei $O_\H$ ein Operator ist. Die allgemeine Lösung für Gleichung \ref{eq:Of} kann mit der Exponentialfunktion geschrieben werden als:
 \begin{equation}
 f(t+h) = e^{hO_\H}f(t)
 \end{equation}
@@ -163,7 +160,7 @@ Wird nun der Hamiltonian in zwei Teile gespalten $\H=\H_A+\H_B$, so ergibt sich 
 \begin{equation}
 f(t+h)=e^{h\left(O_A+O_B\right)}f(t)
 \end{equation}
-wobei $O_A=\lbrace f, H_A \rbrace$ und $O_B=\lbrace f, H_B \rbrace$ nicht kommutierende Operatoren sind. Betrachten wir die die Exponentialfunktion bis zum quadratischen Term
+wobei $O_A=\lbrace f, H_A \rbrace$ und $O_B=\lbrace f, H_B \rbrace$ nicht kommutierende Operatoren sind\cite{Chambers1999}. Betrachten wir die die Exponentialfunktion bis zum quadratischen Term
 \begin{equation}
 e^{h\left(O_A+O_B\right)} = 1 + h\left(O_A+O_B\right) + \frac{h^2\left(O_A^2+O_AO_B+O_BO_A+O_B^2\right)}{2} + ... \label{eq:OAB}
 \end{equation} % das O ist scheißhäßlich, doch Notation von Chambers übernehmen
@@ -171,23 +168,22 @@ vergleicht man das nun mit dem hintereinander ausführen der beiden Operatoren
 \begin{equation}
 e^{hO_A}e^{hO_B} = 1 + h\left(O_A+O_B\right) + \frac{h^2\left(O_A^2+2O_AO_B+O_B^2\right)}{2} + ... \label{eq:OA+B}
 \end{equation}
-Die beiden stimmen also in erster Ordnung miteinander überein, erst in zweiter Ordnung gibt es Abweichungen aufgrund der nicht kommutierenden Operatoren. Das Anwenden eines der Exponentialoperatoren auf die Größe $f$ entspricht dem Bestimmen der Bewegungsgleichungen unter Beachtung von nur der entsprechenden Hälfte des Hamiltonians.
+Die beiden stimmen also in erster Ordnung miteinander überein, erst in zweiter Ordnung gibt es Abweichungen aufgrund der nicht kommutierenden Operatoren\cite{Chambers1999}. Das Anwenden eines der Exponentialoperatoren auf die Größe $f$ entspricht dem Bestimmen der Bewegungsgleichungen unter Beachtung von nur der entsprechenden Hälfte des Hamiltonians.
 Ein symplektischer Integrator erster Ordnung löst die Bewegungsgleichungen also dadurch annähernd, das er zuerst $\H_B$ und anschließend $\H_A$ anwendet.
 Der Fehler des Integrators ist also von der Ordnung $\mathcal{O}(h^2)$.
-Genau dies geschieht auch bei dem oben beschriebenen drift-kick modified Euler Integrator, %übersetzen?
+Genau dies geschieht auch bei dem oben beschriebenen modifizierten drift-kick Euler Integrator,
 wo wir zunächst über den Zeitrum $h$ die Auswirkung der kinetischen Energie $\H_p=\frac{1}{2}\vec{p}$ und anschließend über den selben Zeitraum $h$ die Auswirkung der potentiellen Energie $\H=\Phi(\vec{q})$ anwendeten.
 Eine deutliche Verbesserung der Genauigkeit lässt sich erreichen, indem man noch die zweite Ordnung von Gleichung \ref{eq:OAB} und \ref{eq:OA+B} berücksichtigt. Ein solcher Integrator zweiter Ordnung wendet zunächst für eine Dauer von $h/2$ den ersten Teil des Hamiltonians an, dann für die Zeitdauer $h$ den zweiten und schließlich wieder für die Zeit von $h/2$ den ersten Teil an:
 \begin{equation}
 q(t+h)=e^{hO_B/2}e^{hO_A}e^{hO_A/2} \label{eq:secondorder}
 \end{equation}
-Wendet man dies auf die obige Aufteilung des Hamiltonians in kinetische und potentielle Energie an, so erhält man den bekannten Leapfrog-Integrator\cite{Duncan1998}. Der Fehler dieser Integratoren ist $\mathcal{O}(h^3)$ fällt also für kleine Schrittweiten deutlich schneller ab.
-Es ist nun möglich noch höhere Ordnungen mit einzubeziehen, damit wird der Integrator bei gleicher Schrittweite immer genauer, beziehungsweise die nötige Schrittweite für eine gewünschte Genauigkeit wird immer größer. Gleichzeitig werden jedoch die Mappings immer komplizierter, weshalb jeder einzelne Schritt immer rechenzeitaufwendiger zu berechnen wird. Integratoren höherer Ordnung sind deshalb meist nicht schneller als Integratoren der zweiten Ordnung.
-% schreibweise von symplektisch
+Wendet man dies auf die obige Aufteilung des Hamiltonians in kinetische und potentielle Energie an, so erhält man den bekannten Leapfrog-Integrator\cite{Duncan1998}. Der Fehler dieser Integratoren ist $\mathcal{O}(h^3)$ fällt also für kleine Schrittweiten deutlich schneller ab\cite{Chambers1999}.
+Es ist nun möglich noch höhere Ordnungen mit einzubeziehen, damit wird der Integrator bei gleicher Schrittweite immer genauer, beziehungsweise die nötige Schrittweite für eine gewünschte Genauigkeit wird immer größer. Gleichzeitig werden jedoch die Mappings immer komplizierter, weshalb jeder einzelne Schritt immer rechenzeitaufwendiger zu berechnen wird. Integratoren höherer Ordnung sind deshalb meist nicht schneller als Integratoren der zweiten Ordnung\cite{Chambers1999}.
 
-Für die Simulation des Sonnensystems über lange Zeiträume sind symplektische Integratoren von besonderer Bedeutung. Symplektische Integratoren sind Algorithmen die die Zweiform $\dif p \wedge \dif q$ erhält, vereinfacht gesagt bedeutet das, dass der Integrator das Phasenraumvolumen erhält\cite{Duncan1998}. Dies führt dazu, dass es bei symplektischen Integratoren keinen Drift der Energie gibt, sondern die Energie auch über beliebig lange Zeiträume konstant ist\cite{Binney2008}. Darüber hinaus sind sie meist zeitreversibel, wendet man also einen Zeitschritt $t\to t+h$ und anschließend einen Zeitschritt $t+h\to t$ an, so erhält man bis auf Rundungsfehler den exakt selben Punkt im Phasenraum\cite{Duncan1998}.
-Da wir das Mapping von obigen modifizierten Euler Integrator direkt aus dem Hamiltonian hergeleitet haben, handelt es sich hier um einen einfachen symplektischen Integrator.
+Für die Simulation des Sonnensystems über lange Zeiträume sind symplektische Integratoren von besonderer Bedeutung. Symplektische Integratoren sind Algorithmen die die Zweiform $\dif p \wedge \dif q$ erhalten, vereinfacht gesagt bedeutet das, dass der Integrator das Phasenraumvolumen erhält\cite{Duncan1998}. Dies führt dazu, dass es bei symplektischen Integratoren keinen Drift der Energie gibt, sondern die Energie auch über beliebig lange Zeiträume konstant ist\cite{Binney2008}. Darüber hinaus sind sie meist zeitreversibel, wendet man also einen Zeitschritt $t\to t+h$ und anschließend einen Zeitschritt $t+h\to t$ an, so erhält man bis auf Rundungsfehler den exakt selben Punkt im Phasenraum\cite{Duncan1998}.
+Da wir das Mapping von obigen modifizierten Euler Integrator direkt aus dem Hamiltonian hergeleitet haben, handelt es sich hier um einen einfachen symplektischen Integrator\cite{Binney2008}.
 
-1991 beschrieben Wisdom und Holman einen symplektischen Integrator, welcher zu einer revolutionären Verbesserung der Möglichkeiten zur Simulation des Sonnensystems führte.
+1991 beschrieben \cite{Wisdom1991} einen symplektischen Integrator, welcher zu einer revolutionären Verbesserung der Möglichkeiten zur Simulation des Sonnensystems führte.
 Man nennt diesen und verwandte Algorithmen \textit{mixed variables Symplectic} (MVS) Integratoren. 
 Weite Verbreitung fand der Algorithmus von Wisdom und Holman vor allem durch die Implementation namens Swift durch \cite{Levison1994}.
 Auf dem Prinzip dieses Integrators basieren auch die auch die für das Nizza-Modell relevanten Codes, weshalb ich diesen hier erläutern werde.
@@ -196,11 +192,11 @@ Die grundlegende Eigenschaft des Sonnensystems, die hier genutzt wird, ist, dass
 \begin{equation}
 \H = \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}
 \end{equation}
-Wobei $\H_{\mathrm{Kepler}}$ die Bewegung der Planeten um den Zentralkörper und $\H_{\mathrm{Interaktion}}$ die Beeinflussung der Körper untereinander beschreibt. Während solch eine Zerlegung in analytischen Theorien im Rahmen von Störungsrechnungen nichts ungewöhnliches ist, war dieser Ansatz vor Wisdom und Holman in nummerischen Verfahren nicht gebräuchlich. Hat man den Hamiltonian so aufgeteilt, kann man wie schon oben durch das Hinzufügen von periodischen Funktionen einen Mapping-Hamiltonian finden:
+Wobei $\H_{\mathrm{Kepler}}$ die Bewegung der Planeten um den Zentralkörper und $\H_{\mathrm{Interaktion}}$ die Beeinflussung der Körper untereinander beschreibt. Während solch eine Zerlegung in analytischen Theorien im Rahmen von Störungsrechnungen nichts ungewöhnliches ist, war dieser Ansatz vor Wisdom und Holman in nummerischen Verfahren nicht gebräuchlich\cite{Wisdom1991}. Hat man den Hamiltonian so aufgeteilt, kann man wie schon oben durch das Hinzufügen von periodischen Funktionen einen Mapping-Hamiltonian finden:
 \begin{equation}
 \H_{\mathrm{Map}} = \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{2\pi}(\Omega t)
 \end{equation} % Was ist Omega?
-Das Integrieren zu den Zeiten zwischen den Peaks ist einfach möglich, die Lösungen sind natürlich die Keplerschen Bahnen. Das Integrieren über die Peaks ist ebenfalls möglich, da hier analog zu oben $\H_{\mathrm{Kepler}}$ nichts beiträgt\cite{Wisdom1991} und die Deltafunktion das Auswerten des Integrals bekanntermaßen erheblich vereinfacht. %are you kidding?
+Das Integrieren zu den Zeiten zwischen den Peaks ist einfach möglich, die Lösungen sind natürlich die Keplerschen Bahnen. Das Integrieren über die Peaks ist ebenfalls möglich, da hier analog zu oben $\H_{\mathrm{Kepler}}$ nichts beiträgt und die Deltafunktion das Auswerten des Integrals bekanntermaßen erheblich vereinfacht\cite{Wisdom1991}. %are you kidding?
 Nun gilt es also den Hamiltonian des n-Körper Problems \ref{eq:nbodyhamilton} in $\H_{\mathrm{Kepler}}$ -- bestehend aus voneinander unabhängigen Keplerschen Hamiltonians -- sowie einen Interaktions Hamiltonian auf zu teilen. Ein Keplerscher Hamiltonian ist dabei ein Hamiltonian der Form
 \begin{equation}
 \H = \frac{p^2}{2m} - \frac{\mu}{r} \,.
@@ -263,9 +259,9 @@ e^{hO_A}e^{hO_B}-e^{h\left(O_A+O_B\right)} = \frac{h^2}{2} \left( O_AO_B-O_BO_A 
 ergibt. Dabei sind auch alle höheren Terme von A und B abhängig\cite{Chambers1999}. Für ein System für das gilt $O_B\sim\epsilon O_A$ mit kleinem Epsilon, so ist der Fehler auch proportional zu $\epsilon$.
 Da die Sonne fast 99,9 Prozent der Masse des Sonnensystems besitzt, %Quelle?
 gehorchen die Planetenbahnen in sehr guter Annäherungen den Keplerschen Gesetzen und $\H_{\mathrm{Kepler}}$ dominiert deutlich über $\H_{\mathrm{Interaktion}}$. Die Genauigkeit des Integrators ist somit $\mathcal{O}(h^2\epsilon)$, sie ist also bei gleicher Schrittweite um mehrere Größenordnungen höher als bei dem einfacheren modifizierten Eulerschen Integrator – oder anderes herum: bei gleicher Genauigkeit kann die Schrittweite deutlich größer gewählt werden, was die Integration entscheidend beschleunigt. % eine Zahl wäre schön
-Es ist nun möglich auch dieses Verfahren gemäß Gleichung \ref{eq:secondorder} zu einem Integrator zweiter Ordnung  mit Genauigkeit $\mathcal{O}(h^3\epsilon)$ machen. Es sei noch darauf hingewiesen, dass XXX und YYY Möglichkeiten 
+Es ist nun möglich auch dieses Verfahren gemäß Gleichung \ref{eq:secondorder} zu einem Integrator zweiter Ordnung  mit Genauigkeit $\mathcal{O}(h^3\epsilon)$ machen. Es sei noch darauf hingewiesen, dass \cite{Saha1992} und \cite{Wisdom1996} Möglichkeiten 
 gefunden haben um den Fehler des Integrators proportional zu $\epsilon^2$ zu machen. % Namen einfügen
-Während man bei einem Leapfrog Integrator für eine hinreichen gute Genauigkeit noch Schrittweiten von $10^{-3}T_{\mathrm{min}}$ braucht, wobei $T_{\mathrm{min}}$ die Umlaufzeit des kleinsten Orbits bezeichnet, sind es bei MVS Integratoren typischer weiße $1/20T_{\mathrm{min}}$\cite{Duncan1998}. Natürlich wird vieles des Geschwindigkeitsgewinnes wieder dadurch aufgefressen, dass die Berechnung der einzelnen Schritte aufwendiger ist, unterm Strich bleibt jedoch ein signifikanter Geschwindigkeitszuwachs von etwa einer Größenordnung\cite{Chambers1999}.
+Während man bei einem Leapfrog Integrator für eine hinreichen gute Genauigkeit noch Schrittweiten von $10^{-3}\;T_{\mathrm{min}}$ braucht, wobei $T_{\mathrm{min}}$ die Umlaufzeit des kleinsten Orbits bezeichnet, sind es bei MVS Integratoren typischer weiße $1/20\;T_{\mathrm{min}}$\cite{Duncan1998}. Natürlich wird vieles des Geschwindigkeitsgewinnes wieder dadurch aufgefressen, dass die Berechnung der einzelnen Schritte aufwendiger ist, unterm Strich bleibt jedoch ein signifikanter Geschwindigkeitszuwachs von etwa einer Größenordnung\cite{Chambers1999}.
 Daneben gibt es natürlich noch einige Aspekte des Algorithmus die optimiert werden können, diese spielen jedoch für das Verständnis keine Rolle. %bäh
 
 % test particals?
@@ -279,11 +275,11 @@ Bei einzelnen wenigen Planetenbegegnungen ist der Fehler noch klein genug, als d
  spätestens jedoch wenn wir – wie wir es beim Nizza-Modell haben werden – ein sich chaotisch verhaltenes System haben in welchen Plantenbegegnungen sehr häufig vorkommen, ist dieser Ansatz nutzlos.
 
 In den Jahren 1998/1999 erschienen zwei Codes, welche diese Probleme lösten und trotzdem die hohe Geschwindigkeit der MVS Integratoren behielten. Diese sind SyMBA von \cite{Duncan1998} und Mercury von\cite{Chambers1999}. Die beiden Integratoren, welche ähnliche Ansätze haben, sich jedoch in Details unterscheiden, haben das Verständnis von unserem Sonnensystem fundamental weiter gebracht. Sie waren nicht nur Voraussetzung des Nizza-Modells, sondern spielen insbesondere auch für das Verständnis der Planetenakkretion eine wichtige Rolle\cite{Morbidelli2002}.
-Anstatt der Jacobi Koordinaten verwenden diese beiden Integratoren kanonische heliozentrische Koordinaten. Bei diesen kreisen die Planeten im Keplerschen Hamiltonian nicht um unterschiedliche Massenzentren, sondern allesamt um die Sonne. Dies hat einerseits zwar den Nachteil, dass die Durchläufe der Planeten durch das Perihel, wenn dieses sehr nahe an der Sonne ist, wie eine Planetenbegegnung betrachtet werden muss, es ist für den Algorithmus jedoch sehr wichtig, dass die Planetenbahnen des Keplerschen Hamiltonians um den selben Punkt rotieren. % Quelle!
-Wann immer sich nun zwei Planeten (oder ein Planet und die Sonne) sich nahe kommen, wird ihre gegenseitige Wechselwirkung nach und nach immer stärker dem Keplerschen Hamiltonian hinzugefügt. %Quelle
+Anstatt der Jacobi Koordinaten verwenden diese beiden Integratoren kanonische heliozentrische Koordinaten. Bei diesen kreisen die Planeten im Keplerschen Hamiltonian nicht um unterschiedliche Massenzentren, sondern allesamt um die Sonne. Dies hat einerseits zwar den Nachteil, dass die Durchläufe der Planeten durch das Perihel, wenn dieses sehr nahe an der Sonne ist, wie eine Planetenbegegnung betrachtet werden muss, es ist für den Algorithmus jedoch sehr wichtig, dass die Planetenbahnen des Keplerschen Hamiltonians um den selben Punkt rotieren\cite{Morbidelli2002}.
+Wann immer sich nun zwei Planeten (oder ein Planet und die Sonne) sich nahe kommen, wird ihre gegenseitige Wechselwirkung nach und nach immer stärker dem Keplerschen Hamiltonian hinzugefügt\cite{Morbidelli2002}.
 Dadurch wird der \glqq Keplersche Hamiltonian\grqq\  natürlich analytisch unlösbar und ist auch kein Hamiltonian in Keplerscher Form mehr, seine Auswirkung muss also anderweitig numerisch berechnet werden.
-Hier unterscheiden sich die beiden Integratoren nun. Mercury verwendet einen konventionellen Integrator um den \glqq Keplerschen Teil\grqq\  des Hamiltonians zu lösen: den Bulirsch Stoer Integrator mit maximal möglicher Genauigkeit – damit ist gemeint nur beschränkt durch die Rundungsfehler des Rechners. %Quelle
-SyMBA hingegen, verwendet auch hierfür wieder einen symplektischen Integrator, mit einer durch eine ganze Zahl geteilten Schrittweite. Wenn die Planeten sich sehr nahe kommen, muss SyMBA das Verfahren iterieren um die Schrittweite noch weiter zu unterteilen. %Quelle
+Hier unterscheiden sich die beiden Integratoren nun. Mercury verwendet einen konventionellen Integrator um den \glqq Keplerschen Teil\grqq\  des Hamiltonians zu lösen: den Bulirsch Stoer Integrator mit maximal möglicher Genauigkeit – damit ist gemeint nur beschränkt durch die Rundungsfehler des Rechners\cite{Chambers1999,Morbidelli2002}.
+SyMBA hingegen, verwendet auch hierfür wieder einen symplektischen Integrator, mit einer durch eine ganze Zahl geteilten Schrittweite. Wenn die Planeten sich sehr nahe kommen, muss SyMBA das Verfahren iterieren um die Schrittweite noch weiter zu unterteilen\cite{Duncan1998,Morbidelli2002}.
 
 \FloatBarrier
 
@@ -521,12 +517,12 @@ Als Trojaner bezeichnet man Objekte, die auf dem selben Orbit wie ein Planet kre
 Man kennt bereits fast 5000 Trojaner in des Lagrange-Punkten Jupiter, daneben kennt man auch sieben Trojaner von Neptun und 4 Mars- und einen Erdtrojaner. % Quelle
 Da die terrestrischen Planeten beim Nizza-Modell weitgehend ignoriert werden, sind auch die Trojaner von Mars und Erde für diese Arbeit nicht von Belang.
 
-Die Jupiter-Trojaner wurden in der Literatur häufig als Argument gegen das Auftreten der 1:2-MMR zwischen Jupiter und Saturn genannt. Das Überschreiten der Resonanz würde die Trojanerbahnen destabilisieren und die Trojanerpopulation vollständig auslöschen\cite{Morbidelli2005}. %O-Quelle
+Die Jupiter-Trojaner wurden in der Literatur häufig als Argument gegen das Auftreten der 1:2-MMR zwischen Jupiter und Saturn genannt. Das Überschreiten der Resonanz würde die Trojanerbahnen destabilisieren und die Trojanerpopulation vollständig auslöschen\cite{Gomes1998,Michtchenko2001,Morbidelli2005}.
 Mit einer Simulation durch \cite{Morbidelli2005} zeigt sich dies ebenfalls: kein einziger der Trojaner überlebte das Überschreiten der Resonanz. % 1,3 Millionen Jahren
 
 Man ging bisher davon aus, dass die Trojaner sich in der Nähe von Jupiter gebildet haben und, als Jupiter wuchs, entweder durch Kollisionen oder durch Reibung mit Gas %welches Gas
 eingefangen wurden.
-Diese Theorie hat jedoch das Problem, dass es unter anderem die große Inklinationsverteilung der Trojaner von bis zu 40\degree\ nicht erklären kann\cite{Morbidelli2005}. % welche anderen Probleme? O-Quelle
+Diese Theorie hat jedoch das Problem, dass es unter anderem die große Inklinationsverteilung der Trojaner von bis zu 40\degree\ nicht erklären kann\cite{Marzari2002,Morbidelli2005}. % welche anderen Probleme?
 Da die Entwicklung von gravitativen Systemen zeitreversibel ist, %formulierung
 können auf den selben Bahnen, auf welchen die Trojaner von ihren Co-Orbitalen Bahnen entkommen können, auch Objekte vorübergehend auf Trojanerbahnen gelangen.
 Somit ergibt sich im Rahmen des Nizza-Modells ein alternatives Entstehungsmodell der Trojanerpopulationen: Während der Insablilitätsphase direkt nach Überquerung der Resonanz sind die Co-Orbitalbahnen um die Lagrangepunkte dynamisch offen, so, dass eventuell vorhandene Trojaner entweichen können, genauso können jedoch die zahlreichen Planetesimale, die im Nizza-Modell für die Migration verantwortlich sind, durch diese Stellen wandern. % Stellen, wandern
@@ -574,7 +570,7 @@ Grafik \ref{fig:Trojanerorbitale} zeigt die Bahneigenschaften der Simulationserg
 Das gilt auch für Objekte mit $D<5^\circ$, welche in früheren Modellen am schwersten erklärt werden konnten\cite{Morbidelli2005}, %O-cite
 und für den gesamten Bereich der Inklinationen der, wie oben schon erwähnt, bisher nicht erklärt werden konnte.
 
-Ein weiterer positiver Aspekt an diesem Model ist, dass er erklärt warum die Jupiter-Trojaner nur sehr wenig Wasser und organische Stoffe enthalten: %O-Quelle?
+Ein weiterer positiver Aspekt an diesem Model ist, dass er erklärt warum die Jupiter-Trojaner nur sehr wenig Wasser und organische Stoffe enthalten: % O-Quelle?
 Bevor sie als Trojaner eingefangen wurden, durchgingen sie eine Phase mit sehr hohen Exzentrizitäten, in welcher sie der Sonne immer wieder sehr nahe kamen und dabei entgasten.
 Alle Trojaner der Simulation waren für mindestens 100 Jahre auf Orbits mit einem Perihel $q\lesssim 3 \AU$, 72\% der Teilchen waren mit 10.000 Jahren lange genug auf derartigen Bahnen um vollständig zu entgasen\cite{Morbidelli2005}.
 
@@ -721,7 +717,7 @@ Der Hillradius eines Planeten wächst jedoch mit wachsender Entfernung von der S
 Auch dies ist ein Vorteil von Klasse B, wobei es auch Möglichkeiten gäbe Neso und Psamathe durch Streuung – zum Beispiel durch den Einfang von Triton – auf ihre heutigen Bahnen zu bringen. % Wo die Sonderrolle von Triton erläutern?
 Fünf der 14 Simulationen erzeugten keine oder nur einen Trabanten um Saturn, bei den restlichen stimmten die Orbitalverteilung der Satelliten mit der der realen Planeten sehr gut überein, siehe \ref{pic:fehlt}\cite{Nesvorny2007}. % Bild rein?
 In der schon oben erwähnten Simulation Nr. 9, in welcher es auch Planetenbegegnungen mit Jupiter gab, bekam auch dieser zahlreiche Trabanten (341 Stück), welche ebenfalls gut zu den beobachteten irregulären Monden passen. Dabei treten ähnliche Probleme wie bei Uranus auf, insbesondere was die zu kleinen Inklinationen der retrograden Monde angeht.
-Zu Jupiter sollte noch angemerkt werden, dass bekannt ist, dass die meisten Monde auf rückläufigen Bahnen Fragmente von Kollisionen einiger größeren Monde waren, was den Vergleich der Orbits erschwert\cite{Nesvorny2007}. %Nesvorny2004 als Quelle?
+Zu Jupiter sollte noch angemerkt werden, dass bekannt ist, dass die meisten Monde auf rückläufigen Bahnen Fragmente von Kollisionen einiger größeren Monde waren, was den Vergleich der Orbits erschwert\cite{Nesvorny2004,Nesvorny2007}.
 
 \begin{figure}[tbn]
 \centering
@@ -770,7 +766,7 @@ Auch könnte % die schon oben erwähnte
 eine Modifikation der Anfangsbedingung des Nizza-Modells zu noch kompakteren Ausgangsorbits, Simulationen von Nesvorný und Kollegen zufolge die Anzahl der Planetenbegegnungen mit Beteiligung von Jupiter oder Saturn deutlich erhöhen\cite{Nesvorny2007}.
 Somit würden realistischere Ausgangsbedingungen zur allgemein besseren Übereinstimmung von Modell und Realität führen. % erklärt auch Triton
 Alternativ könnte man die These aufstellen, dass die irregulären Monde von Jupiter und Saturn – zumindest teilweise – auf andere Weise entstanden. Da diese Planeten je nach Simulationstyp nicht, beziehungsweise seltener, anderen Planeten nahe kommen, fällt für sie das Argument weg, sie könnten nicht vor dem LHB entstanden sein, da sie sonst bei Planetenbegegnungen verloren gegangen seien.
-Ein Argument dafür ist, dass es im Gegensatz zu den irregulären Monden von Uranus und Neptun, zwischen einigen der Monde von Jupiter und Saturn Resonanzen gibt, die darauf hindeuten, dass diese Monde schon viel älter als das LHB sind\cite{Nesvorny2007}. % O-Quelle
+Ein Argument dafür ist, dass es im Gegensatz zu den irregulären Monden von Uranus und Neptun, zwischen einigen der Monde von Jupiter und Saturn Resonanzen gibt, die darauf hindeuten, dass diese Monde schon viel älter als das LHB sind\cite{Beauge2007,Nesvorny2007}.
 Allerdings ließen sich damit die oben angesprochenen Ähnlichkeiten der Populationen aller vier Planeten nicht erklären.
 
 %% Nesvorny2007 3.2 einbauen
@@ -781,20 +777,20 @@ Allerdings ließen sich damit die oben angesprochenen Ähnlichkeiten der Populat
 \section{Kuipergürtel}\label{Kuiper}
 \begin{figure}
 \centering 
-\includegraphics[scale=0.7]{img/TheResonantTNO_73AU} % Bild durch bessere Version auswechseln?
-\caption{Darstellung der Transneptunischen Objekte. Man erkennt neben dem Klassischen Kuipergürtel die Resonanten KBOs -- insbesondere die Plutinos -- und die Gestreuten KBOs. Nicht mehr im Bild sind die Detached Objects und die Oortsche Wolke. Bild: Eurocommuter, CC-BY-SA}
+\includegraphics[scale=0.7]{img/LEVISON2008-1-mod} % Bild durch bessere Version auswechseln?
+\caption{Darstellung der Transneptunischen Objekte. Man erkennt neben dem Klassischen Kuipergürtel die Resonanten KBOs -- insbesondere die Plutinos -- und die Gestreuten KBOs. Nicht mehr im Bild sind die Detached Objects und die Oortsche Wolke. Bild nach \cite{Levison2008}.}
 \label{fig:KBOs}
 \end{figure}
 Als Transneptunische Objekte (TNO) bezeichnet man alle Himmelskörper, die außerhalb der Neptunbahn um die Sonne kreisen. Die meisten dieser Objekte sind Teil des bekannten Kuipergürtels, zuweilen werden auch alle Transneptunischen Objekte zusammen als Kuiperbelt Objects (KBOs) bezeichnet.
 Die wichtigsten Untergruppen der TNOs sind:
 \begin{itemize}
-\item Resonante KBOs: Objekte die sich in einer MMR zu Neptun befinden. Die bekanntesten Gruppen dieser sind die auf der 3:2-MMR liegenden Plutinos\footnote{Nicht zu verwechseln mit Plutoiden, womit alle transneptunischen Zwergplaneten bezeichnet werden.} -- zu denen das Pluto-Charon-System gehört -- sowie die Twotinos mit einer 2:1-Resonanz zu Neptun. Daneben gibt es jedoch noch zahlreiche weitere (3:5, 4:7, 2:5), welche in einem Plot der Exzentrizität über die Große Halbachse wie in Bild \ref{pic:fehlt} deutlich auffallen\cite{Levison2008}. % Reihenfolge x:y vereinheitlichen
+\item Resonante KBOs: Objekte die sich in einer MMR zu Neptun befinden. Die bekanntesten Gruppen dieser sind die auf der 3:2-MMR liegenden Plutinos\footnote{Nicht zu verwechseln mit Plutoiden, womit alle transneptunischen Zwergplaneten bezeichnet werden.} -- zu denen das Pluto-Charon-System gehört -- sowie die Twotinos mit einer 2:1-Resonanz zu Neptun. Daneben gibt es jedoch noch zahlreiche weitere (3:5, 4:7, 2:5), welche in einem Plot der Exzentrizität über die Große Halbachse wie in Bild \ref{fig:KBOs} deutlich auffallen\cite{Levison2008}. % Reihenfolge x:y vereinheitlichen
 Die Schätzungen darüber wie viele der Objekte in einer Ressonanz zu Neptun stehen unterscheiden sich deutlich, % unterscheiden
-so schätzt sie Trujillo et al. 2001 auf etwa 10\%, während Kavellaars et al. 2007 alleine den Anteil der Plutions auf etwa 20\% schätzt. % O-cite! Quelle: \cite{Levison2008}
+so schätzt sie \cite{Trujillo2001,Levison2008} auf etwa 10\%, während \cite{Kavelaars2008,Levison2008} alleine den Anteil der Plutions auf etwa 20\% schätzt.
 % Zwischen Resonanten KBOs und SDOs unterscheiden oder in TNOs umbenennen?
 \item Klassische KBOs (CKBO) oder Cubewanos: Als den Klassischen Kuipergürtel, bezeichnet man die nicht resonanten Objekte, die sich auf stabilen, nahezu kreisförmigen Bahnen mit Großen Halbachsen kleiner als 48 AU befinden.
 \item Gestreute KBOs (SKBO, Scattered Disk Objects, SDO) haben noch deutlich größere Große Halbachsen und hohe Exzentrizitäten % erweitern, definieren
-\item Detached Objects oder extended scattered disc objects: Dabei handelt es sich um noch weiter entfernte Objekte -- ihr Perihelion ist so weit vom gravitativen Einfluss von Neptun entfernt, dass sie durch diesen und die anderen Planeten nicht beeinflusst werden. Als bekanntes Mitglied der Detached Disk gilt meist Sedna, die Gruppe um Levison hingegen geht jedoch davon aus, dass Sedna Prototyp einer weiteren neuen Klasse von Objekten ist\cite{Levison2008}. % O-Quelle extended scattered disc objects groß-schreiben?
+\item Detached Objects oder extended scattered disc objects: Dabei handelt es sich um noch weiter entfernte Objekte -- ihr Perihelion ist so weit vom gravitativen Einfluss von Neptun entfernt, dass sie durch diesen und die anderen Planeten nicht beeinflusst werden. Als bekanntes Mitglied der Detached Disk gilt meist Sedna, die Gruppe um Levison hingegen geht jedoch davon aus, dass Sedna Prototyp einer weiteren neuen Klasse von Objekten ist\cite{Morbidelli2004,Kenyon2004,Brasser2006,Levison2008}. % extended scattered disc objects groß-schreiben?
 \item Objekte der Oortschen Wolke. Die von Jan Oort und Ersnt Öpik 1950 postulierte Wolke in einer Entfernung von mehreren Tausend AU ist der Ursprung der Kometen. Sie wird in eine innere Oortsche  Wolke (2.000–20.000 AU) und einer äußeren Oortsche Wolke (20.000–50.000 AU oder noch weiter) geteilt. Sedna wird manchmal als Teil der inneren Oortschen Wolke betrachtet – \cite{Brasser2008} verwendet den Begriff innerste Oortsche Wolke als Bezeichnung für die hypothetische Population zu welcher Sedna gehört. Da dies mit der im letzten Punkt genannten Einschätzung Levisons zusammenpasst, werde ich dies im folgenden übernehmen. % zusammenpasst
 \end{itemize} % Bild einbauen? Sedna, ESDO!
 
@@ -803,12 +799,12 @@ Bei den Transneptunischen Objekten handelt es sich um ein Relikt aus der Zeit de
 \begin{enumerate}
 \item Die Existenz und der große Anteil der Resonanten KBOs: Einige der Resonanten KBOs weisen eine Libration auf. Die Librationsamplitude ist neben Exzentrizität und Inklination dann eine weitere wichtige Bahneigenschaft, deren Verteilung von einem Modell erklärt werden muss. Dies gilt insbesondere für die 2:5-Libratoren\cite{Levison2008}. % O-Qulle; Libratoren definieren?
 \item Die Klassischen Kuipergürtel-Objekte haben eine mittlere Exzentrizität von etwa 0.07, was zwar klein, jedoch trotzdem um eine Größenordnung größer als zur Zeit der Entstehung ist. Da die Obergrenze der Exzentrizität der CKBOs durch Bahnstabilitätsgründe vorgegeben ist, ist sogar anzunehmen, dass es früher Objekte mit noch deutlich höherer Exzentrizität gab.
-\item Transneptunische Objekte mit fast kreisförmiger Bahn gibt es nur für Große Halbachsen bis zu etwa 44 AU, danach steigt die Exzentrizität mit der Entfernung an (siehe Bild \ref{pic:fehlt})\cite{Levison2008}. Dieses Resultat scheint kein Effekt mangelnder Beobachtungsdaten für höhere Entfernungen sondern eine reale Eigenschaft der TNO zu sein\cite{Levison2008}.
+\item Transneptunische Objekte mit fast kreisförmiger Bahn gibt es nur für Große Halbachsen bis zu etwa 44 AU, danach steigt die Exzentrizität mit der Entfernung an (siehe Bild \ref{fig:KBOs})\cite{Levison2008}. Dieses Resultat scheint kein Effekt mangelnder Beobachtungsdaten für höhere Entfernungen sondern eine reale Eigenschaft der TNO zu sein\cite{Levison2008}.
 \item Der klassische Kuipergürtel endet genau am Ort der 2:1-MMR mit Neptun\cite{Levison2008}. Auch dies kann nicht durch Verzerrungen durch mangelnde Beobachtungsfähigkeiten für weit entfernte Objekte erklärt werden.
-\item In a-i-Diagramm in Bild \ref{pic:fehlt} erkennt man, dass es zahlreiche Objekte mit sehr kleiner Inklination ($i\lesssim 4^\circ$), jedoch auch etliche mit größeren Inklinationen (bis zu $\sim 30^\circ$) gibt. Berücksichtigt man hier die Verzerrung durch die Beobachtbarkeit -- welche etwa zu $1/\sin(i)$ proportional ist -- so stellt man fest, dass sich die Objekte in zwei Cluster einteilen lassen und die Inklinationsverteilung durch zwei überlagerte Gaussverteilungsfunktionen gefittet werden kann. %O-Qulle
+\item In a-i-Diagramm in Bild \ref{fig:KBOs} erkennt man, dass es zahlreiche Objekte mit sehr kleiner Inklination ($i\lesssim 4^\circ$), jedoch auch etliche mit größeren Inklinationen (bis zu $\sim 30^\circ$) gibt. Berücksichtigt man hier die Verzerrung durch die Beobachtbarkeit -- welche etwa zu $1/\sin(i)$ proportional ist -- so stellt man fest, dass sich die Objekte in zwei Cluster einteilen lassen und die Inklinationsverteilung durch zwei überlagerte Gaussverteilungsfunktionen gefittet werden kann. %O-Qulle
 Man nennt die Population mit den geringen Inklinationen die \glqq kalte Population\grqq\ und die mit den großen Inklinationen die \glqq heiße Population\grqq. Obwohl wir von der kalten Population wesentlich mehr Objekte kennen, ist die heiße Population in Wirklichkeit die größere\cite{Levison2008}.
-\item Es fällt auf, dass es Zusammenhänge zwischen den Orbitaleigenschaften und physikalischen Eigenschaften der Objekte gibt. So  sind helle Objekte in der kalten Population deutlich unterrepräsentiert. Gleichzeitig konnte gezeigt werden, dass die Objekte der kalten Population größere Albedos haben, somit sind die Objekte der heißen Population deutlich größer als die der kalten. % O-Quellen
-Darüber hinaus zeigten mehre verschiedene Arbeiten, dass die heiße Population ein breites Farbspektrum von rot bis grau haben, während die kalte Population fast nur aus roten Objekten besteht. % O-Quellen
+\item Es fällt auf, dass es Zusammenhänge zwischen den Orbitaleigenschaften und physikalischen Eigenschaften der Objekte gibt. So sind helle Objekte in der kalten Population deutlich unterrepräsentiert\cite{Levison2001a}. Gleichzeitig konnte gezeigt werden, dass die Objekte der kalten Population größere Albedos haben, somit sind die Objekte der heißen Population deutlich größer als die der kalten\cite{Grundy2005}.
+Darüber hinaus zeigten mehre verschiedene Arbeiten \cite{Tegler2000,Doressoundiram2001,Trujillo2002,Doressoundiram2005,Elliot2005,Levison2008}, dass die heiße Population ein breites Farbspektrum von rot bis grau haben, während die kalte Population fast nur aus roten Objekten besteht.
 Auch Objekte mit sehr großer Apoheldistanz sind einheitlich rot, unabhängig von ihrer großen Halbachse.
 Allgemein scheint es eine Beziehung zwischen der Farbe und der Periheldistanz zu geben: graue Objekte werden für kleinere q häufiger.
 \item Die Objekte der detached disk können nicht durch die Planeten auf ihren heutigen Bahnen auf ihre Orbits gelangt sein, da sie außerhalb des Einflussbereichs dieser sind. % erklären
@@ -840,7 +836,7 @@ Trotz dieser Probleme, ist der Grad an Übereinstimmung der beobachten Kuiper\-g
 Ein weiterer positiver Aspekt ist, dass das Nizza-Modell auch erklärt warum die Jupiter-Trojaner den Objekten des Kuipergürtels im optischem sehr ähnlich sehen, schließlich haben nach diesem Modell beide denselben Ursprung\cite{Morbidelli2005}.
 
 Während die durch Sedna repräsentierte innerste Oortsche Wolke bereits in den Anfangszeiten des Sonnensystems entstanden sein kann, ist die Erklärung der restlichen Oortschen Wolke mit bisherigen Modellen schwerer – die bisherigen Modelle versuchten diese durch die Wechselwirkung von am Sonnensystem vorbei fliegenden Sternen zu erklären, ergaben jedoch zu geringe Massen – daher untersuchte \cite{Brasser2008} ob die zerstreute Planetesimalscheibe im Nizza-Modell nicht auch Ursprung der Oortschen Wolke sein kann.
-Er schlägt daher ein zweistufiges Verfahren vor, in welchem die innerste Oortsche Wolke mit einem der bereits vorgeschlagenen Modelle (Brasser et al. 2006/2007 oder Kaib \& Quinn 2008) entstand, während die innere und äußere Oortsche Wolke ein Gyr später – zeitgleich zum LHB – durch einen von Dones et al. bereits 2004 vorgeschlagenen Mechanismus aus den selben Planetesimalen, die auch das LHB auslösten, entstanden\cite{Brasser2008}. % O-Cites! Mechanismus erklären
+Er schlägt daher ein zweistufiges Verfahren vor, in welchem die innerste Oortsche Wolke mit einem der bereits vorgeschlagenen Modelle (\cite{Brasser2006,Brasser2007} oder \cite{Kaib2008}) entstand, während die innere und äußere Oortsche Wolke ein Gyr später – zeitgleich zum LHB – durch einen von \cite{Dones2004} bereits 2004 vorgeschlagenen Mechanismus aus den selben Planetesimalen, die auch das LHB auslösten, entstanden\cite{Brasser2008}.
 Er bestimmte die Masse der dadurch gebildeten äußeren Oortschen Wolke auf etwa $0.5 \ME$, was etwas weniger als die $0.6-1.4 \ME$ sind, auf die die Messwerte schließen lassen\cite{Brasser2008}. Diese Differenz erklärt er damit, dass zusätzlich aus der innersten Oortschen Wolke durch die Wechselwirkung von vorbeifliegenden Sternen Material in die äußere Oortsche Wolke gelangte\cite{Brasser2008}.
 Dies kann bis zu weiteren $0.5 \ME$ beitragen, die wahrscheinlichste Gesamtmasse ergibt sich in guter Übereinstimmung mit den Messwerten auf $0.9 \ME$\cite{Brasser2008}.
 
@@ -945,6 +941,8 @@ Mann muss jedoch darauf hinweisen, dass \cite{Veras2012} gezeigt hat, dass diese
 %%%% Anführungszeichen fixen
 %%%% https://www.youtube.com/watch?v=VXeOh3xmrQM verlinken
 %%%% Wie Sumi2011 zitieren?
+%%%% Hamilton/Hamiltonian?
+%%%% schreibweise von symplektisch
 
 \newpage
 \renewcommand{\thesection}{\Alph{section}}
