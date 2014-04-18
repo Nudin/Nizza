@@ -5,6 +5,8 @@ grep -v '^abstract' library.bib | grep -v '^ ' | \
 	grep -v '^url' | \
 	grep -v '^month' | \
 	grep -v '^$' | \
-	tr -s \  > library.bib.tmp
+	tr ' ' ' ' | \
+	tr -s '[:blank:]' |\
+	sed 's#IAU14,#IAU14,\nurl = {http://www.minorplanetcenter.net/iau/lists/MPLists.html},#'  > library.bib.tmp
 mv library.bib.tmp library.bib
 
