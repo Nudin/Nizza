@@ -3,17 +3,22 @@
 \linespread{1.359140914229522617680} 
 \usepackage[utf8]{inputenc}
 \usepackage[english,main=ngerman]{babel}
-\usepackage{bibgerm}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{commath}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{placeins}
-\usepackage{microtype} % use?
-\usepackage{ziffer}
-\usepackage{units}
-\usepackage[format=hang,font={it,footnotesize},labelfont=bf]{caption}
+%\usepackage{bibgerm}
+%\usepackage{breakcites} %use?
+%\usepackage{cite}
+\usepackage[square]{natbib} %[nonamebreak] verwenden?
+\renewcommand{\cite}{\citep}
+\usepackage{ziffer}		% deutsches Ziffernformat
+\usepackage{units}		% Zahlen mit Einheiten
+\usepackage{amsmath}	% Mathematische Formels
+\usepackage{amssymb}	% Mathematische Symbole
+\usepackage{commath}	% Diffenrenziale
+\usepackage{titling}	% Stellt \thedate, \theauthor, \thetitle zur verfügung
+\usepackage{placeins}	% stellt FloatBarrier zur verfügung. [section] verwenden?
+\usepackage{microtype}	% typographische Verbesserungen
+\usepackage{graphicx}	% Grafiken
+\usepackage[format=hang,font={it,footnotesize},labelfont=bf]{caption} % Bildunterschriften
+\usepackage{hyperref}	% Weblinks
 \hypersetup{
     bookmarks=true,
     pdftoolbar=true,
@@ -31,15 +36,10 @@
     filecolor=black,
     urlcolor=blue
 }
-
-
-%\usepackage{breakcites} %use?
-%\usepackage{cite}
-\usepackage[square]{natbib} %nonamebreak
-\renewcommand{\cite}{\citep}
  
 \author{Michael F. Schönitzer}
 \title{Das Nizza-Modell}
+\date{\today}
 
 \newcommand{\refsec}[1]{siehe Kapitel~\ref{#1}}
 \newcommand{\degree}{$^\circ$}
@@ -53,7 +53,31 @@
 \newcommand{\apjl}{The Astrophysical Journal Letters}
 
 \begin{document}
-\maketitle
+\begin{titlepage}
+\setcounter{page}{0}
+\thispagestyle{empty}
+\vglue  2 true cm
+\centerline{\huge \thetitle}
+\bigskip\bigskip 
+\vglue  2 true cm
+
+\begin{centering}\large
+Bachelorarbeit\\
+an der Fakultät für Physik\\
+der Ludwig-Maximilians-Universität München
+\\[1cm]
+vorgelegt von\\
+\theauthor\\
+geboren in München am 5.04.1990\\
+\end{centering}
+\vglue  6 true cm
+\centerline{\theauthor}
+\centerline{\thedate}
+\end{titlepage}
+
+\clearpage
+\tableofcontents
+\clearpage
 
 \section{Einleitung}
 Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Tsiganis2005,Morbidelli2005,Gomes2005},
@@ -932,7 +956,36 @@ Beobachtungen des Mikrolinseneffektes führten dazu, dass \cite{Sumi2011} hochre
 Somit ist es naheliegen davon auszugehen, dass es eher die Regel als die Ausnahme ist, dass in einem Planetensystem ein oder mehrere Planeten aus dem System geschleudert wird. Es ist also nicht abwegig dies auch im Sonnensystem passiert sein könnte.
 Mann muss jedoch darauf hinweisen, dass \cite{Veras2012} gezeigt hat, dass diese große Anzahl an freifliegenden Planeten nicht nur auf diese weise entstanden sein kann.
                                                
-\section{Zusammenfassung}
+\section{Zusammenfassung \& Bewertung}
+Das Nizza-Modell stellt ein äußerst erfolgreiches Modell dar. Es stellt das bisher beste Modell zu Erklärung des Sonnensystems dar und kann, wie ich in dieser Arbeit dargelegt habe, zahlreiche Eigenschaften unseres Sonnensystems erklären.
+Es erklärt nicht nur die Orbits der Riesenplaneten, sondern auch das Late Heavy Bombardment, die Jupiter- und eventuell auch die Neptun-Trojaner, die irregulären Satelliten und fast alle Eigenschaften des Kuipergürtels.
+Kein anderes Modell auf diesem Gebiete hat derartiges Erreicht.
+Es gibt natürlich aber auch Probleme des Nizza-Modells, sie sind jedoch im Vergleich zu der Erfolgen eher als klein einzustufen und die meisten können -- zumindest potentiell -- durch kleinere Modifikationen des Nizza-Modells behoben werden.
+Der besonderer Reiz des Nizza-Modells besteht insbesondere darin, dass es mit sehr wenigen, plausiblen und klar definierten Anfangsannahmen sehr viele der Eigenschaften des heutigen Sonnensystems erklären kann.
+Die neueren Versionen des Modells, können zwar die Erfolge des Nizza-Modells weiter ausbauen und Probleme vermeiden, zahlen dafür jedoch zum einen den Preis eines aufgeweichten und vergrößerten Anfangsparameterraums zum anderen mit niedrigen Erfolgswahrscheinlichkeiten und so werden die Aussagen zunehmend statistischer Natur. Dabei zeichnen die Zahlen zumindest auf den ersten Blick ein ernüchterndes Bild, selbst bei den besten Anfangsbedingungen liegen die Erfolgsquoten bestenfalls im einstelligen Prozentbereich.
+
+Hier ist eine vorsichtige und differenzierte Betrachtung der Ergebnisse notwendig. Zum einen dürfen statistische Aussagen nicht überschätzt werden und müssen immer im Kontext gesehen werden. Führen um Beispiel gewissen Anfangsbedingungen häufiger zum Erfolg, als andere so heißt das noch nicht notwendigerweise das erstere Anfangsbedingungen realistischer sind, schließlich betrachtet man immer nur ausgewählte Erfolgsbewertungskriterien, dazu kommt die schon oben erwähnte Verzerrung durch Negativresultate die zu einer lebensfeindlichen Erde führen.
+
+Die Absolutwerte der Erfolgswahrscheinlichkeiten hängen von der Stringenz der Erfolgsbewertungskriterien ab. Da man das N-Körperproblem mit hoher Anzahl an Körpern, und dementsprechend vielen Möglichkeiten für die exakten Anfangsbedingungen, über sehr lange Zeiträume hinweg betrachtet, ist es nicht verwunderlich, dass die Erfolgsquoten für immer strenge Erfolgsbewertungskriterien gegen Null gehen.
+Da es keinen Grund dafür gibt, dass unser System einen Normalfall darstellt gegen das besonders viele Anfangsbedingungen streben ist also nicht entscheidend mit wie hoher Wahrscheinlichkeit die von uns ausgewählten Erfolgsbewertungskriterien eintreten, sondern viel mehr die Frage ob das Modell durch Wahl geeigneter Anfangsbedingungen alle wählbaren Kriterien erfüllen kann.
+Und genau hier ist das Nizza-Modell und seine Nachfolger äußerst erfolgreich, erfüllt es doch weit mehr Kriterien als alle vorherigen und alternativen Modelle.
+
+Das Nizza-Modell wurde generell erst durch die wachsende Rechenleistung, sowie durch die wesentlich schnelleren symplektischen Simulationsalgorithmen, basierend auf dem besprochenen von \cite{Wisdom1991}, ermöglicht. Dennoch benötigte die Betrachtung der verschiedenen Aspekte des Modells meist spezielle optimierte, oft mehrstufige und auf das zu betrachtende fokussierte Simulationen.
+Vielfach wurden dabei auch Vereinfachungen getroffen, von denen sich manche später als problematisch herausgestellt haben, als Beispiel sei hier die Vernachlässigung der Wechselwirkungen zwischen den Planetesimalen genannt. Häufig wurden Vernachlässigungen von Effekten auch als mögliche Erklärung für Diskrepanzen zwischen Modellergebnissen und Realität angeführt.
+Dies betrifft insbesondere die Berücksichtigung von Kollisionen, daher glaube ich, dass es für die weitere Untersuchung des Nizza-Modells die Entwicklung von Simulationsalgorithmen die Kollision und andere nicht-gravitative Effekte berücksichtigen großer Bedeutung zukommt.
+Auch \cite{Morbidelli2002} prognostiziert für die Zukunft eine Entwicklung von reinen numerischen Integratoren zu numerischen Simulationen, welche nicht nur Newtons Bewegunsgleichungen, sondern eine breite Auswahl an dynamischen physikalischen Effekten mit berücksichtigt.
+Während die Entwicklung des Nizza-Modells in seiner 2005 erschienen Fassung noch wenige Jahre zuvor noch mangels Rechenleistung kaum möglich gewesen wäre, wären auch die neueren Simulationen -- Beispielsweise die von \cite{Nesvorny2012} -- im Jahr 2005 noch nur mit sehr großem Aufwand möglich gewesen.
+Durch die weiter exponentiell wachsende Rechenleistung ist davon auszugehen, dass bereits in wenigen Jahren die Möglichkeiten weitere Durchbrüche ermöglichen.
+Weiter beschleunigt könnte dies durch neue, noch schnellere Simulationsalgorithmen.
+
+Es bleibt die Frage nach dem Wahrheitsgehalt des Modells, denn auch wenn in den Naturwissenschaften Theorien nicht bewiesen sondern nur falsifiziert werden können, so ist man es doch gewohnt Theorien als bestätigt zu betrachten, wenn sie Falsifikationsversuche -- durch Überprüfung von Vorhersagen des Modells -- überstanden haben.
+Dabei hat die Astronomie im allgemeinen das Problem, dass Modelle nicht im Labor aktiv geprüft werden können, sondern man sich auf die vorhandenen beobachteten Systeme beschränken muss, das Nizza-Modell hat hier jedoch noch ein viel größeres Problem, denn es ist ein Modell, welches explizit die Evolution unseres Sonnensystems beschreibt, wir haben also nur ein einziges System das wir betrachten können.
+Wir müssen uns also darauf beschränken immer weitere Eigenschaften unseres Sonnensystems auf Verträglichkeit mit dem Nizza-Modell zu prüfen.
+Dies ist jedoch alles andere als trivial, schließlich können oft schon kleine Veränderungen am Modell oder den Parametern einen vormals bestehenden Widerspruch auflösen -- ein Test auf Kompatibilität mit Beobachtungsdaten gibt also entweder eine Übereinstimmung oder aber die Aussage wohl noch nicht die richtigen Anfangsbedingung oder Variation des Modells gefunden zu haben.
+Somit ist das Modell also auch nur schwer echt zu falsifizieren. Was bleibt ist die Aussage, dass das Nizza-Modell das erfolgreichste Modell zur Erklärung der Entwicklung unseres Sonnensystems ist das wir bis jetzt kennen.
+
+Das Nizza-Modell stellt einen großen Wissenschaftlichen Durchbruch dar, ist es damit doch erstmals möglich zahlreiche Eigenschaften des Sonnensystems simultan und mit natürlichen Anfangsbedingungen zu erklären. Es ergänzt sich gut mit dem Grad-Track-Modell\cite{Walsh2011}, welches die Entwicklung des inneren Sonnensystems im der Zeit vor dem Auflösen der Gasscheibe beschreibt. Zusammen bilden sie das \glqq Standardmodell\grqq\ der planetaren Evolution des Sonnensystems und sind wissenschaftlich weit akzeptiert.
+
 
 %%%% Myr/Gyr einheitlich scheiben
 %%%% https://www.youtube.com/watch?v=VXeOh3xmrQM verlinken
@@ -940,6 +993,8 @@ Mann muss jedoch darauf hinweisen, dass \cite{Veras2012} gezeigt hat, dass diese
 %%%% Hamilton/Hamiltonian?
 %%%% besseres Wort für Planetenbegegnung?
 %%%% Bildergrößen vereinheitlichen mit width statt scale
+%%%% amsbook verwenden?
+%%%%% \frontmatter etc. verwenden?
 
 \newpage
 
@@ -947,5 +1002,6 @@ Mann muss jedoch darauf hinweisen, dass \cite{Veras2012} gezeigt hat, dass diese
 
 \bibliography{library,libraryKBOmass,libraryoldLHBmodells,libraryoldTrojanermodells,librarysatellites}{}
 \bibliographystyle{dinatmod} %gerapali 
+%\listoffigures
 
 \end{document}
