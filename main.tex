@@ -1,13 +1,14 @@
-\documentclass[12pt,a4paper,twoside]{article}
+\documentclass[12pt,a4paper,twoside,open=right,bibliography=totoc]{scrbook}
 \usepackage{a4wide}
 \linespread{1.359140914229522617680} 
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[english,main=ngerman]{babel}
 %\usepackage{bibgerm}
 %\usepackage{breakcites} %use?
 %\usepackage{cite}
 \usepackage[square]{natbib} %[nonamebreak] verwenden?
-\renewcommand{\cite}{\citep}
+\renewcommand{\cite}{ \citep}
 \usepackage{ziffer}		% deutsches Ziffernformat
 \usepackage{units}		% Zahlen mit Einheiten
 \usepackage{amsmath}	% Mathematische Formels
@@ -16,6 +17,7 @@
 \usepackage{titling}	% Stellt \thedate, \theauthor, \thetitle zur verfügung
 \usepackage{placeins}	% stellt FloatBarrier zur verfügung. [section] verwenden?
 \usepackage{microtype}	% typographische Verbesserungen
+\setkomafont{disposition}{\normalcolor\bfseries}
 \usepackage{graphicx}	% Grafiken
 \usepackage[format=hang,font={it,footnotesize},labelfont=bf]{caption} % Bildunterschriften
 \usepackage{hyperref}	% Weblinks
@@ -36,10 +38,12 @@
     filecolor=black,
     urlcolor=blue
 }
- 
+
 \author{Michael F. Schönitzer}
 \title{Das Nizza-Modell}
+\newcommand{\theenglishtitle}{The Nice Model}
 \date{\today}
+
 
 \newcommand{\refsec}[1]{siehe Kapitel~\ref{#1}}
 \newcommand{\degree}{$^\circ$}
@@ -53,11 +57,14 @@
 \newcommand{\apjl}{The Astrophysical Journal Letters}
 
 \begin{document}
+%\frontmatter
 \begin{titlepage}
-\setcounter{page}{0}
+%\setcounter{page}{0}
 \thispagestyle{empty}
 \vglue  2 true cm
 \centerline{\huge \thetitle}
+\vglue  1 true cm
+\centerline{\huge \theenglishtitle}
 \bigskip\bigskip 
 \vglue  2 true cm
 
@@ -68,18 +75,20 @@ der Ludwig-Maximilians-Universität München
 \\[1cm]
 vorgelegt von\\
 \theauthor\\
-geboren in München am 5.04.1990\\
+geboren in München am 5.4.1990\\
 \end{centering}
 \vglue  6 true cm
 \centerline{\theauthor}
-\centerline{\thedate}
+\centerline{\today}
 \end{titlepage}
 
-\clearpage
+\cleardoublepage
+\setcounter{page}{1}
 \tableofcontents
 \clearpage
+%\mainmatter
 
-\section{Einleitung}
+\chapter{Einleitung}
 Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Tsiganis2005,Morbidelli2005,Gomes2005},
 in denen sie ein neues Modell für die Migration der Riesenplaneten unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wird Nizza-Modell genannt, da die Autoren zu besagter Zeit am Observatoire de la Côte d’Azur in Nizza arbeiteten.
 
@@ -98,21 +107,23 @@ Neben den Plantenorbits (\refsec{Orbits}), dem Late Heavy Bombardment (\refsec{L
 Abschließend werden wir uns mit einer möglichen Erweiterungen des Nizza-Modells beschäftigen (\refsec{erweiterungen}).
 
 \FloatBarrier
-\section{Grundlagen}
-Beim Nizza-Modell betrachten wir die Entwicklung der Planetenbahnen unter Be\-rück\-sich\-ti\-gung der gegenseitigen gravitativen Einflüsse der Planeten, es handelt sich hier also um klassische Himmelsmechanik. %Bäh!
-Wir betrachten dabei ein n-Körperproblem mit $n>2$ Teilchen, welche lediglich gravitativ wechselwirken.\footnote{Später wird auch die Kollision von Objekten berücksichtigt werden, dies wollen wir jedoch zunächst ignorieren.}
+\chapter{Grundlagen}
+Zunächst wollen wir ein paar für das Verständnis des Nizza-Modells notwendige Grundlagen betrachten.
+
+Beim Nizza-Modell betrachten wir die Entwicklung der Planetenbahnen unter Be\-rück\-sich\-ti\-gung der gegenseitigen gravitativen Einflüsse der Planeten -- es handelt sich hier somit um klassische Himmelsmechanik.
+Wir betrachten dabei ein n-Körperproblem mit $n>2$ Teilchen, welche lediglich gravitativ wechselwirken.\footnote{Später wird auch die Kollision von Objekten berücksichtigt werden, dies wollen wir jedoch hier ignorieren.}
 Der Hamiltonian des n-Körperproblems lautet bekannterweise
 \begin{equation}\label{eq:nbodyhamilton}
-{\mathcal H} = \sum\limits_{i=0}^{n-1} \frac{p_i^2}{2m_i} - \sum\limits_{i<j} \frac{Gm_im_j}{r_{ij}}
+{\mathcal H} = \sum\limits_{i=0}^{n-1} \frac{\vec p_i^2}{2m_i} - \sum\limits_{i<j} \frac{Gm_im_j}{r_{ij}}
 \end{equation}
-wobei $r_{ij}=q_i-q_j$ der Abstand der Teilchen $i$ und $j$ ist. % Mehr Symbole erklären?
+wobei $r_{ij}=\norm{\vec q_i-\vec q_j}$ der Abstand der Teilchen $i$ und $j$ ist. % Mehr Symbole erklären?
 Bei gegebenen Anfangswerten bestimmt der Hamiltonian durch die hamiltonschen Bewegungsgleichungen
 \begin{equation}
-\dot{q_i} = \pd{\mathcal H}{p_i} \quad ; \quad \dot{p_i} = - \pd{\mathcal H}{q_i}
+\vec{\dot{q}}_i = \pd{\mathcal H}{\vec p_i} \quad ; \quad \vec{\dot{p}}_i = - \pd{\mathcal H}{\vec q_i}
 \end{equation}
-die zukünftige Entwicklung des Systems.
+die zukünftige Entwicklung des Systems. Zur Notation sei vermerkt, dass im folgenden $\vec q$ und $\vec p$ die 3n-Orte und -Impulse aller Teilchen darstellen.
 
-\subsection{Numerische Integratoren}
+\section{Numerische Integratoren}
 Während die das Zweikörperproblems durch die Keplerschen Gesetze analytisch gelöst ist, ist das n-Körper Problem bereits ab drei Teilchen nicht mehr allgemein analytisch lösbar.
 Zwar sind analytische Näherungslösungen unter gewissen Voraussetzungen möglich, jedoch verlieren diese ihre Gültigkeit, wenn man versucht die Dynamik des Systems über sehr lange Zeiträume zu betrachten. Stattdessen verwendet man dafür numerische Computersimulationen.
 Doch auch hier wird die Zeitspanne, die Genauigkeit und die Anzahl der Teilchen durch die begrenzte Rechnerleistung limitiert.
@@ -127,7 +138,7 @@ also eine Vorschrift wie man aus vergangenen Werten einer Folge den nächsten Fo
 Was wir nun suchen ist ein Mapping, dass bei gegebenen Punkt im Phasenraum $\vec{w}\equiv(\vec{q},\vec{p})$ zum Zeitpunkt t den Punkt im Phasenraum $\tilde{w}$ bestimmt, welcher den wahren Zustand des Systems zum Zeitpunkt $t'=t+h$ möglichst genau approximiert und dabei trotzdem möglichst einfach berechnet werden kann\cite{Binney2008}.
 
 Ein Trick, der dafür hilfreich ist, ist das \textit{averaging principle}: dieses besagt, dass periodische Oszillationen, deren Dauer klein im Vergleich zur Schrittweite $h$ des Algorithmus ist, sich heraus mitteln und daher das Langzeitverhalten nur unwesentlich verfälschen\cite{Wisdom1991}.
-Beschränken wir uns zunächst der Einfachheit halber auf Hamiltonians der Form $\mathcal H(\vec q,\vec p)= \frac{1}{2}\vec p^2+\Phi(\vec q)$. % Ist eigenlich gleich dem oberen für m=1
+Beschränken wir uns zunächst der Einfachheit halber auf Hamiltonians der Form $\mathcal H(\vec q,\vec p)= \frac{1}{2}\vec p^2+\Phi(\vec q)$.
 Durch das averaging principle können wir den Hamiltonian nun um periodisch oszillierende Terme
 \begin{equation}
 \delta_h(t) = \sum\limits_{n=-\infty}^{\infty} \cos(nt\cdot \frac{2\pi}{h}) = h \cdot \sum\limits_{n=-\infty}^{\infty} \delta(t-h n)
@@ -145,7 +156,7 @@ Dies lässt dich jetzt von $t=\epsilon$ bis $t=h+\epsilon$ mit $0 < \epsilon \ll
 \begin{equation}
 \bar{\vec{q}} = \vec{q}+h\vec{p} \quad ; \quad \bar{\vec{p}} = \vec{p}
 \end{equation}
-Danach folgt das Zeitintervall von $t=h-\epsilon$ bis $t=h+\epsilon$. Hier ändert sich der Ort für $\epsilon\to\infty$ nur infinitesimal, der Impuls erhält jedoch einen Stoß
+Danach folgt das Zeitintervall von $t=h-\epsilon$ bis $t=h+\epsilon$. Hier ändert sich der Ort für $\epsilon\to 0$ nur infinitesimal, der Impuls erhält jedoch einen Stoß
 \begin{equation}
 \vec{q'}=\vec{\bar{q}} \quad ; \quad \vec{p'}=\vec{\bar{p}}-h\vec{\nabla}\Phi(\vec{q'})
 \end{equation}
@@ -158,11 +169,11 @@ Für das Verständnis halte ich es für sehr wichtig, noch eine zweite, zum Ansa
 Für eine beliebige Observable $f(\vec q(t),\vec p(t))$ gilt bekanntermaßen:
 \begin{align}
 \od{f}{t} &= 
-\sum_{k=1}^n \left(
+\sum_{k=0}^{3n-1} \left(
 	\pd{f}{q_k} \pd{q_k}{t} +
 	\pd{f}{p_k} \pd{p_k}{t}
 \right) \\ &=
-\sum_{k=1}^n \left(
+\sum_{k=0}^{3n-1} \left(
 	\pd{f}{q_k} \pd{\H}{p_i} +
 	\pd{f}{p_k} \pd{\H}{q_i}
 \right) \\ &=
@@ -190,6 +201,7 @@ Ein symplektischer Integrator erster Ordnung löst die Bewegungsgleichungen also
 Der Fehler des Integrators ist also von der Ordnung $\mathcal{O}(h^2)$.
 Genau dies geschieht auch bei dem oben beschriebenen modifizierten drift-kick Euler Integrator,
 wo wir zunächst über den Zeitrum $h$ die Auswirkung der kinetischen Energie $\H_p=\frac{1}{2}\vec{p}$ und anschließend über den selben Zeitraum $h$ die Auswirkung der potentiellen Energie $\H=\Phi(\vec{q})$ anwendeten.
+
 Eine deutliche Verbesserung der Genauigkeit lässt sich erreichen, indem man noch die zweite Ordnung von Gleichung \ref{eq:OAB} und \ref{eq:OA+B} berücksichtigt. Ein solcher Integrator zweiter Ordnung wendet zunächst für eine Dauer von $h/2$ den ersten Teil des Hamiltonians an, dann für die Zeitdauer $h$ den zweiten und schließlich wieder für die Zeit von $h/2$ den ersten Teil an:
 \begin{equation}
 q(t+h)=e^{hO_B/2}e^{hO_A}e^{hO_A/2} \label{eq:secondorder}
@@ -278,10 +290,11 @@ Da die Sonne fast 99,9 Prozent der Masse des Sonnensystems besitzt, %Quelle?
 gehorchen die Planetenbahnen in sehr guter Annäherungen den Keplerschen Gesetzen und $\H_{\mathrm{Kepler}}$ dominiert deutlich über $\H_{\mathrm{Interaktion}}$. Die Genauigkeit des Integrators ist somit $\mathcal{O}(h^2\epsilon)$, sie ist also bei gleicher Schrittweite um mehrere Größenordnungen höher als bei dem einfacheren modifizierten Eulerschen Integrator – oder anderes herum: bei gleicher Genauigkeit kann die Schrittweite deutlich größer gewählt werden, was die Integration entscheidend beschleunigt.
 Es ist nun möglich auch dieses Verfahren gemäß Gleichung \ref{eq:secondorder} zu einem Integrator zweiter Ordnung  mit Genauigkeit $\mathcal{O}(h^3\epsilon)$ machen. Es sei noch darauf hingewiesen, dass \cite{Saha1992} und \cite{Wisdom1996} Möglichkeiten gefunden haben um den Fehler des Integrators proportional zu $\epsilon^2$ zu machen.
 Während man bei einem Leapfrog Integrator für eine hinreichen gute Genauigkeit noch Schrittweiten von $10^{-3}\;T_{\mathrm{min}}$ braucht, wobei $T_{\mathrm{min}}$ die Umlaufzeit des kleinsten Orbits bezeichnet, sind es bei MVS Integratoren typischer weiße $1/20\;T_{\mathrm{min}}$\cite{Duncan1998}. Natürlich wird vieles des Geschwindigkeitsgewinnes wieder dadurch aufgefressen, dass die Berechnung der einzelnen Schritte aufwendiger ist, unterm Strich bleibt jedoch ein signifikanter Geschwindigkeitszuwachs von etwa einer Größenordnung\cite{Chambers1999}.
+Eine wichtige Sonderfunktion, die ein guter Integrator unterstützen sollte, sie die der Testteilchen, also Teilchen deren Bewegung zwar von den anderen Teilchen beeinflusst wird, die sich jedoch nicht gegenseitig und auch nicht die anderen Teilchen beeinflussen. Dieses Verhalten entspricht dem Fall, dass die Masse des Teilchens  vernachlässigbar klein wird.
+Auch das Mapping von \cite{Wisdom1991} unterstützt nach geeigneten algebraischen Umformungen Testteilchen.
+Testteilchen sind aus zwei Gründen von Bedeutung: zum einen, wenn man das Gravitationsfeld eines Systems betrachten will ohne es zu beeinflussen, zum anderen ist wird die Berechnung deutlich schneller, wenn man Teilchen mit kleiner Masse als Testteilchen betrachtet -- dies ist wie wir sehen werden beim Nizza-Modell von zentraler Rolle, da man hier eine Vielzahl an Teilchen hat, deren Masse wesentlich kleiner als die der Planeten ist.
+Ein weiterer interessanter Punkt ist, dass obwohl die Reihenfolge der Körper bei der obigen Betrachtung irrelevant war, die Verwendung der natürlichen Reihenfolge, mit steigender großen Halbachse, \glqq sauberere\grqq\ Orbits liefert -- anderenfalls enthalten die Orbits schnelle Oszillationen.
 Daneben gibt es natürlich noch einige Aspekte des Algorithmus die optimiert werden können, diese spielen jedoch für das Verständnis der Funktionsweise keine Rolle, daher werde ich auf sie hier nicht eingehen.
-
-% test particals?
-% bedeutung Reihenfolge?
 
 Die MVS Integratoren wie der von Wisdom und Holman haben jedoch ein grundlegendes Problem. Die Schrittweite des Integrators wird durch die Wahl der Parameter von $\delta_{2\pi}(\Omega t)$ festgelegt, sie ist also über die ganze Simulation konstant und für alle Planeten gleich.
 Dies führt zu mehreren Problemen: Zum einen muss man wenn man, wen man Planeten hat, die auf einen sehr kleinen Orbit den Zentralkörper umkreisen, während andere Planeten sehr große Entfernungen zum Zentralkörper haben die selbe kleine Schrittweite für alle Planeten anwenden, obwohl bei den äußeren wesentlich größere Schrittweiten möglich und sinnvoll wären. Dieses Problem lösten \cite{Saha1994} mit einer Modifikation des Verfahren, welches es erlaubt für jeden Planeten eigene, jedoch weiterhin konstante, Schrittweiten zu wählen.
@@ -299,7 +312,7 @@ SyMBA hingegen, verwendet auch hierfür wieder einen symplektischen Integrator, 
 
 \FloatBarrier
 
-\subsection{Bahnresonanzen}
+\section{Bahnresonanzen}
 Wie in den meisten Gebieten der Physik spielen auch in der Himmelsmechanik Resonanzen eine große Rolle. Sie können ein System entweder stabilisieren oder wie im Fall des Nizza-Modells zu einer rasanten Destabilisierung führen.
 Bahnresonanzen treten immer dann auf, wenn zwei Frequenzen eines Systems ein bestimmtes Verhältnis haben.
 Die einfachst zu Verstehende und für diese Arbeit wichtigste Bahnresonanz ist die Mean-Motion-Resonanz (MMR), auf deutsch auch Resonanz der mittleren Bewegung, bei welche die Umlaufdauer zweier Körper (in unserem Fall Planeten) im Verhältnis zweier kleiner ganzer Zahlen sind.
@@ -315,7 +328,7 @@ Säkulare Resonanzen führen über ebenfalls lange Zeiträume hinweg zu einer Ä
 
 Neben diesen beiden Typen existieren noch eine Reihe weiterer Resonanzen, wie die Kozai-Resonanzen, welche für diese Arbeit jedoch keine größere Rolle spielen. % Kozai erklären?
 
-\subsection{Dynamische Reibung}
+\section{Dynamische Reibung}
 \begin{figure}
 \centering
 \includegraphics[scale=0.4]{img/dynamischeReibung}
@@ -353,7 +366,7 @@ durch einsetzen erhalten wir
 \end{equation} % keine echte Proportionalität
 Die Veränderung von $r$ ist also um so stärker, desto langsamer sich das Teilchen bewegt. Nachdem sich nun bekanntermaßen (und auch aus Gleichung \ref{eq:Bahngeschwindigkeit} ablesbar) der Planet um so schneller bewegt, je näher er an diesem ist, können wir daraus schließen, dass er an Sonnenfernen Punkten eine deutlich stärkere Bahnveränderung hin zur Sonne erfährt, als an Sonnennahen. Somit sinkt die Exzentrizität.
 
-\subsection{Planetenentstehung} % weiter ausbauen
+\section{Planetenentstehung} % weiter ausbauen
 Das heutige Standardmodell der Stern- und Planetenentstehung geht vom Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $0,1\mathrm{\mu m}$ großen Staubteilchen besteht\cite{Hanslmeier2002}. Es entsteht ein Protostern in mitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
 Später wird der Drehimpuls nach außen transportiert. % durch was
 Durch die Brown'sche Bewegung kommt es zu zufälligen Zusammenstößen in der Gaswolke, wodurch die Teilchengrößen anwächst. Diese wachsen durch Akkretion von Gas und später durch Kollisionen weiter bis hin zu etliche Kilometer großen Klumpen, Planetesimale genannt.
@@ -362,7 +375,8 @@ Diese wachsen durch den gravitativen Einfang von kleineren Planetesimalen immer 
 Durch die Wechselwirkung des planetaren Embryos mit der Gasscheibe in die er noch immer eingebettet ist, kommt es zu einer Migration des Planeten nach innen. Gleichzeitig stabilisiert die Gasscheibe die Planetenbahnen, auch wenn sie sich in Bahnresonanzen befinden, und dämpfen die Exzentrizitäten. Zum Zeitpunkt als sich nach einigen Millionen Jahren die Gasscheibe auflöst befinden sich die Planeten auf engen, kompakten, kreisförmigen Orbits, welche sich meist in Mean-Motion-Resonanzen zueinander befinden\cite{Nesvorny2011}.
 Da sich die Planeten im heutigem Sonnensystem auf weiter entfernten Bahnen befinden, braucht es einen Mechanismus, welcher die Planeten wieder auf weiter entfernte Bahnen bringt. Dies geschieht durch die Bahnresonanzen welche nun nicht mehr durch die Gasscheibe stabilisiert werden. Ein auf unser Sonnensystem bezogenes Model hierfür ist das Nizza-Modell.
 
-\section{Das Nizza-Modell}\label{Orbits}
+\chapter{Das Nizza-Modell}
+\section{Die Planetenorbits}\label{Orbits}
 Im Folgenden werde ich erklären, wie \cite{Tsiganis2005} mit den Nizza-Modell die Orbits der Planeten erklärte.
 Man beginnt die Betrachtung dabei bei dem Zeitpunkt, als die Gasscheibe sich gerade aufgelöst hat.
 Als Ausgangszustand wählten die Gruppe um Tsiganis dabei – wie im letzten Abschnitt erläutert – die vier Riesenplaneten auf sehr kompakten Orbits. Zusätzlich nahmen sie an, dass es eine massive Scheibe aus Planetesimalen im Sonnensystem gab -- eine solche ist ein nicht unwahrscheinliches Überbleibsel der Planetenentstehung.
@@ -864,7 +878,7 @@ Er schlägt daher ein zweistufiges Verfahren vor, in welchem die innerste Oortsc
 Er bestimmte die Masse der dadurch gebildeten äußeren Oortschen Wolke auf etwa $\unit[0.5]{\ME}$, was etwas weniger als die $\unit[0.6-1.4]{\ME}$ sind, auf die die Messwerte schließen lassen\cite{Brasser2008}. Diese Differenz erklärt er damit, dass zusätzlich aus der innersten Oortschen Wolke durch die Wechselwirkung von vorbeifliegenden Sternen Material in die äußere Oortsche Wolke gelangte\cite{Brasser2008}.
 Dies kann bis zu weiteren $\unit[0.5]{\ME}$ beitragen, die wahrscheinlichste Gesamtmasse ergibt sich in guter Übereinstimmung mit den Messwerten auf $\unit[0.9]{\ME}$\cite{Brasser2008}.
 
-\section{Ausblick}\label{erweiterungen}
+\chapter{Ausblick}\label{erweiterungen}
 Bereits vor dem Nizza-Modell gab es einige Modelle, die sich daran machten zu erklären, wie die Planeten von ihren ursprünglichen kompakten Orbitalen auf ihre heutigen sonnenfernen Bahnen kamen. Als Vorgängermodelle sind insbesondere \cite{Thommes1999,Thommes2003,Levison2004,Gomes2004} zu nennen.
 %Wie wir gesehen haben sind für die Entwicklung dieser Modelle die Fortschritte in den Möglichkeiten das Sonnensystem über lange Zeiträume zu simulieren essenziell.
 Das Nizza-Modell kann wie wir gesehen haben eine Vielzahl an Eigenschaften unseres Sonnensystems erfolgreich erklären und ist daher äußerst erfolgreich.
@@ -872,10 +886,10 @@ Natürlich ist die Forschung in den bald zehn Jahren seit den Veröffentlichunge
 So wird das Nizza-Modell, in der Form wie es hier im Detail vorgestellt wurde, in Abgrenzung zu modifizierten Nizza-Modellen, heute auch als das original Nizza-Modell (engl. \glqq original Nice modell\grqq, kurz ONM) bezeichnend.
 Im folgenden will ich noch die wichtigsten der modifizierten Nizza-Modelle kurz vorstellen. %bäh
 
-\subsection{Weitere Resonanzen \& ein neuer Trigger}\label{Nizza2}
+\section{Weitere Resonanzen \& ein neuer Trigger}\label{Nizza2}
 Auf ein Problem des original Nizza-Modells weisen \cite{Morbidelli2007a} hin: während die kompakten Planeten Orbits und die Existenz der Planetesimalscheibe wie wir gesehen haben sehr plausible Anfangszustände sind, waren die Details der Anfangsbedingungen -- die genauen Orbits der Planeten und die genau Position der Planetesimalscheibe -- mangels besseren Wissens darüber weitestgehend geraten.
 
-So zeigen hydrodynamische Simulationen unter anderem von \cite{Morbidelli2007a}, das die Riesenplaneten in der Gasscheibe nach innen migrieren, bis es zwischen Jupiter und Saturn zu einer 2:3 Mean-Motion-Resonanz kommt, welche bei Vorhanden sein der Gasscheibe eine äußerst stabile Konfiguration ist und die Migration der Planeten zur Sonne stoppt und somit verhindert, dass die Planeten als \glqq Hot Jupiters\grqq zu nahe an der Sonne enden\cite{Morbidelli2007a}.
+So zeigen hydrodynamische Simulationen unter anderem von \cite{Morbidelli2007a}, das die Riesenplaneten in der Gasscheibe nach innen migrieren, bis es zwischen Jupiter und Saturn zu einer 2:3 Mean-Motion-Resonanz kommt, welche bei Vorhanden sein der Gasscheibe eine äußerst stabile Konfiguration ist und die Migration der Planeten zur Sonne stoppt und somit verhindert, dass die Planeten als \glqq Hot Jupiters\grqq\ zu nahe an der Sonne enden\cite{Morbidelli2007a}.
 Zu Zeitpunkt als sich die Gasscheibe aufgelöst hat -- also dem Startzeitpunkt des Nizza-Modells -- wären die Planten also in oder sehr naher der 2:3-MMR und nicht der im Nizza-Modell betrachteten 1:2-Resonanz.
 Man stellt darüber hinaus in der Tat fest, dass zu dieser Zeit alle Planeten zueinander in Mean-Motion-Resonanzen sein sollten.
 
@@ -903,7 +917,7 @@ Somit haben wir wieder einen sich selbst verstärkenden Effekt, der nach einiger
 Diese modifizierte Version erklärt das Timing des großen Bombardements noch natürlicher und startet dabei von realistischen Anfangsbedingungen.
 % man können noch sagen, dass es auch besser für Exosysteme ist.
 
-\subsection{Jumping Jupiter}\label{jumpingjupiter}
+\section{Jumping Jupiter}\label{jumpingjupiter}
 Eine weitere neue Version des Nizza-Modells wurde durch die Arbeiten \cite{Morbidelli2009,Brasser2009,Morbidelli2010} begründet. Die größte Neuerung hierbei ist das \glqq Jumping Jupiter-Szenario\grqq.
 Dabei handelt es sich, wenn ein Eisriese zunächst bei einer Begegnung mit Saturn von diesem nach innen geschleudert wir und anschließend von Jupiter wieder nach außen geschleudert wird.
 Dies führt zu einem sehr rasanten Anstieg des Abstands zwischen Jupiter und Saturn, da Saturn nach außen und Jupiter nach innen geschleudert wird, was mehrerer Probleme des original Nizza-Modells löst.
@@ -916,7 +930,7 @@ Vor allem ist ein Jumping Jupiter-Szenario jedoch notwendig um die Orbitalvertei
 
 Ein Jumping Jupiter tritt beim modifizierten Nizza-Modell wie im letzten Abschnitt beschreiben in etwa 5\% der Fälle auf\cite{Brasser2009}.
 
-\subsection{Verlorengegangene Planeten}
+\section{Verlorengegangene Planeten}
 \begin{figure}[tbhn]
 \centering
 \includegraphics[scale=0.5]{img/Nesvorny2011-1.pdf}
@@ -956,35 +970,36 @@ Beobachtungen des Mikrolinseneffektes führten dazu, dass \cite{Sumi2011} hochre
 Somit ist es naheliegen davon auszugehen, dass es eher die Regel als die Ausnahme ist, dass in einem Planetensystem ein oder mehrere Planeten aus dem System geschleudert wird. Es ist also nicht abwegig dies auch im Sonnensystem passiert sein könnte.
 Mann muss jedoch darauf hinweisen, dass \cite{Veras2012} gezeigt hat, dass diese große Anzahl an freifliegenden Planeten nicht nur auf diese weise entstanden sein kann.
                                                
-\section{Zusammenfassung \& Bewertung}
+\chapter{Zusammenfassende Bewertung}
 Das Nizza-Modell stellt ein äußerst erfolgreiches Modell dar. Es stellt das bisher beste Modell zu Erklärung des Sonnensystems dar und kann, wie ich in dieser Arbeit dargelegt habe, zahlreiche Eigenschaften unseres Sonnensystems erklären.
 Es erklärt nicht nur die Orbits der Riesenplaneten, sondern auch das Late Heavy Bombardment, die Jupiter- und eventuell auch die Neptun-Trojaner, die irregulären Satelliten und fast alle Eigenschaften des Kuipergürtels.
-Kein anderes Modell auf diesem Gebiete hat derartiges Erreicht.
-Es gibt natürlich aber auch Probleme des Nizza-Modells, sie sind jedoch im Vergleich zu der Erfolgen eher als klein einzustufen und die meisten können -- zumindest potentiell -- durch kleinere Modifikationen des Nizza-Modells behoben werden.
-Der besonderer Reiz des Nizza-Modells besteht insbesondere darin, dass es mit sehr wenigen, plausiblen und klar definierten Anfangsannahmen sehr viele der Eigenschaften des heutigen Sonnensystems erklären kann.
-Die neueren Versionen des Modells, können zwar die Erfolge des Nizza-Modells weiter ausbauen und Probleme vermeiden, zahlen dafür jedoch zum einen den Preis eines aufgeweichten und vergrößerten Anfangsparameterraums zum anderen mit niedrigen Erfolgswahrscheinlichkeiten und so werden die Aussagen zunehmend statistischer Natur. Dabei zeichnen die Zahlen zumindest auf den ersten Blick ein ernüchterndes Bild, selbst bei den besten Anfangsbedingungen liegen die Erfolgsquoten bestenfalls im einstelligen Prozentbereich.
+Kein anderes Modell auf diesem Gebiete hat derartiges erreicht.
+Es gibt natürlich aber auch Probleme des Nizza-Modells, sie sind jedoch im Vergleich zu den Erfolgen eher als klein einzustufen und die meisten können -- zumindest potentiell -- durch kleinere Modifikationen des Nizza-Modells behoben werden.
+Der besonderer Reiz des Nizza-Modells besteht darin, dass es mit wenigen, plausiblen und klar definierten Anfangsannahmen sehr viele der Eigenschaften des heutigen Sonnensystems erklären kann.
+Die neueren Versionen des Modells, können zwar die Erfolge des Nizza-Modells weiter ausbauen und Probleme reduzieren, zahlen dafür jedoch zum einen den Preis eines aufgeweichten und vergrößerten Anfangsparameterraums zum anderen mit niedrigen Erfolgswahrscheinlichkeiten, folglich werden die Aussagen zunehmend statistischer Natur. Dabei zeichnen die Zahlen zumindest auf den ersten Blick ein ernüchterndes Bild, selbst bei den besten Anfangsbedingungen liegen die Erfolgsquoten bestenfalls im einstelligen Prozentbereich.
 
-Hier ist eine vorsichtige und differenzierte Betrachtung der Ergebnisse notwendig. Zum einen dürfen statistische Aussagen nicht überschätzt werden und müssen immer im Kontext gesehen werden. Führen um Beispiel gewissen Anfangsbedingungen häufiger zum Erfolg, als andere so heißt das noch nicht notwendigerweise das erstere Anfangsbedingungen realistischer sind, schließlich betrachtet man immer nur ausgewählte Erfolgsbewertungskriterien, dazu kommt die schon oben erwähnte Verzerrung durch Negativresultate die zu einer lebensfeindlichen Erde führen.
+Hier ist eine vorsichtige und differenzierte Betrachtung der Ergebnisse notwendig. Zum einen dürfen statistische Aussagen nicht überschätzt werden und müssen immer im Kontext gesehen werden. Führen zum Beispiel gewisse Anfangsbedingungen häufiger zum Erfolg, als andere, so heißt das noch nicht notwendigerweise dass erstere Anfangsbedingungen realistischer sind, schließlich betrachtet man immer nur ausgewählte Erfolgsbewertungskriterien. Dazu kommt die schon oben erwähnte Verzerrung durch Negativresultate, die zu einer lebensfeindlichen Erde führen.
 
-Die Absolutwerte der Erfolgswahrscheinlichkeiten hängen von der Stringenz der Erfolgsbewertungskriterien ab. Da man das N-Körperproblem mit hoher Anzahl an Körpern, und dementsprechend vielen Möglichkeiten für die exakten Anfangsbedingungen, über sehr lange Zeiträume hinweg betrachtet, ist es nicht verwunderlich, dass die Erfolgsquoten für immer strenge Erfolgsbewertungskriterien gegen Null gehen.
-Da es keinen Grund dafür gibt, dass unser System einen Normalfall darstellt gegen das besonders viele Anfangsbedingungen streben ist also nicht entscheidend mit wie hoher Wahrscheinlichkeit die von uns ausgewählten Erfolgsbewertungskriterien eintreten, sondern viel mehr die Frage ob das Modell durch Wahl geeigneter Anfangsbedingungen alle wählbaren Kriterien erfüllen kann.
+Die Absolutwerte der Erfolgswahrscheinlichkeiten hängen von der Stringenz der Erfolgsbewertungskriterien ab. Da man beim Nizza-Modell das N-Körperproblem mit hoher Anzahl an Körpern, und dementsprechend vielen Möglichkeiten für die exakten Anfangsbedingungen, über sehr lange Zeiträume hinweg betrachtet, ist es nicht verwunderlich, dass die Erfolgsquoten für immer strenge Erfolgsbewertungskriterien gegen Null gehen.
+Da es keinen Grund dafür gibt, dass unser System einen Normalfall darstellt gegen das besonders viele Anfangsbedingungen streben, ist es folglich nicht entscheidend mit wie hoher Wahrscheinlichkeit die von uns ausgewählten Erfolgsbewertungskriterien eintreten, sondern viel mehr die Frage ob das Modell durch Wahl geeigneter Anfangsbedingungen alle wählbaren Kriterien simultan erfüllen kann. % kann fett?
 Und genau hier ist das Nizza-Modell und seine Nachfolger äußerst erfolgreich, erfüllt es doch weit mehr Kriterien als alle vorherigen und alternativen Modelle.
 
-Das Nizza-Modell wurde generell erst durch die wachsende Rechenleistung, sowie durch die wesentlich schnelleren symplektischen Simulationsalgorithmen, basierend auf dem besprochenen von \cite{Wisdom1991}, ermöglicht. Dennoch benötigte die Betrachtung der verschiedenen Aspekte des Modells meist spezielle optimierte, oft mehrstufige und auf das zu betrachtende fokussierte Simulationen.
-Vielfach wurden dabei auch Vereinfachungen getroffen, von denen sich manche später als problematisch herausgestellt haben, als Beispiel sei hier die Vernachlässigung der Wechselwirkungen zwischen den Planetesimalen genannt. Häufig wurden Vernachlässigungen von Effekten auch als mögliche Erklärung für Diskrepanzen zwischen Modellergebnissen und Realität angeführt.
-Dies betrifft insbesondere die Berücksichtigung von Kollisionen, daher glaube ich, dass es für die weitere Untersuchung des Nizza-Modells die Entwicklung von Simulationsalgorithmen die Kollision und andere nicht-gravitative Effekte berücksichtigen großer Bedeutung zukommt.
-Auch \cite{Morbidelli2002} prognostiziert für die Zukunft eine Entwicklung von reinen numerischen Integratoren zu numerischen Simulationen, welche nicht nur Newtons Bewegunsgleichungen, sondern eine breite Auswahl an dynamischen physikalischen Effekten mit berücksichtigt.
-Während die Entwicklung des Nizza-Modells in seiner 2005 erschienen Fassung noch wenige Jahre zuvor noch mangels Rechenleistung kaum möglich gewesen wäre, wären auch die neueren Simulationen -- Beispielsweise die von \cite{Nesvorny2012} -- im Jahr 2005 noch nur mit sehr großem Aufwand möglich gewesen.
-Durch die weiter exponentiell wachsende Rechenleistung ist davon auszugehen, dass bereits in wenigen Jahren die Möglichkeiten weitere Durchbrüche ermöglichen.
-Weiter beschleunigt könnte dies durch neue, noch schnellere Simulationsalgorithmen.
+Das Nizza-Modell wurde generell erst durch die wachsende Rechenleistung, sowie durch die wesentlich schnelleren symplektischen Simulationsalgorithmen, basierend auf dem besprochenen Algorithmus von \cite{Wisdom1991}, ermöglicht. Dennoch benötigte die Betrachtung der verschiedenen Aspekte des Modells meist speziell optimierte, oft mehrstufige und auf das zu Betrachtende fokussierte Simulationen.
+Vielfach wurden dabei auch Vereinfachungen getroffen, von denen sich manche später als problematisch herausgestellt haben; als Beispiel sei hier die Vernachlässigung der Wechselwirkungen zwischen den Planetesimalen genannt. Häufig wurden Vernachlässigungen von Effekten auch als mögliche Erklärung für Diskrepanzen zwischen Modellergebnissen und Realität angeführt.
+Dies betrifft insbesondere die Berücksichtigung von Kollisionen, daher glaube ich, dass für die weitere Untersuchung des Nizza-Modells die Entwicklung von Simulationsalgorithmen, die Kollisionen und andere nicht-gravitative Effekte berücksichtigen, von großer Bedeutung ist.
+Auch \cite{Morbidelli2002} prognostiziert für die Zukunft eine Entwicklung von reinen numerischen Integratoren zu numerischen Simulatoren, welche nicht nur Newtons Bewegungsgleichungen, sondern eine breite Auswahl an dynamischen und physikalischen Effekten mit berücksichtigt.
+Während die Entwicklung des Nizza-Modells in seiner 2005 erschienen Fassung noch wenige Jahre zuvor noch mangels Rechenleistung kaum möglich gewesen wäre, wären auch die neueren Simulationen -- Beispielsweise die von \cite{Nesvorny2012} -- im Jahr 2005 noch lediglich mit sehr großem Aufwand möglich gewesen.
+Es ist davon auszugehen das durch die weiter exponentiell wachsende Rechenleistung bereits in wenigen Jahren weitere Durchbrüche ermöglicht werden.
+Weiter beschleunigt könnte dies durch neue, noch schnellere Simulationsalgorithmen werden.
 
-Es bleibt die Frage nach dem Wahrheitsgehalt des Modells, denn auch wenn in den Naturwissenschaften Theorien nicht bewiesen sondern nur falsifiziert werden können, so ist man es doch gewohnt Theorien als bestätigt zu betrachten, wenn sie Falsifikationsversuche -- durch Überprüfung von Vorhersagen des Modells -- überstanden haben.
-Dabei hat die Astronomie im allgemeinen das Problem, dass Modelle nicht im Labor aktiv geprüft werden können, sondern man sich auf die vorhandenen beobachteten Systeme beschränken muss, das Nizza-Modell hat hier jedoch noch ein viel größeres Problem, denn es ist ein Modell, welches explizit die Evolution unseres Sonnensystems beschreibt, wir haben also nur ein einziges System das wir betrachten können.
+Es bleibt die Frage nach dem Wahrheitsgehalt des Modells, denn auch, wenn in den Naturwissenschaften Theorien nicht bewiesen sondern nur falsifiziert werden können, so ist man es doch gewohnt Theorien als bestätigt zu betrachten, wenn sie Falsifikationsversuche -- durch Überprüfung von Vorhersagen des Modells -- überstanden haben.
+Dabei hat die Astronomie im allgemeinen das Problem, dass Modelle nicht im Labor aktiv geprüft werden können, sondern man sich auf die vorhandenen beobachteten Systeme beschränken muss.
+Im Fall des Nizza-Modells verstärkt sich das Problem, das es sich explizit auf unser Sonnensystem bezieht und es somit nur ein einziges System gibt, dass man analysieren kann.
 Wir müssen uns also darauf beschränken immer weitere Eigenschaften unseres Sonnensystems auf Verträglichkeit mit dem Nizza-Modell zu prüfen.
-Dies ist jedoch alles andere als trivial, schließlich können oft schon kleine Veränderungen am Modell oder den Parametern einen vormals bestehenden Widerspruch auflösen -- ein Test auf Kompatibilität mit Beobachtungsdaten gibt also entweder eine Übereinstimmung oder aber die Aussage wohl noch nicht die richtigen Anfangsbedingung oder Variation des Modells gefunden zu haben.
-Somit ist das Modell also auch nur schwer echt zu falsifizieren. Was bleibt ist die Aussage, dass das Nizza-Modell das erfolgreichste Modell zur Erklärung der Entwicklung unseres Sonnensystems ist das wir bis jetzt kennen.
+Dies ist jedoch alles andere als trivial, schließlich können oft schon kleine Veränderungen, am Modell oder den Parametern, einen zuvor bestehenden Widerspruch auflösen -- ein Test auf Kompatibilität mit Beobachtungsdaten gibt also entweder ein Hinweis auf Übereinstimmung oder aber die Aussage das entweder das Modell falsch ist oder aber nur noch nicht die richtigen Anfangsbedingung oder Variation des Modells gefunden wurde.
+Somit ist das Modell auch nur schwer echt zu falsifizieren. Was bleibt ist die Aussage, dass das Nizza-Modell das erfolgreichste Modell zur Erklärung der Entwicklung unseres Sonnensystems ist das wir bis jetzt kennen.
 
-Das Nizza-Modell stellt einen großen Wissenschaftlichen Durchbruch dar, ist es damit doch erstmals möglich zahlreiche Eigenschaften des Sonnensystems simultan und mit natürlichen Anfangsbedingungen zu erklären. Es ergänzt sich gut mit dem Grad-Track-Modell\cite{Walsh2011}, welches die Entwicklung des inneren Sonnensystems im der Zeit vor dem Auflösen der Gasscheibe beschreibt. Zusammen bilden sie das \glqq Standardmodell\grqq\ der planetaren Evolution des Sonnensystems und sind wissenschaftlich weit akzeptiert.
+Das Nizza-Modell stellt einen großen wissenschaftlichen Durchbruch dar, denn es ist damit erstmals möglich, zahlreiche Eigenschaften des Sonnensystems simultan und mit natürlichen Anfangsbedingungen zu erklären. Es ergänzt sich gut mit dem Grad-Track-Modell\cite{Walsh2011}, welches die Entwicklung des inneren Sonnensystems in der Zeit vor dem Auflösen der Gasscheibe beschreibt. Zusammen bilden sie das \glqq Standardmodell\grqq\ der planetaren Evolution des Sonnensystems und sind wissenschaftlich weithin akzeptiert.
 
 
 %%%% Myr/Gyr einheitlich scheiben
@@ -993,15 +1008,33 @@ Das Nizza-Modell stellt einen großen Wissenschaftlichen Durchbruch dar, ist es 
 %%%% Hamilton/Hamiltonian?
 %%%% besseres Wort für Planetenbegegnung?
 %%%% Bildergrößen vereinheitlichen mit width statt scale
-%%%% amsbook verwenden?
-%%%%% \frontmatter etc. verwenden?
+%%%% Vektoren fett!
 
 \newpage
 
-\section{Literaturverzeichnis}
+%\chapter{Literaturverzeichnis}
 
 \bibliography{library,libraryKBOmass,libraryoldLHBmodells,libraryoldTrojanermodells,librarysatellites}{}
 \bibliographystyle{dinatmod} %gerapali 
 %\listoffigures
+
+\cleardoublepage
+\backmatter
+
+\pagestyle{empty}
+\pagebreak
+
+~\vfill
+
+\noindent
+Hiermit versichere ich, dass die zum heutigen Tag an der Fakultät für
+Physik eingereichte Bachelorarbeit zum
+Thema \glqq \thetitle\grqq\ selbstständig
+verfasst wurde und ich keine anderen als die angegebenen Quellen und
+Hilfsmittel benutzt, sowie Zitate kenntlich gemacht habe.
+\vskip 1cm
+\noindent
+Datum, Unterschrift: \hrulefill
+
 
 \end{document}
