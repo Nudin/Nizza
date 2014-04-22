@@ -90,7 +90,7 @@ geboren in München am 5.4.1990\\
 
 \chapter{Einleitung}
 Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Tsiganis2005,Morbidelli2005,Gomes2005},
-in denen sie ein neues Modell für die Migration der Riesenplaneten unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wird Nizza-Modell genannt, da die Autoren zu besagter Zeit am Observatoire de la Côte d’Azur in Nizza arbeiteten.
+in denen sie ein neues Modell für die Migration der Riesenplaneten unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wird Nizza-Modell genannt, da die Autoren zu besagter Zeit am \emph{Observatoire de la Côte d’Azur} in Nizza arbeiteten.
 
 Das Nizza-Modell betrachtet das Sonnensystem, nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen davon aus, dass die Planeten damals nahezu kreisförmige, kompakte Orbits hatten.
 
@@ -111,8 +111,8 @@ Abschließend werden wir uns mit einer möglichen Erweiterungen des Nizza-Modell
 Zunächst wollen wir ein paar für das Verständnis des Nizza-Modells notwendige Grundlagen betrachten.
 
 Beim Nizza-Modell betrachten wir die Entwicklung der Planetenbahnen unter Be\-rück\-sich\-ti\-gung der gegenseitigen gravitativen Einflüsse der Planeten -- es handelt sich hier somit um klassische Himmelsmechanik.
-Wir betrachten dabei ein n-Körperproblem mit $n>2$ Teilchen, welche lediglich gravitativ wechselwirken.\footnote{Später wird auch die Kollision von Objekten berücksichtigt werden, dies wollen wir jedoch hier ignorieren.}
-Der Hamiltonian des n-Körperproblems lautet bekannterweise
+Wir betrachten dabei ein $n$-Körperproblem mit $n>2$ Teilchen, welche lediglich gravitativ wechselwirken.
+Der Hamiltonian des $n$-Körperproblems lautet bekannterweise
 \begin{equation}\label{eq:nbodyhamilton}
 {\mathcal H} = \sum\limits_{i=0}^{n-1} \frac{\vec p_i^2}{2m_i} - \sum\limits_{i<j} \frac{Gm_im_j}{r_{ij}}
 \end{equation}
@@ -121,10 +121,10 @@ Bei gegebenen Anfangswerten bestimmt der Hamiltonian durch die hamiltonschen Bew
 \begin{equation}
 \vec{\dot{q}}_i = \pd{\mathcal H}{\vec p_i} \quad ; \quad \vec{\dot{p}}_i = - \pd{\mathcal H}{\vec q_i}
 \end{equation}
-die zukünftige Entwicklung des Systems. Zur Notation sei vermerkt, dass im folgenden $\vec q$ und $\vec p$ die 3n-Orte und -Impulse aller Teilchen darstellen.
+die zukünftige Entwicklung des Systems. Zur Notation sei vermerkt, dass im folgenden $\vec q$ und $\vec p$ die $3n$ Orte und Impulse aller Teilchen darstellen.
 
 \section{Numerische Integratoren}
-Während die das Zweikörperproblems durch die Keplerschen Gesetze analytisch gelöst ist, ist das n-Körper Problem bereits ab drei Teilchen nicht mehr allgemein analytisch lösbar.
+Während die das Zweikörperproblems durch die Keplerschen Gesetze analytisch gelöst ist, ist das $n$-Körperproblem bereits ab drei Teilchen nicht mehr allgemein analytisch lösbar.
 Zwar sind analytische Näherungslösungen unter gewissen Voraussetzungen möglich, jedoch verlieren diese ihre Gültigkeit, wenn man versucht die Dynamik des Systems über sehr lange Zeiträume zu betrachten. Stattdessen verwendet man dafür numerische Computersimulationen.
 Doch auch hier wird die Zeitspanne, die Genauigkeit und die Anzahl der Teilchen durch die begrenzte Rechnerleistung limitiert.
 In den letzten Jahrzehnten sind die Möglichkeiten derartiger Computersimulationen jedoch rasant gewachsen. So ist die Zeitdauer über welche das Sonnensystem integrierbar ist, seit den 1960er Jahren von einigen $10^4$ auf über $10^9$ Jahre – das entspricht dem Alter des Sonnensystems – gestiegen. Ein Grund dafür ist natürlich die rasant steigende Rechenleistung der Computersysteme, ein ähnlich großer Effekt kam jedoch durch die Verbesserung der Simulationsalgorithmen\cite{Morbidelli2002}. Im Folgenden möchte ich die Funktionsweise derartiger Algorithmen grundlegend erklären und die Konzepte erläutern, welche hinter diesen bahnbrechenden Verbesserungen stehen. Dabei werde ich mich auf die für die Himmelsmechanik wesentlichen Punkte aus physikalischer Sicht beziehen -- eine detailliertere, allgemeinere Betrachtung aus Sicht der Mathematik und Informatik soll hier nicht beschrieben werden.
@@ -226,7 +226,7 @@ Wobei $\H_{\mathrm{Kepler}}$ die Bewegung der Planeten um den Zentralkörper und
 \H_{\mathrm{Map}} = \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{2\pi}(\Omega t)
 \end{equation} % Was ist Omega?
 Das Integrieren zu den Zeiten zwischen den Peaks ist einfach möglich, die Lösungen sind natürlich die Keplerschen Bahnen. Das Integrieren über die Peaks ist ebenfalls möglich, da hier analog zu oben $\H_{\mathrm{Kepler}}$ nichts beiträgt und die Deltafunktion das Auswerten des Integrals bekanntermaßen erheblich vereinfacht\cite{Wisdom1991}. %are you kidding?
-Nun gilt es also den Hamiltonian des n-Körper Problems \ref{eq:nbodyhamilton} in $\H_{\mathrm{Kepler}}$ -- bestehend aus voneinander unabhängigen Keplerschen Hamiltonians -- sowie einen Interaktions Hamiltonian auf zu teilen. Ein Keplerscher Hamiltonian ist dabei ein Hamiltonian der Form
+Nun gilt es also den Hamiltonian des $n$-Körperproblems \ref{eq:nbodyhamilton} in $\H_{\mathrm{Kepler}}$ -- bestehend aus voneinander unabhängigen Keplerschen Hamiltonians -- sowie einen Interaktions Hamiltonian auf zu teilen. Ein Keplerscher Hamiltonian ist dabei ein Hamiltonian der Form
 \begin{equation}
 \H = \frac{p^2}{2m} - \frac{\mu}{r} \,.
 \end{equation}
@@ -236,7 +236,7 @@ Nun gilt es also den Hamiltonian des n-Körper Problems \ref{eq:nbodyhamilton} i
 \caption{Jacobi Koordinaten veranschaulicht für 4 Körper. Hellblau sind jeweils die virtuellen Massen eingezeichnet. Die Jacobi Koordinaten sind $r_1$, $r_2$, $r_3$ und $R$. Bild: Brews ohare, CC-BY-SA.}
 \label{fig:Jacobi}
 \end{figure}
-Für ein Zweiteilchensystem ist offensichtlich, dass man die gewünschte Form erreicht, indem man das System in den Koordinaten relativ zum Schwerpunkt schreibt. Für n-Dimensionen erhält man den Effekt durch Verwendung der Jacobi-Koordinaten, diese erhält man wie folgt.
+Für ein Zweiteilchensystem ist offensichtlich, dass man die gewünschte Form erreicht, indem man das System in den Koordinaten relativ zum Schwerpunkt schreibt. Für $n$ Teilchen erhält man den Effekt durch Verwendung der Jacobi-Koordinaten, diese erhält man wie folgt.
 Wir betrachten die Massenpunkte $m_j$ und $m_k$, diese ersetzen wir durch einen virtuellen Massenpunkt $m_{jk}$ am Ort des Schwerpunktes der Massen $R_{jk} = (m_j q_j + m_k q_k)/(m_j + m_k)$ und erhalten den Relativabstand $r_{jk} = x_j - x_k $.
 Wir iterieren diese Verfahren nun mit den restlichen $n-2$ Massenpunkten, sowie dem neuen virtuellen Massenpunkt. Am Ende haben wir $n-1$ relative Koordinaten $r_{ik}$ sowie den zuletzt berechneten $R_{1n}$ welcher die Koordinate des Schwerpunkts des Systems angibt.
 Abbildung \ref{fig:Jacobi} verdeutlicht das Vorgehen.
@@ -272,7 +272,7 @@ einmal mit positiven und einmal mit negativen Vorzeichen einfügen:
   +  \sum\limits_{i=1}^{n-1} \left( \frac{Gm_im_0}{r'_i} - \frac{Gm_im_0}{r_{i0}} \right)
   -  \sum\limits_{0<i<j} \frac{Gm_im_j}{r_{ij}}
 \end{equation}
-Wie man sieht ist der erste Term nun wie gewünscht eine Summe von n-1 voneinander unabhängigen Keplerschen Hamiltonians. Die beiden anderen Summen bilden $\H_{\mathrm{Interaktion}}$ und ist deutlich kleiner als $\H_{\mathrm{Kepler}}$. Unser Mapping Hamiltonian lautet also zusammenfassend:
+Wie man sieht ist der erste Term nun wie gewünscht eine Summe von $n-1$ voneinander unabhängigen Keplerschen Hamiltonians. Die beiden anderen Summen bilden $\H_{\mathrm{Interaktion}}$ und ist deutlich kleiner als $\H_{\mathrm{Kepler}}$. Unser Mapping Hamiltonian lautet also zusammenfassend:
 \begin{align}
 \H_{\mathrm{Map}} &= \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{2\pi}(\Omega t) \\
 \H_{\mathrm{Kepler}} &= \sum\limits_{i=1}^{n-1} \left( \frac{p'^2_i}{2m'_i} - \frac{Gm_im_0}{r'_i} \right) \\
@@ -980,7 +980,7 @@ Die neueren Versionen des Modells, können zwar die Erfolge des Nizza-Modells we
 
 Hier ist eine vorsichtige und differenzierte Betrachtung der Ergebnisse notwendig. Zum einen dürfen statistische Aussagen nicht überschätzt werden und müssen immer im Kontext gesehen werden. Führen zum Beispiel gewisse Anfangsbedingungen häufiger zum Erfolg, als andere, so heißt das noch nicht notwendigerweise dass erstere Anfangsbedingungen realistischer sind, schließlich betrachtet man immer nur ausgewählte Erfolgsbewertungskriterien. Dazu kommt die schon oben erwähnte Verzerrung durch Negativresultate, die zu einer lebensfeindlichen Erde führen.
 
-Die Absolutwerte der Erfolgswahrscheinlichkeiten hängen von der Stringenz der Erfolgsbewertungskriterien ab. Da man beim Nizza-Modell das N-Körperproblem mit hoher Anzahl an Körpern, und dementsprechend vielen Möglichkeiten für die exakten Anfangsbedingungen, über sehr lange Zeiträume hinweg betrachtet, ist es nicht verwunderlich, dass die Erfolgsquoten für immer strenge Erfolgsbewertungskriterien gegen Null gehen.
+Die Absolutwerte der Erfolgswahrscheinlichkeiten hängen von der Stringenz der Erfolgsbewertungskriterien ab. Da man beim Nizza-Modell das $n$-Körperproblem mit hoher Anzahl an Körpern, und dementsprechend vielen Möglichkeiten für die exakten Anfangsbedingungen, über sehr lange Zeiträume hinweg betrachtet, ist es nicht verwunderlich, dass die Erfolgsquoten für immer strenge Erfolgsbewertungskriterien gegen Null gehen.
 Da es keinen Grund dafür gibt, dass unser System einen Normalfall darstellt gegen das besonders viele Anfangsbedingungen streben, ist es folglich nicht entscheidend mit wie hoher Wahrscheinlichkeit die von uns ausgewählten Erfolgsbewertungskriterien eintreten, sondern viel mehr die Frage ob das Modell durch Wahl geeigneter Anfangsbedingungen alle wählbaren Kriterien simultan erfüllen kann. % kann fett?
 Und genau hier ist das Nizza-Modell und seine Nachfolger äußerst erfolgreich, erfüllt es doch weit mehr Kriterien als alle vorherigen und alternativen Modelle.
 
@@ -1027,10 +1027,10 @@ Das Nizza-Modell stellt einen großen wissenschaftlichen Durchbruch dar, denn es
 ~\vfill
 
 \noindent
-Hiermit versichere ich, dass die zum heutigen Tag an der Fakultät für
+Hiermit versichere ich, dass die am heutigen Tag an der Fakultät für
 Physik eingereichte Bachelorarbeit zum
 Thema \glqq \thetitle\grqq\ selbstständig
-verfasst wurde und ich keine anderen als die angegebenen Quellen und
+verfasst wurde und, dass ich keine anderen als die angegebenen Quellen und
 Hilfsmittel benutzt, sowie Zitate kenntlich gemacht habe.
 \vskip 1cm
 \noindent
