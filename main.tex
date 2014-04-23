@@ -91,10 +91,9 @@ wodurch Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter 
 Mit der Zeit kommen sich die Planeten durch die Migration näher und es kommt zu einer Resonanz,
 welche zu einer schlagartigen Erhöhung der Exzentrizitäten der Umlaufbahnen von Jupiter und Saturn, auf Werte die mit den heutigen vergleichbar sind, führt.
 Die Planeten Saturn, Uranus und Neptun kommen sich gegenseitig und der Scheibe aus Planetesimalen nahe. Dadurch werden die Planetesimale praktisch schlagartig zerstreut, das System wird instabil und ein Teil der Planetesimale fliegt in das innere Planetensystem und löst dort das Late Heavy Bombardment aus.
+Einige der Planetesimale werden auf Orbits um die Lagrangepunkte der Planeten oder um die Planeten selbst gefangen und bilden somit die Trojaner beziehungsweise irregulären Satelliten.
 
 Nach etwa hundert Millionen Jahren erreichen die Planeten schließlich ihre heutigen Entfernungen, ihre Exzentizitäten werden gedämpft und das System stabilisiert sich wieder. Die übriggebliebenen Planetesimale bilden die heutigen transneptunischen Objekte.
-
-Neben den Plantenorbits (\refsec{Orbits}), dem Late Heavy Bombardment (\refsec{LHB}) und dem Kuipergürtel (\refsec{Kuiper}), kann das Modell, wie wir sehen werden, auch die Trojaner (\refsec{Trojaner}) und die irregulären Monde (\refsec{Monde}) zumindest prinzipiell erklären.
 
 \cleardoublepage
 \setcounter{page}{1}
@@ -103,15 +102,30 @@ Neben den Plantenorbits (\refsec{Orbits}), dem Late Heavy Bombardment (\refsec{L
 %\mainmatter
 
 \chapter{Einleitung}
-Das heutige Standardmodell der Stern- und Planetenentstehung geht von einem Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $0,1\mathrm{\mu m}$ großen Staubteilchen besteht\cite{Hanslmeier2002}. Es entsteht ein Protostern in mitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
+Das heutige Standardmodell der Stern- und Planetenentstehung geht von einem Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $\unit[0,1]{\mu m}$ großen Staubteilchen besteht\cite{Hanslmeier2002}. Es entsteht ein Protostern in mitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
 Später wird der Drehimpuls nach außen transportiert. % durch was
 Durch die Brown'sche Bewegung kommt es zu zufälligen Zusammenstößen in der Gaswolke, wodurch die Teilchengrößen anwächst. Diese wachsen durch Akkretion von Gas und später durch Kollisionen weiter bis hin zu etliche Kilometer großen Klumpen, Planetesimale genannt.
 Diese wachsen durch den gravitativen Einfang von kleineren Planetesimalen immer stärker bis sie ihre Umgebung gravitativ dominieren und man dann von planetaren Embryonen spricht.
 
-Durch die Wechselwirkung des planetaren Embryos mit der Gasscheibe in die er noch immer eingebettet ist, kommt es zu einer Migration des Planeten nach innen. Gleichzeitig stabilisiert die Gasscheibe die Planetenbahnen, auch wenn sie sich in Bahnresonanzen befinden, und dämpfen die Exzentrizitäten. Zum Zeitpunkt als sich nach einigen Millionen Jahren die Gasscheibe auflöst befinden sich die Planeten auf engen, kompakten, kreisförmigen Orbits, welche sich meist in sogenannten Mean-Motion-Resonanzen (\refsec{resonanzen}) zueinander befinden\cite{Nesvorny2011}.
-Da sich die Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus und Neptun. Die terrestrischen Planten sind aufgrund der geringen Masse vernachlässigbar.} im heutigem Sonnensystem auf weiter entfernten Bahnen befinden, braucht es einen Mechanismus, welcher die Planeten wieder auf weiter entfernte Bahnen bringt. Dies geschieht durch die Bahnresonanzen welche nun nicht mehr durch die Gasscheibe stabilisiert werden. 
+Während man früher annahm, dass die Planeten ungefähr auf ihren heutigen Bahnen entstanden, ist seit \cite{Goldreich1979,Goldreich1980} bekannt, dass es 
+durch die Wechselwirkung der planetaren Embryos mit der Gasscheibe in die sie noch immer eingebettet sind, es zu einer Veränderung des Planeten-Orbits, genant Migration, kommt.
+Diese Migration entsteht durch zwei Effekte:
+\begin{itemize}
+\item Lindblad-Drehmoment: Die Gasscheibe umkreist den Stern, im Gegensatz zum Planeten, nicht mit der Keplergeschwindigkeit; durch die unterschiedlichen Geschwindigkeiten kommt es zu Dichtewellen in der Gasscheibe und es entstehen asymmetrische, vom Planeten weglaufende Spiralarme. Durch diese Asymmetrie kommt es zur Drehimpulsübertragung vom Planeten zur Scheibe und somit zur Verringerung der großen Halbachse.
+\item Corotation-Drehmoment: Durch die Wechselwirkung mit Gas, welches auf dem selben Orbit kreist, kommt es meist zu einer Drehimpulszunahme.
+\end{itemize}
+Analytische Berechnungen und Hydrodynamische Simulationen zeigten, dass diese Migration der Riesenplaneten im allgemeinen nach innen gerichtet ist.
+Gleichzeitig stabilisiert die Gasscheibe die Planetenbahnen, auch wenn sie sich in Bahnresonanzen befinden, und dämpfen die Exzentrizitäten.
+Zum Zeitpunkt als sich nach einigen Millionen Jahren die Gasscheibe auflöst befinden sich die Planeten auf engen, kompakten, kreisförmigen Orbits, welche sich meist in sogenannten Mean-Motion-Resonanzen (\refsec{resonanzen}) zueinander befinden\cite{Nesvorny2011}.
+Dies erklärt die Beobachtung von zahlreichen Hot Jupiters und Mean-Motion-Resonanzen in Exoplanetensystemen.
+
+Da sich die Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus und Neptun. Die terrestrischen Planten sind aufgrund der geringen Masse vernachlässigbar.} im heutigem Sonnensystem und bei anderen Planetensystemen auf weiter entfernten Bahnen befinden, braucht es einen Mechanismus, welcher die Planeten wieder auf weiter entfernte Bahnen bringt.
+Dies geschieht durch die Bahnresonanzen welche nun nicht mehr durch die Gasscheibe stabilisiert werden.
+Durch sie wird das System instabil und die Planeten streuen sich gegenseitig.
+
 Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Tsiganis2005,Morbidelli2005,Gomes2005},
-in denen sie ein neues Modell hierfür für unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wird Nizza-Modell genannt, da die Autoren zu besagter Zeit am \emph{Observatoire de la Côte d’Azur} in Nizza arbeiteten.
+in denen sie ein neues Modell vorstellten, dass genau dies für unseres Sonnensystem beschreibt.
+Dieses Modell ist außerordentlich erfolgreich und wird Nizza-Modell genannt, da die Autoren zu besagter Zeit am \emph{Observatoire de la Côte d’Azur} in Nizza arbeiteten.
 
 \FloatBarrier
 \chapter{Grundlagen}
