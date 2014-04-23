@@ -56,6 +56,35 @@
 \newcommand{\icarus}{Icarus}
 \newcommand{\apjl}{The Astrophysical Journal Letters}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\abstractname{Abstract}  %%% here
+\makeatletter
+\if@titlepage
+  \newenvironment{abstract}{%
+      \titlepage
+      \null\vfil
+      \@beginparpenalty\@lowpenalty
+      \begin{center}%
+        \bfseries \textsc{\abstractname}
+        \@endparpenalty\@M
+      \end{center}}%
+     {\par\vfil\null\endtitlepage}
+\else
+  \newenvironment{abstract}{%
+      \if@twocolumn
+        \section*{\abstractname}%
+      \else
+        \small
+        \begin{center}%
+          {\bfseries \textsc{\abstractname}\vspace{-.5em}\vspace{\z@}}%
+        \end{center}%
+        \quotation
+      \fi}
+      {\if@twocolumn\else\endquotation\fi}
+\fi
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 %\frontmatter
 \begin{titlepage}
@@ -82,7 +111,8 @@ geboren in München am 5.4.1990\\
 \centerline{\today}
 \end{titlepage}
 
-\addchap*{Abstract}
+%\addchap*{Abstract}
+\begin{abstract}
 Das Nizza-Modell betrachtet das Sonnensystem, nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen davon aus, dass die Planeten damals nahezu kreisförmige, kompakte Orbits hatten.
 
 Aus dieser Scheibe werden von den Riesenplaneten immer wieder einzelne Planetesimale gestreut.
@@ -94,6 +124,7 @@ Die Planeten Saturn, Uranus und Neptun kommen sich gegenseitig und der Scheibe a
 Einige der Planetesimale werden auf Orbits um die Lagrangepunkte der Planeten oder um die Planeten selbst gefangen und bilden somit die Trojaner beziehungsweise irregulären Satelliten.
 
 Nach etwa hundert Millionen Jahren erreichen die Planeten schließlich ihre heutigen Entfernungen, ihre Exzentizitäten werden gedämpft und das System stabilisiert sich wieder. Die übriggebliebenen Planetesimale bilden die heutigen transneptunischen Objekte.
+\end{abstract}
 
 \cleardoublepage
 \setcounter{page}{1}
