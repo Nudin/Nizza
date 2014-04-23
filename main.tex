@@ -82,19 +82,10 @@ geboren in München am 5.4.1990\\
 \centerline{\today}
 \end{titlepage}
 
-\cleardoublepage
-\setcounter{page}{1}
-\tableofcontents
-\clearpage
-%\mainmatter
-
-\chapter{Einleitung}
-Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Tsiganis2005,Morbidelli2005,Gomes2005},
-in denen sie ein neues Modell für die Migration der Riesenplaneten unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wird Nizza-Modell genannt, da die Autoren zu besagter Zeit am \emph{Observatoire de la Côte d’Azur} in Nizza arbeiteten.
-
+\addchap*{Abstract}
 Das Nizza-Modell betrachtet das Sonnensystem, nachdem sich die Gasscheibe bereits aufgelöst hat, das Sonnensystem besteht nun aus der Sonne, den Planeten und einer Scheibe von Planetesimalen. Das Modell geht in Übereinstimmung mit Planetenentstehungsmodellen davon aus, dass die Planeten damals nahezu kreisförmige, kompakte Orbits hatten.
 
-Aus dieser Scheibe werden von den Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus \& Neptun. Die terrestrischen Planten sind aufgrund der geringen Masse vernachlässigbar.} immer wieder einzelne Planetesimale gestreut.
+Aus dieser Scheibe werden von den Riesenplaneten immer wieder einzelne Planetesimale gestreut.
 Dabei kommt es durch die Impulsübertragung zu einer Änderung der Planeten\-orbits\cite{Tsiganis2005},
 wodurch Saturn, Uranus und Neptun langsam nach außen wandern, während Jupiter langsam nach innen wandert\cite{Hahn1999,Tsiganis2005}.
 Mit der Zeit kommen sich die Planeten durch die Migration näher und es kommt zu einer Resonanz,
@@ -104,7 +95,23 @@ Die Planeten Saturn, Uranus und Neptun kommen sich gegenseitig und der Scheibe a
 Nach etwa hundert Millionen Jahren erreichen die Planeten schließlich ihre heutigen Entfernungen, ihre Exzentizitäten werden gedämpft und das System stabilisiert sich wieder. Die übriggebliebenen Planetesimale bilden die heutigen transneptunischen Objekte.
 
 Neben den Plantenorbits (\refsec{Orbits}), dem Late Heavy Bombardment (\refsec{LHB}) und dem Kuipergürtel (\refsec{Kuiper}), kann das Modell, wie wir sehen werden, auch die Trojaner (\refsec{Trojaner}) und die irregulären Monde (\refsec{Monde}) zumindest prinzipiell erklären.
-Abschließend werden wir uns mit einer möglichen Erweiterungen des Nizza-Modells beschäftigen (\refsec{erweiterungen}).
+
+\cleardoublepage
+\setcounter{page}{1}
+\tableofcontents
+\clearpage
+%\mainmatter
+
+\chapter{Einleitung}
+Das heutige Standardmodell der Stern- und Planetenentstehung geht von einem Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $0,1\mathrm{\mu m}$ großen Staubteilchen besteht\cite{Hanslmeier2002}. Es entsteht ein Protostern in mitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
+Später wird der Drehimpuls nach außen transportiert. % durch was
+Durch die Brown'sche Bewegung kommt es zu zufälligen Zusammenstößen in der Gaswolke, wodurch die Teilchengrößen anwächst. Diese wachsen durch Akkretion von Gas und später durch Kollisionen weiter bis hin zu etliche Kilometer großen Klumpen, Planetesimale genannt.
+Diese wachsen durch den gravitativen Einfang von kleineren Planetesimalen immer stärker bis sie ihre Umgebung gravitativ dominieren und man dann von planetaren Embryonen spricht.
+
+Durch die Wechselwirkung des planetaren Embryos mit der Gasscheibe in die er noch immer eingebettet ist, kommt es zu einer Migration des Planeten nach innen. Gleichzeitig stabilisiert die Gasscheibe die Planetenbahnen, auch wenn sie sich in Bahnresonanzen befinden, und dämpfen die Exzentrizitäten. Zum Zeitpunkt als sich nach einigen Millionen Jahren die Gasscheibe auflöst befinden sich die Planeten auf engen, kompakten, kreisförmigen Orbits, welche sich meist in sogenannten Mean-Motion-Resonanzen (\refsec{resonanzen}) zueinander befinden\cite{Nesvorny2011}.
+Da sich die Planeten\footnote{Sofern nicht anderes angegeben, betrachten wir im folgenden immer nur die vier Gasriesen Jupiter, Saturn, Uranus und Neptun. Die terrestrischen Planten sind aufgrund der geringen Masse vernachlässigbar.} im heutigem Sonnensystem auf weiter entfernten Bahnen befinden, braucht es einen Mechanismus, welcher die Planeten wieder auf weiter entfernte Bahnen bringt. Dies geschieht durch die Bahnresonanzen welche nun nicht mehr durch die Gasscheibe stabilisiert werden. 
+Im Jahr 2005 veröffentlichen Gomes, Levison, Morbidelli und Tsiganis drei Nature-Artikel\cite{Tsiganis2005,Morbidelli2005,Gomes2005},
+in denen sie ein neues Modell hierfür für unseres Sonnensystem vorstellten. Dieses Modell ist außerordentlich erfolgreich und wird Nizza-Modell genannt, da die Autoren zu besagter Zeit am \emph{Observatoire de la Côte d’Azur} in Nizza arbeiteten.
 
 \FloatBarrier
 \chapter{Grundlagen}
@@ -312,7 +319,7 @@ SyMBA hingegen, verwendet auch hierfür wieder einen symplektischen Integrator, 
 
 \FloatBarrier
 
-\section{Bahnresonanzen}
+\section{Bahnresonanzen}\label{resonanzen}
 Wie in den meisten Gebieten der Physik spielen auch in der Himmelsmechanik Resonanzen eine große Rolle. Sie können ein System entweder stabilisieren oder wie im Fall des Nizza-Modells zu einer rasanten Destabilisierung führen.
 Bahnresonanzen treten immer dann auf, wenn zwei Frequenzen eines Systems ein bestimmtes Verhältnis haben.
 Die einfachst zu Verstehende und für diese Arbeit wichtigste Bahnresonanz ist die Mean-Motion-Resonanz (MMR), auf deutsch auch Resonanz der mittleren Bewegung, bei welche die Umlaufdauer zweier Körper (in unserem Fall Planeten) im Verhältnis zweier kleiner ganzer Zahlen sind.
@@ -366,14 +373,6 @@ durch einsetzen erhalten wir
 \end{equation} % keine echte Proportionalität
 Die Veränderung von $r$ ist also um so stärker, desto langsamer sich das Teilchen bewegt. Nachdem sich nun bekanntermaßen (und auch aus Gleichung \ref{eq:Bahngeschwindigkeit} ablesbar) der Planet um so schneller bewegt, je näher er an diesem ist, können wir daraus schließen, dass er an Sonnenfernen Punkten eine deutlich stärkere Bahnveränderung hin zur Sonne erfährt, als an Sonnennahen. Somit sinkt die Exzentrizität.
 
-\section{Planetenentstehung} % weiter ausbauen
-Das heutige Standardmodell der Stern- und Planetenentstehung geht vom Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $0,1\mathrm{\mu m}$ großen Staubteilchen besteht\cite{Hanslmeier2002}. Es entsteht ein Protostern in mitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
-Später wird der Drehimpuls nach außen transportiert. % durch was
-Durch die Brown'sche Bewegung kommt es zu zufälligen Zusammenstößen in der Gaswolke, wodurch die Teilchengrößen anwächst. Diese wachsen durch Akkretion von Gas und später durch Kollisionen weiter bis hin zu etliche Kilometer großen Klumpen, Planetesimale genannt.
-Diese wachsen durch den gravitativen Einfang von kleineren Planetesimalen immer stärker bis sie ihre Umgebung gravitativ dominieren und man dann von planetaren Embryonen spricht.
-
-Durch die Wechselwirkung des planetaren Embryos mit der Gasscheibe in die er noch immer eingebettet ist, kommt es zu einer Migration des Planeten nach innen. Gleichzeitig stabilisiert die Gasscheibe die Planetenbahnen, auch wenn sie sich in Bahnresonanzen befinden, und dämpfen die Exzentrizitäten. Zum Zeitpunkt als sich nach einigen Millionen Jahren die Gasscheibe auflöst befinden sich die Planeten auf engen, kompakten, kreisförmigen Orbits, welche sich meist in Mean-Motion-Resonanzen zueinander befinden\cite{Nesvorny2011}.
-Da sich die Planeten im heutigem Sonnensystem auf weiter entfernten Bahnen befinden, braucht es einen Mechanismus, welcher die Planeten wieder auf weiter entfernte Bahnen bringt. Dies geschieht durch die Bahnresonanzen welche nun nicht mehr durch die Gasscheibe stabilisiert werden. Ein auf unser Sonnensystem bezogenes Model hierfür ist das Nizza-Modell.
 
 \chapter{Das Nizza-Modell}
 \section{Die Planetenorbits}\label{Orbits}
