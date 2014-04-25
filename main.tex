@@ -198,7 +198,7 @@ Beschränken wir uns zunächst der Einfachheit halber auf Hamiltonians der Form 
 Durch das averaging principle können wir den Hamiltonian nun um periodisch oszillierende Terme
 \begin{equation}
 \delta_h(t) = \sum\limits_{n=-\infty}^{\infty} \cos(nt\cdot \frac{2\pi}{h}) = h \cdot \sum\limits_{n=-\infty}^{\infty} \delta(t-h n)
-\end{equation} % nochy<mal überprüfen ob die Verallgemeinerung stimmt
+\end{equation}
 ergänzen und erhalten damit den neuen Hamiltonian
 \begin{equation}
 \mathcal H_h(\vec q,\vec p)= \frac{1}{2}\vec p^2+\Phi(\vec q)\delta_h(t)
@@ -221,6 +221,8 @@ Das Mapping für diesen lautet also
 \begin{equation}
 \vec{q'}=\vec{q}+h\vec{p} \quad ; \quad \vec{p'}=\vec{p}-h\vec{\nabla}\Phi(\vec{q'})\,.
 \end{equation}
+Es ist natürlich auch Möglich die Schritte in der anderen Reihenfolge zu Kombinieren, also von $t=-\epsilon$ bis $t=h-\epsilon$ zu Integrieren, man erhält dann den gleichwertigen aber unterschiedlichen \textit{modifizierten kick-drift Euler Integrator}.
+
 Für das Verständnis halte ich es für sehr wichtig, noch eine zweite, zum Ansatz über das averaging principle alternative, Betrachtungsweise für dieses Mapping zu erläutern.
 Für eine beliebige Observable $f(\vec q(t),\vec p(t))$ gilt bekanntermaßen:
 \begin{align}
@@ -260,7 +262,7 @@ wo wir zunächst über den Zeitrum $h$ die Auswirkung der kinetischen Energie $\
 
 Eine deutliche Verbesserung der Genauigkeit lässt sich erreichen, indem man noch die zweite Ordnung von Gleichung \ref{eq:OAB} und \ref{eq:OA+B} berücksichtigt. Ein solcher Integrator zweiter Ordnung wendet zunächst für eine Dauer von $h/2$ den ersten Teil des Hamiltonians an, dann für die Zeitdauer $h$ den zweiten und schließlich wieder für die Zeit von $h/2$ den ersten Teil an:
 \begin{equation}
-q(t+h)=e^{h\OB/2}e^{h\OA}e^{h\OA/2} \label{eq:secondorder}
+q(t+h)=e^{h\OB/2}e^{h\OA}e^{h\OB/2} \label{eq:secondorder}
 \end{equation}
 Wendet man dies auf die obige Aufteilung des Hamiltonians in kinetische und potentielle Energie an, so erhält man den bekannten Leapfrog-Integrator\cite{Duncan1998}. Der Fehler dieser Integratoren ist $\mathcal{O}(h^3)$ fällt also für kleine Schrittweiten deutlich schneller ab\cite{Chambers1999}.
 Es ist nun möglich noch höhere Ordnungen mit einzubeziehen, damit wird der Integrator bei gleicher Schrittweite immer genauer, beziehungsweise die nötige Schrittweite für eine gewünschte Genauigkeit wird immer größer. Gleichzeitig werden jedoch die Mappings immer komplizierter, weshalb jeder einzelne Schritt immer rechenzeitaufwendiger zu berechnen wird. Integratoren höherer Ordnung sind deshalb meist nicht schneller als Integratoren der zweiten Ordnung\cite{Chambers1999}.
@@ -279,8 +281,9 @@ Die grundlegende Eigenschaft des Sonnensystems, die hier genutzt wird, ist, dass
 \end{equation}
 Wobei $\H_{\mathrm{Kepler}}$ die Bewegung der Planeten um den Zentralkörper und $\H_{\mathrm{Interaktion}}$ die Beeinflussung der Körper untereinander beschreibt. Während solch eine Zerlegung in analytischen Theorien im Rahmen von Störungsrechnungen nichts ungewöhnliches ist, war dieser Ansatz vor Wisdom und Holman in nummerischen Verfahren nicht gebräuchlich\cite{Wisdom1991}. Hat man den Hamiltonian so aufgeteilt, kann man wie schon oben durch das Hinzufügen von periodischen Funktionen einen Mapping-Hamiltonian finden:
 \begin{equation}
-\H_{\mathrm{Map}} = \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{2\pi}(\Omega t)
-\end{equation} % Was ist Omega?
+\H_{\mathrm{Map}} = \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{h}(t)
+\footnote{\cite{Wisdom1991} verwenden dabei die gleichwertige Schreibweise für den Parameter $\Omega := 2\pi/h$ und $\delta_{2\pi}(\Omega t)\equiv \delta_{2\pi/\Omega}(t)$.}
+\end{equation}
 Das Integrieren zu den Zeiten zwischen den Peaks ist einfach möglich, die Lösungen sind natürlich die Keplerschen Bahnen. Das Integrieren über die Peaks ist ebenfalls möglich, da hier analog zu oben $\H_{\mathrm{Kepler}}$ nichts beiträgt und die Deltafunktion das Auswerten des Integrals bekanntermaßen erheblich vereinfacht\cite{Wisdom1991}. %are you kidding?
 Nun gilt es also den Hamiltonian des $n$-Körperproblems \ref{eq:nbodyhamilton} in $\H_{\mathrm{Kepler}}$ -- bestehend aus voneinander unabhängigen Keplerschen Hamiltonians -- sowie einen Interaktions Hamiltonian auf zu teilen. Ein Keplerscher Hamiltonian ist dabei ein Hamiltonian der Form
 \begin{equation}
@@ -311,7 +314,7 @@ und
 \end{equation}
 Die dazugehörigen transformierten Massen und Impulse sind:
 \begin{equation}
-m_0 = M \quad ; \quad m'_{i\neq 0} = m_i \frac{\eta_{i-1}}{\eta_{i}} \quad ; \quad \vec p'_i = m'_i \vec v'_i
+m_0 = M \quad ; \quad m'_{i\neq 0} = m_i \frac{\eta_{i-1}}{\eta_{i}} \quad ; \quad \vec p'_i = m'_i \vec{\dot{x}}'_i
 \end{equation}
 Setzt man dies in \ref{eq:nbodyhamilton} ein, so erhält man nach einigen Umformungen: %durchrechnen, vorrechnen?
 \begin{equation}
@@ -322,7 +325,7 @@ Wir formen den Hamiltonian weiter um, indem wir den Term
 \begin{equation}
 \sum\limits_{i=1}^{n-1} \frac{Gm_im_0}{r'_i}
 \end{equation}
-mit $r'_i = \norm{x'_i}$ einmal mit positiven und einmal mit negativen Vorzeichen einfügen:
+mit $r'_i = \norm{\vec x'_i}$ einmal mit positiven und einmal mit negativen Vorzeichen einfügen:
 \begin{equation}
 \H = \sum\limits_{i=1}^{n-1} \left( \frac{\vec p'^2_i}{2m'_i} - \frac{Gm_im_0}{r'_i} \right)
   +  \sum\limits_{i=1}^{n-1} \left( \frac{Gm_im_0}{r'_i} - \frac{Gm_im_0}{r_{i0}} \right)
@@ -330,7 +333,7 @@ mit $r'_i = \norm{x'_i}$ einmal mit positiven und einmal mit negativen Vorzeiche
 \end{equation}
 Wie man sieht ist der erste Term nun wie gewünscht eine Summe von $n-1$ voneinander unabhängigen Keplerschen Hamiltonians. Die beiden anderen Summen bilden $\H_{\mathrm{Interaktion}}$ und ist deutlich kleiner als $\H_{\mathrm{Kepler}}$. Unser Mapping Hamiltonian lautet also zusammenfassend:
 \begin{align}
-\H_{\mathrm{Map}} &= \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{2\pi}(\Omega t) \\
+\H_{\mathrm{Map}} &= \H_{\mathrm{Kepler}} + \H_{\mathrm{Interaktion}}\delta_{h}(t) \\
 \H_{\mathrm{Kepler}} &= \sum\limits_{i=1}^{n-1} \left( \frac{\vec p'^2_i}{2m'_i} - \frac{Gm_im_0}{r'_i} \right) \\
 \H_{\mathrm{Interaktion}} &= \sum\limits_{i=1}^{n-1} \left( \frac{Gm_im_0}{r'_i} - \frac{Gm_im_0}{r_{i0}} \right)
   -  \sum\limits_{0<i<j} \frac{Gm_im_j}{r_{ij}}
@@ -352,7 +355,7 @@ Testteilchen sind aus zwei Gründen von Bedeutung: zum einen, wenn man das Gravi
 Ein weiterer interessanter Punkt ist, dass obwohl die Reihenfolge der Körper bei der obigen Betrachtung irrelevant war, die Verwendung der natürlichen Reihenfolge, mit steigender großen Halbachse, \glqq sauberere\grqq\ Orbits liefert -- anderenfalls enthalten die Orbits schnelle Oszillationen.
 Daneben gibt es natürlich noch einige Aspekte des Algorithmus die optimiert werden können, diese spielen jedoch für das Verständnis der Funktionsweise keine Rolle, daher werde ich auf sie hier nicht eingehen.
 
-Die MVS Integratoren wie der von Wisdom und Holman haben jedoch ein grundlegendes Problem. Die Schrittweite des Integrators wird durch die Wahl der Parameter von $\delta_{2\pi}(\Omega t)$ festgelegt, sie ist also über die ganze Simulation konstant und für alle Planeten gleich.
+Die MVS Integratoren wie der von Wisdom und Holman haben jedoch ein grundlegendes Problem. Die Schrittweite des Integrators wird durch die Wahl des Parameter von $\delta_{h}(t)$ festgelegt, sie ist also über die ganze Simulation konstant und für alle Planeten gleich.
 Dies führt zu mehreren Problemen: Zum einen muss man wenn man, wen man Planeten hat, die auf einen sehr kleinen Orbit den Zentralkörper umkreisen, während andere Planeten sehr große Entfernungen zum Zentralkörper haben die selbe kleine Schrittweite für alle Planeten anwenden, obwohl bei den äußeren wesentlich größere Schrittweiten möglich und sinnvoll wären. Dieses Problem lösten \cite{Saha1994} mit einer Modifikation des Verfahren, welches es erlaubt für jeden Planeten eigene, jedoch weiterhin konstante, Schrittweiten zu wählen.
 Dies erhöht die Geschwindigkeit weiter, es löst jedoch zwei andere Probleme noch nicht. Das zweite Problem besteht in einer höheren Ungenauigkeit für Bahnen mit höherer Exzentrizität. Auch dieses Problem konnte durch eine Modifikation des Verfahrens durch \cite{Mikkola1997} überwunden werden.
 Das größte Problem jedoch bestand darin, dass sich zwei Planeten nicht zu nahe kommen dürfen, da in diesem Fall $\H_{\mathrm{Interaktion}}$ groß wird und somit das $\epsilon$ nicht mehr klein genug ist. Man würde hier gerne die Schrittweite verkleinern um die Integrationsgenauigkeit zu erhalten, Veränderungen der Schrittweite während der Integration führen jedoch zu Fehlern, da das averaging principle nicht mehr greift.
@@ -418,7 +421,7 @@ Diese Abbremsung führt nun zu einer Drift in Richtung Sonne, dessen Größe wir
 durch einsetzen erhalten wir
 \begin{equation}
 \Delta r = \frac{1}{v} \frac{4a^2G^3M^2 C \rho}{\left(av^2+GM\right)^2}  \Delta t \propto \frac{1}{v^5+cv^3+c'v}
-\end{equation} % keine echte Proportionalität
+\end{equation}
 Die Veränderung von $r$ ist also um so stärker, desto langsamer sich das Teilchen bewegt. Nachdem sich nun bekanntermaßen (und auch aus Gleichung \ref{eq:Bahngeschwindigkeit} ablesbar) der Planet um so schneller bewegt, je näher er an diesem ist, können wir daraus schließen, dass er an Sonnenfernen Punkten eine deutlich stärkere Bahnveränderung hin zur Sonne erfährt, als an Sonnennahen. Somit sinkt die Exzentrizität.
 
 
@@ -484,7 +487,7 @@ Wählt man den Abstand hingegen sehr groß ($\DSI \approx \unit[5]{AU}$), so ist
 \end{figure}
 Für die restlichen Fälle, welche sich allesamt nach einer wie oben beschriebenen Migrationsphase wieder stabilisieren, gilt, dass es für Abstände $\DII \ge \unit[3.5]{AU}$ zwar zu Interaktionen der beiden Eisplaneten unter einander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es in Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B\footnote{Die beiden Fälle in der es zu keiner Begegnung kam, wurden aus mir nicht ganz nachvollziehbaren Gründen nicht ausgeschlossen sondern zur Klasse A gerechnet.}, \cite{Nesvorny2007} bezeichneten Klasse A als Malhotra Klasse (MA) \citep[nach][]{Malhotra1996,Hahn1999a} und Klasse B als 'direct emplacement`-Klasse (DE).
 
-Bei Klasse B wird Neptun durch Uranus direkt fast auf seine endgültige Entfernung geschleudert %wo, warum wichtig?
+Bei Klasse B wird Neptun durch Uranus direkt fast auf seine endgültige Entfernung geschleudert 
 und anschließend wird die Exzentrizität durch dynamische Reibung in der Planetesimalscheibe verringert\cite{Nesvorny2007}. Somit ist die Zeitdauer der Phase der schnellen Migration bei dieser Klasse kürzer\cite{Tsiganis2005}. Auch führt diese Art der Dynamik dazu, dass die Exzentrizität weniger stark abnimmt\cite{Tsiganis2005}.
 Bei den Simulationen der Klasse A wird Neptun auf eine etwa $\unit[22-25]{AU}$ von der Sonne entfernte Umlaufbahn geschleudert und migriert dann langsamer innerhalb der Planetesimalscheibe auf seine endgültige Position\cite{Tsiganis2005}.
 Die beiden Simulationsklassen, kamen etwa gleich oft vor, 14 der Simulationen waren vom Typ~B, die anderen 15 waren vom Typ~A.
@@ -495,7 +498,7 @@ So hatte zum Beispiel das Vorgängermodell von \cite{Gomes2004} das Problem zwar
 Die großen Halbachsen der Eisriesen für die Klasse B betragen im Nizza-Modell hingegen $a_U = \unit[19,3 \pm 1,3]{AU}$ und $a_N = \unit[29,9 \pm 2,4]{AU}$, was mit den tatsächlichen Werten von $a_U = \unit[19,2]{AU}$ und $a_N = \unit[30,1]{AU}$ sehr gut übereinstimmt\cite{Tsiganis2005}.
 
 Der finale Abstand zwischen Jupiter und Saturn hängt vor allem von der Masse der Materie,
-die sie während der instabilen Phase streuen, ab, welche ihrerseits wiederum von der Masse der Planetenscheibe abhängt\cite{Tsiganis2005}. % richtig?
+die sie während der instabilen Phase streuen, ab, welche ihrerseits wiederum von der Masse der Planetenscheibe abhängt\cite{Tsiganis2005}.
 Höhere Massen der Scheibe führen zwar zu stabileren Endsystemen, wird die Masse jedoch größer als $\approx \unit[(35-40)]{\ME}$ wird der Abstand zwischen Jupiter und Saturn im fertigsimuliertem System zu groß\cite{Tsiganis2005} und wählt man eine Masse von $\approx \unit[50]{AU}$, so tritt zwischen Jupiter und Saturn zusätzlich auch eine 2:5 Resonanz auf und die dynamische Reibung wird so groß, dass Exzentrizitäten kleiner als in Realität ausfallen\cite{Tsiganis2005}.
 
 Die dynamische Temperatur der Scheibe wirkt sich auf die Exzentrizitäten aus: Heißere Scheiben führen zu höheren Exzentrizitäten von Jupiter und Saturn. Die beobachtete Existenz von zahlreichen plutogroßen transneptunischen Objekten spricht laut den Autoren für eine Scheibe mit der Dynamik der heißeren der beiden getesteten Scheiben\cite{Stern1991,Tsiganis2005}.
@@ -516,7 +519,7 @@ Da die Planetesimalenscheibe aufgrund ihrer sonnenfernen Entstehung vermutlich e
 \begin{figure}[tbn]
 \centering
 \includegraphics[scale=1]{img/Gomes2005-1.pdf}
-\caption{\textbf{a)} Um zu ermitteln ob und wo die Planetesimalenscheibe für die Anfangsbedingung des Nizza-Modells existiert, haben \cite{Gomes2005} in einer eigenen Simulation die dynamische Lebenszeit von Planetesimalen im frühen Sonnnensystem ermittelt. Die Planeten wurden dabei auf nahezu kreisförmigen, planaren Orbits mit großer Halbachse von 5,45, 8,18, 11,5 und $\unit[14,2]{AU}$ (schwarze Dreiecke) gesetzt. Für unterschiedliche Entfernungen wurden jeweils 10 Teilchen auf Orbits mit $e=i=0$ gesetzt, die mittlere Lebensdauer von 10 solchen Teilchen ist jeweils als Strich eingezeichnet. Ein Vergleich mit der Lebensdauer der Gasscheibe bestätigt die Anfangsbedingungen des Nizza-Modells und zeigt, dass der innere Rand der Gasscheibe etwa $\unit[1-1,5]{AU}$ hinter dem zweiten Eisriesen sein musste.
+\caption{\textbf{a)} Um zu ermitteln ob und wo die Planetesimalenscheibe für die Anfangsbedingung des Nizza-Modells existiert, haben \cite{Gomes2005} in einer eigenen Simulation die dynamische Lebenszeit von Planetesimalen im frühen Sonnnensystem ermittelt. Die Planeten wurden dabei auf nahezu kreisförmigen, planaren Orbits mit großer Halbachse von 5,45, 8,18, 11,5 und $\unit[14,2]{AU}$ (schwarze Dreiecke) gesetzt. Für unterschiedliche Entfernungen wurden jeweils 10 Teilchen auf Orbits mit $e=i=0$ gesetzt, die mittlere Lebensdauer von 10 solchen Teilchen ist jeweils als Strich eingezeichnet. Ein Vergleich mit der Lebensdauer der Gasscheibe bestätigt die Anfangsbedingungen des Nizza-Modells und zeigt, dass der innere Rand der Gasscheibe etwa $\unit[1\text{--}1,5]{AU}$ hinter dem zweiten Eisriesen sein musste.
 \textbf{b)} Zeit nach welcher es zu der Resonanz zwischen Jupiter und Saturn kommt, in Abhängigkeit von der Position des inneren Randes der Planetesimalenscheibe. Die Dichte und Gesamtmasse der Scheibe wurde dabei konstant gewählt. Man sieht, dass für die in {\textbf{a)}} ermittelten plausiblen Werte die Ressonanz erst nach etwa $\sim10^9$ Jahren eintritt, was gut zum Zeitpunkt des LHB passt. Bild nach \cite{Gomes2005}.}
 \label{fig:LHBtiming}
 \end{figure} % Aufteilen in zwei Grafiken? oder umwandeln in Queerformat
@@ -536,7 +539,7 @@ Berücksichtigt man diese Bedingung, erhält man die schon in Kapitel \ref{Orbit
 Die anfängliche Migrationsrate hängt nun von der Rate ab, mit welcher Planetesimale auf Planetenorbits schneidende Orbits gestreut werden. Die Zeitdauer bis zum Auftreten der MMR hängt schließlich von den folgenden Parametern ab:
 1. Dem Anfangsabstand zur Ressonanz, 2. der Dichte der Scheibe am inneren Rand und 3. der Abstand zwischen dem inneren Rand der Scheibe und dem äußeren Eisplaneten\cite{Gomes2005}.
 
-In acht Simulationen untersuchten \cite{Gomes2005} die Abhängigkeit des Ressonanzzeitpunktes in Abhängigkeit von der Position des inneren Rands der Planetesimalscheibe, bei ansonsten gleichen Parametern – inklusive gleicher Scheibenmasse und Dichte. Wie in Bild \ref{fig:LHBtiming} zu sehen ist, steigt die Zeit stark mit der Entfernung des inneren Rands an. Für große Werte $\gtrsim \unit[15,3]{AU}$ wie wir sie oben erhalten haben, tritt die Resonanz 192 bis 880 Millionen Jahre nach Beginn der Simulation auf, was zum Zeitpunkt des LHB passen würde. % Achtung: nach beginn der Simulation, nicht nach Planetenentstehung wie oben.
+In acht Simulationen untersuchten \cite{Gomes2005} die Abhängigkeit des Ressonanzzeitpunktes in Abhängigkeit von der Position des inneren Rands der Planetesimalscheibe, bei ansonsten gleichen Parametern – inklusive gleicher Scheibenmasse und Dichte. Wie in Bild \ref{fig:LHBtiming} zu sehen ist, steigt die Zeit stark mit der Entfernung des inneren Rands an. Für große Werte $\gtrsim \unit[15,3]{AU}$ wie wir sie oben erhalten haben, tritt die Resonanz 192 bis 880 Millionen Jahre nach Beginn der Simulation auf, was zum Zeitpunkt des LHB passen würde. % Achtung: nach beginn der Simulation, nicht nach Planetenentstehung wie oben, sind aber nur 1-10 Mio Jahre unterschied, erwähnen?
 Durch zusätzliche Variation anderer Parameter konnte das Eintreten der Resonanz auf bis zu 1,1 Milliarden Jahre\cite{Gomes2005} verzögert werden – somit ist klar, dass das späte Auftreten des großen Bombardements bei geeigneter Parameterwahl durchaus leicht erklärt werden kann.
 
 Als zweite wichtige Überprüfung, untersuchten die Wissenschaftler die Masse des auf den Mond treffenden Materials an. Bei den Simulationen waren dies etwa $\unit[9 \cdot 10^{21}]{g}$, davon trafen 50\% den Mond in den ersten 3,7 Millionen Jahren, 90\% in den ersten 29 Millionen Jahren. Das Bombardement fand demnach während einer relativ kurzen Zeitspanne statt. Die dabei durchschnittlich auf dem Mond treffende Gesamtmasse wurde auf $\unit[\left(8,4 \pm 0,3\right) \cdot 10^{21}]{g}$ bestimmt\cite{Gomes2005}.
@@ -553,12 +556,12 @@ Als Migrationsraten wurden in den Simulationen unterschiedliche Resultate der ur
 Weg (1) ist schneller, so das 50\% der Einschläge dieser Art bereits in den ersten 10 Myr (90\% in 30 Myr) stattfinden, während die Einschläge durch, auf letztere Art auf Kollisionskurs gebrachte, Asteroiden innerhalb von 50 Myr zu 50\% stattfanden (90\% in 150 Myr)\cite{Gomes2005}.
 In den Simulationen von \cite{Gomes2005} war der zweite Typ häufiger, wobei dies wenig aussagt, da
 die Häufigkeitsverteilung der beiden Wege vermutlich stark von den genauen Migrationsraten und den genauen dynamischen Zustand des Asteroidengürtels abhängt.
-Die Masse an Asteroiden die den Mond gemäß diesen Simulationen trifft wurde auf $\unit[\left( 3-8 \right) \cdot 10^{21}]{g}$, % anderer strich statt minus? space
+Die Masse an Asteroiden die den Mond gemäß diesen Simulationen trifft wurde auf $\unit[\left( 3\text{--}8 \right) \cdot 10^{21}]{g}$, % space?
 also einen ähnlich hohen Wert wie für die Planetesimale bestimmt – wobei die Unsicherheiten bei der Bestimmung der Masse der Asteroiden zu groß ist um ein Verhältnis zwischen den beiden Komponenten anzugeben. Auch ist noch nicht genau untersucht worden, inwieweit dieses Verhältnis eine Funktion von der Zeit und der Teilchengröße ist – so waren in diesen Simulationen die Planetesimale in den ersten 30 Millionen Jahren dominierend, während die Asteroiden länger auf den Mond niederprasselten\cite{Gomes2005}.
 
 Die Dauer des LHB beträgt in diesem Modell zusammenfassend also zwischen 10 und 150 Millionen Jahren – eine genauere Bestimmung ist nicht möglich. Dafür würde man sowohl das Verhältnis zwischen den Anteilen der beiden Asteroiden streuenden Mechanismen, sowie das Verhältnis dieser zu dem Anteil an Planetesmialen kennen. Und da diese sehr sensibel von den genauen Anfangsparametern – insbesondere der genauen anfänglichen Struktur des Asteroidengültels – abhängen, konnten sie nicht bestimmt werden\cite{Gomes2005}.
 
-Vergleichen wir nun die Vorhersagen des Modells mit bekannten Messgrößen. Das Nizza-Modell kann den für andere Modelle problematischen späten Zeitpunkt des Bombardements erklären. Auch die Menge des dabei auf den Mond eingebrachten Materials passt größenordnungsmäßig gut: So wurde aus der Anzahl und Größe der Mondkrater eine ungefähre Masse von $\unit[6 \cdot 10^{21}]{g}$ bestimmt\cite{Levison2001b,Gomes2005}, während die Simulationen $\unit[\left(8,4 \pm 0,3\right) \cdot 10^{21}]{g}$ an Planetesimalen und weitere $\unit[\left( 3-8 \right) \cdot 10^{21}]{g}$ an Asteroiden ergab.
+Vergleichen wir nun die Vorhersagen des Modells mit bekannten Messgrößen. Das Nizza-Modell kann den für andere Modelle problematischen späten Zeitpunkt des Bombardements erklären. Auch die Menge des dabei auf den Mond eingebrachten Materials passt größenordnungsmäßig gut: So wurde aus der Anzahl und Größe der Mondkrater eine ungefähre Masse von $\unit[6 \cdot 10^{21}]{g}$ bestimmt\cite{Levison2001b,Gomes2005}, während die Simulationen $\unit[\left(8,4 \pm 0,3\right) \cdot 10^{21}]{g}$ an Planetesimalen und weitere $\unit[\left( 3\text{--}8 \right) \cdot 10^{21}]{g}$ an Asteroiden ergab.
 Das Modell sagt wie schön in Bild \ref{fig:LHBMasse} zu sehen einen sehr plötzlichen Beginn des Bombardements voraus. Leider sind die bisher Beobachtungsdaten noch zu schlecht um dies zu überprüfen.
 Das Nizza-Modell sagt voraus, dass sowohl Asteroiden, also auch Planetesimale auf dem Mond eingeschlagen sind, dies stimmt damit überein, dass kosmochemische Analysen davon ausgehen, dass einige der Mondkrater durch Einschläge von Asteroiden geformt wurden.
 Die Streuung von Asteroiden führt auch dazu, dass der Asteroidengürtel um einen Faktor von ungefähr 10 ausgedünnt wird. Dies passt zu bestehenden Modellen, welche die fortlaufende Entwicklung des Asteroidengürtels durch Kollisionen beschreiben und erklärt warum es keine großen Asteroidenfamilien gibt, die zur Zeit des LHB entstanden sind\cite{Davis1994,Bottke2005,Gomes2005}.
@@ -635,7 +638,7 @@ Die Masse der Trojaner mit Librationsamplitude von unter 30\degree berechnet sic
 Als Theoretische Begründung für das starke Anwachsen der Masse mit steigender Migrationsgeschwindigkeit nennen die Autoren eine Kombination von zwei Gründen:
 zum einen ist durch die schnellere und somit kürzere Migration bei gleicher Gesamt\/teilchenzahl die Teilchenstromdichte während der Instabilitätsphase um den selben Faktor 3 höher, wodurch auch dreimal so viele Objekte eingefangen werden. Zum anderen führt eine schnellere Migration auch zu einem schnellerem Übergang vom instabilen zum stabilen Zustand, wodurch die Einfangquote steigt\cite{Morbidelli2005}.
 Beim Vergleich mit dem Literaturwert von \cite{Jewitt2000} stellen \cite{Morbidelli2005} eine deutlich Differenz fest: der berechnete Wert ist um einen Faktor $\sim 3-25$ kleiner als der Literaturwert.
-Allerdings – so argumentieren die Autoren – beruhte die Berechnung von Jewitt und Kollegen auf inzwischen veralteten Messwerten zu den Trojanerpopulationen. % Auflisten?
+Allerdings – so argumentieren die Autoren – beruhte die Berechnung von Jewitt und Kollegen auf inzwischen veralteten Messwerten zu den Trojanerpopulationen.
 Nach Korrektur dieser erhielt die Gruppe um Morbidelli eine Masse von $\unit[1,3 \cdot 10^{-5}]{\ME}$ für die Trojaner. Nachdem 87\% der Trojaner eine Librationsamplitude von unter 30\degree haben, ergibt sich für diese eine Masse von etwa $\unit[1,1 \cdot 10^{-5}]{\ME}$, was mit den Werten der Simulationen gut übereinstimmt\cite{Morbidelli2005}.
 
 Als nächstes analysierte die Gruppe um Morbidelli die Orbits der eingefangenen Objekte. Dazu simulierten sie die Entwicklung der Trojaner bei abgeschlossener Migration unter Einfluss von nur der Sonne und Jupiter für weitere $10^5$ Jahre und filterten die kurzzeitigen Oszillationen der Orbits heraus.
