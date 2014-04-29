@@ -14,7 +14,6 @@
 \usepackage{amsmath}	% Mathematische Formels
 \usepackage{amssymb}	% Mathematische Symbole
 \usepackage{commath}	% Diffenrenziale
-\usepackage{titling}	% Stellt \thedate, \theauthor, \thetitle zur verfügung
 \usepackage{placeins}	% stellt FloatBarrier zur verfügung. [section] verwenden?
 \usepackage{microtype}	% typographische Verbesserungen
 \setkomafont{disposition}{\normalcolor\bfseries}
@@ -22,16 +21,27 @@
 \usepackage{graphicx}	% Grafiken
 \usepackage[format=hang,font={it,footnotesize},labelfont=bf]{caption} % Bildunterschriften
 \usepackage{hyperref}	% Weblinks
+
+\newcommand{\thetitle}{Die Evolution des Sonnensystems im Rahmen des Nizza-Modell}
+\newcommand{\theenglishtitle}{The Evolution of the Solarsystem described by the Nice Model}
+\newcommand{\thedate}{\today}
+\newcommand{\theauthor}{Michael F. Sch\"onitzer}
+
+\author{\theauthor}
+%\title{Die Evolution des Sonnensystems im Rahmen des Nizza-Modell}
+\title{\thetitle}
+\date{\today}
+
 \hypersetup{
     bookmarks=true,
     pdftoolbar=true,
     pdfmenubar=true,
     pdffitwindow=false,
     pdfstartview={FitH},
-    pdftitle={Das Nizza-Modell},
-    pdfauthor={Michael F. Sch\"onitzer},
+    pdftitle={\thetitle},
+    pdfauthor={\theauthor},
     pdfsubject={Das Nizza-Modell},
-    pdfkeywords={Nizza-Modell},
+    pdfkeywords={Nizza-Modell, Sonnensystem, Migration, Nice Modell},
     pdfnewwindow=true,
     colorlinks=true,
     linkcolor=black,
@@ -40,11 +50,6 @@
     urlcolor=blue
 }
 
-\author{Michael F. Schönitzer}
-%\title{Die Evolution des Sonnensystems im Rahmen des Nizza-Modell}
-\title{Das Nizza-Modell}
-\newcommand{\theenglishtitle}{The Nice Model}
-\date{\today}
 
 \newcommand*{\Cdot}{\raisebox{-0.75ex}{\scalebox{2.5}{$\cdot$}}}
 \newcommand{\refsec}[1]{siehe Kapitel~\ref{#1}}
@@ -93,27 +98,31 @@
 \begin{document}
 %\frontmatter
 \begin{titlepage}
-%\setcounter{page}{0}
-\thispagestyle{empty}
-\vglue  2 true cm
-\centerline{\huge \thetitle}
-\vglue  1 true cm
-\centerline{\huge \theenglishtitle}
-\bigskip\bigskip 
-\vglue  2 true cm
-
-\begin{centering}\large
-Bachelorarbeit\\
-an der Fakultät für Physik\\
-der Ludwig-Maximilians-Universität München
-\\[1cm]
-vorgelegt von\\
-\theauthor\\
-geboren in München am 5.4.1990\\
-\end{centering}
-\vglue  6 true cm
-\centerline{\theauthor}
-\centerline{\today}
+	%\setcounter{page}{0}
+	\thispagestyle{empty}
+	%\vglue  1 true cm
+	\begin{center}
+		\huge \thetitle
+	\end{center}
+	\vglue  1 true cm
+	\begin{center}
+		\huge \theenglishtitle
+	\end{center}
+	\bigskip\bigskip 
+	\vglue  1 true cm
+	
+	\begin{centering}\large
+		Bachelorarbeit\\
+		an der Fakultät für Physik\\
+		der Ludwig-Maximilians-Universität München
+		\\[1cm]
+		vorgelegt von\\
+		\theauthor\\
+		geboren in München am 5.4.1990\\
+	\end{centering}
+	\vglue  6 true cm
+	\centerline{\theauthor}
+	\centerline{\today}
 \end{titlepage}
 
 %\addchap*{Abstract}
@@ -139,7 +148,7 @@ Nach etwa hundert Millionen Jahren erreichen die Planeten schließlich ihre heut
 
 \chapter{Einleitung}
 Das heutige Standardmodell der Stern- und Planetenentstehung geht von einem Gravitationskollaps in einer großen molekularen Wolke aus, die auf 99\% Wasserstoff- und Heliumgas sowie etwa $\unit[0,1]{\mu m}$ großen Staubteilchen besteht\cite{Hanslmeier2002}. Es entsteht ein Protostern inmitten der sich durch die Drehimpulserhaltung zunächst immer schneller drehenden und dadurch abgeplatteten Gasscheibe.
-Später wird der Drehimpuls nach außen transportiert. % durch was
+Später wird der Drehimpuls durch verschiedene Effekte nach außen transportiert. % Effekte bennenen?
 Durch die Brownsche Bewegung kommt es zu zufälligen Zusammenstößen in der Gaswolke, wodurch die Teilchengrößen anwachsen. Sie wachsen durch Akkretion von Gas und später durch Kollisionen weiter bis hin zu etliche Kilometer großen Klumpen, Planetesimale genannt.
 Diese wachsen durch den gravitativen Einfang von kleineren Planetesimalen immer stärker bis sie ihre Umgebung gravitativ dominieren und man dann von planetaren Embryonen spricht. % "diese wachsen" ersetzten
 
@@ -294,8 +303,8 @@ Nun gilt es also, den Hamiltonian des $n$-Körperproblems \ref{eq:nbodyhamilton}
 \end{equation}
 \begin{figure}[tbn]
 \centering
-\includegraphics[scale=0.5]{img/Four-body_Jacobi_coordinates} % in SVG umwandeln
-\caption{Jacobi-Koordinaten veranschaulicht für 4 Körper. Hellblau sind jeweils die virtuellen Massen eingezeichnet. Die Jacobi-Koordinaten sind $r_1$, $r_2$, $r_3$ und $R$. Bild: Brews ohare, CC-BY-SA.}
+\includegraphics[scale=0.5]{img/Jacobi_coordinates}
+\caption{Jacobi-Koordinaten veranschaulicht für 4 Körper. Hellblau sind jeweils die virtuellen Massen eingezeichnet. Die Jacobi-Koordinaten sind $r_1$, $r_2$, $r_3$ und $R$. Bild: Marsupilami, CC-BY-SA.}
 \label{fig:Jacobi}
 \end{figure}
 Für ein Zweiteilchensystem ist offensichtlich, dass man die gewünschte Form erreicht, indem man das System in den Koordinaten relativ zum Schwerpunkt schreibt. Für $n$ Teilchen erhält man den Effekt durch Verwendung der Jacobi-Koordinaten, die man folgendermaßen erhält.
@@ -319,7 +328,7 @@ Die dazugehörigen transformierten Massen und Impulse sind:
 \begin{equation}
 m_0 = M \quad ; \quad m'_{i\neq 0} = m_i \frac{\eta_{i-1}}{\eta_{i}} \quad ; \quad \vec p'_i = m'_i \vec{\dot{x}}'_i
 \end{equation}
-Setzt man dies in den Hamiltonian \ref{eq:nbodyhamilton} ein, so erhält man nach einigen Umformungen: %durchrechnen, vorrechnen?
+Setzt man dies in den Hamiltonian \ref{eq:nbodyhamilton} ein, so erhält man nach einigen Umformungen: 
 \begin{equation}
 \H = \frac{\vec p'^2_0}{2M} + \sum\limits_{i=1}^{n-1} \frac{\vec p'^2_i}{2m'_i} - \sum\limits_{i=1}^{n-1} \frac{Gm_im_0}{r_{i0}} - \sum\limits_{0<i<j} \frac{Gm_im_j}{r_{ij}}
 \end{equation}
@@ -379,7 +388,7 @@ Wie in den meisten Gebieten der Physik spielen auch in der Himmelsmechanik Reson
 Bahnresonanzen treten immer dann auf, wenn zwei Frequenzen eines Systems ein bestimmtes Verhältnis haben.
 Die am einfachsten zu Verstehende und für diese Arbeit wichtigste Bahnresonanz ist die Mean-Motion-Resonanz (MMR)\footnote{Auf deutsch auch Resonanz der mittleren Bewegung} bei welcher die Umlaufdauern zweier Körper (in unserem Fall Planeten) im Verhältnis zweier kleiner ganzer Zahlen sind.
 Eine 1:2 MMR zwischen zwei Planeten liegt beispielsweise vor, wenn der eine Planet genau doppelt so lange braucht um den Stern zu umkreisen, als der andere. Betrachtet man nun zwei kreisrunde Planetenorbits in einer gemeinsamen Ebene ($e=i=0$) so kann man leicht verstehen, dass die Planeten sich nach einer Umlaufzeit von $n\cdot 2T$, wobei $T$ die Umlaufdauer des inneren Planeten ist, immer auf der \glqq selben Seite\grqq\ begegnen und die gegenseitige gravitative Wechselwirkung immer in die selbe Richtung wirkt. Dies führt dazu, dass die Exzentrizität der Planetenorbits steigt. Die 1:2 MMR ist verständlicherweise die stärkste aller Resonanzen.
-Die analytische Betrachtung von Mean-Motion-Resonanzen ist möglich, würde aber den Rahmen dieser Arbeit sprengen -- der interessierte Leser sei auf \cite{Dvorak2005,Murray2010} verwiesen. % Murray anschauen
+Die analytische Betrachtung von Mean-Motion-Resonanzen ist möglich, würde aber den Rahmen dieser Arbeit sprengen -- der interessierte Leser sei beispielsweise auf \cite{Dvorak2005,Murray2010} verwiesen. % Murray anschauen
 Während die MMRs für kreisrunde Orbits nur für exakte Positionen der Planeten eintreten, haben die MMRs eine gewisse endliche Breite, sobald die Exzentrizität des Orbits von Null verschieden ist.
 %stickyness?
 
@@ -457,7 +466,7 @@ Die Simulationen zeigen, dass Saturn, Uranus und Neptun langsam nach außen wand
 \end{figure}
 Durch die Planetesimale kommt es während der Migration zu dynamischer Reibung und die Exzentrizitäten der Planeten werden wie oben erläutert gedämpft\cite{Tsiganis2005}.
 Mit der Zeit kommen sich die Planeten durch die Migration näher, so dass Mean-Motion-Resonanzen auftreten.
-Man betrachtet im Nizza-Modell die 1:2-Resonanz zwischen Jupiter und Saturn, welche nach ein paar hundert Millionen Jahren auftritt.
+Man betrachtet im Nizza-Modell die 1:2 Resonanz zwischen Jupiter und Saturn, welche nach ein paar hundert Millionen Jahren auftritt.
 Die Autoren testeten auch Anfangsbedingungen, welche zum Auftreten von anderen MMRs führten. Doch weder die 2:3 MMR zwischen Saturn und dem inneren Eisriesen, noch die 1:2 MMR zwischen den beiden Eisriesen waren stark genug um die Bahn von Jupiter zu beeinflussen\cite{Tsiganis2005}.
 Die Resonanz führt zu einer schlagartigen Erhöhung der Exzentrizitäten der Umlaufbahnen von Jupiter und Saturn, auf Werte die mit den heutigen vergleichbar sind.
 Dadurch stören Jupiter und Saturn die Eisplanenten, so dass auch deren Exzentrizitäten abhängig von den genauen Anfangsparametern (Massen und großen Halbachsen der Planeten) mehr oder weniger stark anwachsen\cite{Tsiganis2005}.
@@ -487,11 +496,11 @@ Wählt man den Abstand hingegen sehr groß ($\DSI \approx \unit[5]{AU}$), so ist
 \caption{Die Planetenorbits und die Positionen der Teilchen während einer Simulation; Projektion auf die mittlere Orbitalebene. Abbildung \textbf{a)} zeigt das System nach nur 100 My zum Beginn der Migration. Abbildung \textbf{b)} stellt das System kurz vor dem Auftreten des Resonanzfalls dar (879 My). Abbildung \textbf{c)} zeigt das System nur 3 Millionen Jahre nach \textbf{b)} dar. Abbildung \textbf{d)} zeigt das System weitere 200 Millionen Jahre später, nur noch wenige Planetesimale sind übrig. Bild nach \cite{Gomes2005}.}
 \label{fig:Zeitlicheentwicklung}
 \end{figure}
-Für die restlichen Fälle, welche sich allesamt nach einer wie oben beschriebenen Migrationsphase wieder stabilisieren, gilt, dass es für Abstände $\DII \ge \unit[3.5]{AU}$ zwar zu Interaktionen der beiden Eisplaneten untereinander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es in Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B\footnote{Die beiden Fälle in der es zu keiner Begegnung kam, wurden aus mir nicht ganz nachvollziehbaren Gründen nicht ausgeschlossen sondern zur Klasse A gerechnet.}, \cite{Nesvorny2007} bezeichneten Klasse A als Malhotra Klasse (MA) \citep[nach][]{Malhotra1996,Hahn1999a} und Klasse B als 'direct emplacement`-Klasse (DE).
+Für die restlichen Fälle, welche sich allesamt nach einer wie oben beschriebenen Migrationsphase wieder stabilisieren, gilt, dass es für Abstände $\DII \ge \unit[3.5]{AU}$ zwar zu Interaktionen der beiden Eisplaneten untereinander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es in Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B\footnote{Die beiden Fälle in der es zu keiner Begegnung kam, wurden dabei nicht ausgeschlossen sondern zur Klasse A gerechnet.}, \cite{Nesvorny2007} bezeichneten Klasse A als Malhotra Klasse (MA) \citep[nach][]{Malhotra1996,Hahn1999a} und Klasse B als 'direct emplacement`-Klasse (DE).
 
 Bei Klasse B wird Neptun durch Uranus direkt fast auf seine endgültige Entfernung geschleudert 
 und anschließend wird die Exzentrizität durch dynamische Reibung in der Planetesimalscheibe verringert\cite{Nesvorny2007}. Somit ist die Zeitdauer der Phase der schnellen Migration bei dieser Klasse kürzer\cite{Tsiganis2005}. Auch führt diese Art der Dynamik dazu, dass die Exzentrizität weniger stark abnimmt\cite{Tsiganis2005}.
-Bei den Simulationen der Klasse A wird Neptun auf eine etwa $\unit[22-25]{AU}$ von der Sonne entfernte Umlaufbahn geschleudert und migriert dann langsamer innerhalb der Planetesimalscheibe auf seine endgültige Position\cite{Tsiganis2005}.
+Bei den Simulationen der Klasse A wird Neptun auf eine etwa $\unit[22-25]{AU}$ von der Sonne entfernte Umlaufbahn geschleudert und migriert dann langsamer innerhalb der Planetesimalscheibe auf seine endgültige Position\cite{Tsiganis2005}. Abbildung \ref{fig:Orbitalevolution_vergleich} zeigt den Migrationsverlauf beider Klassen.
 Die beiden Simulationsklassen kamen etwa gleich oft vor, 14 der Simulationen waren vom Typ~B, die anderen 15 waren vom Typ~A.
 
 Die Durchschnittswerte und Standardabweichungen für die großen Halbachsen, Exzentrizitäten und Inklinationen der Planeten von beiden Gruppen sind in Grafik \ref{fig:VergleichmitMesswerten} aufgetragen. Wie man sieht, stimmen die Resultate beider Klassen fast mit den tatsächlich beobachteten Werten überein, im Fall der Klasse B ist die Übereinstimmung jedoch deutlich größer – hier liegen sogar alle Messwerte innerhalb von nur einer Standardabweichung um den Mittelpunkt\cite{Tsiganis2005}. Klasse A ist hierbei etwas schlechter, insbesondere sind die Exzentrizitäten von Saturn und Uranus deutlich zu klein\cite{Tsiganis2005,Nesvorny2007}. 
@@ -822,6 +831,12 @@ Zu Jupiter sollte noch angemerkt werden, dass bekannt ist, dass die meisten Mond
 \caption{Size-frequency distribution (SFD) wie im Modell berechnet (rote Linie) und gemessen (schwarzer Strich, beziehungsweise Sternchen für den jeweils größten Mond). Bild nach \cite{Nesvorny2007}.}
 \label{fig:SFD}
 \end{figure}
+\begin{figure}[tbn]
+\centering
+\includegraphics[scale=1]{img/Bottke2010-10-klein}
+\caption{Zeitliche Entwicklung der SFD der irregulären Monde von Saturn durch Kollisionen und Vergleich mit den Messwerten. Bild nach \cite{Bottke2010}.}
+\label{fig:SFDchange}
+\end{figure}
 Nachdem die Teilchenanzahl in den Simulationen möglichst hoch gewählt wurde um möglichst genaue Aussagen über die Orbits der Monde treffen zu können, 
 soll nun mit realistischeren Werten überprüft werden, inwieweit die Anzahl der durch das Modell erzeugten irregulären Monde mit der beobachteten übereinstimmt.
 Dafür bestimmten \cite{Nesvorny2007} die Einfangwahrscheinlichkeit für einen Planetesimal durch einen Planeten.
@@ -847,8 +862,8 @@ Dies stellten zwar große Diskrepanzen zwischen Modell und Realität, jedoch ist
 Besonders vielversprechend schien die Idee zu sein, dass ein großer Anteil der irregulären Monde durch Kollisionen zerstört worden sein könnte. Dies ist naheliegend, da es zwischen den irregulären Monden, aufgrund ihrer großen Zahl und chaotischen Orbits, im Gegensatz zu dem weit ausgedehnten Kuipergürtel zu zahlreichen Kollisionen kommen sollte.
 Diese These testeten \cite{Bottke2010} erfolgreich. Sie verwendeten einen Algorithmus namens Boulder, um die Auswirkungen von Kollisionen auf die SDF der irregulären Monde zu simulieren.
 Im Gegensatz zu \cite{Nesvorny2007} verwendeten \cite{Bottke2010} die SFD der Jupiter-Trojaner, anstatt des Kuipergürtels. Dies ist möglich, da im Rahmen des Nizza-Modells auch diese durch die Planetesimale entstanden sind. Die SFD der Jupiter-Trojaner und des Kuipergürtels unterscheiden sich nur geringfügig -- die Trojaner haben den Vorteil, dass es bei ihnen nur eine minimale Anzahl an Kollisionen gab.
-In den Simulationen von \cite{Bottke2010} zeigte sich, dass innerhalb von einigen hundert Millionen Jahren die SFD deutlich abgeflacht wurde und die Population der irregulären Monde etwa 99\% ihrer Masse verloren.
-Damit stimmt die Gesamtanzahl und die SFD gut mit den Messwerten überein. % Bild?
+In den Simulationen von \cite{Bottke2010} zeigte sich, dass innerhalb von einigen hundert Millionen Jahren die SFD deutlich abgeflacht wurde und die Population der irregulären Monde etwa 99\% ihrer Masse verloren (siehe Abbildung \ref{fig:SFDchange}).
+Damit stimmt die Gesamtanzahl und die SFD gut mit den Messwerten überein.
 Diese Modell hat noch einen weiteren positiven Nebeneffekt. Die Zerstörung der irregulären Monde erzeugt eine große Menge Staub, der in der Zusammensetzung kohligen Chondriten ähnelt.
 Ein Teil dieses Staubes driftet durch nicht-gravitative Kräfte auf den Planeten zu und bedeckt die Oberfläche regulärer Monde. Somit könnte dieses Modell auch eine Erklärung für die dunkle, nicht-eisige Oberfläche der äußeren regulären Monde von Jupiter, Saturn und Uranus erklären\cite{Bottke2010}.
 
@@ -879,7 +894,7 @@ Allerdings ließen sich damit die oben angesprochenen Ähnlichkeiten der Populat
 Als Transneptunische Objekte (TNO) bezeichnet man alle Himmelskörper, die außerhalb der Neptunbahn um die Sonne kreisen. Die meisten dieser Objekte sind Teil des bekannten Kuipergürtels, zuweilen werden auch alle Transneptunischen Objekte zusammen als Kuiperbelt Objects (KBOs) bezeichnet.
 Die wichtigsten Untergruppen der TNOs sind:
 \begin{itemize}
-\item Resonante KBOs: Objekte die sich in einer MMR zu Neptun befinden. Die bekanntesten Gruppen dieser sind die auf der 2:3 MMR liegenden Plutinos\footnote{Nicht zu verwechseln mit Plutoiden, womit alle transneptunischen Zwergplaneten bezeichnet werden.} -- zu denen das Pluto-Charon-System gehört -- sowie die Twotinos mit einer 1:2-Resonanz zu Neptun. Daneben gibt es jedoch noch zahlreiche weitere (3:5, 4:7, 2:5), welche in einem Plot der Exzentrizität über die Große Halbachse wie in Bild \ref{fig:KBOs} deutlich auffallen\cite{Levison2008}.
+\item Resonante KBOs: Objekte die sich in einer MMR zu Neptun befinden. Die bekanntesten Gruppen dieser sind die auf der 2:3 MMR liegenden Plutinos\footnote{Nicht zu verwechseln mit Plutoiden, womit alle transneptunischen Zwergplaneten bezeichnet werden.} -- zu denen das Pluto-Charon-System gehört -- sowie die Twotinos mit einer 1:2 Resonanz zu Neptun. Daneben gibt es jedoch noch zahlreiche weitere (3:5, 4:7, 2:5), welche in einem Plot der Exzentrizität über die Große Halbachse wie in Bild \ref{fig:KBOs} deutlich auffallen\cite{Levison2008}.
 Die Schätzungen darüber wie viele der Objekte in einer Ressonanz zu Neptun stehen gehen deutlich auseinander, 
 so schätzt sie \cite{Trujillo2001,Levison2008} auf etwa 10\%, während \cite{Kavelaars2008,Levison2008} alleine den Anteil der Plutions auf etwa 20\% schätzt.
 \item Klassische KBOs (CKBO) oder Cubewanos: Als den Klassischen Kuipergürtel, bezeichnet man die nicht resonanten Objekte, die sich auf stabilen, nahezu kreisförmigen Bahnen mit Großen Halbachsen kleiner als 48 AU befinden.
@@ -947,7 +962,7 @@ Im folgenden seien noch einige der wichtigsten modifizierten Nizza-Modelle kurz 
 Auf ein Problem des original Nizza-Modells weisen \cite{Morbidelli2007a} hin: während die kompakten Planeten Orbits und die Existenz der Planetesimalscheibe wie wir gesehen haben sehr plausible Anfangszustände sind, waren die Details der Anfangsbedingungen -- die genauen Orbits der Planeten und die genau Position der Planetesimalscheibe -- mangels besseren Wissens darüber weitestgehend geraten.
 
 So zeigen hydrodynamische Simulationen unter anderem von \cite{Morbidelli2007a}, das die Riesenplaneten in der Gasscheibe nach innen migrieren, bis es zwischen Jupiter und Saturn zu einer 2:3 Mean-Motion-Resonanz kommt, welche bei Vorhanden sein der Gasscheibe eine äußerst stabile Konfiguration ist und die Migration der Planeten zur Sonne stoppt und somit verhindert, dass die Planeten als \glqq Hot Jupiters\grqq\ zu nahe an der Sonne enden\cite{Morbidelli2007a}.
-Zu Zeitpunkt als sich die Gasscheibe aufgelöst hat -- also dem Startzeitpunkt des Nizza-Modells -- wären die Planeten also in oder sehr naher der 2:3 MMR und nicht der im Nizza-Modell betrachteten 1:2-Resonanz.
+Zu Zeitpunkt als sich die Gasscheibe aufgelöst hat -- also dem Startzeitpunkt des Nizza-Modells -- wären die Planeten also in oder sehr naher der 2:3 MMR und nicht der im Nizza-Modell betrachteten 1:2 Resonanz.
 Man stellt darüber hinaus in der Tat fest, dass zu dieser Zeit alle Planeten zueinander in Mean-Motion-Resonanzen sein sollten.
 
 Nun gibt es zwei mögliche Variationen des Nizza-Modells: entweder man argumentiert damit das die 2:3 MMR nach Auflösung der Gasscheibe nicht mehr stabil ist und entwickelt ein Modell, wie sich dadurch das System in einen Zustand ähnlich dem Anfangszustand des Nizza-Modells migriert, oder man modifiziert das Modell, so das es mit der 2:3 MMR anstatt der 1:2 MMR arbeitet.
@@ -980,7 +995,7 @@ Dabei handelt es sich, wenn ein Eisriese zunächst bei einer Begegnung mit Satur
 Dies führt zu einem sehr rasanten Anstieg des Abstands zwischen Jupiter und Saturn, da Saturn nach außen und Jupiter nach innen geschleudert wird, was mehrerer Probleme des original Nizza-Modells löst.
 
 Für eine rapide Migration von Jupiter spricht, dass ansonsten seine Migration die Bahnen der terrestrischen Planeten beeinflusst hätte\cite{Brasser2009}. Während der Migration käme es zeitweise mit Jupiter zu säkularen Resonanzen $g_5 = g_k$ (mit k gleich 1 bis 4) wobei $g_k$ die Fundamentalfrequenz der Länge des aufsteigenden Knotens des k-ten Planeten ist. Diese würden die Exzentrizitäten der terrestrischen Planeten deutlich steigern – was bei Merkur und Venus im Widerspruch zu den beobachteten Bahnen steht. Im Fall eines Jumping Jupiters treten diese Resonanzen jedoch nicht oder nur sehr kurz auf, weil die entsprechend Phase mit $P_S/P_J\approx2,1-2,3$, während welcher die Resonanzen auftreten praktisch \glqq übersprungen\grqq\ wird\cite{Brasser2009}.
-Der Vollständigkeit sei noch darauf hingewiesen, das \cite{Brasser2009} noch eine alternative Lösung für dieses Problem vorschlägt, so könnte durch eine spezielle Ausgangssituation der Orbits durch die $g_5=g_2$-Resonanz die Exzentrizität gedämpft worden sein.
+Der Vollständigkeit sei noch darauf hingewiesen, das \cite{Brasser2009} noch eine alternative Lösung für dieses Problem vorschlägt, so könnte durch eine spezielle Ausgangssituation der Orbits durch die $g_5=g_2$ Resonanz die Exzentrizität gedämpft worden sein.
 
 Eine Begegnung einen Eisriesen mit Saturn ist einerseits laut \cite{Morbidelli2009} nötig um eine gewisse Mode der Präzession von Jupiter auf ihren heutigen Wert anzuregen. %ausführlicher?
 Vor allem ist ein Jumping Jupiter-Szenario jedoch notwendig um die Orbitalverteilung des Asteroidengürtels zu erklären\cite{Morbidelli2010}. Die Bahnen der Asteroiden im Asteroidengürtel würde ebenfalls durch säkulare Resonanzen -- diesmal jedoch die Resonanzen mit Saturn $g_\mathrm{Asteroid}=g_6$ und $s_\mathrm{Asteroid}=s_6$ -- verändert. Im Falle eine langsamen Migration nur durch Interaktion mit den Planetesimalen würden diese die Asteroidenbahnen auf eine mit den Beobachtungen widersprüchliche Weise verändern. Im Falles einen Jumping Jupiters stimmen die Simulationsergebnisse von \cite{Morbidelli2010} gut mit den beobachteten überein.
@@ -1059,10 +1074,9 @@ Somit ist das Modell auch nur schwer echt zu falsifizieren. Was bleibt ist die A
 Das Nizza-Modell stellt einen großen wissenschaftlichen Durchbruch dar, denn es ist damit erstmals möglich, zahlreiche Eigenschaften des Sonnensystems simultan und mit natürlichen Anfangsbedingungen zu erklären. Es ergänzt sich gut mit dem Grad-Track-Modell\cite{Walsh2011}, welches die Entwicklung des inneren Sonnensystems in der Zeit vor dem Auflösen der Gasscheibe beschreibt. Zusammen bilden sie das \glqq Standardmodell\grqq\ der planetaren Evolution des Sonnensystems und sind wissenschaftlich weithin akzeptiert.
 
 
-%%%% Myr/Gyr einheitlich scheiben
-%%%% https://www.youtube.com/watch?v=VXeOh3xmrQM verlinken
+%%%% Myr/Gyr einheitlich scheiben?
+%%%% https://www.youtube.com/watch?v=VXeOh3xmrQM verlinken?
 %%%% Bildergrößen vereinheitlichen mit width statt scale
-%%%% x:y MMR oder x:y-MMR (u. x:y Resonanz) vereinheitlichen
 %%%% Abbildungsverzeichnis?
 %%%% LHB messwerte in den schluss?
 
