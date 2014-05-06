@@ -53,7 +53,7 @@
 
 \newcommand*{\Cdot}{\raisebox{-0.75ex}{\scalebox{2.5}{$\cdot$}}}
 \newcommand{\refsec}[1]{siehe Kapitel~\ref{#1}}
-\newcommand{\degree}{$^\circ$}
+\newcommand{\degree}{$^\circ$\ }
 %\newcommand{\AU}{\,\mathrm{AU}}
 \newcommand{\ME}{M_\oplus}
 \renewcommand{\vec}{\mathbf}
@@ -464,6 +464,7 @@ Die Simulationen zeigen, dass Saturn, Uranus und Neptun langsam nach außen wand
 \caption{Bahnveränderung der vier Gasplaneten. Über die Zeit sind die Entfernung des Perihel, die große Halbachse und Entfernung des Aphel von Jupiter (rot), Saturn (grün), Neptun (dunkelblau) und Uranus (hellblau) dargestellt. Der Zeitpunkt zu dem es zur 1:2 MMR zwischen Jupiter und Saturn kommt, ist gestrichelt eingezeichnet. Rechts sind die finalen Numerischen Exzentrizitäten angegeben. Es handelt sich hier um eine Simulation mit einer dynamisch heißen Scheibe mit $\unit[35]{\ME}$ aus 3500 Teilchen. Wie in etwa der Hälfte der Fälle kam es auch hier zu einer Vertauschung der Reihenfolge der Eisplaneten. Bild nach \cite{Tsiganis2005}.}
 \label{fig:Orbitalevolution}
 \end{figure}
+
 Durch die Planetesimale kommt es während der Migration zu dynamischer Reibung und die Exzentrizitäten der Planeten werden wie oben erläutert gedämpft\cite{Tsiganis2005}.
 Mit der Zeit kommen sich die Planeten durch die Migration näher, so dass Mean-Motion-Resonanzen auftreten.
 Man betrachtet im Nizza-Modell die 1:2 Resonanz zwischen Jupiter und Saturn, welche nach ein paar hundert Millionen Jahren auftritt.
@@ -486,6 +487,12 @@ Wählt man den Abstand hingegen sehr groß ($\DSI \approx \unit[5]{AU}$), so ist
 
 \begin{figure}[tbn]
 \centering
+\includegraphics[scale=0.9]{img/Nesvorny2007-1}
+\caption{Vergleich der Migration bei einer Simulation von \textbf{a)} Klasse A und \textbf{b)} Klasse B, analog zu Abbildung \ref{fig:Orbitalevolution}. Gestrichelt sind die heutigen Positionen der Planeten eingezeichnet. Während bei der Klasse A die Eisriesen nach der Chaotischen Phase auf ihre heutigen Positionen migrieren, werden sie bei Klasse B durch eine gemeinsame Begegnung auf ihre nahezu finalen Positionen geschleudert. Bild nach \cite{Nesvorny2007}.}
+\label{fig:Orbitalevolution_vergleich}
+\end{figure}
+\begin{figure}[tbn]
+\centering
 \includegraphics[scale=1]{img/Tsiganis2005-2.pdf}
 \caption{Vergleich der gemittelten Simulationsergebnisse mit den tatsächlichen Messwerten der Bahneigenschaften der Gasplaneten. Aufgetragen ist \textbf{a)} die Exzentrizität beziehungsweise \textbf{b)} die Inklination über die große Halbachse. Die grauen Kreise stellen die Ergebnisse von Klasse A dar, während die schwarzen, nicht gefüllten Kreise die Messwerte für Klasse B darstellen. Die Fehlerbalken entsprechen jeweils einer Standardabweichung. Die Messwerte sind als schwarze, gefüllte Punkte eingezeichnet. Bild nach \cite{Tsiganis2005}.}
 \label{fig:VergleichmitMesswerten}
@@ -496,7 +503,7 @@ Wählt man den Abstand hingegen sehr groß ($\DSI \approx \unit[5]{AU}$), so ist
 \caption{Die Planetenorbits und die Positionen der Teilchen während einer Simulation; Projektion auf die mittlere Orbitalebene. Abbildung \textbf{a)} zeigt das System nach nur 100 My zum Beginn der Migration. Abbildung \textbf{b)} stellt das System kurz vor dem Auftreten des Resonanzfalls dar (879 My). Abbildung \textbf{c)} zeigt das System nur 3 Millionen Jahre nach \textbf{b)} dar. Abbildung \textbf{d)} zeigt das System weitere 200 Millionen Jahre später, nur noch wenige Planetesimale sind übrig. Bild nach \cite{Gomes2005}.}
 \label{fig:Zeitlicheentwicklung}
 \end{figure}
-Für die restlichen Fälle, welche sich allesamt nach einer wie oben beschriebenen Migrationsphase wieder stabilisieren, gilt, dass es für Abstände $\DII \ge \unit[3.5]{AU}$ zwar zu Interaktionen der beiden Eisplaneten untereinander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es in Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B\footnote{Die beiden Fälle in der es zu keiner Begegnung kam, wurden dabei nicht ausgeschlossen sondern zur Klasse A gerechnet.}, \cite{Nesvorny2007} bezeichneten Klasse A als Malhotra Klasse (MA) \citep[nach][]{Malhotra1996,Hahn1999a} und Klasse B als 'direct emplacement`-Klasse (DE).
+Für die restlichen Fälle, welche sich allesamt nach einer wie oben beschriebenen Migrationsphase wieder stabilisieren, gilt, dass es für Abstände $\DII \ge \unit[3,5]{AU}$ zwar zu Interaktionen der beiden Eisplaneten untereinander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es in Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B\footnote{Die beiden Fälle in der es zu keiner Begegnung kam, wurden dabei nicht ausgeschlossen sondern zur Klasse A gerechnet.}, \cite{Nesvorny2007} bezeichneten Klasse A als Malhotra Klasse (MA) \citep[nach][]{Malhotra1996,Hahn1999a} und Klasse B als 'direct emplacement`-Klasse (DE).
 
 Bei Klasse B wird Neptun durch Uranus direkt fast auf seine endgültige Entfernung geschleudert 
 und anschließend wird die Exzentrizität durch dynamische Reibung in der Planetesimalscheibe verringert\cite{Nesvorny2007}. Somit ist die Zeitdauer der Phase der schnellen Migration bei dieser Klasse kürzer\cite{Tsiganis2005}. Auch führt diese Art der Dynamik dazu, dass die Exzentrizität weniger stark abnimmt\cite{Tsiganis2005}.
@@ -606,77 +613,77 @@ Abschließend möchte ich noch darauf hinweisen, dass die Existenz des Late Heav
 \caption{Vergleich der Orbits der Trojaner in der Simulation (dicke schwarze Punkte) mit den Messwerten (graue Punkte). Bild nach \cite{Morbidelli2005}.}
 \label{fig:Trojanerorbitale}
 \end{figure}
-Als Trojaner bezeichnet man Objekte, die auf dem selben Orbit wie ein Planet kreisen, jedoch um 60\degree\ vor- oder rückläufig, um die Lagrange-Punkte L4 und L5 des Planeten. 
-Man kennt bereits über 6.000 Trojaner in den Lagrange-Punkten Jupiters, weiterhin kennt man auch 9 Trojaner von Neptun, 4 Mars- sowie je einen Uranus- und Erdtrojaner\cite{IAU14}.
+Als Trojaner bezeichnet man Objekte, die auf dem selben Orbit wie ein Planet kreisen, jedoch um 60\degree vor- oder rückläufig, um die Lagrange-Punkte L4 und L5 des Planeten. 
+Man kennt bereits über 6.000 Trojaner in den Lagrange-Punkten Jupiters, weiterhin kennt man auch 9 Trojaner von Neptun, 4 Mars- sowie je einen Uranus- und Erd-Trojaner\cite{IAU14}.
 Da die terrestrischen Planeten beim Nizza-Modell weitgehend ignoriert werden, sind auch die Trojaner von Mars und Erde für diese Arbeit nicht von Belang.
 
 Die Jupiter-Trojaner wurden in der Literatur häufig als Argument gegen das Auftreten der 1:2 MMR zwischen Jupiter und Saturn genannt. Das Überschreiten der Resonanz würde die Trojanerbahnen destabilisieren und die Trojanerpopulation vollständig auslöschen\cite{Gomes1998,Michtchenko2001,Morbidelli2005}.
 Mit einer Simulation durch \cite{Morbidelli2005} zeigt sich dies ebenfalls: Kein einziger der Trojaner überlebte das Überschreiten der Resonanz.
 
 Man ging bisher davon aus, dass die Trojaner sich in der Nähe von Jupiter gebildet haben und, als Jupiter wuchs, entweder durch Kollisionen oder durch Reibung mit Gas eingefangen wurden\cite{Yoder1979Icar,Shoemaker1989aste,Peale1993Icar,Kary1995Icar,Marzari1998Icar,Fleming2000Icar,Kortenkamp2001DPS,Morbidelli2005}. 
-Diese Theorie hat jedoch das Problem, dass es unter anderem die große Inklinationsverteilung der Trojaner von bis zu 40\degree\ nicht erklären kann\cite{Marzari2002,Morbidelli2005}.
+Diese Theorie hat jedoch das Problem, dass es unter anderem die große Inklinationsverteilung der Trojaner von bis zu 40\degree nicht erklären kann\cite{Marzari2002,Morbidelli2005}.
 Da die Entwicklung von gravitativen Systemen zeitreversibel ist, können auf den selben Bahnen,
 auf welchen die Trojaner von ihren co-orbitalen Bahnen entkommen können, auch Objekte vorübergehend auf Trojanerbahnen gelangen.
-Somit ergibt sich im Rahmen des Nizza-Modells ein alternatives Entstehungsmodell der Trojanerpopulationen: Während der Instablilitätsphase direkt nach Überquerung der Resonanz sind die Co-Orbitalbahnen um die Lagrangepunkte dynamisch offen, so, dass eventuell vorhandene Trojaner entweichen können, genauso können jedoch die zahlreichen Planetesimale, die im Nizza-Modell für die Migration verantwortlich sind, durch diese Gebiete wandern.
+Somit ergibt sich im Rahmen des Nizza-Modells ein alternatives Entstehungsmodell der Trojanerpopulationen: Während der Instablilitätsphase direkt nach Überquerung der Resonanz sind die Co-Orbitalbahnen um die Lagrangepunkte dynamisch offen, sodass eventuell vorhandene Trojaner entweichen können – genauso können jedoch die zahlreichen Planetesimale, die im Nizza-Modell für die Migration verantwortlich sind, durch diese Gebiete wandern.
 Sobald sich die Jupiter- und Saturnbahnen weit genug von der Resonanz entfernt haben, wird die Region wieder stabil und die Objekte die zu diesem Zeitpunkt dort sind, sind von nun an dort gefangen und bilden die heute beobachtbaren Jupiter-Trojaner.
 
-Um dieses Konzept zu prüfen, untersuchten \cite{Morbidelli2005} zunächst wann genau es zum Verlust der Trojaner kommt, also wann die Co-Orbitalregionen offen sind.
-Dazu führten Sie eine zweistufige Simulation durch. Im ersten Stritt wählten sie eine der ursprünglichen Simulationen, wobei sie – aus Gründen, die später ersichtlich werden, – eine Simulation mit relativ langsamer Migration wählten. %wird es von alleine offensichtlich?
+Um dieses Konzept zu prüfen, untersuchten \cite{Morbidelli2005} zunächst, wann genau es zum Verlust der Trojaner kommt, also wann die Co-Orbitalregionen offen sind.
+Dazu führten sie eine zweistufige Simulation durch. Im ersten Stritt wählten sie eine der ursprünglichen Simulationen, wobei sie – aus Gründen, die später ersichtlich werden – eine Simulation mit relativ langsamer Migration wählten. %wird es von alleine offensichtlich?
 In dieser Simulation maßen sie zu 40 Zeitpunkten das Verhältnis $\PJS$.
-Nun simulierten sie für jeden dieser Werte das System, um zu messen wie viele der Trojaner verloren gehen. Diese Simulationen umfassten jeweils die Sonne, Jupiter und Saturn (bei festem Verhältnis von $P_J/P_S$) sowie eine große Anzahl an masselosen Testteilchen und liefen über $\unit[2\cdot10^5]{yr}$.
-Abbildung \ref{fig:Trojanerstabilitaet} zeigt die Messwerte von $\PJS$ und den Anteil an Körpern welche den Simulationszeitraum überlebten. Man sieht zwei deutliche Minima, welche auch theoretisch erklärt werden können.
-Bei $\PJS \approx 2.05$ tritt eine sekundäre 3:1 Resonanz zwischen $1/P_J-2/P_S$ und der Oszilationsfrequenz mit der die Trojaner um den Lagrangepunkt kreisen auf, diese führt zu einer vollständigen Destabilisierung der Gebietes und somit zum Verlust aller Trojaner.
+Nun simulierten sie für jeden dieser Werte das System, um zu messen wie viele der Trojaner verloren gehen. Diese Simulationen umfassten jeweils Sonne, Jupiter und Saturn (bei festem Verhältnis von $P_J/P_S$) sowie eine große Anzahl an masselosen Testteilchen und liefen über $\unit[2\cdot10^5]{yr}$.
+Abbildung \ref{fig:Trojanerstabilitaet} zeigt die Messwerte von $\PJS$ und den Anteil an Körpern, die den Simulationszeitraum überlebten. Man sieht zwei deutliche Minima, welche auch theoretisch erklärt werden können.
+Bei $\PJS \approx 2,05$ tritt eine sekundäre 3:1 Resonanz zwischen $1/P_J-2/P_S$ und der Oszilationsfrequenz mit der die Trojaner um den Lagrangepunkt kreisen auf. Diese führt zu einer vollständigen Destabilisierung des Gebietes und somit zum Verlust aller Trojaner.
 Ein zweites Minimum ergibt sich durch die 1:2 Resonanz selbiger Größen und führt zum Verlust von etwa 70 \% der Trojaner.
 Gemäß dem Zeitreversibilitätsprinzip sind dies auch die Zeiten, bei welchen ein Einfang von Planetesimalen wahrscheinlich ist.
 
 Um nun die Theorie zu testen, führten sie zwei Simulationen durch,
-wobei der als ''langsame Simulation`` bezeichnete Durchlauf die Geschwindigkeit von oben verwendet, während die ''schnelle Simulation`` eine drei mal schnellere Migration vorwies – somit stellen diese die langsamsten und schnellsten Migrationsfälle des Nizza-Modells dar. Da dies für die Betrachtung der einzige wichtige Parameter ist, ist der Parameterraum abgedeckt.
-Für den Zeitraum zwischen dem Beginn der ersten sekundär-Resonanz und dem Ende der zweiten, wurde ein konstanter Strom von Planetesimalen durch das System geschickt,
+wobei der als \glqq langsame Simulation\grqq\ bezeichnete Durchlauf die Geschwindigkeit von oben verwendet, während die \glqq schnelle Simulation\grqq\ eine dreimal schnellere Migration vorwies. Somit stellen diese die langsamsten und schnellsten Migrationsfälle des Nizza-Modells dar. Da dies für die Betrachtung der einzige wichtige Parameter ist, ist der Parameterraum damit abgedeckt.
+Für den Zeitraum zwischen dem Beginn der ersten sekundär-Resonanz und dem Ende der zweiten wurde ein konstanter Strom von Planetesimalen durch das System geschickt;
 zeitgleich wurden die Planeten durch Hinzufügen von geeigneten Krafttermen in die Bewegungsgleichungen zur Migration gezwungen.
-Die Testteilchen wurden dafür auf, die Saturnbahn kreuzende Orbits, mit Exzentrizitäten und Inklinationen wie in den ursprünglichen Simulationen beobachtet, gesetzt und immer wenn ein Teilchen aus dem System verloren ging wurde es wieder auf sein ursprüngliches Orbit gesetzt, so das die Teilchenanzahl immer konstant 1.163.000 betrug.
-Insgesamt wurden in der langsamen Simulation 5.466.000 Teilchen entfernt und wieder eingefügt, 98 Teilchen endeten nach $1,2 \cdot 10^6$ Jahren – als sich die Co-Orbitalregionen stabilisiert haben – auf Trojanerbahnen.
-Die wurden 19 mal kopiert % erklären wohin
- und dann über weitere 10 Myr simuliert um ihre langzeitliche Stabilität zu testen.
+Die Testteilchen wurden dafür auf, die Saturnbahn kreuzende Orbits, mit Exzentrizitäten und Inklinationen wie in den ursprünglichen Simulationen beobachtet, gesetzt. Immer wenn ein Teilchen aus dem System verloren ging, wurde es wieder auf seinen ursprünglichen Orbit gesetzt, sodass die Teilchenanzahl immer konstant 1.163.000 betrug.
+Insgesamt wurden in der langsamen Simulation 5.466.000 Teilchen entfernt und wieder eingefügt; 98 Teilchen endeten nach $1,2 \cdot 10^6$ Jahren – als sich die Co-Orbitalregionen stabilisiert haben – auf Trojanerbahnen.
+Diese wurden 19-mal kopiert % erklären wohin
+ und dann über weitere 10 Myr simuliert, um ihre langzeitliche Stabilität zu testen.
 Dabei wurden die Exzentrizitäten der Planeten durch Zusatzterme in den Bewegungsgleichungen, wie im Nizza-Modell beobachtet, gedämpft. Am Ende überlebten 266 Teilchen. Die gesamte Eingangseffizienz berechnet sich als $266/20/5466000 \approx 2,4 \cdot 10^{-6}$.
 Bei der schnellen Migration wurde die Migrationsgeschwindigkeit verdreifacht und die Simulationszeit entsprechend gedrittelt, ansonsten blieb sie unverändert.
 Bei dieser wurden insgesamt 2.773.000 Teilchen entfernt und wieder eingefügt und 174 Teilchen endeten auf Trojanerorbits. Sie wurden 9-mal geklont, 486 Teilchen überlebten am Ende.
 Die Effizienz beträgt somit $486/10/2773000 \approx 1,8 \cdot 10^{-5}$.
-In beiden Simulationen hatten etwa die Hälfte der der Trojaner Librationsamplituden $D$ von weniger als 30\degree\ – wie etwa 87\% der bekannten Trojaner.
+In beiden Simulationen hatten etwa die Hälfte der der Trojaner Librationsamplituden $D$ von weniger als 30\degree – wie etwa 87\% der bekannten Trojaner.
 Da viele der Trojaner mit größeren Librationsamplituden auf sehr großen Zeitskalen instabil sind, passt dies mit der Beobachtung überein und für die weiteren Analysen wurden nur die Trojaner mit $D<30^\circ$ betrachtet. % Librationsamplitude erklären
 Um zu überprüfen, ob die Vernachlässigung von Uranus und Neptun gerechtfertigt war,
-wurden einige der Simulationen unter Berücksichtigung der Effekte dieser wiederholt, dabei stellten
-\cite{Morbidelli2005} fest, dass die Eisgiganten keinen Einfluss auf die Trojaner von Jupiter haben, es ist also möglich sie zu ignorieren um Rechenzeit zu sparen.
+wurden einige der Simulationen unter Berücksichtigung der Effekte dieser wiederholt. Dabei stellten
+\cite{Morbidelli2005} fest, dass die Eisgiganten keinen Einfluss auf die Trojaner von Jupiter haben -- es ist also möglich sie zu ignorieren um Rechenzeit zu sparen.
 
-Aus den ursprünglichen Simulationen des Nizza-Modells,
+Aus den ursprünglichen Simulationen des Nizza-Modells
 wurde die Masse der Planetesimale, die während der Instabilitätsphase durch das Sonnensystem streifen, auf $\sim \unit[3,4]{\ME}$ bestimmt.
-Die Masse der Trojaner mit Librationsamplitude von unter 30\degree berechnet sich als Produkt dieser Masse mit der Einfangseffizienz und einem Faktor $1/2$, da nur die Hälfte eine Librationsamplitude von $<30^\circ$ haben. Sie beträgt für die langsame Simulation $\sim\unit[4\cdot 10^{-6}]{\ME}$ und für die schnelle Simulation $\sim \unit[3\cdot 10^{-5}]{\ME}$.
-Als Theoretische Begründung für das starke Anwachsen der Masse mit steigender Migrationsgeschwindigkeit nennen die Autoren eine Kombination von zwei Gründen:
-zum einen ist durch die schnellere und somit kürzere Migration bei gleicher Gesamt\/teilchenzahl die Teilchenstromdichte während der Instabilitätsphase um den selben Faktor 3 höher, wodurch auch dreimal so viele Objekte eingefangen werden. Zum anderen führt eine schnellere Migration auch zu einem schnellerem Übergang vom instabilen zum stabilen Zustand, wodurch die Einfangquote steigt\cite{Morbidelli2005}.
-Beim Vergleich mit dem Literaturwert von \cite{Jewitt2000} stellen \cite{Morbidelli2005} eine deutlich Differenz fest: der berechnete Wert ist um einen Faktor $\sim 3-25$ kleiner als der Literaturwert.
-Allerdings – so argumentieren die Autoren – beruhte die Berechnung von Jewitt und Kollegen auf inzwischen veralteten Messwerten zu den Trojanerpopulationen.
+Die Masse der Trojaner mit Librationsamplitude von unter 30\degree berechnet sich als Produkt dieser Masse mit der Einfangseffizienz und einem Faktor $1/2$, da nur die Hälfte eine Librationsamplitude von $<30^{\circ}$ haben. Sie beträgt für die langsame Simulation $\sim\unit[4\cdot 10^{-6}]{\ME}$ und für die schnelle Simulation $\sim \unit[3\cdot 10^{-5}]{\ME}$.
+Als theoretische Begründung für das starke Anwachsen der Masse mit steigender Migrationsgeschwindigkeit nennen die Autoren eine Kombination von zwei Gründen:
+Zum einen ist durch die schnellere und somit kürzere Migration bei gleicher Gesamt\/teilchenzahl die Teilchenstromdichte während der Instabilitätsphase um den selben Faktor 3 höher, wodurch auch dreimal so viele Objekte eingefangen werden. Zum anderen führt eine schnellere Migration auch zu einem schnelleren Übergang vom instabilen zum stabilen Zustand, wodurch die Einfangquote steigt\cite{Morbidelli2005}.
+Beim Vergleich mit dem Literaturwert von \cite{Jewitt2000} stellen \cite{Morbidelli2005} eine deutlich Differenz fest: der berechnete Wert ist um einen Faktor $\sim 3$ bis $25$ kleiner als der Literaturwert.
+Allerdings – so argumentieren die Autoren – beruhte die Berechnung von \cite{Jewitt2000} auf inzwischen veralteten Messwerten zu den Trojanerpopulationen.
 Nach Korrektur dieser erhielt die Gruppe um Morbidelli eine Masse von $\unit[1,3 \cdot 10^{-5}]{\ME}$ für die Trojaner. Nachdem 87\% der Trojaner eine Librationsamplitude von unter 30\degree haben, ergibt sich für diese eine Masse von etwa $\unit[1,1 \cdot 10^{-5}]{\ME}$, was mit den Werten der Simulationen gut übereinstimmt\cite{Morbidelli2005}.
 
-Als nächstes analysierte die Gruppe um Morbidelli die Orbits der eingefangenen Objekte. Dazu simulierten sie die Entwicklung der Trojaner bei abgeschlossener Migration unter Einfluss von nur der Sonne und Jupiter für weitere $10^5$ Jahre und filterten die kurzzeitigen Oszillationen der Orbits heraus.
-Die Verteilung der Orbitaleigenschaften der Trojaner wiesen zwischen den beiden Simulationen keine signifikanten Unterscheide auf, weshalb sie zur Verbesserung der Statistik gemeinsam betrachtet wurden.
-Grafik \ref{fig:Trojanerorbitale} zeigt die Bahneigenschaften der Simulationsergebnisse im Vergleich zu den gemessenen, wie man sieht gibt es eine gute Übereinstimmung, alle beobachteten Jupitertrojaner könnten also durch dieses Modell erklärt werden.
-Das gilt auch für Objekte mit $D<5^\circ$, welche in früheren Modellen am schwersten erklärt werden konnten\cite{Marzari2002,Morbidelli2005},
-und für den gesamten Bereich der Inklinationen der, wie oben schon erwähnt, bisher nicht erklärt werden konnte.
+Als nächstes analysierte die Gruppe um Morbidelli die Orbits der eingefangenen Objekte. Dazu simulierten sie die Entwicklung der Trojaner bei abgeschlossener Migration nur unter Einfluss von Sonne und Jupiter für weitere $10^5$ Jahre und filterten die kurzzeitigen Oszillationen der Orbits heraus.
+Die Verteilung der Orbitaleigenschaften der Trojaner wiesen zwischen den beiden Simulationen keine signifikanten Unterschiede auf, weshalb sie zur Verbesserung der Statistik gemeinsam betrachtet wurden.
+Grafik \ref{fig:Trojanerorbitale} zeigt die Bahneigenschaften der Simulationsergebnisse im Vergleich zu den gemessenen: wie man sieht, gibt es eine gute Übereinstimmung. Alle beobachteten Jupiter-Trojaner könnten also durch dieses Modell erklärt werden.
+Das gilt auch für Objekte mit $D<5^\circ$, welche in früheren Modellen am schwersten erklärt werden konnten\cite{Marzari2002,Morbidelli2005}
+und für den gesamten Bereich der Inklinationen welcher, wie oben schon erwähnt, bisher nicht erklärt werden konnte.
 
-Ein weiterer positiver Aspekt an diesem Model ist, dass er erklärt warum die Jupiter-Trojaner nur sehr wenig Wasser und organische Stoffe enthalten\cite{Emery2004}:
+Ein weiterer positiver Aspekt an diesem Model ist, dass es erklärt, warum die Jupiter-Trojaner nur sehr wenig Wasser und organische Stoffe enthalten\cite{Emery2004}:
 Bevor sie als Trojaner eingefangen wurden, durchgingen sie eine Phase mit sehr hohen Exzentrizitäten, in welcher sie der Sonne immer wieder sehr nahe kamen und dabei entgasten.
 Alle Trojaner der Simulation waren für mindestens 100 Jahre auf Orbits mit einem Perihel $q\lesssim \unit[3]{AU}$, 72\% der Teilchen waren mit 10.000 Jahren lange genug auf derartigen Bahnen um vollständig zu entgasen\cite{Levison1997,Morbidelli2005}.
 
-In den ursprünglichen Simulationen von \cite{Tsiganis2005} wurde auch der Einfang einiger Neptun-Trojaner beobachtet. Durchschnittlich wurden pro Simulation zwei semistabiele (Lebenszeit $>\unit[80]{Myr}$) Trojaner eingefangen, was einer hohen Einfangeffizienz entsprechen würde\cite{Tsiganis2005}.
+In den ursprünglichen Simulationen von \cite{Tsiganis2005} wurde auch der Einfang einiger Neptun-Trojaner beobachtet. Durchschnittlich wurden pro Simulation zwei semistabile (Lebenszeit $>\unit[80]{Myr}$) Trojaner eingefangen, was einer hohen Einfangeffizienz entsprechen würde\cite{Tsiganis2005}.
 Die Neptun-Trojaner wurden nach einiger Zeit wieder aus ihren Orbits geworfen.
 \cite{Tsiganis2005} vermutete dies könnte nur ein Artefakt der Simulation sein, das dadurch entstand, dass die Planetesimalscheibe in den Simulationen zur Begrenzung der Rechenzeit aus nur 1.000 bis 5.000 Teilchen, dadurch ist die Migration der Neptun-Bahn sprunghaft, was eine destabilisierende Wirkung auf die Trojanerbahnen hat.
 \cite{Nesvorny2009} wiederholte die Simulationen mit einer realistischeren Teilchenzahl von etwa 27.000 Planetesimalen, dies führte zu einer glatteren Migration und tatsächlich auch zu einer großen Population von stabilen Neptun-Trojanern.
-Einige der Neptun-Tojaner in diesen Simulationen hatten Inklinationen von bis zu 20\degree\ -- das Modell kann somit auch die ungewöhnlichen Neptun-Trojaner 2005~TN\textsubscript{53} and 2007~VL\textsubscript{305} erklären. 
+Einige der Neptun-Tojaner in diesen Simulationen hatten Inklinationen von bis zu 20\degree -- das Modell kann somit auch die ungewöhnlichen Neptun-Trojaner 2005~TN\textsubscript{53} and 2007~VL\textsubscript{305} erklären. 
 Somit beschreibt das Nizza-Modell auch die Entstehung der Neptun-Trojaner und erklärt damit warum die Trojaner von Jupiter und Neptun sich ähneln\cite{Nesvorny2009}.
 
 \FloatBarrier
 \section{Die Monde der Riesenplaneten}\label{Monde}
 Eine weitere wichtige Frage bei der Beschäftigung mit dem Nizza-Modell ist ob dieses Modell mit der Existenz der Monde der Gasriesen konsistent ist.
-Wie wir sehen werden, ist dies in weiten Bereichen der Fall, auf Grundlage des Nizza-Modells wurde insbesondere ein neuer Entstehungsmechnismus für viele der Monde vorgeschlagen, welcher einige Vorteile gegenüber bisherigen Theorien hat. Zunächst will ich jedoch den Begriff der Hill-Sphäre einführen.
+Wie wir sehen werden, ist dies in weiten Bereichen der Fall. Auf Grundlage des Nizza-Modells wurde insbesondere ein neuer Entstehungsmechnismus für viele der Monde vorgeschlagen, welcher einige Vorteile gegenüber bisherigen Theorien hat. Zunächst will ich jedoch den Begriff der Hill-Sphäre einführen.
 
 Als Hill-Sphäre bezeichnet man das in erster Näherung kugelförmige Gebiet um einen Körper (in der Regel ein Planet) der einen zweiten (hier die Sonne) umkreist, in welchem die Gravitationskräfte des Planeten überwiegen. Dabei entspricht der Radius der Hill-Sphäre der Entfernung bis zum ersten beziehungsweise zweiten Lagrange-Punkt und berechnet sich zu\cite{Sheppard2005}:
 \begin{equation} 
@@ -686,26 +693,20 @@ Monde können nur in einer Stabilitätszone innerhalb der Hillsphäre existieren
 Für retrogarde Trabanten reicht die Stabilitätszone hingegen bis 69\% des Hill-Radius hinaus\cite{Hamilton1997}.
 
 Im folgenden wird zwischen zwei grundsätzlich verschiedenen Gruppen von Monden unterschieden.
-Reguläre Monde findet man sehr nahe um den Planeten (bis zu $0.05 \, r_\mathrm{H}$) auf Orbits mit sehr niedrigen Exzentrizitäten und Inklinationen und ausnahmslos immer auf prograden Bahnen\cite{Sheppard2005}.
+Reguläre Monde findet man sehr nahe um den Planeten (bis zu $0,05 \, r_\mathrm{H}$) auf Orbits mit sehr niedrigen Exzentrizitäten und Inklinationen und ausnahmslos immer auf prograden Bahnen\cite{Sheppard2005}.
 Als irregulären Mond bezeichnet man hingegen einen natürlichen Satelliten auf Orbits die weit vom Planeten entfernt sind und eine starke Inklination haben\cite{Nesvorny2007}.
-Häufig haben Sie auch retrograde Umlaufbahnen und große Exzentrizitäten\cite{Nesvorny2007}.
+Häufig haben sie auch retrograde Umlaufbahnen und große Exzentrizitäten\cite{Nesvorny2007}.
 
 \subsection{Reguläre Monde}
-Während der Instabiliätsphase kommen sich die Planeten Saturn, Uranus und Neptun immer wieder sehr nahe, derartige Planetenbegegnungen könnten die Bahnen von Monden destabilisieren und sie aus ihrer Umlaufbahn um den Planeten werfen oder aber zumindest ihre Exzentrizitäten und Inklinationen soweit erhöhen, dass sie im Widerspruch zu den Beobachtungen liegen.
-Um dies für reguläre Monde zu testen, zeichneten \cite{Tsiganis2005} bei acht ihrer Simulationen alle Begegnungen von Planeten, bei welche sich die Planeten näher als ein Hill-Radius kamen, auf.
+Während der Instabiliätsphase kommen sich die Planeten Saturn, Uranus und Neptun immer wieder sehr nahe. Derartige Planetenbegegnungen könnten die Bahnen von Monden destabilisieren und sie aus ihrer Umlaufbahn um den Planeten werfen oder aber zumindest ihre Exzentrizitäten und Inklinationen soweit erhöhen, dass sie im Widerspruch zu den Beobachtungen liegen.
+Um dies für reguläre Monde zu testen, zeichneten \cite{Tsiganis2005} bei acht ihrer Simulationen alle Begegnungen von Planeten auf, bei welchen sich die Planeten näher als ein Hill-Radius kamen.
 Anschließend simulierten sie die Mondsysteme der Planeten unter dem Einfluss der Begegnungen.
 Als Mondsystem verwendeten sie für Saturn dessen heute bekannten Monde und für die beiden Eisgiganten die heute bekannten Monde von Uranus\cite{Tsiganis2005}.
-In der Hälfte der Simulationen überlebten nach allen Begegnungen alle Monde auf Bahnen mit $\sin i, e < 0.05$, weshalb die Gruppe um Tsiganis schloss, dass die Existenz der regulären Monde nicht im Widerspruch zum Nizza-Modell steht\cite{Tsiganis2005}.
-Dies gilt jedoch nur für die regulären Monde, die irregulären Monde sind hingegen wesentlich schwächer gebunden und würden die Begegnungen deshalb nicht überleben.
+In der Hälfte der Simulationen überlebten nach allen Begegnungen alle Monde auf Bahnen mit $\sin i, e < 0,05$, weshalb die Gruppe um Tsiganis schloss, dass die Existenz der regulären Monde nicht im Widerspruch zum Nizza-Modell steht\cite{Tsiganis2005}.
+Dies gilt jedoch nur für die regulären Monde -- die irregulären Monde sind hingegen wesentlich schwächer gebunden und würden die Begegnungen deshalb nicht überleben.
 
 \subsection{Irreguläre Monde}
 
-\begin{figure}[tbn]
-\centering
-\includegraphics[scale=0.9]{img/Nesvorny2007-1}
-\caption{Vergleich der Migration bei einer Simulation von Klasse A (\textbf{a)}) und Klasse B (\textbf{b)}), analog zu Abbildung \ref{fig:Orbitalevolution}. Gestrichelt sind die heutigen Positionen von Saturn, Uranus und Neptun eingezeichnet. Während bei der Klasse A die Eisriesen nach der Chaotischen Phase auf ihre heutigen Positionen migrieren, werden sie bei Klasse B durch eine gemeinsame Begegnung auf ihre nahezu finalen Positionen geschleudert. Bild nach \cite{Nesvorny2007}.}
-\label{fig:Orbitalevolution_vergleich}
-\end{figure}
 \begin{figure}[tbn] % Querformat?
 \centering
 \includegraphics[scale=1]{img/Nesvorny2007-2}
@@ -713,15 +714,15 @@ Dies gilt jedoch nur für die regulären Monde, die irregulären Monde sind hing
 \label{fig:Begegnungen}
 \end{figure}
 Inzwischen sind über hundert irreguläre Monde bei den Gasplaneten bekannt\cite{Nicholson2008}.
-Die irregulären Monde bieten wichtige Hinweise zur Entstehungsgeschichte des Sonnensystems und das Verständnis ihrer Entstehung stellte ebenfalls eine Herausforderung dar.
-Während sich reguläre Satelliten unseres Wissens durch Akkretion aus der planetaren Gasscheibe gebildet haben, ist die Herkunft von irregulären Monden noch ungeklärt.
+Die irregulären Monde bieten wichtige Hinweise zur Entstehungsgeschichte des Sonnensystems und das Verständnis ihrer Entstehung stellte eine Herausforderung dar.
+Während sich reguläre Satelliten nach dem heutigen Wissenstand durch Akkretion aus der planetaren Gasscheibe gebildet haben, ist die Herkunft von irregulären Monden noch ungeklärt.
 Sie müssen auf irgendeine Art von dem Planeten aus einem heliozentischem Orbit eingefangen sein worden. Eine Entstehung aus der planetaren Gasscheibe durch Akkretion wie bei den regulären Monden ist aus mehreren Gründen nicht möglich:
-Sie sind von den regulären Trabanten räumlich zu stark getrennt um aus der selben Gasscheibe entstanden zu sein, per Akkretion können keine derartig großen Exzentrizitäten entstehen und vor allem können aus einer Gasscheibe keine retrogard umlaufende Monde entstehen\cite{Nesvorny2007}.
+Sie sind von den regulären Trabanten räumlich zu stark getrennt um aus der selben Gasscheibe entstanden zu sein, per Akkretion können keine derartig großen Exzentrizitäten entstehen und vor allem können aus einer Gasscheibe keine retrograd umlaufenden Monde entstehen\cite{Nesvorny2007}.
 
-Das System Sonne-Planet-einzufangender Körper reicht jedoch nicht aus, da das System zeitreversibel ist und somit jeder Weg des Körpers von der heliozentischen Bahn zu der Planetenumlaufbahn auch wieder ein möglicher Weg zurück ist\cite{Nesvorny2007}.
-Es braucht also einen Mechanismus auf welche Weise ein Trabant dauerhaft eingefangen werden kann. Dazu wurde unter anderem vorgeschlagen, dass der Körper Energie durch Reibung an, den Planeten umgebendes Gas, verliert.
-Dieses Modell kann zwar einige der irregulären Moden von Jupiter erklären, nicht jedoch alle, da einige weiter entfernt sind als die Gasscheibe gereicht hat und auch auf die irregulären Monde von Neptun und Uranus lässt sich dieses Modell vermutlich nicht anwenden, da deren Gasscheiben sich vermutlich nicht für diese Modell eignen\cite{Pollack1991,Pollack1996,Nesvorny2007}.
-Migrationsmodelle, wie das Nizza-Modell, führen zu einem weiteren großen Problem für derartige \glqq gas-drag\grqq-Modelle. Kommt den so entstandenen irregulären Monden ein großer Planetesimal oder ein Planet zu nahe, werden sie äußerst effizient wieder aus dem System des Planeten gefegt\cite{Nesvorny2007}. Da sich im Nizza-Modell die Planeten Saturn, Uranus und Neptun entsprechend nahe kommen, können die irregulären Monde, die wir heute um diese Planeten sehen, somit nicht aus der Zeit vor der Migration stammen\cite{Tsiganis2005,Nesvorny2007}, was für \glqq gas-drag\grqq-Modelle aber nötig wäre, da zum Zeitpunkt der Migration die Gasscheibe ja sich bereits aufgelöst hat\footnote{Es ist natürlich möglich, dass es früher andere \glqq Generationen\grqq\ von irregulären Monden gab, welche auf diese Weise entstanden sind, heute aber nicht mehr existieren. }.
+Das System Sonne-Planet-einzufangender Körper reicht jedoch nicht aus, da das System zeitreversibel ist und somit jeder Weg des Körpers von der heliozentischen Bahn zu einer Planetenumlaufbahn auch wieder ein möglicher Weg zurück ist\cite{Nesvorny2007}.
+Es braucht also einen Mechanismus der beschreibt auf welche Weise ein Trabant dauerhaft eingefangen werden kann. Dazu wurde unter anderem vorgeschlagen, dass der Körper Energie durch Reibung an den Planeten umgebendes Gas verliert.
+Dieses Modell kann zwar einige der irregulären Monde von Jupiter erklären, nicht jedoch alle, da einige weiter entfernt sind als die Gasscheibe gereicht hat. Auch auf die irregulären Monde von Neptun und Uranus lässt sich dieses Modell vermutlich nicht anwenden, da deren Gasscheiben sich vermutlich nicht für diese Modell eignen\cite{Pollack1991,Pollack1996,Nesvorny2007}.
+Migrationsmodelle wie das Nizza-Modell führen zu einem weiteren großen Problem für derartige \glqq gas-drag\grqq-Modelle. Kommt den so entstandenen irregulären Monden ein großer Planetesimal oder ein Planet zu nahe, werden sie äußerst effizient wieder aus dem System des Planeten gefegt\cite{Nesvorny2007}. Da sich im Nizza-Modell die Planeten Saturn, Uranus und Neptun entsprechend nahe kommen, können die irregulären Monde die wir heute um diese Planeten sehen somit nicht aus der Zeit vor der Migration stammen\cite{Tsiganis2005,Nesvorny2007}, was für \glqq gas-drag\grqq-Modelle aber nötig wäre, da zum Zeitpunkt der Migration die Gasscheibe ja sich bereits aufgelöst hat\footnote{Es ist natürlich möglich, dass es früher andere \glqq Generationen\grqq\ von irregulären Monden gab, welche auf diese Weise entstanden sind, heute aber nicht mehr existieren. }.
 
 Eine weitere wichtige Eigenschaft der irregulären Monde sind ihre vielfältig variierten (von Grau zu starkem Rot) und keinem klaren Gradienten folgenden Farben. Würden die Monde aus der lokalen Umgebung der Planeten stammen, müssten alle Monde eines Planeten eine ähnliche Farbe haben und die Farben der Monde müssten vom Sonnenabstand des Planeten abhängen\cite{Degewij1980Icar,Cruikshank1980Icar,Dumas1998Icar, Sykes2000Icar,Brown2000AJ,Grav2003Icar,Grav2004ApJ,GravHolman2004ApJ,Porco2005Sci,Nesvorny2007}. Dass beides nicht der Fall ist, ist ein Zeichen dafür, dass es sich bei den irregulären Satelliten um ein Mix aus Objekten von ursprünglich unterschiedlichen Orten handelt.
 
@@ -754,35 +755,35 @@ Dafür verwendeten sie nicht SyMBA sondern Bulirsch-Stoer Integrationsalgorithmu
 
 \begin{figure}[tbn]
 \centering
-\includegraphics[scale=0.4]{img/Nesvorny2007-8}
+\includegraphics[width=0.6\textwidth]{img/Nesvorny2007-8}
 \caption{Beitrag der verschiedenen Generationen zum Mondeinfang von Uranus (\textbf{a}), \textbf{b})) und Neptun (\textbf{c}), \textbf{d})). Während in \textbf{a}) und \textbf{b}) nur die Anzahl der eingefangenen Satelliten ohne Berücksichtigung von Wiederentfernungen von Objekten dargestellt ist, sind die in  \textbf{c}) und \textbf{d}) nur die Anzahl der am Ende noch vorhandenen Satelliten aufgetragen. Bild nach \cite{Nesvorny2007}.} %Klammer in Klammer sieht blöd aus
 \label{fig:Mondgenerationen}
 \end{figure}
 
 \begin{figure}[tbn]
 \centering
-\includegraphics[scale=0.7]{img/Nesvorny2007-4}
+\includegraphics[width=0.6\textwidth]{img/Nesvorny2007-4}
 \caption{Vergleich der Orbits der Monde einer Simulation der Klasse A mit den Messwerten. Die roten Dreiecke sind die Messwerte der bekannten irregulären Monde, die schwarzen Punkte stellen die in der Simulation gefundenen Monde dar. Abbildungen \textbf{a)} und \textbf{b}) stellen die Satelliten von Uranus, \textbf{c)} und \textbf{d}) die von Neptun dar. Bild nach \cite{Nesvorny2007}.}
 \label{fig:KlasseA_Mondorbitale}
 %\vspace{\floatsep}
 \end{figure}
 \begin{figure}[tbn]
 \centering
-\includegraphics[scale=0.7]{img/Nesvorny2007-5}
+\includegraphics[width=0.6\textwidth]{img/Nesvorny2007-5}
 \caption{Vergleich der Orbits der Monde einer Simulation der Klasse B mit den Messwerten. Analog zu Abbildung \ref{fig:KlasseA_Mondorbitale}. Bild nach \cite{Nesvorny2007}.} 
 \label{fig:KlasseB_Mondorbitale}
 \end{figure}
 
 \begin{figure}[tbn] % Bild raus, halb oder ganz verwenden?
 \centering
-\includegraphics[scale=0.7]{img/Nesvorny2007-6ab}
+\includegraphics[width=0.6\textwidth]{img/Nesvorny2007-6ab}
 \caption{Vergleich der Orbits der Saturnmonde der einer Simulation der Klasse B mit den Messwerten. Bild nach \cite{Nesvorny2007}.} 
 \label{fig:Saturnmondorbitale}
 \end{figure}
 
 \begin{figure}[tbn]
 \centering
-\includegraphics[scale=0.7]{img/Nesvorny2007-7}
+\includegraphics[width=0.6\textwidth]{img/Nesvorny2007-7}
 \caption{Vergleich der Orbits der Monde der Simulation 9 mit den Messwerten. Abbildungen \textbf{a)} und \textbf{b}) stellen die Satelliten von Jupiter, \textbf{c)} und \textbf{d}) die von Saturn dar. Bild nach \cite{Nesvorny2007}.} 
 \label{fig:Sim9_Mondorbitale}
 \end{figure}
@@ -827,13 +828,13 @@ Zu Jupiter sollte noch angemerkt werden, dass bekannt ist, dass die meisten Mond
 
 \begin{figure}[tbn]
 \centering
-\includegraphics[scale=.5]{img/Nesvorny2007-9}
+\includegraphics[width=0.6\textwidth]{img/Nesvorny2007-9}
 \caption{Size-frequency distribution (SFD) wie im Modell berechnet (rote Linie) und gemessen (schwarzer Strich, beziehungsweise Sternchen für den jeweils größten Mond). Bild nach \cite{Nesvorny2007}.}
 \label{fig:SFD}
 \end{figure}
 \begin{figure}[tbn]
 \centering
-\includegraphics[scale=1]{img/Bottke2010-10-klein}
+\includegraphics[width=0.6\textwidth]{img/Bottke2010-10-klein}
 \caption{Zeitliche Entwicklung der SFD der irregulären Monde von Saturn durch Kollisionen und Vergleich mit den Messwerten. Bild nach \cite{Bottke2010}.}
 \label{fig:SFDchange}
 \end{figure}
@@ -908,7 +909,7 @@ Bei den Transneptunischen Objekten handelt es sich -- unabhängig vom Nizza-Mode
 So weisen die Transneptunischen Objekte einige interessante Eigenarten auf, die ein Modell der planetaren Evolution erklären können sollte:
 \begin{enumerate}
 \item Die Existenz und der große Anteil der Resonanten KBOs: Einige der Resonanten KBOs weisen eine Libration auf. Die Librationsamplitude ist neben Exzentrizität und Inklination dann eine weitere wichtige Bahneigenschaft, deren Verteilung von einem Modell erklärt werden muss. Dies gilt insbesondere für die sogenannten 2:5-Libratoren\cite{Levison2008}.
-\item Die Klassischen Kuipergürtel-Objekte haben eine mittlere Exzentrizität von etwa 0.07, was zwar klein, jedoch trotzdem um eine Größenordnung größer als zur Zeit der Entstehung ist. Da die Obergrenze der Exzentrizität der CKBOs durch Bahnstabilitätsgründe vorgegeben ist, ist sogar anzunehmen, dass es früher Objekte mit noch deutlich höherer Exzentrizität gab.
+\item Die Klassischen Kuipergürtel-Objekte haben eine mittlere Exzentrizität von etwa 0,07, was zwar klein, jedoch trotzdem um eine Größenordnung größer als zur Zeit der Entstehung ist. Da die Obergrenze der Exzentrizität der CKBOs durch Bahnstabilitätsgründe vorgegeben ist, ist sogar anzunehmen, dass es früher Objekte mit noch deutlich höherer Exzentrizität gab.
 \item Transneptunische Objekte mit fast kreisförmiger Bahn gibt es nur für Große Halbachsen bis zu etwa 44 AU, danach steigt die Exzentrizität mit der Entfernung an (siehe Bild \ref{fig:KBOs})\cite{Levison2008}. Dieses Resultat scheint kein Effekt mangelnder Beobachtungsdaten für höhere Entfernungen sondern eine reale Eigenschaft der TNO zu sein\cite{Levison2008}.
 \item Der klassische Kuipergürtel endet genau am Ort der 1:2 MMR mit Neptun\cite{Levison2008}. Auch dies kann nicht durch Verzerrungen durch mangelnde Beobachtungsfähigkeiten für weit entfernte Objekte erklärt werden.
 \item In a-i-Diagramm in Bild \ref{fig:KBOs} erkennt man, dass es zahlreiche Objekte mit sehr kleiner Inklination ($i\lesssim 4^\circ$), jedoch auch etliche mit größeren Inklinationen (bis zu $\sim 30^\circ$) gibt. Berücksichtigt man hier die Verzerrung durch die Beobachtbarkeit -- welche etwa zu $1/\sin(i)$ proportional ist -- so stellt man fest, dass sich die Objekte in zwei Cluster einteilen lassen und die Inklinationsverteilung durch zwei überlagerte Gaussverteilungsfunktionen gefittet werden kann\cite{Brown2001,Levison2008}.
@@ -918,7 +919,7 @@ Darüber hinaus zeigten mehre verschiedene Arbeiten \cite{Tegler2000,Doressoundi
 Auch Objekte mit sehr großer Apoheldistanz sind einheitlich rot, unabhängig von ihrer großen Halbachse.
 Allgemein scheint es eine Beziehung zwischen der Farbe und der Periheldistanz zu geben: graue Objekte werden für kleinere q häufiger.
 \item Die Objekte der detached disk können nicht durch die Planeten auf ihren heutigen Orbits auf ihren heutigen Bahnen auf ihre Orbits gelangt sein, da sie außerhalb des Einflussbereichs dieser sind\cite{Levison2008}.
-\item Ein besonders großes Problem ist das Massendefizit des Kuipergrütels. Die Masse des Kuipergürtels wird auf $\unit[0.01]{\ME}$ bis $\unit[0.1]{\ME}$ geschätzt\cite{Gladman2001, Bernstein2004, Levison2008}.
+\item Ein besonders großes Problem ist das Massendefizit des Kuipergrütels. Die Masse des Kuipergürtels wird auf $\unit[0,01]{\ME}$ bis $\unit[0,1]{\ME}$ geschätzt\cite{Gladman2001, Bernstein2004, Levison2008}.
 Damit sich aus dem Material jedoch innerhalb einer vernünftigen Zeitspanne von $10^7-10^8$ Millionen Jahren die Objekte mit der heutigen Größe zusammenklumpen konnten, musste es $10$ bis $\unit[30]{\ME}$ festes Material in der dynamisch Kalten Scheibe geben.\cite{Stern1996AJ, Stern1997AJ, Stern1997ApJ, Kenyon1998AJ, Kenyon1999AJ, Kenyon1999ApJ, Kenyon2004}
 \end{enumerate}
 
@@ -927,14 +928,14 @@ Im Rahmen des Nizza-Modells werden die TNO als die Überbleibsel der Planetesima
 Um dies zu überprüfen, führten \cite{Levison2008} weitere, dafür optimierte Simulationen durch. Als Integratoren  dienten hier die Kombination von zwei Varianten des Swift-Codes, einmal mit dem oben diskutierten Mapping von \cite{Wisdom1991} und einmal mit dem nicht symplektischen Algorithmus RMVS von \cite{Levison1994}. Auch hier wurde, wie bei den Simulationen zur Untersuchung des LHBs, die Migration der Planeten durch Hinzufügung geeigneter Kräfte auf das System erzwungen und die Planetesimale wurden nur als Testteilchen behandelt\cite{Levison2008}.
 Die Simulationen beinhalteten 60.000 Planetesimale und erstreckten sich jeweils über einen Zeitraum von einer Milliarde Jahren\cite{Levison2008}. Die Gruppe um Levison führte fünf derartige Simulationen durch, wofür sie insgesamt 2 CPU-Jahre Rechenzeit brauchten – eine vollständige Untersuchung des Parameterraums ist deshalb nicht möglich gewesen\cite{Levison2008}.
 Mit diesen Simulationen ergibt sich folgendes Bild:
-Wenn Neptun migriert, steifen die Positionen seiner MMRs durch die Planetesimalenscheibe. Da die MMRs von Neptun ''klebrig`` sind\cite{Levison2008}, werden Objekte über welche die MMRs streifen eingefangen und bilden seitdem die Resonanten Kuipergürtel Objekte. Auch Pluto kam so auf seine heutige Bahn.
+Wenn Neptun migriert, steifen die Positionen seiner MMRs durch die Planetesimalenscheibe. Da die MMRs von Neptun \glqq klebrig\grqq\ sind\cite{Levison2008}, werden Objekte über welche die MMRs streifen eingefangen und bilden seitdem die Resonanten Kuipergürtel Objekte. Auch Pluto kam so auf seine heutige Bahn.
 Zur Zeit als Neptuns Exzentrizität größer als $\sim 0,15$ war, überlappten sich laut numerischen Berechnungen die MMRs, so dass der Bereich zwischen Neptuns Orbit und seiner 1:2 MMR ein Gebiet ergibt, in welchem sich Teilchen frei Bewegen können, sie können jedoch nicht über die 1:2 MMR hinaus wandern\cite{Levison2008}. Dies erklärt warum der Kuipergürtel durch diese Resonanz begrenzt ist.
 Die kalte und die heiße Population des Kuipergürtels wurden dabei durch zwei unterschiedliche Mechanismen auf ihre heutigen Orbits gebracht und stammen deshalb aus unterschiedlichen Bereichen der Planetesimalenscheibe. Die kalte Population stammt aus Objekten mit einer größeren Sonnendistanz, was zumindest erklären würde, warum es weniger graue Objekte gibt. Um zu erklären, dass es praktisch gar keine grauen Objekte in der kalten Population gibt, vermuten die Autoren, dass nicht nur der Entstehungsort sondern auch seine spätere Entwicklung die Farbe prägt\cite{Levison2008}.
 Einige der Objekte werden durch Interaktionen mit verschiedenen Resonanzen Neptuns weiter hinaus gestreut und bilden so die Scatered Disk\cite{Levison2008}.
-Der Massendefizit erklärt sich qualitativ trivial dadurch, dass nur ein kleiner Anteil der Planetesimale auf stabilen Bahnen im Kuipergürtel enden. Quantitativ ergaben sich in den Simulationen von \cite{Levison2008} eine Masse des klassischen Kuipergürtels von zwischen $\sim\unit[0.05]{\ME}$ und $\sim\unit[0.14]{\ME}$, was gut mit den Messwerten übereinstimmt.
+Der Massendefizit erklärt sich qualitativ trivial dadurch, dass nur ein kleiner Anteil der Planetesimale auf stabilen Bahnen im Kuipergürtel enden. Quantitativ ergaben sich in den Simulationen von \cite{Levison2008} eine Masse des klassischen Kuipergürtels von zwischen $\sim\unit[0,05]{\ME}$ und $\sim\unit[0,14]{\ME}$, was gut mit den Messwerten übereinstimmt.
 Die Ergebnisse einer ihrer Simulationen sind in Abbildung \ref{fig:KBOs_sim} dargestellt, die Übereinstimmung mit Abbildung \ref{fig:KBOs} ist deutlich.
 
-Insgesamt konnten \cite{Levison2008}mit ihren Simulationen zeigen, dass das Nizza-Modell alle obengenannten Punkte bis auf einen erklärt: Die Durchschnittsexzentrizität des klassischen Kuipergürtels in den Simulationen betrug 0.10-0.13, während sie in Realität 0.07 beträgt.
+Insgesamt konnten \cite{Levison2008}mit ihren Simulationen zeigen, dass das Nizza-Modell alle obengenannten Punkte bis auf einen erklärt: Die Durchschnittsexzentrizität des klassischen Kuipergürtels in den Simulationen betrug $0,10$ bis $0,13$, während sie in Realität $0,07$ beträgt.
 Die Autoren weisen darauf hin, dass dies aufgrund der geringen Zahl der Simulationen eine statistische Schwankung sein könnte, oder auf den nicht ganz abgedeckten Parameterraum zurückzuführen sein könnte. Auch wäre es möglich, dass in der Simulation nicht berücksichtigte physikalische Effekte wie die durch Kollisionen verursachte Dämpfung der Exzentrizität diese Diskrepanz verursachen\cite{Levison2008}.
 Nur durch eine deutliche Vergrößerung der Rechenleistung oder aber effizientere Simulationen wird man dies überprüfen können.
 
@@ -947,8 +948,8 @@ Ein weiterer positiver Aspekt ist, dass das Nizza-Modell auch erklärt warum die
 
 Während die durch Sedna repräsentierte innerste Oortsche Wolke bereits in den Anfangszeiten des Sonnensystems entstanden sein kann, ist die Erklärung der restlichen Oortschen Wolke mit bisherigen Modellen schwerer – die bisherigen Modelle versuchten diese durch die Wechselwirkung von am Sonnensystem vorbei fliegenden Sternen zu erklären, ergaben jedoch zu geringe Massen – daher untersuchte \cite{Brasser2008} ob die zerstreute Planetesimalscheibe im Nizza-Modell nicht auch Ursprung der Oortschen Wolke sein kann.
 Er schlägt daher ein zweistufiges Verfahren vor, in welchem die innerste Oortsche Wolke mit einem der bereits vorgeschlagenen Modelle (\cite{Brasser2006,Brasser2007} oder \cite{Kaib2008}) entstand, während die innere und äußere Oortsche Wolke ein Gyr später – zeitgleich zum LHB – durch einen von \cite{Dones2004} bereits 2004 vorgeschlagenen Mechanismus aus den selben Planetesimalen, die auch das LHB auslösten, entstanden\cite{Brasser2008}.
-Er bestimmte die Masse der dadurch gebildeten äußeren Oortschen Wolke auf etwa $\unit[0.5]{\ME}$, was etwas weniger als die $\unit[0.6-1.4]{\ME}$ sind, auf die die Messwerte schließen lassen\cite{Brasser2008}. Diese Differenz erklärt er damit, dass zusätzlich aus der innersten Oortschen Wolke durch die Wechselwirkung von vorbeifliegenden Sternen Material in die äußere Oortsche Wolke gelangte\cite{Brasser2008}.
-Dies kann bis zu weiteren $\unit[0.5]{\ME}$ beitragen, die wahrscheinlichste Gesamtmasse ergibt sich in guter Übereinstimmung mit den Messwerten auf $\unit[0.9]{\ME}$\cite{Brasser2008}.
+Er bestimmte die Masse der dadurch gebildeten äußeren Oortschen Wolke auf etwa $\unit[0,5]{\ME}$, was etwas weniger als die $\unit[0,6-1,4]{\ME}$ sind, auf die die Messwerte schließen lassen\cite{Brasser2008}. Diese Differenz erklärt er damit, dass zusätzlich aus der innersten Oortschen Wolke durch die Wechselwirkung von vorbeifliegenden Sternen Material in die äußere Oortsche Wolke gelangte\cite{Brasser2008}.
+Dies kann bis zu weiteren $\unit[0,5]{\ME}$ beitragen, die wahrscheinlichste Gesamtmasse ergibt sich in guter Übereinstimmung mit den Messwerten auf $\unit[0,9]{\ME}$\cite{Brasser2008}.
 
 \chapter{Ausblick}\label{erweiterungen}
 Bereits vor dem Nizza-Modell gab es einige Modelle, die sich daran machten zu erklären, wie die Planeten von ihren ursprünglichen kompakten Orbitalen auf ihre heutigen sonnenfernen Bahnen kamen. Als Vorgängermodelle sind insbesondere \cite{Thommes1999,Thommes2003,Levison2004,Gomes2004} zu nennen.
@@ -1020,7 +1021,7 @@ Die Gesamtmasse der Planetesimalscheibe wurde in den Simulationen zwischen $10$ 
 Insgesamt wurden 6000 Simulationen des Systems mit unterschiedlichen Parametern durchgeführt, auf Basis der Ergebnisse erstellte Planetesimalscheibe dann Statistiken, darüber wie Erfolgreich die Simulationen für bestimmte Parameter, insbesondere die Anzahl der Planeten sind.
 In der Nachfolgearbeit \cite{Nesvorny2012} wurde der Parameterraum sowie auch die Anzahl der Simulationen noch einmal erhöht. So wurden dabei auch die Anzahl der Planetesimale variiert und auch die Fall mit ursprünglich 6 Riesenplaneten betrachtet. Für jede Anfangsbedingung wurden mindestens 30 bei interessanten Fällen sogar 100 Simulationen durchgeführt, insgesamt wurde fast $10^4$ Simulationen berechnet. Die hohe Anzahl der Berechnungen wurde unter anderem dadurch ermöglicht, dass man die Anfangszustände der Simulationen so wählte, dass es bereits nach sehr kurzer Zeit zur Instabilitätsphase kam.
 
-Für die Bewertung des Erfolgs der Simulationen definierte Nesvorný 4 Kriterien. Kriterium A war, dass das System am Ende genau fünf Riesenplaneten haben muss. Kriterium B beschreibt, dass die großen Halbachsen der Planeten bis auf höchstens 20\% mit den gemessenen Werten übereinstimmen und die Exzentrizitäten und Inklinationen kleiner als 0.11 beziehungsweise $2^\circ$ sind, also nicht höchstens doppelt so groß wie die gemessenen Werte von Saturn beziehungsweise Uranus.
+Für die Bewertung des Erfolgs der Simulationen definierte Nesvorný 4 Kriterien. Kriterium A war, dass das System am Ende genau fünf Riesenplaneten haben muss. Kriterium B beschreibt, dass die großen Halbachsen der Planeten bis auf höchstens 20\% mit den gemessenen Werten übereinstimmen und die Exzentrizitäten und Inklinationen kleiner als $0,11$ beziehungsweise $2^\circ$ sind, also nicht höchstens doppelt so groß wie die gemessenen Werte von Saturn beziehungsweise Uranus.
 Als drittes Kriterium wurde überprüft, ob Jupiters Orbit so war, dass es zu Begegnungen zwischen ihm und Saturn und einem anderen Planeten kommt, die dazu führen können, dass es zum Einfang von irregulären Satelliten kommt.
 Kriterium D beschreibt schließlich ob es zu den in Kapitel~\ref{jumpingjupiter} beschriebenen Störungen der Bahnen der Terrestrischen Planeten und des Asteroidengürtels kommt. % invers formulieren?
 
@@ -1079,6 +1080,8 @@ Das Nizza-Modell stellt einen großen wissenschaftlichen Durchbruch dar, denn es
 %%%% Bildergrößen vereinheitlichen mit width statt scale
 %%%% Abbildungsverzeichnis?
 %%%% LHB messwerte in den schluss?
+%%%% Librationsamplitude
+%%%% Monde o. Satelliten
 
 \newpage
 
