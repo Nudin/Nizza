@@ -479,6 +479,7 @@ wodurch nun schlagartig eine große Menge an Planetesimalen ins Innere des Sonne
 Die große Anzahl an kleinen Objekten im Bereich der Planetenbahnen, führt jedoch auch zu dynamischer Reibung,
 wodurch die Exzentrizitäten und Inklinationen wieder langsam sinken und sich das System somit wieder stabilisiert \cite{Tsiganis2005}.
 Wenn die Planetesimalscheibe fast vollständig zerstreut ist, stoppt die Migration der Planeten und sie erreichen ihre endgültigen Bahnen \cite{Tsiganis2005}.
+Abbildung \ref{fig:Zeitlicheentwicklung} zeigt die Entwicklung der Planetenorbits, sowie die Positionen der Planetesimalen, in den unterschiedlichen Phasen des Modells.
 
 \newcommand{\DII}{\Delta a_{\mathrm{I}_1,\mathrm{I}_2}}
 \newcommand{\DSI}{\Delta a_{\mathrm{S},\mathrm{I}_1}}
@@ -487,6 +488,12 @@ Wie oben schon erwähnt, wurden für $\DII$ Werte zwischen etwa $2$ und $\unit[6
 Wählt man den Abstand zwischen Saturn und dem ersten Eisplaneten klein, so steigt die Wahrscheinlichkeit, dass einer der Eisplaneten von Saturn auf ein die Jupiterbahn kreuzendes Orbit gestreut wird und dann von Jupiter aus dem System geschleudert wird. Für $\DSI \le \unit[3]{AU} $ geschah dies in 14 der 43 Simulationen (33\%).
 Wählt man den Abstand hingegen sehr groß ($\DSI \approx \unit[5]{AU}$), so ist das System möglicherweise nicht mehr kompakt genug, so dass überhaupt keine Begegnungen von Planeten stattfinden.
 
+\begin{figure}[tbn]
+\centering
+\includegraphics[width=0.7\textwidth]{img/Gomes2005-2.pdf}
+\caption{Die Planetenorbits und die Positionen der Teilchen während einer Simulation; Projektion auf die mittlere Orbitalebene. Abbildung \textbf{a} zeigt das System nach nur 100 My zum Beginn der Migration. Abbildung \textbf{b} stellt das System kurz vor dem Auftreten des Resonanzfalls dar (879 My). Abbildung \textbf{c} zeigt das System nur 3 Millionen Jahre nach \textbf{b} dar. Abbildung \textbf{d} zeigt das System weitere 200 Millionen Jahre später, nur noch wenige Planetesimale sind übrig. Bild nach \cite{Gomes2005}.}
+\label{fig:Zeitlicheentwicklung}
+\end{figure}
 \begin{figure}[tbn]
 \centering
 \includegraphics[width=0.7\textwidth]{img/Nesvorny2007-1}
@@ -499,13 +506,7 @@ Wählt man den Abstand hingegen sehr groß ($\DSI \approx \unit[5]{AU}$), so ist
 \caption{Vergleich der gemittelten Simulationsergebnisse mit den tatsächlichen Messwerten der Bahneigenschaften der Gasplaneten. Aufgetragen ist \textbf{a} die Exzentrizität beziehungsweise \textbf{b} die Inklination über die große Halbachse. Die grauen Kreise stellen die Ergebnisse von Klasse A dar, während die schwarzen, nicht gefüllten Kreise die Messwerte für Klasse B darstellen. Die Fehlerbalken entsprechen jeweils einer Standardabweichung. Die Messwerte sind als schwarze, gefüllte Punkte eingezeichnet. Bild nach \cite{Tsiganis2005}.}
 \label{fig:VergleichmitMesswerten}
 \end{figure}
-\begin{figure}[tbn]
-\centering
-\includegraphics[width=0.7\textwidth]{img/Gomes2005-2.pdf}
-\caption{Die Planetenorbits und die Positionen der Teilchen während einer Simulation; Projektion auf die mittlere Orbitalebene. Abbildung \textbf{a} zeigt das System nach nur 100 My zum Beginn der Migration. Abbildung \textbf{b} stellt das System kurz vor dem Auftreten des Resonanzfalls dar (879 My). Abbildung \textbf{c} zeigt das System nur 3 Millionen Jahre nach \textbf{b} dar. Abbildung \textbf{d} zeigt das System weitere 200 Millionen Jahre später, nur noch wenige Planetesimale sind übrig. Bild nach \cite{Gomes2005}.}
-\label{fig:Zeitlicheentwicklung}
-\end{figure}
-Für die restlichen Fälle, welche sich allesamt nach einer wie oben beschriebenen Migrationsphase wieder stabilisieren, gilt, dass es für Abstände $\DII \ge \unit[3,5]{AU}$ zwar zu Interaktionen der beiden Eisplaneten untereinander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es in Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B\footnote{Die beiden Fälle in der es zu keiner Begegnung kam, wurden dabei nicht ausgeschlossen sondern zur Klasse A gerechnet.}, \cite{Nesvorny2007} bezeichneten Klasse A als Malhotra Klasse (MA) \citep[nach][]{Malhotra1996,Hahn1999a} und Klasse B als 'direct emplacement`-Klasse (DE).
+Für die restlichen Fälle, welche sich allesamt nach einer wie oben beschriebenen Migrationsphase wieder stabilisieren, gilt, dass es für Abstände $\DII \ge \unit[3,5]{AU}$ zwar zu Interaktionen der beiden Eisplaneten untereinander, nicht jedoch zwischen einem Eisriesen und Saturn kommt, während es in Simulationen mit kleinerem $\DII$ auch zu solchen kommt. In Übereinstimmung mit der Originalveröffentlichung, bezeichnen wir erstere Art von Simulationen als Klasse A und letztere als Klasse B\footnote{Die beiden Fälle in der es zu keiner Begegnung kam, wurden dabei nicht ausgeschlossen sondern zur Klasse A gerechnet.}, \cite{Nesvorny2007} bezeichneten Klasse A als Malhotra Klasse (MA) \citep[nach][]{Malhotra1996,Hahn1999a} und Klasse B als \glqq direct emplacement\grqq-Klasse (DE).
 
 Bei Klasse B wird Neptun durch Uranus direkt fast auf seine endgültige Entfernung geschleudert 
 und anschließend wird die Exzentrizität durch dynamische Reibung in der Planetesimalscheibe verringert \cite{Nesvorny2007}. Somit ist die Zeitdauer der Phase der schnellen Migration bei dieser Klasse kürzer \cite{Tsiganis2005}. Auch führt diese Art der Dynamik dazu, dass die Exzentrizität weniger stark abnimmt \cite{Tsiganis2005}.
