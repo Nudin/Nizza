@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Inkscape (http://www.inkscape.org/) by Marsupilami -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="815"
+   height="768"
+   viewBox="-12.9523179 -12.9523179 485.3655758 457.6485658"
+   id="svg3212"
+   style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;font-family:Dialog">
+  <defs
+     id="genericDefs" />
+  <g
+     transform="translate(-18.453125,-15.59201)"
+     id="g3215">
+    <defs
+       id="defs1">
+      <clipPath
+         id="clipPath2">
+        <path
+           d="m 440,293 500,0 0,468 -500,0 0,-468 z"
+           id="path3222" />
+      </clipPath>
+      <clipPath
+         id="clipPath3">
+        <path
+           d="M 0,0 0,26 28,26 28,0 z"
+           id="path3225" />
+      </clipPath>
+      <clipPath
+         id="clipPath4">
+        <path
+           d="M 0,0 0,26 23,26 23,0 z"
+           id="path3228" />
+      </clipPath>
+      <clipPath
+         id="clipPath5">
+        <path
+           d="M 0,0 0,26 20,26 20,0 z"
+           id="path3231" />
+      </clipPath>
+    </defs>
+    <g
+       transform="translate(-440,-293)"
+       id="g3233"
+       style="fill:#cee7fd;stroke:#cee7fd">
+      <circle
+         cx="730.39398"
+         cy="449.715"
+         r="10"
+         clip-path="url(#clipPath2)"
+         id="circle3235"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3237"
+       style="fill:#cee7fd;stroke:#cee7fd">
+      <circle
+         cx="671.79449"
+         cy="394.77869"
+         r="10"
+         clip-path="url(#clipPath2)"
+         id="circle3239"
+         style="stroke:none" />
+      <circle
+         cx="556.80212"
+         cy="450.57401"
+         r="10"
+         clip-path="url(#clipPath2)"
+         id="circle3241"
+         style="stroke:none" />
+      <circle
+         cx="584"
+         cy="369"
+         r="25"
+         clip-path="url(#clipPath2)"
+         id="circle3243"
+         style="fill:#99cdff;stroke:none" />
+      <circle
+         cx="584"
+         cy="369"
+         r="4.25"
+         clip-path="url(#clipPath2)"
+         id="circle3245"
+         style="fill:#000000;stroke:none" />
+    </g>
+    <g
+       transform="translate(89,63)"
+       id="g3247"
+       style="font-size:16px;fill:#9a3169;stroke:#9a3169;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath3)"
+         id="text3249"
+         xml:space="preserve"
+         style="stroke:none">m</text>
+      <text
+         x="15"
+         y="22"
+         clip-path="url(#clipPath3)"
+         id="text3251"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">2 </text>
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3253"
+       style="fill:#99cdff;stroke:#99cdff">
+      <circle
+         cx="809"
+         cy="328.59201"
+         r="20"
+         clip-path="url(#clipPath2)"
+         id="circle3255"
+         style="stroke:none" />
+      <circle
+         cx="512"
+         cy="590"
+         r="20"
+         clip-path="url(#clipPath2)"
+         id="circle3257"
+         style="stroke:none" />
+      <circle
+         cx="858.48932"
+         cy="570"
+         r="30"
+         clip-path="url(#clipPath2)"
+         id="circle3259"
+         style="stroke:none" />
+      <circle
+         cx="696"
+         cy="719"
+         r="4.25"
+         clip-path="url(#clipPath2)"
+         id="circle3261"
+         style="fill:#000000;stroke:none" />
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3263"
+       style="font-size:16px;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="706.25"
+         y="740.10938"
+         clip-path="url(#clipPath2)"
+         id="text3265"
+         xml:space="preserve"
+         style="stroke:none">0</text>
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3267">
+      <circle
+         cx="512"
+         cy="590"
+         r="4.25"
+         clip-path="url(#clipPath2)"
+         id="circle3269"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(17,303)"
+       id="g3271"
+       style="font-size:16px;fill:#9a3169;stroke:#9a3169;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath3)"
+         id="text3273"
+         xml:space="preserve"
+         style="stroke:none">m</text>
+      <text
+         x="15"
+         y="22"
+         clip-path="url(#clipPath3)"
+         id="text3275"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">1 </text>
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3277"
+       style="stroke-linecap:butt;stroke-miterlimit:1.45000005">
+      <circle
+         cx="512"
+         cy="590"
+         r="4.25"
+         clip-path="url(#clipPath2)"
+         id="circle3279"
+         style="fill:none" />
+      <circle
+         cx="858.48932"
+         cy="570"
+         r="4.25"
+         clip-path="url(#clipPath2)"
+         id="circle3281"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(454,264)"
+       id="g3283"
+       style="font-size:16px;fill:#9a3169;stroke:#9a3169;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath3)"
+         id="text3285"
+         xml:space="preserve"
+         style="stroke:none">m</text>
+      <text
+         x="15"
+         y="22"
+         clip-path="url(#clipPath3)"
+         id="text3287"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">4 </text>
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3289">
+      <circle
+         cx="809"
+         cy="328.59201"
+         r="4.25"
+         clip-path="url(#clipPath2)"
+         id="circle3291"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(395,41)"
+       id="g3293"
+       style="font-size:16px;fill:#9a3169;stroke:#9a3169;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath3)"
+         id="text3295"
+         xml:space="preserve"
+         style="stroke:none">m</text>
+      <text
+         x="15"
+         y="22"
+         clip-path="url(#clipPath3)"
+         id="text3297"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">3 </text>
+    </g>
+    <g
+       transform="translate(214,250)"
+       id="g3313"
+       style="font-size:16px;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath4)"
+         id="text3315"
+         xml:space="preserve"
+         style="stroke:none">x</text>
+      <text
+         x="10"
+         y="22"
+         clip-path="url(#clipPath4)"
+         id="text3317"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">2 </text>
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3319"
+       style="stroke-width:3;stroke-linecap:butt;stroke-miterlimit:1.45000005">
+      <path
+         d="M 692.52,716.5602 523.6681,598.1804"
+         clip-path="url(#clipPath2)"
+         id="path3321"
+         style="fill:none" />
+      <path
+         d="m 515.48,592.4398 8.6943,13.7285 0.5174,-7.2704 6.6583,-2.9648 z"
+         clip-path="url(#clipPath2)"
+         id="path3323"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(129,351)"
+       id="g3325"
+       style="font-size:16px;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath4)"
+         id="text3327"
+         xml:space="preserve"
+         style="stroke:none">x</text>
+      <text
+         x="10"
+         y="22"
+         clip-path="url(#clipPath4)"
+         id="text3329"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">1 </text>
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3331"
+       style="fill:#013787;stroke:#013787;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:1.45000005">
+      <path
+         d="M 582.6548,373.0315 516.0196,572.7388"
+         clip-path="url(#clipPath2)"
+         id="path3333"
+         style="fill:none" />
+      <path
+         d="m 511.6676,585.7819 11.8621,-11.855 -14.2289,-4.7477 z"
+         clip-path="url(#clipPath2)"
+         id="path3335"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(74,198)"
+       id="g3337"
+       style="font-size:16px;fill:#013787;stroke:#013787;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath5)"
+         id="text3339"
+         xml:space="preserve"
+         style="stroke:none">r</text>
+      <text
+         x="7"
+         y="22"
+         clip-path="url(#clipPath5)"
+         id="text3341"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">1 </text>
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3343"
+       style="stroke-width:3;stroke-linecap:butt;stroke-miterlimit:1.45000005">
+      <path
+         d="M 699.1324,716.1276 847.9865,579.6309"
+         clip-path="url(#clipPath2)"
+         id="path3345"
+         style="fill:none" />
+      <path
+         d="m 855.3569,572.8724 -15.2797,5.5312 6.988,2.0721 1.4602,7.1409 z"
+         clip-path="url(#clipPath2)"
+         id="path3347"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(355,342)"
+       id="g3349"
+       style="font-size:16px;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath4)"
+         id="text3351"
+         xml:space="preserve"
+         style="stroke:none">x</text>
+      <text
+         x="10"
+         y="22"
+         clip-path="url(#clipPath4)"
+         id="text3353"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">4 </text>
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3355"
+       style="stroke-width:3;stroke-linecap:butt;stroke-miterlimit:1.45000005">
+      <path
+         d="M 697.1816,714.9175 805.0381,342.2802"
+         clip-path="url(#clipPath2)"
+         id="path3357"
+         style="fill:none" />
+      <path
+         d="m 807.8184,332.6744 -10.1741,12.6709 7.0463,-1.8644 4.961,5.3398 z"
+         clip-path="url(#clipPath2)"
+         id="path3359"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(298,306)"
+       id="g3361"
+       style="font-size:16px;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath4)"
+         id="text3363"
+         xml:space="preserve"
+         style="stroke:none">x</text>
+      <text
+         x="10"
+         y="22"
+         clip-path="url(#clipPath4)"
+         id="text3365"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">3 </text>
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3367"
+       style="fill:#013787;stroke:#013787;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:1.45000005">
+      <path
+         d="M 855.3904,567.0916 684.1902,406.4126"
+         clip-path="url(#clipPath2)"
+         id="path3369"
+         style="fill:none" />
+      <path
+         d="m 674.1643,397.0028 5.8048,15.7339 10.2652,-10.9374 z"
+         clip-path="url(#clipPath2)"
+         id="path3371"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(354,189)"
+       id="g3373"
+       style="font-size:16px;fill:#013787;stroke:#013787;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath5)"
+         id="text3375"
+         xml:space="preserve"
+         style="stroke:none">r</text>
+      <text
+         x="7"
+         y="22"
+         clip-path="url(#clipPath5)"
+         id="text3377"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">3 </text>
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3379"
+       style="fill:#013787;stroke:#013787;stroke-width:3;stroke-linecap:butt;stroke-miterlimit:1.45000005">
+      <path
+         d="M 696.5385,714.7842 728.2402,466.578"
+         clip-path="url(#clipPath2)"
+         id="path3381"
+         style="fill:none" />
+      <path
+         d="m 729.9822,452.9388 -9.34,13.9289 14.8792,1.9004 z"
+         clip-path="url(#clipPath2)"
+         id="path3383"
+         style="stroke:none" />
+      <text
+         x="704.58228"
+         y="516.95441"
+         clip-path="url(#clipPath2)"
+         id="text3385"
+         xml:space="preserve"
+         style="font-size:16px;stroke:none;font-family:sans-serif">R</text>
+      <path
+         d="M 805.174,330.4425 572.106,443.1718"
+         clip-path="url(#clipPath2)"
+         id="path3387"
+         style="fill:none" />
+      <path
+         d="m 559.7278,449.1588 16.7691,0.2205 -6.5313,-13.5034 z"
+         clip-path="url(#clipPath2)"
+         id="path3389"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(-440,-293)"
+       id="g3299"
+       style="stroke-linecap:butt;stroke-miterlimit:1.45000005">
+      <circle
+         cx="809"
+         cy="328.59201"
+         r="4.25"
+         clip-path="url(#clipPath2)"
+         id="circle3301"
+         style="fill:none" />
+      <circle
+         cx="671.79449"
+         cy="394.77869"
+         r="3.25"
+         clip-path="url(#clipPath2)"
+         id="circle3303"
+         style="stroke:none" />
+      <circle
+         cx="730.39398"
+         cy="449.715"
+         r="3.25"
+         clip-path="url(#clipPath2)"
+         id="circle3305"
+         style="stroke:none" />
+      <circle
+         cx="556.80212"
+         cy="450.57401"
+         r="3.25"
+         clip-path="url(#clipPath2)"
+         id="circle3307"
+         style="stroke:none" />
+      <path
+         d="M 694.7047,714.9522 588.3431,382.5721"
+         clip-path="url(#clipPath2)"
+         id="path3309"
+         style="fill:none;stroke-width:3" />
+      <path
+         d="m 585.2953,373.0478 -1.381,16.1912 4.8098,-5.4764 7.0955,1.6667 z"
+         clip-path="url(#clipPath2)"
+         id="path3311"
+         style="stroke:none" />
+    </g>
+    <g
+       transform="translate(266,48)"
+       id="g3391"
+       style="font-size:16px;fill:#013787;stroke:#013787;stroke-linecap:butt;stroke-miterlimit:1.45000005;font-family:sans-serif">
+      <text
+         x="0"
+         y="15"
+         clip-path="url(#clipPath5)"
+         id="text3393"
+         xml:space="preserve"
+         style="stroke:none">r</text>
+      <text
+         x="7"
+         y="22"
+         clip-path="url(#clipPath5)"
+         id="text3395"
+         xml:space="preserve"
+         style="font-size:14px;stroke:none">2 </text>
+    </g>
+  </g>
+</svg>
+<!-- version: 20110311, original size: 459.46094 431.74393, border: 3% -->
